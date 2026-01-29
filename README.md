@@ -5,6 +5,9 @@ AIdol 프로젝트의 제품 문서 저장소입니다.
 ## 문서
 
 - [PRD (Product Requirements Document)](./20260115__aidol-prd__draft__v0.1__yw.md)
+- [기능명세서](./aidol-feature-spec.md)
+- [API Spec](./aidol-api-spec.md)
+- [ERD](./aidol-erd.md)
 
 ## 관련 레포지토리
 

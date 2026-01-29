@@ -4,10 +4,9 @@
 - 상태/버전: draft / v0.2
 - 소유자: 김영욱(yw)
 - 관련 문서:
-  - BM 문서: `20260114__aidol-business-model__draft__v0.1__yw.md`
-  - 기술 명세: `20260115__aidol-technical-spec__draft__v0.1__yw.md`
-  - 기능명세서: `전체 기능 명세서 2ec46f965504805a94fbed8c0109cd91.md`
-  - ERD: `20260122__aidol-erd__draft__v0.1__yw.md`
+  - 기능명세서: [aidol-feature-spec.md](./aidol-feature-spec.md)
+  - API Spec: [aidol-api-spec.md](./aidol-api-spec.md)
+  - ERD: [aidol-erd.md](./aidol-erd.md)
 
 ---
 
@@ -376,9 +375,9 @@ Phase별 배치는 User Story Map 참조. 마이그레이션 경로는 Technical
 
 ### 9.1 Internal Documents
 
-- BM 문서: `20260114__aidol-business-model__draft__v0.1__yw.md`
-- 기술 명세: `20260115__aidol-technical-spec__draft__v0.1__yw.md`
-- 회의록: `~/buppy/Meeting Transcription.txt` (2026-01-14)
+- 기능명세서: [aidol-feature-spec.md](./aidol-feature-spec.md)
+- API Spec: [aidol-api-spec.md](./aidol-api-spec.md)
+- ERD: [aidol-erd.md](./aidol-erd.md)
 
 ### 9.2 External Sources
 
