@@ -38,6 +38,21 @@ AIoIA는 K-pop 팬들이 AI 아이돌과 **영상통화**하고 **채팅**할 �
 - K-pop 글로벌화 (팬 1.5억 명+)
 - AI 동반자 시장 성장 (Character.AI 월 2천만 MAU)
 
+## 기술 스택
+
+| 영역 | 기술 | 용도 |
+|------|------|------|
+| Frontend | Next.js 13, TypeScript, Tailwind CSS | 웹 앱 |
+| Mobile | Flutter | iOS/Android 앱 |
+| Backend | Python (FastAPI), SQLAlchemy | API 서버 |
+| Database | PostgreSQL | 데이터 저장 |
+| AI - 대화 | OpenAI API (GPT) | 텍스트 생성 |
+| AI - 이미지 | GPT Image 1.5 | 프로필 이미지 |
+| AI - 음성 | Fish Audio TTS | 목소리 합성 |
+| AI - 실시간 | LiveKit Agents | 영상통화 |
+| Infra | Google Cloud, Kubernetes | 서버 인프라 |
+| 협업 | Socket.IO, Celery | 실시간 통신 |
+
 ## 경쟁 우위
 
 **Character.AI가 모르는 것:**

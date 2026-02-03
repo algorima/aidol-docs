@@ -4,11 +4,24 @@
 
 ### 김영욱 (Youngwook Kim) - CEO/CTO
 - (TODO: 경력 및 학력)
-- 역할: 제품 전략, 기술 리드
+- 역할: 제품 전략, 기술 리드, AI 엔지니어링
+- 개발 경력 10년+, 시니어 개발자
 
 ### 이소연 (Soyeon Lee) - (TODO: 직함)
 - (TODO: 경력 및 학력)
 - 역할: (TODO)
+
+## 현재 팀 구성 (AIdol 프로젝트 기준)
+
+노션에서 확인된 팀원:
+- 영욱, 제이, 수지, 소연, 채현, 은재, 지영, 시영, 제형
+
+| 역할 | 담당 | 비고 |
+|------|------|------|
+| 기획/PM | (TODO) | 기능 명세서, 사용자 리서치 |
+| 디자인 | 제이 | Figma UI, 와이어프레임 |
+| 개발 | 영욱 외 | 백엔드, 프론트엔드 |
+| 마케팅 | (TODO) | TikTok, 콘텐츠 |
 
 ## 왜 이 팀인가?
 
@@ -26,22 +39,31 @@
 - 각 피봇에서 검증 데이터 확보
 - MVP 빠르게 구축 및 배포
 
-## 팀 구성 현황
+## 기술 스택 & 역량
 
-| 역할 | 인원 | 비고 |
-|------|------|------|
-| 창업자/개발 | 2 | (TODO) |
-| 디자인 | 1 | (TODO) |
-| 기획 | 1 | (TODO) |
-| 총 | (TODO) | |
+| 영역 | 기술 |
+|------|------|
+| Frontend | Next.js, TypeScript, Tailwind CSS, DaisyUI, Storybook |
+| Backend | FastAPI, SQLAlchemy, PostgreSQL |
+| AI/ML | OpenAI API, Fish Audio TTS, LiveKit Agents |
+| Infra | Google Cloud, Kubernetes |
+| 협업 | Asana, Slack, Notion, GitHub |
+| 방법론 | Agile, Lean Product Development |
 
-## 채용 계획
+## 채용 계획 (모집 중)
 
-### Phase 2 (투자 후)
-- Frontend 개발자 1명
-- AI/ML 엔지니어 1명
-- 콘텐츠 마케터 1명
+| 포지션 | 역할 | 우대사항 |
+|--------|------|----------|
+| 기획 | 글로벌 K-pop 팬덤 조사, 사용자 인터뷰 | 리서치 경험 |
+| 마케팅 | TikTok/Instagram 숏폼 콘텐츠 | 숏폼 포트폴리오 |
+| 비즈개발 | 투자 피칭, BM 수립 | VC 네트워크 |
+| 디자인 | Figma UI/UX | DaisyUI/Tailwind |
+| 프론트엔드 | Next.js, TypeScript | GitHub PR 경험 |
+| 백엔드/AI | FastAPI, 실시간 음성 | Python, 프롬프트 설계 |
+
+> 스톡옵션 기회 제공 (초기 멤버)
 
 ## 어드바이저 / 협력사
 
-(TODO: 있다면 추가)
+- (TODO: 기존 투자자 - 허진호 대표님, 김범수 대표님, 이택경 대표님 등)
+- 아모레퍼시픽 AI 공모전 참여
