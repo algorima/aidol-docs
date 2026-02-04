@@ -25,6 +25,7 @@ Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.
 |------|------|
 | **Page** | MyGroup |
 | **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
+| **트리거 조건** | - 사용자가 아직 읽지 않은 메시지가 있을 경우<br>- 멤버가 새로운 메시지를 보낸 경우 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A3987) |
 
 ---
@@ -39,6 +40,7 @@ Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.
 |------|------|
 | **Page** | Home_OtherGroup, Follow |
 | **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
+| **트리거 조건** | - 사용자가 아직 읽지 않은 메시지가 있을 경우<br>- 멤버가 새로운 메시지를 보낸 경우 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A4150) |
 
 ### 2-2. 팔로우 (NotFollow 상태)
@@ -70,6 +72,8 @@ Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.
 | 항목 | 내용 |
 |------|------|
 | **Page** | Inbox, Modal |
+| **설명** | - 아직 채팅이 열리지 않은 아이돌을 탭했을 때 노출되는 안내 모달<br>- 제목: "이 멤버와의 대화는 곧 열릴 예정이에요"<br>- 본문: 현재는 대화가 제한되어 있으나, 추후 업데이트로 대화가 가능해질 것이라는 메시지 전달<br>- 버튼: `확인` 1개로 모달 닫기 |
+| **기능 명세** | - 트리거: Inbox에서 `대화 제한 상태`로 표시된 멤버/카드를 탭할 경우 모달 표시<br>- 사용자가 `확인` 버튼을 누르면 모달이 닫히고, 채팅 화면으로는 이동하지 않음<br>- 모달 바깥 영역(배경)을 탭해도 닫힘(채팅 화면 진입 없음)<br>- 동일 멤버에 대해 제한 상태가 유지되는 동안은 매번 동일 모달 노출 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A1802) |
 
 ---
@@ -85,3 +89,36 @@ AI 아이돌과의 1:1 채팅을 통해 메시지를 주고받는 대화 화면�
 | **Page** | Chat |
 | **설명** | - 단일 멤버 대화<br>- 한 명의 멤버와만 대화 가능 (멤버 간 맥락 공유 없음)<br>- 한국 시간 기준<br>- 멤버들은 같은 시간대를 살고 있음 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A2110) |
+
+### 4-2. 첫 메시지 발신자에 따른 UI
+
+| 항목 | 내용 |
+|------|------|
+| **Chat_First_Member** | 멤버(AI 아이돌)가 먼저 메시지를 보낸 상태의 화면 |
+| **Chat_First_User** | 사용자가 먼저 메시지를 보낸 상태의 화면 |
+| **Figma 링크** | [Chat_First_Member](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A3907), [Chat_First_User](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A1927) |
+
+### 4-3. 로딩 상태 (Chat_Roading)
+
+| 항목 | 내용 |
+|------|------|
+| **설명** | AI 아이돌이 응답을 생성하는 동안 표시되는 로딩 상태 |
+| **기능 명세** | - 로딩 인디케이터 또는 "입력 중..." 표시<br>- 사용자는 로딩 중에도 추가 메시지 입력 가능 |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A2190) |
+
+### 4-4. 작성 중 상태 (Chat_Writing)
+
+| 항목 | 내용 |
+|------|------|
+| **설명** | 사용자가 메시지를 입력하고 있는 상태 |
+| **기능 명세** | - 텍스트 입력 필드 활성화<br>- 전송 버튼 활성화 조건: 텍스트 입력 시 |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A2113) |
+
+### 4-5. 에러 처리
+
+| 항목 | 내용 |
+|------|------|
+| **Chat_Error_User** | 사용자 측 에러 (네트워크 오류, 메시지 전송 실패 등) |
+| **Chat_Error_Member** | 멤버(AI) 측 에러 (응답 생성 실패 등) |
+| **기능 명세** | - 에러 발생 시 사용자에게 안내 메시지 표시<br>- "다시 시도" 버튼 제공<br>- 에러 유형에 따른 적절한 안내 문구 |
+| **Figma 링크** | [Chat_Error_User](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A2044), [Chat_Error_Member](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A1980) |
