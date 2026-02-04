@@ -29,7 +29,7 @@ YYYYMMDD__주제__상태__vX.Y__소유자.md
 | `주제` | 문서 주제 (kebab-case) | `user-interview-kpop-fans` |
 | `상태` | draft → review → final | `draft` |
 | `vX.Y` | 버전 | `v0.1`, `v1.0` |
-| `소유자` | 작성자 이니셜 | `sy`, `yw`, `je`, `jh` |
+| `소유자` | 작성자 이니셜 | `sy`, `yw`, `je`, `jh`, `jp` |
 
 ### 예시
 
