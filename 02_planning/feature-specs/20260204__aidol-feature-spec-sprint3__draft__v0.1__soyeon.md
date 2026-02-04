@@ -1,0 +1,87 @@
+# AIdol 기능 명세서 - Sprint 3
+
+> **작성일**: 2026-02-04  
+> **상태**: draft  
+> **버전**: v0.1  
+> **작성자**: soyeon  
+> **출처**: [Notion 전체 기능 명세서](https://www.notion.so/2ec46f965504805a94fbed8c0109cd91)
+
+---
+
+## 개요
+
+Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.  
+사용자가 생성하거나 팔로우한 AI 아이돌과 1:1 대화를 나눌 수 있는 핵심 인터랙션 기능입니다.
+
+---
+
+## 1. 내 그룹 페이지 (MyGroup)
+
+사용자가 생성한 AI 아이돌 그룹을 확인하고 그룹의 데뷔일 및 주요 소식을 확인한 뒤 개별 또는 그룹 채팅 화면으로 진입하는 중간 허브 페이지입니다.
+
+### 1-1. 채팅 화면 진입
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | MyGroup |
+| **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A3987) |
+
+---
+
+## 2. 타 그룹 상세 페이지 (Home_OtherGroup)
+
+프리셋 AI 아이돌 그룹의 정보와 소식을 확인하고, 팔로우를 통해 관계를 시작한 뒤 채팅으로 이어지는 상세 페이지입니다.
+
+### 2-1. 채팅 화면 진입 (Follow 상태)
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | Home_OtherGroup, Follow |
+| **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A4150) |
+
+### 2-2. 팔로우 (NotFollow 상태)
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | Home_OtherGroup, NotFollow |
+| **설명** | 팔로우로 Switch |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A4102) |
+
+---
+
+## 3. 수신함 페이지 (Inbox)
+
+팔로우하거나 사용자가 생성한 AI 아이돌로부터 수신된 메시지 목록을 표시하고, 각 항목을 통해 개별 채팅 화면으로 진입하는 수신함 페이지입니다.
+
+### 3-1. 채팅 목록 확인
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | Inbox |
+| **설명** | 첫 채팅 멤버는 랜덤하게 설정 |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A1664) |
+
+### 3-2. 대화 제한 안내 모달
+
+아직 대화가 열리지 않은 아이돌에 대해, 현재는 제한 상태임을 알리고 '곧 대화가 가능해질 것'이라는 기대를 전달하는 안내 모달입니다.
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | Inbox, Modal |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A1802) |
+
+---
+
+## 4. 채팅 화면 (Chat)
+
+AI 아이돌과의 1:1 채팅을 통해 메시지를 주고받는 대화 화면입니다.
+
+### 4-1. 채팅 진입
+
+| 항목 | 내용 |
+|------|------|
+| **Page** | Chat |
+| **설명** | - 단일 멤버 대화<br>- 한 명의 멤버와만 대화 가능 (멤버 간 맥락 공유 없음)<br>- 한국 시간 기준<br>- 멤버들은 같은 시간대를 살고 있음 |
+| **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=295%3A2110) |
