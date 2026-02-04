@@ -4,11 +4,15 @@
 
 ## 사용 가능한 템플릿
 
-- `template__prd.md` - PRD 템플릿
-- `template__feature-spec.md` - 기능 명세서 템플릿
-- `template__user-interview.md` - 사용자 인터뷰 템플릿
-- `template__experiment.md` - 실험 결과 템플릿
+현재 이 `templates/` 디렉터리에는 별도의 Markdown 템플릿 파일이 포함되어 있지 않습니다.
+아래 파일 이름들은 **실제로 존재하는 파일 목록이 아니라**, 새 문서를 만들 때 참고할 수 있는 **예시 네이밍 규칙**입니다.
+필요하다면 이 규칙을 따라 각 팀/프로젝트에서 직접 템플릿 파일을 추가해 사용하세요.
 
+예시 템플릿 파일 이름:
+- `template__prd.md` - PRD 템플릿 예시
+- `template__feature-spec.md` - 기능 명세서 템플릿 예시
+- `template__user-interview.md` - 사용자 인터뷰 템플릿 예시
+- `template__experiment.md` - 실험 결과 템플릿 예시
 ## 새 문서 만들기
 
 1. 적절한 템플릿 복사
