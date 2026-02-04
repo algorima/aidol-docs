@@ -41,12 +41,15 @@ YYYYMMDD__주제__상태__vX.Y__소유자.md
 
 | 코드 | 이름 |
 |------|------|
-| `sy` | 소연 (Soyeon) |
-| `yw` | 영욱 (Youngwook) |
-| `je` | 은재 (Eunjae) |
-| `jh` | 제형 (Jehyung) |
-| `jp` | 지윤 (JYP) |
-| `jy` | 지영 (Jiyoung) |
+| `soyeon` | 소연 |
+| `youngwook` | 영욱 |
+| `eunjae` | 은재 |
+| `jehyung` | 제형 |
+| `jiyoung` | 지영 |
+| `sooji` | 수지 |
+| `jay` | 제이 |
+| `chaehyun` | 채현 |
+| `siyoung` | 시영 |
 
 ## 🔗 관련 저장소
 
