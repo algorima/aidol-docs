@@ -46,6 +46,7 @@ YYYYMMDD__주제__상태__vX.Y__소유자.md
 | `je` | 은재 (Eunjae) |
 | `jh` | 제형 (Jehyung) |
 | `jp` | 지윤 (JYP) |
+| `jy` | 지영 (Jiyoung) |
 
 ## 🔗 관련 저장소
 
