@@ -256,7 +256,7 @@ AIdol은 서로 다른 니즈를 가진 두 사용자 세그먼트를 타깃으�
 **페이지 간 상태 전달**:
 ```
 캐스팅 보드 진입:
-  1. claimToken = localStorage.getItem('claimToken')
+  1. anonymousId = localStorage.getItem('anonymousId')
   2. GET /aidols?filter=anonymous_id:{token}  → 내 그룹
   3. GET /companions?filter=aidolId:{id}    → 내 멤버
 ```
