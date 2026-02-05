@@ -250,7 +250,7 @@ AIdol은 서로 다른 니즈를 가진 두 사용자 세그먼트를 타깃으�
 | 클라이언트 저장 | localStorage에 `anonymousId`만 저장 | ID 배열 저장 ❌ |
 
 **localStorage 용도**:
-- ✓ `claimToken`: 소유권 증명, Phase 2 마이그레이션
+- ✓ `anonymousId`: 소유권 증명, Phase 2 마이그레이션
 - ❌ 캐스팅한 연습생 ID 배열 (aidol_id로 서버 조회)
 
 **페이지 간 상태 전달**:
