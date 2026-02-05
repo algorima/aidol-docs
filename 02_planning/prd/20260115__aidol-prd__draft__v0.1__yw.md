@@ -247,7 +247,7 @@ AIdol은 서로 다른 니즈를 가진 두 사용자 세그먼트를 타깃으�
 |------|---------|------|
 | 서버 저장 | AIdol + Companion 테이블 | owner_id = null (MVP) |
 | 소유권 증명 | `anonymous_id` (UUID) | aidol.anonymous_id에 저장, 쿠키: aioia_anonymous_id |
-| 클라이언트 저장 | localStorage에 `claimToken`만 저장 | ID 배열 저장 ❌ |
+| 클라이언트 저장 | localStorage에 `anonymousId`만 저장 | ID 배열 저장 ❌ |
 
 **localStorage 용도**:
 - ✓ `claimToken`: 소유권 증명, Phase 2 마이그레이션
