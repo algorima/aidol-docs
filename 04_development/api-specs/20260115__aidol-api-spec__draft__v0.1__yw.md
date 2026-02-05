@@ -36,7 +36,7 @@
 
 **Sprint**: Sprint 1
 
-**Headers:** `claim-Token`: Optional
+**Headers:** `aioia_anonymous_id`: Optional
 
 **Request**:
 ```json
@@ -45,7 +45,7 @@
 
 **Response** (201 Created):
 ```json
-Headers: ClaimToken
+Headers: aioia_anonymous_id
 
 body:
 {
@@ -341,7 +341,7 @@ AIdol 그룹 정보를 조회합니다.
 
 **Sprint**: Sprint 1
 
-**Headers:** `claim-Token`: Optional
+**Headers:** `aioia_anonymous_id`: Optional
 
 **Request**:
 ```json
@@ -357,7 +357,7 @@ AIdol 그룹 정보를 조회합니다.
 }
 ```
 
-> **Note**: 헤더의 `claim-Token`이 유효하고 생성된 그룹이 있다면 해당 그룹의 이메일로 저장되며, 그렇지 않은 경우 잠재 고객(Leads)으로 저장됩니다.
+> **Note**: 헤더의 `aioia_anonymous_id`이 유효하고 생성된 그룹이 있다면 해당 그룹의 이메일로 저장되며, 그렇지 않은 경우 잠재 고객(Leads)으로 저장됩니다.
 
 ---
 
@@ -373,7 +373,7 @@ AIdol 그룹 정보를 조회합니다.
   concept: string | null            // 그룹 컨셉
   greeting: string | null           // 인사 문구
   profileImageUrl: string | null    // 엠블럼 이미지 URL
-  claimToken: string | null         // 소유권 토큰 (응답에 미포함)
+  anonymousId: string | null        // 익명 사용자 식별자 (쿠키: aioia_anonymous_id, 응답에 미포함)
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string
 }
