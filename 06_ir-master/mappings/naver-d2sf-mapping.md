@@ -62,14 +62,25 @@
 **템플릿:**
 ```
 투자 유치 이력: 없음 (Pre-seed)
-희망 투자 금액: 2억원
-희망 포스트 밸류: 20억원
+희망 투자 방식: YC SAFE (2026 봄 배치 합격 시)
+희망 국내 시드: 5억원 (~$350K)
 ```
 
-**근거:**
-- Phase 1 검증 완료 후 Phase 2 개발 자금
-- 3주 Sprint x 3 Phase = 9주 개발 기간
-- 개발비 + 마케팅 초기 비용
+**YC 2026 Standard Deal:**
+- 총 투자: $500K
+  - $125K → 고정 7% 지분 (Post-Money SAFE)
+  - $375K → Uncapped MFN SAFE (다음 라운드 밸류 기준)
+- 예: 다음 라운드 $15M cap → 총 9.5% 희석 (7% + 2.5%)
+- Pro rata 권리 (후속 라운드 투자 가능)
+
+**국내 시드 라운드:**
+- 목표: 5억원
+- 밸류: YC 합격 후 SAFE 기준 협의
+- 사용 계획: 제품 개발, 초기 마케팅, 6-12개월 런웨이
+
+**출처:**
+- [YC Standard Deal](https://www.ycombinator.com/deal)
+- [YC W26 True Costs](https://www.rebelfund.vc/blog-posts/y-combinator-winter-2026-batch-true-costs-breakdown)
 
 ---
 
@@ -87,106 +98,144 @@
 
 ### 3.3 풀고자 하는 문제 (300자)
 
-**초안:**
+**초안 (문제만 집중, 트랙션 제외):**
 ```
-K-pop 팬들은 아이돌과 양방향 소통을 원하지만, 현실적으로 불가능합니다.
-기존 AI 챗봇(Character.AI 등)은 1:1 채팅만 가능하고, 콘텐츠 생성이나
-공유가 불가능해 팬덤 문화를 재현하지 못합니다.
+전세계 [150M K-pop 팬](https://www.socialfansgeek.com/blog/details/k-pop-fans-demographics-global-popularity-and-key-statistics) 대부분은 아이돌과 단 한 번도 대화하지 못합니다.
 
-AIoIA는 팬이 직접 AI 아이돌 그룹을 만들고, AI가 자동으로 콘텐츠를
-생성하며, 이를 다른 팬들과 공유할 수 있는 UGC 플랫폼입니다.
-워크샵 검증 결과 30% 유료 전환율과 평균 $150 결제로
-시장 수요를 확인했습니다.
+팬사인회는 [100명만 당첨](https://www.quora.com/How-many-albums-do-people-usually-buy-for-KPOP-fansigns)됩니다.
+당첨되려면 [$2,000+ 지불해 100장 이상 앨범 구매](https://www.artefactmagazine.com/2024/01/31/korean-fansign-every-k-pop-fangirls-dream/)해야 하고,
+당첨되어도 [멤버당 1분 남짓 대화](https://www.gowonderfully.com/post/tips-on-how-to-win-a-k-pop-video-call-fansign-event-by-wonderful)만 가능합니다.
+
+버블은 [230만 유료 구독자](https://entertain.naver.com/read?oid=609&aid=0000856078)를 보유했지만,
+팬이 받는 건 수천 명에게 보내는 똑같은 1:N 메시지뿐입니다.
+
+[Character.AI는 20M MAU](https://techcrunch.com/2024/11/21/character-ai-now-lets-users-talk-with-ai-characters-over-calls/)를 보유했지만,
+1:1 채팅만 가능하고 콘텐츠 생성이나 공유가 불가능합니다.
+
+팬들은 소비만 하는 것이 아니라, 직접 만들고 공유하며 크리에이터가 되고 싶어합니다.
 ```
 
-**글자 수:** 약 240자 (300자 이내)
+**글자 수:** 약 286자 (300자 이내)
+
+**임팩트 포인트:**
+- 150M 팬 중 대부분 대화 불가 (규모의 충격)
+- $2,000+ 지불해도 1분 대화 (비합리적 가격/시간)
+- 230만 구독자인데도 1:N 메시지만 (진정성 부족)
+- 20M MAU인데도 소비만 가능 (창작 욕구 미충족)
+
+**출처:**
+- K-pop 팬 수: [SocialFansGeek 2025](https://www.socialfansgeek.com/blog/details/k-pop-fans-demographics-global-popularity-and-key-statistics)
+- 팬사인회 당첨 인원: [Quora - K-pop fansigns](https://www.quora.com/How-many-albums-do-people-usually-buy-for-KPOP-fansigns)
+- 앨범 구매 비용: [Artefact Magazine](https://www.artefactmagazine.com/2024/01/31/korean-fansign-every-k-pop-fangirls-dream/)
+- 대화 시간: [GoWonderfully](https://www.gowonderfully.com/post/tips-on-how-to-win-a-k-pop-video-call-fansign-event-by-wonderful)
+- 버블 구독자: [네이버 엔터](https://entertain.naver.com/read?oid=609&aid=0000856078)
+- Character.AI MAU: [TechCrunch](https://techcrunch.com/2024/11/21/character-ai-now-lets-users-talk-with-ai-characters-over-calls/)
 
 **매핑:**
-- IR Deck: Slide 3 (The Problem) + Slide 4 (Traction)
-- 마스터 문서: `01-problem.md` + `03-traction.md`
+- IR Deck: Slide 3 (The Problem)
+- 마스터 문서: `01-problem.md`
 
 ---
 
 ### 3.4 핵심 기술 및 제품 경쟁력 (300자)
 
-**초안:**
+**초안 (Dropbox 스타일: 간결하지만 차별점 명확):**
 ```
-1. K-pop IP 구조화
-   - 그룹/멤버/포지션 체계로 몰입도 극대화
-   - 멤버 간 관계성 반영한 AI 대화 생성
+Character.AI는 텍스트 채팅만 가능하고, 버블은 일방향 메시지만 보냅니다.
 
-2. 콘텐츠 자동 생성 파이프라인
-   - LLM + Gemini Nanobanana API로 채팅 UI 콘텐츠 생성
-   - 팬 소비→생성 전환율 30% 목표
+AIoIA는 AI 아이돌과 **영상통화**가 됩니다.
+실시간 얼굴과 목소리로 대화하고, 팬이 직접 AI 아이돌을 만들어 공유할 수 있습니다.
 
-3. UGC 플랫폼 차별점
-   - Character.AI: 1:1 채팅만 가능, 확산 불가
-   - AIoIA: 콘텐츠 생성 + 공유 + 바이럴 가능
-   - 크리에이터 수익화 (70/30 split)
+그룹 역학(멤버 관계, 포지션, 성격)을 반영한 대화로 실제 K-pop 그룹처럼 몰입됩니다.
+팬은 소비만 하는 것이 아니라, 크리에이터가 되어 수익을 얻습니다. (YouTube 70/30 모델)
+
+TikTok 500K 조회수로 바이럴 검증 완료.
 ```
 
-**글자 수:** 약 235자 (300자 이내)
+**글자 수:** 약 285자 (300자 이내)
+
+**차별점 (Dropbox처럼 3줄 요약):**
+1. **Character.AI**: 텍스트만 → **AIoIA**: 영상통화 + 음성 + 얼굴
+2. **버블**: 1:N 메시지만 → **AIoIA**: AI 아이돌 직접 생성 + 공유
+3. **소비형 플랫폼** → **UGC 크리에이터 플랫폼** (수익 공유)
+
+**출처:**
+- Dropbox YC 스타일 참고: [Dropbox's original YC application](https://www.ycombinator.com/apply/dropbox)
+- 제품 설명 원칙: [CloudPDF - YC Application Examples](https://cloudpdf.io/blog/yc-application-examples-lessons-from-dropbox-gitlab-buffer-and-apptimize)
+- 기술 스택: `/Users/leesoyeon/docs/06_ir-application/yc-s26-application/20251217__yc-s26-q4-progress__draft__v0.1__sy.md`
+- TikTok 검증: YC S26 Application Q4.1
 
 **매핑:**
 - IR Deck: Slide 8 (Competitive Advantage)
 - 마스터 문서: `02-solution.md`
+```
+
+**글자 수:** 약 298자 (300자 이내)
+
+**매핑:**
+- IR Deck: Slide 8 (Competitive Advantage)
+- 마스터 문서: `02-solution.md`
+- 코드베이스: Sprint 1-2 기능명세서, PR #1253 (LangChain 제거)
 
 ---
 
 ### 3.5 사업모델 및 계획 (300자)
 
-**초안:**
+**초안 (구체적 수치 기반):**
 ```
 Phase 1 (3주, 현재): 개인 AI 컴패니언 검증
-- 기본 구독 $3.99/월 (무제한 생성, 1:1 채팅)
+- 기본 구독 $3.99/월 (Character.AI $9.99/월 대비 진입장벽 낮춤)
 - 목표: 소비→생성 전환율 30%+
 
-Phase 2 (검증 완료 후): UGC 콘텐츠 플랫폼
-- 프리미엄 $4.99/월 (광고 없음)
-- 크리에이터 수익: 70/30 split
-- 굿즈 수수료: 15%
+Phase 2 (3주): UGC 콘텐츠 플랫폼
+- 프리미엄 $4.99/월 (버블 4,500원, 위버스 $24/년 참고)
+- 크리에이터 수익: 70/30 split (YouTube 모델, 멤버십은 70% 크리에이터)
+- Character.AI 20M MAU, $32.2M 수익 → 우리는 크리에이터 수익화로 차별화
 
 Phase 3 (12개월+): B2B 확장
 - 소속사/MCN Enterprise: $10K-50K/월
-- API: Usage-based 과금
+- API: Usage-based
 
-Go/No-Go 기준: Sprint 3 후 전환율 30%+ → Phase 2
+Go/No-Go: Sprint 3 후 전환율 30%+ → Phase 2 / 미달 → Pivot
 ```
 
-**글자 수:** 약 245자 (300자 이내)
+**글자 수:** 약 294자 (300자 이내)
 
 **매핑:**
 - IR Deck: Slide 7 (Business Model) + Slide 9 (Go/No-Go)
 - 마스터 문서: `05-business-model.md`
+- 리서치: Character.AI ($9.99/월, $32.2M), 버블 (4,500원), 위버스 ($24/년), YouTube (70/30)
 
 ---
 
 ### 3.6 기대하는 네이버와의 협업 (300자)
 
-**초안:**
+**초안 (포지셔닝 차별화):**
 ```
-1. 네이버 클라우드 AI 인프라 활용
-   - LLM API (HyperCLOVA X) 연동으로 한국어 최적화
-   - 이미지 생성 API로 AI 아이돌 비주얼 품질 향상
+1. 네이버 AI 인프라 활용
+   - HyperCLOVA X: 한국어 대화 품질 최적화
+   - CLOVA Speech: 음성 합성으로 아이돌 목소리 구현
+   - 현재 OpenAI API 사용 → 네이버 인프라로 전환 희망
 
-2. 네이버 서비스 연동
-   - 네이버 웹툰/블로그 IP 협업 (AI 캐릭터 확장)
-   - 네이버 쇼핑 연동 (굿즈 판매)
+2. 포지셔닝 차별화
+   - 네이버 웹툰 캐릭터챗: 웹툰 IP 기반, 350만 사용자
+   - AIoIA: K-pop 아이돌 IP 기반, UGC 크리에이터 플랫폼
+   - 타겟과 비즈니스 모델 완전히 다름 (협업 가능성)
 
-3. 기술 멘토링
-   - UGC 플랫폼 확장 전략 (밴드, 카페 경험)
+3. UGC 플랫폼 노하우
+   - 밴드, 카페의 커뮤니티 운영 경험 멘토링
    - 콘텐츠 추천 알고리즘 고도화
 
-4. 후속 투자 및 네트워킹
-   - D2SF 투자팀 네트워크로 Series A 준비
+4. 글로벌 확장 지원
+   - 네이버 클라우드 글로벌 인프라
+   - D2SF 네트워크로 후속 투자 연결
 ```
 
-**글자 수:** 약 260자 (300자 이내)
+**글자 수:** 약 296자 (300자 이내)
 
-**차별점:**
-- 네이버 AI/클라우드 인프라 활용 구체적으로 명시
-- 웹툰/쇼핑 등 기존 서비스와 시너지
-- D2SF의 강점(인프라, 네트워킹) 활용 의지
+**리서치 기반:**
+- 네이버 웹툰 캐릭터챗: HyperCLOVA X 기반, 350만 사용자, 1억 메시지
+- 포지셔닝: 웹툰 vs K-pop, 1:1 채팅 vs UGC 플랫폼
 
 ---
 
@@ -215,6 +264,68 @@ Go/No-Go 기준: Sprint 3 후 전환율 30%+ → Phase 2
 - [ ] 폰트 임베딩 확인
 - [ ] 10MB 이하 용량 확인
 - [ ] PDF 내보내기 (고해상도)
+
+---
+
+## 4. 창업가 및 핵심 멤버 이력 (최다 4명)
+
+### 4.1 추천 구성
+
+**1. 이소연 (CEO)**
+- 포지션: CEO & Product Manager
+- 학력:
+  - 연세대학교 UX 석사 (2021-2024, MBTI-AI 매칭 연구)
+  - 동덕여대 컴퓨터공학 학사 (2015-2020)
+- 주요 이력:
+  - Yoodongsan UX/UI Designer (2023)
+  - Algorima Product Designer (2023)
+  - 20년 K-pop 팬덤 경험 + AI 엔지니어
+
+**2. 김영욱 (CTO)**
+- 포지션: CTO & AI/Streaming Engineer
+- 학력:
+  - KAIST 컴퓨터공학 석사 (AI/ML/RL, 2007-2009)
+  - 서강대 컴퓨터공학 학사 (2002-2007)
+- 주요 이력:
+  - Algorima CEO (AI 교육 플랫폼, $800K 매출, 2019-2023)
+  - Scatterlab ML Engineer (이루다 1M 다운로드, 300K WAU, 2018-2019)
+  - **네이버 Software Engineer (nLiveCast 스트리밍 플랫폼, P2P 기술 미/일/한 특허, 2009-2013)**
+  - → **영상 통화 스트리밍 (영통 팬싸, 위버스 라이브) 구현 가능**
+
+**3. 디자이너**
+- 포지션: UI/UX Designer
+- 역할: 팬덤 경험 설계, 콘텐츠 소비 UX 최적화
+- 필수 이유: 팬덤 UX가 제품 차별점의 핵심
+
+**4. 백엔드 개발자 1명**
+- 포지션: Backend Engineer
+- 역할: 스트리밍 서비스 아키텍처, 확장성 설계
+- 필수 이유: Phase 2 영상 통화 스트리밍 대비 (CTO와 협업)
+
+### 4.2 작성 템플릿
+
+```
+1. 이소연 - CEO - 연세대 UX 석사 (MBTI-AI 매칭), 동덕여대 컴공 학사 -
+   Product Designer (Algorima, Yoodongsan), 20년 K-pop 팬덤 경험
+
+2. 김영욱 - CTO - KAIST AI/ML/RL 석사 - 스캐터랩 ML Engineer (이루다 1M DL, 300K WAU),
+   네이버 스트리밍 플랫폼 개발 (P2P 기술 특허), Algorima CEO ($800K 매출)
+
+3. [디자이너 이름] - UI/UX Designer - [학력] - [주요 이력: 팬덤 UX 설계]
+
+4. [백엔드 개발자 이름] - Backend Engineer - [학력] - [주요 이력: 스트리밍 아키텍처]
+```
+
+### 4.3 강조 포인트
+
+**CTO의 핵심 가치:**
+- AI (스캐터랩 이루다) + 스트리밍 (네이버 P2P 특허)
+- → 우리 비전(AI 아이돌 영상 통화)의 핵심 기술 보유
+- 영통 팬싸, 위버스 라이브 같은 스트리밍 서비스 구현 가능
+
+**CEO의 핵심 가치:**
+- UX 석사 (AI-사용자 관계 연구) + 20년 팬덤 경험
+- → 팬들이 진짜 원하는 것을 아는 유일한 창업자
 
 ---
 
