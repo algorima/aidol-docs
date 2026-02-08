@@ -5,7 +5,7 @@
 - **소유자**: 이소연(sy)
 - **관련 문서**:
   - Phase 1 MVP PRD: [20260115__aidol-prd__draft__v0.1__yw.md](./20260115__aidol-prd__draft__v0.1__yw.md)
-  - Business Strategy: `/Users/leesoyeon/aidol/docs/business-strategy.md`
+  - Business Strategy: [../../06_ir-master/05-business-model.md](../../06_ir-master/05-business-model.md)
   - 40 Week Sprint Plan: [../40-week-sprint-plan.md](../40-week-sprint-plan.md)
 
 ---
@@ -128,8 +128,11 @@ Phase 3 (미래): B2B 확장
 ```
 
 **수익 구조:**
-- 구독료: $3.99/월 (프리셋 생성 + 1:1 채팅)
-- 프리미엄: 독점 콘텐츠, 굿즈 기획 권한
+- 기본 무료: 프리셋 캐스팅, 신규 멤버 생성 (제한적)
+- 기본 구독 ($3.99/월): 무제한 멤버 생성, 1:1 채팅, "다른 그룹" 채팅 UI 콘텐츠
+- 프리미엄 구독 (가격 TBD): 기본 구독 기능 + 독점 콘텐츠, 굿즈 기획 권한
+
+**Note:** Phase 1은 기본 구독 중심, 프리미엄은 Phase 2 이후 도입
 
 #### 3.1.3 핵심 기능
 
@@ -279,7 +282,7 @@ Phase 3 (미래): B2B 확장
 | 과제 | 솔루션 |
 |------|--------|
 | 콘텐츠 자동 생성 | AI 콘텐츠 생성 파이프라인 (LLM + Image Gen + Video Gen) |
-| 추천 알고리즘 | 협업 필터링 + 콘텐츠 기반 필터링 |
+| 추천 알고리즘 | v1: 인기순/최신순 + 수동 큐레이션 → v2: 협업 필터링 (데이터 축적 후) |
 | 대용량 스토리지 | CloudFlare R2 (S3 대비 저렴) |
 | CDN | CloudFlare (글로벌 배포) |
 
@@ -301,9 +304,9 @@ Phase 3 (미래): B2B 확장
 - MCN과 크리에이터 육성 프로그램
 
 **수익 구조:**
-- Enterprise Plan: $10K-50K/월
-- API Usage: $0.01/request
-- Revenue Share: 플랫폼 수수료 10%
+- Enterprise Plan: $10K-50K/월 (예상)
+- API Usage: Usage-based pricing (TBD, 유사 서비스 참고 시 $0.005-0.02/request 범위)
+- Revenue Share: 플랫폼 수수료 10-15%
 
 ---
 
@@ -391,7 +394,7 @@ So I can 어떤 콘텐츠가 인기인지 알 수 있다.
 
 **Segment A: Creator (창작자)**
 - K-pop 콘텐츠 제작자, AI 아트 메이커
-- 검증 데이터: 50% 전환율, $150 평균 결제
+- 검증 데이터: 30% 전환율 (워크샵 20명 중 6명 결제), $150 평균 결제
 - Phase 1 가치: AI 아이돌 생성 도구, SNS 공유
 
 **Segment B: User (소통형 팬)**
@@ -484,9 +487,9 @@ So I can 어떤 콘텐츠가 인기인지 알 수 있다.
 
 | 리스크 | 영향 | Phase | 대응 |
 |-------|------|-------|------|
-| 콘텐츠 자동 생성 실패 | Phase 2 못 감 | P1-P2 | Fallback: 크리에이터 직접 제작 (큐레이션 플랫폼) |
+| 콘텐츠 자동 생성 실패 | Phase 2 못 감 | P1-P2 | **Phase 1 기술 검증:** <br>- Sprint 2 완료 후 PoC 시작 (LLM 기반 대화 생성)<br>- Sprint 3 병행: 이미지 생성 테스트 (Gemini Nanobanana API)<br>- Phase 1 종료 전 최소 10개 자동 생성 콘텐츠 품질 검증<br>**Fallback (최악):** 크리에이터 직접 제작 → 큐레이션 플랫폼으로 pivot |
 | 스토리지 비용 폭증 | 수익성 악화 | P2 | CloudFlare R2 (저렴), 압축 최적화 |
-| 추천 알고리즘 부실 | 콘텐츠 발견 낮음 | P2 | 간단한 협업 필터링부터 시작 |
+| 추천 알고리즘 부실 | 콘텐츠 발견 낮음 | P2 | v1부터 시작 (인기순/최신순), 데이터 축적 후 고도화 |
 
 ### 8.3 Business Risks
 
@@ -599,7 +602,7 @@ MAU < 1K → 제품 실패
 ### 12.1 Internal Documents
 
 - Phase 1 MVP PRD: [20260115__aidol-prd__draft__v0.1__yw.md](./20260115__aidol-prd__draft__v0.1__yw.md)
-- Business Strategy: `/Users/leesoyeon/aidol/docs/business-strategy.md`
+- Business Strategy: [../../06_ir-master/05-business-model.md](../../06_ir-master/05-business-model.md)
 - 40 Week Sprint Plan: [../40-week-sprint-plan.md](../40-week-sprint-plan.md)
 - Sprint 1-3 UT Plan: (작성 필요)
 
