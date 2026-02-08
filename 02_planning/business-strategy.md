@@ -24,9 +24,38 @@ AI 아이돌 콘텐츠 대량 생산
 플랫폼 성장 (유튜브/틱톡 모델)
 ```
 
+### 1.1 시장 규모 (TAM/SAM/SOM)
+
+**TAM (Total Addressable Market): ~$30B**
+- 글로벌 UGC 콘텐츠 플랫폼 시장
+- 참고: YouTube ($31B, 2023), TikTok ($14B, 2023), Character.AI (추정 $1B+ valuation)
+- AI 생성 콘텐츠는 기존 UGC 시장을 확장 (낮은 진입장벽 → 더 많은 크리에이터)
+
+**SAM (Serviceable Available Market): ~$3B**
+- AI 캐릭터 인터랙션 시장
+  - Character.AI: 20M MAU, 2시간+ 평균 세션 (2024)
+  - Replika: 10M+ downloads
+  - 버추얼 인플루언서 시장: $5B (2025 예상)
+- K-pop 팬덤 시장 (글로벌)
+  - K-pop 글로벌 팬덤: 178M (2023, Circle Chart)
+  - 평균 팬당 연간 지출: $150-300 (앨범, 굿즈, 콘서트)
+
+**SOM (Serviceable Obtainable Market): ~$100M (Year 3 목표)**
+- Phase 2 성공 시 목표 (3년 내)
+  - MAU 200K (Year 1) → 1M (Year 2) → 5M (Year 3)
+  - 크리에이터 10K → 50K → 200K
+  - ARPU $5/월 (구독 + 수익 분배)
+  - 5M MAU × 20% 결제율 × $5/월 × 12개월 = $60M ARR
+  - 크리에이터 수익 분배 30% 추가 = ~$100M
+
+**시장 기회:**
+- Character.AI는 1:1 채팅만, 바이럴 콘텐츠 없음 → AIoIA는 UGC 플랫폼
+- YouTube/TikTok은 진입장벽 높음 → AIoIA는 AI 자동 생성
+- K-pop 시장은 소수의 그룹에 집중 → AIoIA는 무한한 AI 아이돌
+
 ## 2. 단계별 전략
 
-### 2.1 Phase 1: 개인 AI 컴패니언 모델 (현재 - 6개월)
+### 2.1 Phase 1: 개인 AI 컴패니언 모델 (3주, Sprint 1-3)
 
 **Why Phase 1이 필요한가?**
 - 콘텐츠 대량 생산 기술이 아직 부족 (자동 생성 or 노가다 둘 다 어려움)
@@ -39,7 +68,7 @@ AI 아이돌 콘텐츠 대량 생산
   ↓
 프리셋 or 커스텀 AI 아이돌
   ↓
-1:1 채팅 + 영상 콘텐츠 소비
+1:1 채팅 + 채팅 UI 콘텐츠 소비 (멤버 후기, 숙소 썰)
   ↓
 프리미엄 콘텐츠 구독 ($3.99/월)
 ```
@@ -196,7 +225,7 @@ AI 아이돌 콘텐츠 자동 생성
 
 **vs AI 챗봇 (Character.AI):**
 - Character.AI: 1:1 채팅만 (콘텐츠 소비 없음)
-- AIoIA: 영상 콘텐츠 + 공유 → **바이럴 가능**
+- AIoIA: 채팅 UI 콘텐츠 + 공유 → **바이럴 가능**
 
 ## 5. 현재 Sprint 2-3 재해석
 
@@ -254,11 +283,11 @@ AI 아이돌 콘텐츠 자동 생성
 ```markdown
 ## 단계별 전략
 
-Phase 1 (현재-6개월)
+Phase 1 (3주, Sprint 1-3)
 - 개인 AI 아이돌 생성 플랫폼
 - 핵심 가설 검증: 생성의 재미 + 소비 욕구
 
-Phase 2 (6-12개월)
+Phase 2 (이후)
 - AI 아이돌 콘텐츠 UGC 플랫폼
 - 유튜브/틱톡 모델로 확장
 
@@ -279,7 +308,7 @@ Phase 3 (12개월+)
 > Phase 2에서 본격적인 UGC 플랫폼으로 전환합니다.
 >
 > Character.AI는 1:1 채팅의 한계에 부딪혔지만,
-> 우리는 영상 콘텐츠와 공유를 통해 바이럴을 만들어냅니다."
+> 우리는 채팅 UI 콘텐츠와 공유를 통해 바이럴을 만들어냅니다."
 
 ### 6.3 리스크와 대응
 
@@ -310,7 +339,7 @@ Phase 3 (12개월+)
 - [ ] 콘텐츠 자동 생성 기술 검증
 - [ ] Phase 2 전환 결정 (Go/No-Go)
 
-### 7.3 Phase 2 준비 (6개월)
+### 7.3 Phase 2 준비 (Phase 1 이후)
 
 - [ ] UGC 플랫폼 인프라 구축
 - [ ] 추천/검색 알고리즘 개발
@@ -318,10 +347,17 @@ Phase 3 (12개월+)
 
 ## 8. 참고 자료
 
-- IR Deck (Figma): [링크]
-- Sprint 1-3 UT 계획: `/Users/leesoyeon/aidol/docs/user-testing-plan.md`
-- OKR: `/Users/leesoyeon/docs/04_mvp-project/01-okr.md`
-- Sprint Backlog: `/Users/leesoyeon/docs/04_mvp-project/04-sprint-backlog.md`
+**Internal Documents:**
+- Platform Strategy PRD: [20260208__aidol-platform-strategy-prd__v1.0__sy.md](./prd/20260208__aidol-platform-strategy-prd__v1.0__sy.md)
+- IR Business Model: [../../06_ir-master/05-business-model.md](../../06_ir-master/05-business-model.md)
+- 40 Week Sprint Plan: [40-week-sprint-plan.md](./40-week-sprint-plan.md)
+- Sprint 1-3 UT Plan: (작성 필요)
+- Sprint 1-3 실행 계획: (작성 예정)
+
+**External Resources:**
+- IR Deck (Figma): https://www.figma.com/design/gHUDvrVU9HSfufzXf2dfl5/IR
+- Character.AI MAU Data: 20M MAU, 2시간+ 세션 (2024)
+- K-pop 글로벌 팬덤: 178M (Circle Chart, 2023)
 
 ---
 
