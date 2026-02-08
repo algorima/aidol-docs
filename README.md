@@ -15,43 +15,23 @@ aidol-docs/
 └── templates/            # 문서 템플릿
 ```
 
-## 📝 파일명 규칙
+## 파일명 규칙
 
 ```
-YYYYMMDD__주제__상태__vX.Y__소유자.md
+주제.md
 ```
 
-### 구성 요소
-
-| 요소 | 설명 | 예시 |
-|------|------|------|
-| `YYYYMMDD` | 생성일 | `20260204` |
-| `주제` | 문서 주제 (kebab-case) | `user-interview-kpop-fans` |
-| `상태` | draft → review → final | `draft` |
-| `vX.Y` | 버전 | `v0.1`, `v1.0` |
-| `소유자` | 작성자 이니셜 | `sy`, `yw`, `je`, `jh`, `jp` |
+- 문서 주제를 kebab-case로 작성
+- 날짜, 버전, 작성자, 상태 등의 메타데이터는 파일명에 포함하지 않음
+- 이력 관리는 Git 히스토리를 활용
 
 ### 예시
 
-- `20260204__user-interview-kpop-fans__final__v1.0__sy.md`
-- `20260130__chat-api-spec__review__v0.3__yw.md`
-- `20260201__brand-guidelines__draft__v0.1__je.md`
+- `user-interview-kpop-fans.md`
+- `aidol-api-spec.md`
+- `brand-guidelines.md`
 
-## 👥 소유자 코드
-
-| 코드 | 이름 |
-|------|------|
-| `soyeon` | 소연 |
-| `youngwook` | 영욱 |
-| `eunjae` | 은재 |
-| `jehyung` | 제형 |
-| `jiyoung` | 지영 |
-| `sooji` | 수지 |
-| `jay` | 제이 |
-| `chaehyun` | 채현 |
-| `siyoung` | 시영 |
-
-## 🔗 관련 저장소
+## 관련 저장소
 
 - [algorima/aidol](https://github.com/algorima/aidol) - 메인 코드
 - [algorima/docs](https://github.com/algorima/docs) - Company Handbook (비공개)
