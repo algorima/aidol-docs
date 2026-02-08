@@ -11,6 +11,7 @@ erDiagram
     aidols ||--o{ companions : "has members (casted)"
     companions ||--o{ chatrooms : "has chatrooms"
     chatrooms ||--o{ messages : "has messages"
+    aidols ||--o{ aidol_leads : "has leads"
 
     aidols {
         string id PK
