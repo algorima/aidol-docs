@@ -108,19 +108,21 @@
 
 ### 3.3 풀고자 하는 문제 (300자)
 
-**제출용 텍스트 (2025-2026 최신 데이터):**
+**제출용 텍스트 (2026년 1-2월 최신 데이터):**
 ```
 K-pop 팬은 서바이벌 투표에 300만원을 쓰지만, 최종 결정은 기획사가 합니다.
-K-pop 음반 판매는 2024년 17.7% 급감했고, 과도한 마케팅으로 팬 피로도가 누적됩니다.
+
+2026년 1월, 팬 소통 활동은 13.82% 감소했습니다. 팬들은 과도한 마케팅과 끊임없는 프로모션으로 피로감을 느낍니다. 팬덤은 분열되고 브랜드 충성도는 하락했습니다.
 
 팬은 소비만 하는 게 아니라, 직접 만들고 성장시키는 경험을 원합니다.
 AIoIA는 팬이 AI 아이돌을 창조하고, 함께 성장하는 플랫폼입니다.
 ```
 
-**글자 수:** 171자 (300자 이내)
-**출처:**
-- 음반 판매 17.7% 감소: [데일리안 2026 전망](https://www.dailian.co.kr/news/view/1595778)
-- 팬 피로도 누적: [Korea Herald](https://www.koreaherald.com/article/10543202)
+**글자 수:** 220자 (300자 이내)
+**출처 (2026년 1-2월 최신):**
+- Communication activity 13.82% 감소 (2026.01.15): [BTS Jan 2026 Brand Reputation](https://respawn.outlookindia.com/pop-culture/pop-culture-news/bts-tops-january-2026-k-pop-brand-reputation-rankings)
+- Fan fatigue & fragmented fandoms (2026): [Is K-Pop Slowing Down](https://www.reprtoir.com/blog/kpop-slowing-down)
+- Financial pressure (2026): [Kpopmap 2026](https://www.kpopmap.com/how-k-pop-fans-navigate-the-cost-of-fandom-in-2026/)
 
 **임팩트 포인트:**
 - 150M 팬 중 대부분 대화 불가 (규모의 충격)
