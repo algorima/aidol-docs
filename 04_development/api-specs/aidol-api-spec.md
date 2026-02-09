@@ -969,7 +969,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```tsx
 {
   id: string                         // UUID
-  fromCompanionId: string |        // 멤버 1
+  fromCompanionId: string           // 멤버 1
   toCompanionId: string            // 멤버 2
   type: string                       // 관계 유형
   intimacy: number                   // 친밀도
