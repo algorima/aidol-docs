@@ -10,14 +10,14 @@
 | 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
 | ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
 | `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
-| `/aidols`                                   | GET    | 아이돌 그룹 조회         | Public | 2      |
+| `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
 | `/aidols/my`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
 | `/aidols/{id}`                              | GET    | AIdol 그룹 조회          | Public | 1      |
 | `/aidols/{id}`                              | PATCH  | AIdol 그룹 수정          | Public | 1      |
 | `/aidols/images`                            | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
 | `/companions`                               | GET    | Companion 목록 조회      | Public | 1      |
 | `/companions`                               | POST   | Companion 멤버 생성      | Public | 1      |
-| `/companions/{id}`                          | GET    | Companion 멤버 조회      | Public | -      |
+| `/companions/{id}`                          | GET    | Companion 멤버 조회      | Public | 2      |
 | `/companions/{id}`                          | PATCH  | Companion 멤버 수정      | Public | 1      |
 | `/companions/{id}`                          | DELETE | Companion 멤버 삭제      | Public | 1      |
 | `/companions/images`                        | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
@@ -71,7 +71,7 @@ Headers: anonymousId
 
 ---
 
-### GET /aidols -사용자가 만든 그룹 전체 조회
+### GET /aidols - 아이돌 그룹 전체 조회
 
 생성된 모든 아이돌 그룹을 조회합니다. 페이지네이션과 필터링을 지원합니다.
 
@@ -115,7 +115,7 @@ Input Parameters (Query)
 
 ---
 
-### GET /aidols/my -사용자가 만든 그룹 전체 조회
+### GET /aidols/my - 사용자가 만든 그룹 전체 조회
 
 현재 사용자(쿠키 ID 기준)가 생성한 그룹만 필터링하여 조회합니다.
 
@@ -704,7 +704,7 @@ Input Parameters (Query)
 ```json
 {
   "data": {
-	  "id": "string" 
+	  "id": "string", 
     "fromCompanionId": "string",
     "toCompanionId": "string",
     "type": "string",
@@ -770,7 +770,7 @@ Input Parameters (Query)
 }
 ```
 
-### GET /chatrooms/{id} - 채팅방 목록 조회
+### GET /chatrooms/{id} - 채팅방 상세 조회
 
 특정 채팅방 조회합니다.
 
@@ -818,7 +818,7 @@ Input Parameters (Query)
     "id": "msg-124",
     "chatroomId": "chatroom-uuid-1234",
     "senderType": "companion",
-    "content": "오늘 날씨가 좋아서 정말 상쾌해요! ☀️",
+    "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
     "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
   }
@@ -856,7 +856,7 @@ Input Parameters (Query)
 ```
 ---
 
-### POST /chatrooms/{id}/companions/{cid}/response - 채팅방 메시지 전송
+### POST /chatrooms/{id}/companions/{cid}/response - AI 멤버 응답 생성
 
 채팅방(id)에 있는 사용자 메시지에 대해 특정 멤버(cid)가 대답하도록 요청합니다. 이 API는 비동기적으로 동작하지 않고, 응답이 생성될 때까지 기다렸다가(Sync) 생성된 메시지를 반환합니다.
 
@@ -885,7 +885,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```json
 {
   "messageId": "msg-126",
-  "content": "저런, 무슨 일 있으셨어요? 제가 옆에서 이야기 들어드릴게요. 🥺"
+  "content": "저런, 무슨 일 있으셨어요? 제가 옆에서 이야기 들어드릴게요. "
 }
 ```
 ---
@@ -944,7 +944,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```tsx
 {
   id: string                       // UUID
-  aidolId: string                  // 그룹명
+  aidolId: string                  // 그룹 ID
   title: string                    // 제목
 	thumbnailUrl: string             // 썸네일 이미지
 	subtitle: string
