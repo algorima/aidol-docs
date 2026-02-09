@@ -730,7 +730,6 @@ Input Parameters (Query)
   	"id": "string" ,
     "fromCompanionId": "string",
     "toCompanionId": "string",
-    "email": "string",
     "type": "string",
     "intimacy": "string",
     "nickname": "string"
