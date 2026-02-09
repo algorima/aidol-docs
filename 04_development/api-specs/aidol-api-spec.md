@@ -752,7 +752,7 @@ Input Parameters (Query)
 ```json
 {
   "name": "나의 시크릿 챗",
-  "companionId": "ko"
+  "language": "ko"
 }
 ```
 
