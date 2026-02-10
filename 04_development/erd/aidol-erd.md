@@ -74,6 +74,8 @@ erDiagram
         string chatroom_id FK "NOT NULL"
         string sender_type "Enum: user, companion"
         text content "NOT NULL"
+        string anonymous_id "NULLABLE, IX"
+        string companion_id "NULLABLE, IX"
         datetime created_at
         datetime updated_at
     }
