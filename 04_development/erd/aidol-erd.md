@@ -138,7 +138,7 @@ erDiagram
 | 필드     | 타입 | 제약 | 설명          |
 | -------- | ---- | ---- | ------------- |
 | id       | UUID | PK   | 자동 생성     |
-| aidol_id | UUID | -    | 그룹 ID       |
+| aidol_id | UUID | FK   | 그룹 ID       |
 | email    | str  | -    | Viewer 이메일 |
 
 ### companions
@@ -165,7 +165,7 @@ erDiagram
 | charm               | int  | 0-100  | 매력도              |
 | position            | str  |        | 포지션              |
 
-### chatrooms (Sprint 2)
+### chatrooms 
 
 | 필드         | 타입 | 제약             | 설명              |
 | ------------ | ---- | ---------------- | ----------------- |
@@ -174,7 +174,7 @@ erDiagram
 | name         | str  | NOT NULL         | 채팅방 이름       |
 | language     | str  | NOT NULL         | 언어 (기본: "ko") |
 
-### messages (Sprint 2)
+### messages 
 
 | 필드        | 타입 | 제약             | 설명                  |
 | ----------- | ---- | ---------------- | --------------------- |
