@@ -106,11 +106,16 @@ erDiagram
 
 ## 관계
 
-| 관계                   | 설명                       |
-| ---------------------- | -------------------------- |
-| aidols → companions    | 1:N (그룹당 여러 멤버)     |
-| companions → chatrooms | 1:N (멤버당 여러 채팅방)   |
-| chatrooms → messages   | 1:N (채팅방당 여러 메시지) |
+| 관계                                  | 설명                                      |
+| ------------------------------------- | ----------------------------------------- |
+| aidols → companions                   | 1:N (그룹당 여러 멤버)                    |
+| aidols → aidol_highlights             | 1:N (그룹당 여러 하이라이트)              |
+| aidols → aidol_leads                  | 1:N (그룹당 여러 viewer)                  |
+| aidol_highlights → highlight_messages | 1:N (하이라이트당 여러 하이라이트 메세지) |
+| companions → highlight_messages       | 1:N (멤버당 여러 하이라이트 메세지)       |
+| companions → companion_relationships  | 1:N (한 멤버당 여러 관계)                 |
+| companions → chatrooms                | 1:N (멤버당 여러 채팅방)                  |
+| chatrooms → messages                  | 1:N (채팅방당 여러 메시지)                |
 
 ---
 
