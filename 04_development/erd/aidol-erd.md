@@ -170,31 +170,31 @@ erDiagram
 
 | 필드          | 타입 | 제약     | 설명          |
 | ------------- | ---- | -------- | ------------- |
-| id            | UUID | PK       |               |
-| aidol_id      | UUID | FK, IX   |               |
+| id            | UUID | PK       | 자동 생성     |
+| aidol_id      | UUID | FK, IX   | aidols 참조   |
 | title         | str  | NOT NULL | 제목          |
 | thumbnail_url | str  | NOT NULL | 썸네일 이미지 |
 | subtitle      | str  | NOT NULL | 부제목        |
 
 ### highlight_messages 
 
-| 필드         | 타입 | 제약     | 설명        |
-| ------------ | ---- | -------- | ----------- |
-| id           | UUID | PK       |             |
-| highlight_id | UUID | FK, IX   |             |
-| companion_id | UUID | FK, IX   |             |
-| sequence     | int  | NOT NULL | 채팅 순서   |
-| content      | text | NOT NULL | 메세지 내용 |
+| 필드         | 타입 | 제약     | 설명                  |
+| ------------ | ---- | -------- | --------------------- |
+| id           | UUID | PK       | 자동 생성             |
+| highlight_id | UUID | FK, IX   | aidol_highlights 참조 |
+| companion_id | UUID | FK, IX   | companions 참조       |
+| sequence     | int  | NOT NULL | 채팅 순서             |
+| content      | text | NOT NULL | 메세지 내용           |
 
 ### companion_relationships 
 
-| 필드              | 타입 | 제약     | 설명      |
-| ----------------- | ---- | -------- | --------- |
-| id                | UUID | PK       |           |
-| from_companion_id | UUID | FK, IX   |           |
-| to_companion_id   | UUID | FK, IX   |           |
-| intimacy          | int  | NOT NULL | 친밀도    |
-| nickname          | str  |          | 관계 별명 |
+| 필드              | 타입 | 제약     | 설명            |
+| ----------------- | ---- | -------- | --------------- |
+| id                | UUID | PK       | 자동 생성       |
+| from_companion_id | UUID | FK, IX   | companions 참조 |
+| to_companion_id   | UUID | FK, IX   | companions 참조 |
+| intimacy          | int  | NOT NULL | 친밀도          |
+| nickname          | str  |          | 관계 별명       |
 
 ### chatrooms 
 
