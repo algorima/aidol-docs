@@ -143,27 +143,28 @@ erDiagram
 
 ### companions
 
-| 필드                | 타입 | 제약   | 설명                |
-| ------------------- | ---- | ------ | ------------------- |
-| id                  | UUID | PK     | 자동 생성           |
-| aidol_id            | UUID | FK, IX | aidols 참조         |
-| name                | str  |        | 멤버 이름           |
-| gender              | str  |        | 성별                |
-| grade               | str  |        | 등급                |
-| biography           | text |        | 성격 설명           |
-| profile_picture_url | str  |        | 프로필 이미지       |
-| system_prompt       | text |        | LLM 시스템 프롬프트 |
-| mbti_energy         | int  | 1-10   | E ↔ I               |
-| mbti_perception     | int  | 1-10   | S ↔ N               |
-| mbti_judgment       | int  | 1-10   | T ↔ F               |
-| mbti_lifestyle      | int  | 1-10   | J ↔ P               |
-| vocal               | int  | 0-100  | 가창력              |
-| dance               | int  | 0-100  | 댄스 실력           |
-| rap                 | int  | 0-100  | 랩 실력             |
-| visual              | int  | 0-100  | 비주얼              |
-| stamina             | int  | 0-100  | 체력                |
-| charm               | int  | 0-100  | 매력도              |
-| position            | str  |        | 포지션              |
+| 필드                | 타입 | 제약   | 설명                     |
+| ------------------- | ---- | ------ | ------------------------ |
+| id                  | UUID | PK     | 자동 생성                |
+| aidol_id            | UUID | FK, IX | aidols 참조              |
+| name                | str  |        | 멤버 이름                |
+| gender              | str  |        | 성별                     |
+| grade               | str  |        | 등급                     |
+| biography           | text |        | 성격 설명                |
+| profile_picture_url | str  |        | 프로필 이미지            |
+| system_prompt       | text |        | LLM 시스템 프롬프트      |
+| mbti_energy         | int  | 1-10   | E ↔ I                    |
+| mbti_perception     | int  | 1-10   | S ↔ N                    |
+| mbti_judgment       | int  | 1-10   | T ↔ F                    |
+| mbti_lifestyle      | int  | 1-10   | J ↔ P                    |
+| vocal               | int  | 0-100  | 가창력                   |
+| dance               | int  | 0-100  | 댄스 실력                |
+| rap                 | int  | 0-100  | 랩 실력                  |
+| visual              | int  | 0-100  | 비주얼                   |
+| stamina             | int  | 0-100  | 체력                     |
+| charm               | int  | 0-100  | 매력도                   |
+| position            | str  |        | 포지션                   |
+| status              | str  |        | 상태(PUBLISHED OR DRAFT) |
 
 ### chatrooms 
 
