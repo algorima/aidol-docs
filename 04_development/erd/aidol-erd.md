@@ -213,5 +213,5 @@ erDiagram
 | chatroom_id  | UUID    | FK, IX, NOT NULL | chatrooms 참조                                |
 | sender_type  | str     | NOT NULL         | "user" \| "companion"                         |
 | content      | text    | NOT NULL         | 메시지 내용                                   |
-| anonymous_id | str(36) | NOT NULL         | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| anonymous_id | str(36) |                  | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
 | companion_id | UUID    | IX               | 이전 대화를 불러오기 위한 companion 식별자    |
