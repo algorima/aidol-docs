@@ -91,13 +91,16 @@ erDiagram
 
 ## 테이블 요약
 
-| 테이블        | 설명        | Sprint |
-| ------------- | ----------- | ------ |
-| `aidols`      | 아이돌 그룹 | 1      |
-| `companions`  | 그룹 멤버   | 1      |
-| `aidol_leads` | Viewer 정보 | 1      |
-| `chatrooms`   | 채팅방      | 2      |
-| `messages`    | 메시지      | 2      |
+| 테이블                    | 설명              | Sprint |
+| ------------------------- | ----------------- | ------ |
+| `aidols`                  | 아이돌 그룹       | 1      |
+| `companions`              | 그룹 멤버         | 1      |
+| `aidol_leads`             | Viewer 정보       | 1      |
+| `idol_highlights`         | 아이돌 하이라이트 | 2      |
+| `highlight_messages`      | 하이라이트 메세지 | 2      |
+| `companion_relationships` | 멤버 관계 설정    | 2      |
+| `chatrooms`               | 채팅방            | 3      |
+| `messages`                | 메시지            | 3      |
 
 ---
 
