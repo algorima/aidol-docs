@@ -168,7 +168,7 @@ TikTok 25달러로 5,000명 확보, 사용자당 획득 비용 0.005달러 검�
 **출처:**
 - Dropbox YC 스타일 참고: [Dropbox's original YC application](https://www.ycombinator.com/apply/dropbox)
 - 제품 설명 원칙: [CloudPDF - YC Application Examples](https://cloudpdf.io/blog/yc-application-examples-lessons-from-dropbox-gitlab-buffer-and-apptimize)
-- 기술 스택: `/Users/leesoyeon/docs/06_ir-application/yc-s26-application/20251217__yc-s26-q4-progress__draft__v0.1__sy.md`
+- 기술 스택: `06_ir-application/yc-s26-application/20251217__yc-s26-q4-progress__draft__v0.1__sy.md`
 - TikTok 검증: YC S26 Application Q4.1
 
 **매핑:**
