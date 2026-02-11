@@ -11,6 +11,7 @@ erDiagram
     aidols ||--o{ companions : "has members (casted)"
     companions ||--o{ chatrooms : "has chatrooms"
     chatrooms ||--o{ messages : "has messages"
+    aidols ||--o{ aidol_leads : "has leads"
 
     aidols {
         string id PK
@@ -19,7 +20,7 @@ erDiagram
         string greeting "인사 문구"
         string concept
         string profile_image_url
-        string claim_token
+        string anonymous_id "쿠키: aioia_anonymous_id"
         datetime created_at
         datetime updated_at
     }
@@ -111,7 +112,7 @@ erDiagram
 | greeting | str | - | 인사 문구 |
 | concept | str | - | 그룹 컨셉 |
 | profile_image_url | str | - | 엠블럼 이미지 |
-| claim_token | str(36) | - | 소유권 토큰 (Phase 2) |
+| anonymous_id | str(36) | - | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
 
 ### aidol_leads
 
