@@ -25,7 +25,6 @@
 | **마지막 메시지** | **`lastMessage`** | **`{ content: string, createdAt: string } \| null`** | **가장 최근 메시지 (내용 + 시각)** |
 
 - **사용처**: 채팅방 목록 페이지
-- 랜덤 1명에 대해서만 채팅방 자동 생성 (채팅방이 없는 멤버는 Companion 조회 API와 조합하여 잠금 상태로 표시)
 
 <br/>
 
