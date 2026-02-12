@@ -1,5 +1,3 @@
-# prompt_enhancement_analysis
-
 # 프롬프트 고도화 보고서
 
 - 실험 Repository: [LLM-bench](https://github.com/chaeniverse/LLM-bench)
