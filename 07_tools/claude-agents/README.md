@@ -19,7 +19,12 @@ cp stt-analyzer.md ~/.claude/agents/
 
 ## 사용 방법
 
-Task tool에서 `subagent_type`으로 에이전트 이름을 지정하면 자동으로 호출됩니다.
+프롬프트에서 에이전트를 명시하면 자동으로 호출됩니다.
+
+**예시:**
+```
+stt-analyzer 에이전트로 "회의록.txt"에서 결정 사항과 Action Items를 추출해 주세요.
+```
 
 ## 에이전트 목록
 
