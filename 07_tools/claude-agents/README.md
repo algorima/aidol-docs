@@ -8,11 +8,11 @@ Claude Code에서 사용할 수 있는 커스텀 에이전트 모음입니다.
 2. `~/.claude/agents/` 폴더에 붙여넣기 (폴더가 없으면 생성)
 
 ```bash
-# agents 폴더 생성 (최초 1회)
+# agents 폴더 생성 (레포지토리 루트에서 실행)
 mkdir -p ~/.claude/agents
 
 # 에이전트 파일 복사
-cp stt-analyzer.md ~/.claude/agents/
+cp 07_tools/claude-agents/stt-analyzer.md ~/.claude/agents/
 ```
 
 3. Claude Code 재시작 또는 새 세션 시작
