@@ -31,6 +31,7 @@ erDiagram
         string concept
         string profile_image_url
         string anonymous_id "쿠키: aioia_anonymous_id"
+        string status "Enum: DRAFT, PUBLISHED"
         datetime created_at
         datetime updated_at
     }
@@ -39,9 +40,9 @@ erDiagram
         string id PK
         string aidol_id FK "NULL: 연습생 / NOT NULL: 캐스팅됨"
         string name
-        string gender "Enum: male, female"
+        string gender "Enum: MALE, FEMALE"
         string grade "Enum: A, B, C, F"
-        string position "Enum: leader, mainVocal, etc."
+        string position "Enum: MAIN_VOCAL, etc."
         text biography
         string profile_picture_url
         text system_prompt
@@ -72,7 +73,7 @@ erDiagram
     messages {
         string id PK
         string chatroom_id FK "NOT NULL"
-        string sender_type "Enum: user, companion"
+        string sender_type "Enum: USER, COMPANION"
         text content "NOT NULL"
         string anonymous_id "NULLABLE, IX"
         string companion_id "NULLABLE, IX"
@@ -86,6 +87,15 @@ erDiagram
         string email "NOT NULL"
         datetime created_at
         datetime updated_at
+    }
+
+    aidol_highlights {
+        string id PK
+        string aidol_id FK, IX
+        string title
+        string thumbnail_url
+        string subtitle
+        bool is_premium
     }
 ```
 
@@ -134,6 +144,7 @@ erDiagram
 | concept           | str     | -    | 그룹 컨셉                                     |
 | profile_image_url | str     | -    | 엠블럼 이미지                                 |
 | anonymous_id      | str(36) | -    | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| status            | str     | -    | 상태(DRAFT OR PUBLISHED)                      |
 
 ### aidol_leads
 
@@ -177,6 +188,7 @@ erDiagram
 | title         | str  | NOT NULL | 제목          |
 | thumbnail_url | str  | NOT NULL | 썸네일 이미지 |
 | subtitle      | str  | NOT NULL | 부제목        |
+| is_premium    | bool |          | 프리미엄 여부 |
 
 ### highlight_messages 
 
@@ -213,7 +225,7 @@ erDiagram
 | ------------ | ------- | ---------------- | --------------------------------------------- |
 | id           | UUID    | PK               | 자동 생성                                     |
 | chatroom_id  | UUID    | FK, IX, NOT NULL | chatrooms 참조                                |
-| sender_type  | str     | NOT NULL         | "user" \| "companion"                         |
+| sender_type  | str     | NOT NULL         | "USER" \| "COMPANION"                         |
 | content      | text    | NOT NULL         | 메시지 내용                                   |
 | anonymous_id | str(36) |                  | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
 | companion_id | UUID    | IX               | 이전 대화를 불러오기 위한 companion 식별자    |
