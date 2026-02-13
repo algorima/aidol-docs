@@ -31,6 +31,7 @@ erDiagram
         string concept
         string profile_image_url
         string anonymous_id "쿠키: aioia_anonymous_id"
+        string status "Enum: DRAFT, PUBLISHED"
         datetime created_at
         datetime updated_at
     }
@@ -87,6 +88,15 @@ erDiagram
         datetime created_at
         datetime updated_at
     }
+
+    aidol_highlights {
+        string id PK
+        string aidol_id FK, IX
+        string title
+        string thumbnail_url
+        string subtitle
+        bool is_premium
+    }
 ```
 
 ---
@@ -134,6 +144,7 @@ erDiagram
 | concept           | str     | -    | 그룹 컨셉                                     |
 | profile_image_url | str     | -    | 엠블럼 이미지                                 |
 | anonymous_id      | str(36) | -    | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| status            | str     | -    | 상태(DRAFT OR PUBLISHED)                      |
 
 ### aidol_leads
 
@@ -177,6 +188,7 @@ erDiagram
 | title         | str  | NOT NULL | 제목          |
 | thumbnail_url | str  | NOT NULL | 썸네일 이미지 |
 | subtitle      | str  | NOT NULL | 부제목        |
+| is_premium    | bool |          | 프리미엄 여부 |
 
 ### highlight_messages 
 
