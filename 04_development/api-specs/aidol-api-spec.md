@@ -28,6 +28,7 @@
 | `/companion-relationships/{id}`             | GET    | 아이돌 관계 조회         | Public | 2      |
 | `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
 | `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
+| `/chatrooms`                                | GET    | 채팅방 목록 조회         | Public | 3      |
 | `/chatrooms`                                | POST   | 채팅방 생성              | Public | 3      |
 | `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
 | `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
@@ -740,6 +741,37 @@ Input Parameters (Query)
 ```
 ---
 
+### GET /chatrooms - 채팅방 목록 조회
+
+현재 참여 중인 채팅방 목록을 조회합니다.
+
+- URL: GET /chatrooms
+- Auth: 공개 (Cookie 권장)
+
+**Response** (200 OK):
+
+```json
+{
+  "data": [
+    {
+      "id": "chatroom-uuid-1",
+      "companionId": "companion-uuid-1",
+      "lastMessage": {
+        "content": "안녕하세요!",
+        "createdAt": "2024-02-13T12:00:00Z"
+      }
+    },
+    {
+      "id": "chatroom-uuid-2",
+      "companionId": "companion-uuid-2",
+      "lastMessage": null
+    }
+  ]
+}
+```
+
+---
+
 ### POST /chatrooms - 채팅방 생성
 
 채팅방을 생성 합니다.
@@ -982,9 +1014,13 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```tsx
 {
   id: string                        // UUID
-  companionProfileId: string        // Companion FK
+  companionId: string               // 채팅 대상 companion ID
   name: string                      // 채팅방 이름
   language: string                  // 언어 코드 (기본: "ko")
+  lastMessage: {                    // 가장 최근 메시지
+    content: string
+    createdAt: string
+  } | null
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string
 }
