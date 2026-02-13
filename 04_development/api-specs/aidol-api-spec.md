@@ -294,13 +294,13 @@ Input Parameters (Query)
       "id": "string",
       "aidolId": "string",
       "name": "string",
-      "gender": "male|female",
+      "gender": "MALE|FEMALE",
       "grade": "A|B|C|F",
       "biography": "string",
       "profilePictureUrl": "string",
-      "position": "leader|mainVocal|subVocal|...",
+      "position": "LEADER|MAIN_VOCAL|SUB_VOCAL|...",
       "mbti": "string",
-      "status": "published",
+      "status": "PUBLISHED",
       "stats": {
         "vocal": 0,
         "dance": 0,
@@ -355,7 +355,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "name": "Updated Name",
     "aidolId": "aidol_123",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -380,11 +380,11 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": "aidol_123",
     "name": "Minji",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "biography": "...",
     "profilePictureUrl": "...",
-    "position": "leader",
+    "position": "LEADER",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -409,12 +409,12 @@ Input Parameters (Query)
 {
   "aidolId": "aidol-uuid...",
   "name": "멤버 이름",
-  "gender": "female",
+  "gender": "FEMALE",
   "grade": "A",
   "biography": "어릴 때부터...",
   "profilePictureUrl": "...",
-  "position": "mainVocal",
-  "status": "published", // 선택사항 (기본값: draft)
+  "position": "MAIN_VOCAL",
+  "status": "PUBLISHED", // 선택사항 (기본값: DRAFT)
   "mbtiEnergy": 8,
   "mbtiPerception": 3,
   "mbtiJudgment": 7,
@@ -440,7 +440,7 @@ Input Parameters (Query)
     "name": "멤버 이름",
     "mbti": "ESTP",
     "stats": { "vocal": 90, ... },
-    "status": "published",
+    "status": "PUBLISHED",
     "createdAt": "..."
   }
 }
@@ -464,7 +464,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": null,
     "name": "Minji",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -934,7 +934,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   biography: string | null          // 자기소개/설정
   profilePictureUrl: string | null  // 프로필 이미지 URL
   position: string | null           // 포지션 (Position Enum 참고)
-  status: string | null             // draft | published
+  status: string | null             // DRAFT | PUBLISHED
   mbti: string | null               // 계산된 MBTI (예: "ENTP")
   stats: {                          // 능력치 객체
     vocal: number     // 0~100 (보컬)
