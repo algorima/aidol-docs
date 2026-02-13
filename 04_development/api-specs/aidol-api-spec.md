@@ -95,6 +95,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -105,6 +106,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -142,6 +144,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -152,6 +155,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -180,7 +184,8 @@ Input Parameters (Query)
     "email": "string",
     "greeting": "string",
     "concept": "string",
-    "profileImageUrl": "string"
+    "profileImageUrl": "string",
+    "status": "DRAFT | PUBLISHED"
   },
   "createdAt": "datetime",
   "updatedAt": "datetime"
@@ -208,7 +213,8 @@ Input Parameters (Query)
   "email": "string (선택)",
   "greeting": "string (선택)",
   "concept": "string (선택)",
-  "profileImageUrl": "string (선택)"
+  "profileImageUrl": "string (선택)",
+  "status": "DRAFT | PUBLISHED (선택)"
 }
 
 ```
@@ -221,7 +227,8 @@ Input Parameters (Query)
   "email": "string",
   "greeting": "string",
   "concept": "string",
-  "profileImageUrl": "string"
+  "profileImageUrl": "string",
+  "status": "DRAFT | PUBLISHED"
 }
 ```
 
@@ -560,6 +567,7 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
+      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      },
@@ -569,6 +577,7 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
+      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      }
@@ -810,14 +819,14 @@ Input Parameters (Query)
   {
     "id": "msg-123",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "user",
+    "senderType": "USER",
     "content": "안녕, 오늘 기분 어때?",
     "createdAt": "2024-02-09T10:01:00Z"
   },
   {
     "id": "msg-124",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "companion",
+    "senderType": "COMPANION",
     "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
     "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
@@ -849,7 +858,7 @@ Input Parameters (Query)
 {
   "id": "msg-125",
   "chatroomId": "chatroom-uuid-1234",
-  "senderType": "user",
+  "senderType": "USER",
   "content": "나 오늘 좀 우울해...",
   "createdAt": "2024-02-09T10:02:00Z"
 }
@@ -905,6 +914,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   concept: string | null            // 그룹 컨셉
   greeting: string | null           // 인사 문구
   profileImageUrl: string | null    // 엠블럼 이미지 URL
+  status: "DRAFT" | "PUBLISHED"     // 상태
   anonymousId: string | null         // 소유권 토큰 (응답에 미포함)
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string                 // ISO 8601 datetime
@@ -948,6 +958,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   title: string                    // 제목
 	thumbnailUrl: string             // 썸네일 이미지
 	subtitle: string
+  isPremium: boolean               // 프리미엄 여부
 }
 ```
 
@@ -997,7 +1008,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 {
   id: string                        // UUID
   chatroomId: string                // Chatroom FK
-  senderType: "user" | "companion"  // 발신자 유형
+  senderType: "USER" | "COMPANION"  // 발신자 유형
   content: string                   // 메시지 내용
   createdAt: string                 // ISO 8601 datetime
   companionId: string | null        // 발신 멤버 ID
