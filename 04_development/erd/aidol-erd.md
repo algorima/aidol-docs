@@ -42,7 +42,7 @@ erDiagram
         string name
         string gender "Enum: MALE, FEMALE"
         string grade "Enum: A, B, C, F"
-        string position "Enum: MAINVOCAL, etc."
+        string position "Enum: MAIN_VOCAL, etc."
         text biography
         string profile_picture_url
         text system_prompt
