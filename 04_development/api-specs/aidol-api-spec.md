@@ -7,8 +7,8 @@
 
 ## 전체 엔드포인트
 
-| 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
-| ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
+| 엔드포인트                                       | 메서드 | 설명                     | 인증   | Sprint |
+|---------------------------------------------| ------ | ------------------------ | ------ | ------ |
 | `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
 | `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
 | `/aidols/my`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
@@ -29,7 +29,7 @@
 | `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
 | `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
 | `/chatrooms`                                | GET    | 채팅방 목록 조회         | Public | 3      |
-| `/chatrooms`                                | POST   | 채팅방 생성              | Public | 3      |
+| `/me/chatrooms`                             | POST   | 채팅방 생성              | Public | 3      |
 | `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
 | `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
 | `/chatrooms/{id}/messages`                  | POST   | 메시지 전송              | Cookie | 3      |
@@ -741,7 +741,7 @@ Input Parameters (Query)
 ```
 ---
 
-### GET /chatrooms - 채팅방 목록 조회
+### GET /me/chatrooms - 채팅방 목록 조회
 
 현재 참여 중인 채팅방 목록을 조회합니다.
 
