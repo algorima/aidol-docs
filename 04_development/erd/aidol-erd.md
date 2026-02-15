@@ -97,6 +97,22 @@ erDiagram
         string subtitle
         bool is_premium
     }
+
+    highlight_messages {
+        string id PK
+        string highlight_id FK, IX
+        string companion_id FK, IX
+        int sequence
+        text content
+    }
+
+    companion_relationships {
+        string id PK
+        string from_companion_id FK, IX
+        string to_companion_id FK, IX
+        int intimacy
+        string nickname
+    }
 ```
 
 ---
@@ -118,16 +134,16 @@ erDiagram
 
 ## 관계
 
-| 관계                                  | 설명                                                   |
-| ------------------------------------- | ------------------------------------------------------ |
-| aidols → companions                   | 1:N (그룹당 여러 멤버)                                 |
-| aidols → aidol_highlights             | 1:N (그룹당 여러 하이라이트)                           |
-| aidols → aidol_leads                  | 1:N (그룹당 여러 viewer, DB FK는 없음)                |
-| aidol_highlights → highlight_messages | 1:N (하이라이트당 여러 하이라이트 메세지)              |
-| companions → highlight_messages       | 1:N (멤버당 여러 하이라이트 메세지)                    |
-| companions → chatrooms                | 1:N (멤버당 여러 채팅방)                               |
-| companions → companion_relationships  | 1:N (한 멤버당 여러 관계)                              |
-| chatrooms → messages                  | 1:N (채팅방당 여러 메시지)                             |
+| 관계                                  | 설명                                      |
+| ------------------------------------- | ----------------------------------------- |
+| aidols → companions                   | 1:N (그룹당 여러 멤버)                    |
+| aidols → aidol_highlights             | 1:N (그룹당 여러 하이라이트)              |
+| aidols → aidol_leads                  | 1:N (그룹당 여러 viewer, DB FK는 없음)    |
+| aidol_highlights → highlight_messages | 1:N (하이라이트당 여러 하이라이트 메세지) |
+| companions → highlight_messages       | 1:N (멤버당 여러 하이라이트 메세지)       |
+| companions → chatrooms                | 1:N (멤버당 여러 채팅방)                  |
+| companions → companion_relationships  | 1:N (한 멤버당 여러 관계)                 |
+| chatrooms → messages                  | 1:N (채팅방당 여러 메시지)                |
 ---
 
 ## 필드 상세
@@ -147,46 +163,46 @@ erDiagram
 
 ### aidol_leads
 
-| 필드     | 타입 | 제약     | 설명                                  |
-| -------- | ---- | -------- | ------------------------------------- |
-| id       | UUID | PK       | 자동 생성                             |
+| 필드     | 타입 | 제약     | 설명                                      |
+| -------- | ---- | -------- | ----------------------------------------- |
+| id       | UUID | PK       | 자동 생성                                 |
 | aidol_id | UUID | NOT NULL | 그룹 ID (애플리케이션 레벨 참조, FK 없음) |
-| email    | str  | NOT NULL | Viewer 이메일                         |
+| email    | str  | NOT NULL | Viewer 이메일                             |
 
 ### companions
 
-| 필드                | 타입 | 제약   | 설명                     |
-| ------------------- | ---- | ------ | ------------------------ |
-| id                  | UUID | PK     | 자동 생성                |
-| aidol_id            | UUID | FK, IX | aidols 참조              |
-| name                | str  | -      | 멤버 이름                |
-| gender              | str  | -      | 성별                     |
-| grade               | str  | -      | 등급                     |
-| biography           | text | -      | 성격 설명                |
-| profile_picture_url | str  | -      | 프로필 이미지            |
-| system_prompt       | text | -      | LLM 시스템 프롬프트      |
-| mbti_energy         | int  | 1-10   | E ↔ I                    |
-| mbti_perception     | int  | 1-10   | S ↔ N                    |
-| mbti_judgment       | int  | 1-10   | T ↔ F                    |
-| mbti_lifestyle      | int  | 1-10   | J ↔ P                    |
-| vocal               | int  | 0-100  | 가창력                   |
-| dance               | int  | 0-100  | 댄스 실력                |
-| rap                 | int  | 0-100  | 랩 실력                  |
-| visual              | int  | 0-100  | 비주얼                   |
-| stamina             | int  | 0-100  | 체력                     |
-| charm               | int  | 0-100  | 매력도                   |
-| position            | str  | -      | 포지션                   |
+| 필드                | 타입 | 제약     | 설명                     |
+| ------------------- | ---- | -------- | ------------------------ |
+| id                  | UUID | PK       | 자동 생성                |
+| aidol_id            | UUID | FK, IX   | aidols 참조              |
+| name                | str  | -        | 멤버 이름                |
+| gender              | str  | -        | 성별                     |
+| grade               | str  | -        | 등급                     |
+| biography           | text | -        | 성격 설명                |
+| profile_picture_url | str  | -        | 프로필 이미지            |
+| system_prompt       | text | -        | LLM 시스템 프롬프트      |
+| mbti_energy         | int  | 1-10     | E ↔ I                    |
+| mbti_perception     | int  | 1-10     | S ↔ N                    |
+| mbti_judgment       | int  | 1-10     | T ↔ F                    |
+| mbti_lifestyle      | int  | 1-10     | J ↔ P                    |
+| vocal               | int  | 0-100    | 가창력                   |
+| dance               | int  | 0-100    | 댄스 실력                |
+| rap                 | int  | 0-100    | 랩 실력                  |
+| visual              | int  | 0-100    | 비주얼                   |
+| stamina             | int  | 0-100    | 체력                     |
+| charm               | int  | 0-100    | 매력도                   |
+| position            | str  | -        | 포지션                   |
 | status              | str  | NOT NULL | 상태(PUBLISHED OR DRAFT) |
 
 ### aidol_highlights 
 
-| 필드          | 타입 | 제약               | 설명          |
-| ------------- | ---- | ------------------ | ------------- |
-| id            | UUID | PK                 | 자동 생성     |
-| aidol_id      | UUID | FK, IX             | aidols 참조   |
-| title         | str  | NOT NULL           | 제목          |
-| thumbnail_url | str  | NOT NULL           | 썸네일 이미지 |
-| subtitle      | str  | NOT NULL           | 부제목        |
+| 필드          | 타입 | 제약                    | 설명          |
+| ------------- | ---- | ----------------------- | ------------- |
+| id            | UUID | PK                      | 자동 생성     |
+| aidol_id      | UUID | FK, IX                  | aidols 참조   |
+| title         | str  | NOT NULL                | 제목          |
+| thumbnail_url | str  | NOT NULL                | 썸네일 이미지 |
+| subtitle      | str  | NOT NULL                | 부제목        |
 | is_premium    | bool | NOT NULL, default false | 프리미엄 여부 |
 
 ### highlight_messages 
@@ -220,11 +236,11 @@ erDiagram
 
 ### messages 
 
-| 필드         | 타입    | 제약                                  | 설명                                          |
-| ------------ | ------- | ------------------------------------- | --------------------------------------------- |
-| id           | UUID    | PK                                    | 자동 생성                                     |
+| 필드         | 타입    | 제약                                           | 설명                                          |
+| ------------ | ------- | ---------------------------------------------- | --------------------------------------------- |
+| id           | UUID    | PK                                             | 자동 생성                                     |
 | chatroom_id  | UUID    | FK, NOT NULL, IX(복합: chatroom_id+created_at) | chatrooms 참조                                |
-| sender_type  | str     | NOT NULL, IX                          | "USER" \| "COMPANION"                         |
-| content      | text    | NOT NULL                              | 메시지 내용                                   |
-| anonymous_id | str(36) | IX                                    | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
-| companion_id | str     | IX (FK 아님)                          | companion 식별자 (분석용)                     |
+| sender_type  | str     | NOT NULL, IX                                   | "USER" \| "COMPANION"                         |
+| content      | text    | NOT NULL                                       | 메시지 내용                                   |
+| anonymous_id | str(36) | IX                                             | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| companion_id | str     | IX (FK 아님)                                   | companion 식별자 (분석용)                     |
