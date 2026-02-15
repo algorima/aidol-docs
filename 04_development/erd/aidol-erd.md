@@ -15,6 +15,7 @@ erDiagram
     aidol_highlights ||--|{ highlight_messages : "contains"
     
     companions ||--o{ highlight_messages : "sends"
+    companions ||--o{ chatrooms : "has chatrooms"
     
     chatrooms ||--o{ messages : "has messages"
    
@@ -62,6 +63,7 @@ erDiagram
 
     chatrooms {
         string id PK
+        string companion_id FK "NOT NULL, IX"
         string name "NOT NULL"
         string language "default: en"
         datetime created_at
@@ -123,9 +125,9 @@ erDiagram
 | aidols → aidol_leads                  | 1:N (그룹당 여러 viewer, DB FK는 없음)                |
 | aidol_highlights → highlight_messages | 1:N (하이라이트당 여러 하이라이트 메세지)              |
 | companions → highlight_messages       | 1:N (멤버당 여러 하이라이트 메세지)                    |
+| companions → chatrooms                | 1:N (멤버당 여러 채팅방)                               |
 | companions → companion_relationships  | 1:N (한 멤버당 여러 관계)                              |
 | chatrooms → messages                  | 1:N (채팅방당 여러 메시지)                             |
-
 ---
 
 ## 필드 상세
@@ -209,11 +211,12 @@ erDiagram
 
 ### chatrooms 
 
-| 필드     | 타입 | 제약             | 설명                    |
-| -------- | ---- | ---------------- | ----------------------- |
-| id       | UUID | PK               | 자동 생성               |
-| name     | str  | NOT NULL         | 채팅방 이름             |
-| language | str  | NOT NULL, IX     | 언어 (기본: "en")       |
+| 필드         | 타입 | 제약             | 설명              |
+| ------------ | ---- | ---------------- | ----------------- |
+| id           | UUID | PK               | 자동 생성         |
+| companion_id | UUID | FK, IX, NOT NULL | companions 참조   |
+| name         | str  | NOT NULL         | 채팅방 이름       |
+| language     | str  | NOT NULL, IX     | 언어 (기본: "en") |
 
 ### messages 
 
