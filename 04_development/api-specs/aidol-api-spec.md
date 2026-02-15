@@ -95,6 +95,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -105,6 +106,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -142,6 +144,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -152,6 +155,7 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
+      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -180,7 +184,8 @@ Input Parameters (Query)
     "email": "string",
     "greeting": "string",
     "concept": "string",
-    "profileImageUrl": "string"
+    "profileImageUrl": "string",
+    "status": "DRAFT | PUBLISHED"
   },
   "createdAt": "datetime",
   "updatedAt": "datetime"
@@ -208,7 +213,8 @@ Input Parameters (Query)
   "email": "string (선택)",
   "greeting": "string (선택)",
   "concept": "string (선택)",
-  "profileImageUrl": "string (선택)"
+  "profileImageUrl": "string (선택)",
+  "status": "DRAFT | PUBLISHED (선택)"
 }
 
 ```
@@ -221,7 +227,8 @@ Input Parameters (Query)
   "email": "string",
   "greeting": "string",
   "concept": "string",
-  "profileImageUrl": "string"
+  "profileImageUrl": "string",
+  "status": "DRAFT | PUBLISHED"
 }
 ```
 
@@ -287,13 +294,13 @@ Input Parameters (Query)
       "id": "string",
       "aidolId": "string",
       "name": "string",
-      "gender": "male|female",
+      "gender": "MALE|FEMALE",
       "grade": "A|B|C|F",
       "biography": "string",
       "profilePictureUrl": "string",
-      "position": "leader|mainVocal|subVocal|...",
+      "position": "LEADER|MAIN_VOCAL|SUB_VOCAL|...",
       "mbti": "string",
-      "status": "published",
+      "status": "PUBLISHED",
       "stats": {
         "vocal": 0,
         "dance": 0,
@@ -348,7 +355,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "name": "Updated Name",
     "aidolId": "aidol_123",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -373,11 +380,11 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": "aidol_123",
     "name": "Minji",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "biography": "...",
     "profilePictureUrl": "...",
-    "position": "leader",
+    "position": "LEADER",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -402,12 +409,12 @@ Input Parameters (Query)
 {
   "aidolId": "aidol-uuid...",
   "name": "멤버 이름",
-  "gender": "female",
+  "gender": "FEMALE",
   "grade": "A",
   "biography": "어릴 때부터...",
   "profilePictureUrl": "...",
-  "position": "mainVocal",
-  "status": "published", // 선택사항 (기본값: draft)
+  "position": "MAIN_VOCAL",
+  "status": "PUBLISHED", // 선택사항 (기본값: DRAFT)
   "mbtiEnergy": 8,
   "mbtiPerception": 3,
   "mbtiJudgment": 7,
@@ -433,7 +440,7 @@ Input Parameters (Query)
     "name": "멤버 이름",
     "mbti": "ESTP",
     "stats": { "vocal": 90, ... },
-    "status": "published",
+    "status": "PUBLISHED",
     "createdAt": "..."
   }
 }
@@ -457,7 +464,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": null,
     "name": "Minji",
-    "gender": "female",
+    "gender": "FEMALE",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -560,6 +567,7 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
+      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      },
@@ -569,6 +577,7 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
+      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      }
@@ -810,14 +819,14 @@ Input Parameters (Query)
   {
     "id": "msg-123",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "user",
+    "senderType": "USER",
     "content": "안녕, 오늘 기분 어때?",
     "createdAt": "2024-02-09T10:01:00Z"
   },
   {
     "id": "msg-124",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "companion",
+    "senderType": "COMPANION",
     "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
     "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
@@ -849,7 +858,7 @@ Input Parameters (Query)
 {
   "id": "msg-125",
   "chatroomId": "chatroom-uuid-1234",
-  "senderType": "user",
+  "senderType": "USER",
   "content": "나 오늘 좀 우울해...",
   "createdAt": "2024-02-09T10:02:00Z"
 }
@@ -905,6 +914,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   concept: string | null            // 그룹 컨셉
   greeting: string | null           // 인사 문구
   profileImageUrl: string | null    // 엠블럼 이미지 URL
+  status: "DRAFT" | "PUBLISHED"     // 상태
   anonymousId: string | null         // 소유권 토큰 (응답에 미포함)
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string                 // ISO 8601 datetime
@@ -924,7 +934,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   biography: string | null          // 자기소개/설정
   profilePictureUrl: string | null  // 프로필 이미지 URL
   position: string | null           // 포지션 (Position Enum 참고)
-  status: string | null             // draft | published
+  status: string | null             // DRAFT | PUBLISHED
   mbti: string | null               // 계산된 MBTI (예: "ENTP")
   stats: {                          // 능력치 객체
     vocal: number     // 0~100 (보컬)
@@ -948,6 +958,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   title: string                    // 제목
 	thumbnailUrl: string             // 썸네일 이미지
 	subtitle: string
+  isPremium: boolean               // 프리미엄 여부
 }
 ```
 
@@ -997,7 +1008,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 {
   id: string                        // UUID
   chatroomId: string                // Chatroom FK
-  senderType: "user" | "companion"  // 발신자 유형
+  senderType: "USER" | "COMPANION"  // 발신자 유형
   content: string                   // 메시지 내용
   createdAt: string                 // ISO 8601 datetime
   companionId: string | null        // 발신 멤버 ID
