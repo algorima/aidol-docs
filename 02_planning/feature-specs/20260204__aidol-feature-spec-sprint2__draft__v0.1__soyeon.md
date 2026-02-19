@@ -31,7 +31,7 @@ Sprint 1에서 생성한 그룹의 멤버들 간 관계를 설정하고, 캐릭�
 | 항목 | 내용 |
 |------|------|
 | **설명** | 하이라이트 콘텐츠에 `is_premium` 필드를 추가하여 공개/비공개를 구분 |
-| **기능 명세** | - `is_premium = false` (기본값): 모두에게 공개. 홈 화면에 표시<br>- `is_premium = true`: 그룹 생성자만 조회 가능한 프리미엄 콘텐츠<br>- 홈 화면 조회 시 `is_premium = false`인 콘텐츠만 필터링하여 표시<br>- 내 그룹 페이지에서는 해당 그룹의 모든 콘텐츠(public + premium) 조회 가능 |
+| **기능 명세** | - `is_premium = false` (기본값): 모두에게 공개. 홈 화면에 표시<br>- `is_premium = true`: 그룹 생성자만 조회 가능한 프리미엄 콘텐츠<br>- 홈 화면 조회 시 `is_premium = false`인 콘텐츠만 필터링하여 표시<br>- 내 그룹 페이지에서는 해당 그룹의 premium 콘텐츠만 조회 가능 (`is_premium = true`) |
 | **데이터 모델** | `aidol_highlights` 테이블에 `is_premium BOOLEAN DEFAULT FALSE` 필드 추가 |
 | **플랫폼 개념** | 유튜브와 유사: 기본은 공개, 선택적으로 비공개(프리미엄/멤버십 전용) |
 
