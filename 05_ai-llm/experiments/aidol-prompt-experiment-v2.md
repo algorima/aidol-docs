@@ -30,7 +30,6 @@ prompt 고도화 성능 검증
 ### To do list
 
 <aside>
-### To do list
 
 *상태: 완료 / 미완*
 
