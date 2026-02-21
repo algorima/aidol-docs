@@ -5,7 +5,7 @@
 | 항목 | 내용 |
 |------|------|
 | 회사명 | **에이아이오아이에이 주식회사 (AIoIA)** |
-| 설립일 | 2025.11.04 |
+| 설립일 | 2025.04 |
 | 대표이사 | 이소연 (CEO), 김영욱 (CTO) |
 | 주소 | 서울 강남구 강남대로 464, 310호 (06123) |
 | 사업자등록번호 | (TODO) |
@@ -18,13 +18,13 @@
 ## 한 줄 소개
 
 **영문 (50자 이내):**
-> Cast, build & grow your own AI idol group
+> Cast, produce & debut your own AI idol group
 
 **국문:**
 > AI 아이돌을 캐스팅하고 육성하는 시즌 기반 시뮬레이션 플랫폼
 
 **대안 (비유 활용):**
-> The Sims meets K-pop: produce your own AI idol group
+> The Sims meets K-pop produce
 
 ## 미션
 

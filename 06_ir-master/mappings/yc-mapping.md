@@ -22,7 +22,7 @@
 ## YC 특화 포인트
 
 ### 핵심 강조점 (YC가 좋아하는 것)
-1. **Founder-Market Fit**: 창업자의 K-pop 팬 경험 + 1.5년 4번 피봇
+1. **Founder-Market Fit**: 창업자의 K-pop 팬 경험 + 2.5년 4번 피봇
 2. **Traction**: 500K views, 500 signups in 5 days, $0 CAC
 3. **Insight**: "유저가 직접 카테고리를 정의했다" (심스 + 프로듀싱)
 4. **Market Size**: K-pop 1.5억 팬 x 시뮬레이션 게임 x AI UGC 교차
@@ -33,7 +33,7 @@
 - W26: `~/docs/06_ir-application/yc-w26-application/`
 
 ### 업데이트 필요 항목 (v2 리라이트 후)
-- [ ] 3.2 Description: "Cast, build & grow your own AI idol group"
+- [ ] 3.2 Description: "Cast, produce & debut your own AI idol group"
 - [ ] 3.6 What making: Core Game Loop 기반으로 재작성
 - [ ] 4.1 Progress: Sprint 1 UT 결과 + Phase 2 설계 중
 - [ ] 4.7 Pivot: Pivot 4 (시뮬레이션) 추가
