@@ -7,8 +7,8 @@
 
 ## 전체 엔드포인트
 
-| 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
-| ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
+| 엔드포인트                                       | 메서드 | 설명                     | 인증   | Sprint |
+|---------------------------------------------| ------ | ------------------------ | ------ | ------ |
 | `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
 | `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
 | `/aidols/my`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
@@ -28,7 +28,8 @@
 | `/companion-relationships/{id}`             | GET    | 아이돌 관계 조회         | Public | 2      |
 | `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
 | `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
-| `/chatrooms`                                | POST   | 채팅방 생성              | Public | 3      |
+| `/me/chatrooms`                             | GET    | 채팅방 목록 조회         | Cookie | 3      |
+| `/chatrooms`                             | POST   | 채팅방 생성              | Cookie | 3      |
 | `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
 | `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
 | `/chatrooms/{id}/messages`                  | POST   | 메시지 전송              | Cookie | 3      |
@@ -95,7 +96,6 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
-      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -106,7 +106,6 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
-      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -144,7 +143,6 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
-      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -155,7 +153,6 @@ Input Parameters (Query)
 	    "concept": "string",
 	    "greeting": "string",
 	    "profileImageUrl": "string",
-      "status": "DRAFT | PUBLISHED",
       "createdAt": "datetime",
       "updatedAt": "datetime"
 		 },
@@ -184,8 +181,7 @@ Input Parameters (Query)
     "email": "string",
     "greeting": "string",
     "concept": "string",
-    "profileImageUrl": "string",
-    "status": "DRAFT | PUBLISHED"
+    "profileImageUrl": "string"
   },
   "createdAt": "datetime",
   "updatedAt": "datetime"
@@ -213,8 +209,7 @@ Input Parameters (Query)
   "email": "string (선택)",
   "greeting": "string (선택)",
   "concept": "string (선택)",
-  "profileImageUrl": "string (선택)",
-  "status": "DRAFT | PUBLISHED (선택)"
+  "profileImageUrl": "string (선택)"
 }
 
 ```
@@ -227,8 +222,7 @@ Input Parameters (Query)
   "email": "string",
   "greeting": "string",
   "concept": "string",
-  "profileImageUrl": "string",
-  "status": "DRAFT | PUBLISHED"
+  "profileImageUrl": "string"
 }
 ```
 
@@ -294,13 +288,13 @@ Input Parameters (Query)
       "id": "string",
       "aidolId": "string",
       "name": "string",
-      "gender": "MALE|FEMALE",
+      "gender": "male|female",
       "grade": "A|B|C|F",
       "biography": "string",
       "profilePictureUrl": "string",
-      "position": "LEADER|MAIN_VOCAL|SUB_VOCAL|...",
+      "position": "leader|mainVocal|subVocal|...",
       "mbti": "string",
-      "status": "PUBLISHED",
+      "status": "published",
       "stats": {
         "vocal": 0,
         "dance": 0,
@@ -355,7 +349,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "name": "Updated Name",
     "aidolId": "aidol_123",
-    "gender": "FEMALE",
+    "gender": "female",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -380,11 +374,11 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": "aidol_123",
     "name": "Minji",
-    "gender": "FEMALE",
+    "gender": "female",
     "grade": "S",
     "biography": "...",
     "profilePictureUrl": "...",
-    "position": "LEADER",
+    "position": "leader",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -409,12 +403,12 @@ Input Parameters (Query)
 {
   "aidolId": "aidol-uuid...",
   "name": "멤버 이름",
-  "gender": "FEMALE",
+  "gender": "female",
   "grade": "A",
   "biography": "어릴 때부터...",
   "profilePictureUrl": "...",
-  "position": "MAIN_VOCAL",
-  "status": "PUBLISHED", // 선택사항 (기본값: DRAFT)
+  "position": "mainVocal",
+  "status": "published", // 선택사항 (기본값: draft)
   "mbtiEnergy": 8,
   "mbtiPerception": 3,
   "mbtiJudgment": 7,
@@ -440,7 +434,7 @@ Input Parameters (Query)
     "name": "멤버 이름",
     "mbti": "ESTP",
     "stats": { "vocal": 90, ... },
-    "status": "PUBLISHED",
+    "status": "published",
     "createdAt": "..."
   }
 }
@@ -464,7 +458,7 @@ Input Parameters (Query)
     "id": "comp_1",
     "aidolId": null,
     "name": "Minji",
-    "gender": "FEMALE",
+    "gender": "female",
     "grade": "S",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
@@ -567,7 +561,6 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
-      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      },
@@ -577,7 +570,6 @@ AIdol 하이라이트를 조회합니다.
       "title": "string",
       "thumbnailUrl": "string",
       "subtitle": "string",
-      "isPremium": true,
       "createdAt": "datetime",
       "updatedAt": "datetime"
      }
@@ -749,12 +741,43 @@ Input Parameters (Query)
 ```
 ---
 
+### GET /me/chatrooms - 채팅방 목록 조회
+
+현재 참여 중인 채팅방 목록을 조회합니다.
+
+- URL: GET /me/chatrooms
+- Auth: Cookie 필수 (anonymousId)
+
+**Response** (200 OK):
+
+```json
+{
+  "data": [
+    {
+      "id": "chatroom-uuid-1",
+      "companionId": "companion-uuid-1",
+      "lastMessage": {
+        "content": "안녕하세요!",
+        "createdAt": "2024-02-13T12:00:00Z"
+      }
+    },
+    {
+      "id": "chatroom-uuid-2",
+      "companionId": "companion-uuid-2",
+      "lastMessage": null
+    }
+  ]
+}
+```
+
+---
+
 ### POST /chatrooms - 채팅방 생성
 
 채팅방을 생성 합니다.
 
 - URL: POST /chatrooms
-- Auth: 공개 (하지만 anonymousId 쿠키 권장, 특정 사용자의 채팅 목록 조회를 위해 필요)
+- Auth: Cookie 필수 (anonymousId)
 
 **Request**:
 
@@ -762,8 +785,7 @@ Input Parameters (Query)
 {
   "companionId": "companion-uuid",
   "name": "나의 시크릿 챗",
-  "language": "ko",
-  "anonymousId": "optional-anonymous-id"
+  "language": "ko"
 }
 ```
 
@@ -776,7 +798,7 @@ Input Parameters (Query)
     "companionId": "companion-uuid",
     "name": "나의 시크릿 챗",
     "language": "ko",
-    "anonymousId": "anonymous-id-from-cookie-or-body",
+    "anonymousId": "anonymous-id-from-cookie",
     "createdAt": "2024-02-09T10:00:00Z",
     "updatedAt": "2024-02-09T10:00:00Z"
   }
@@ -796,12 +818,8 @@ Input Parameters (Query)
 {
   "data": {
     "id": "chatroom-uuid-1234",
-    "companionId": "companion-uuid",
     "name": "나의 시크릿 챗",
-    "language": "ko",
-    "anonymousId": "string",
-    "createdAt": "datetime",
-    "updatedAt": "datetime"
+    ...
   }
 }
 
@@ -827,14 +845,14 @@ Input Parameters (Query)
   {
     "id": "msg-123",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "USER",
+    "senderType": "user",
     "content": "안녕, 오늘 기분 어때?",
     "createdAt": "2024-02-09T10:01:00Z"
   },
   {
     "id": "msg-124",
     "chatroomId": "chatroom-uuid-1234",
-    "senderType": "COMPANION",
+    "senderType": "companion",
     "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
     "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
@@ -866,7 +884,7 @@ Input Parameters (Query)
 {
   "id": "msg-125",
   "chatroomId": "chatroom-uuid-1234",
-  "senderType": "USER",
+  "senderType": "user",
   "content": "나 오늘 좀 우울해...",
   "createdAt": "2024-02-09T10:02:00Z"
 }
@@ -922,7 +940,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   concept: string | null            // 그룹 컨셉
   greeting: string | null           // 인사 문구
   profileImageUrl: string | null    // 엠블럼 이미지 URL
-  status: "DRAFT" | "PUBLISHED"     // 상태
   anonymousId: string | null         // 소유권 토큰 (응답에 미포함)
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string                 // ISO 8601 datetime
@@ -942,7 +959,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   biography: string | null          // 자기소개/설정
   profilePictureUrl: string | null  // 프로필 이미지 URL
   position: string | null           // 포지션 (Position Enum 참고)
-  status: string | null             // DRAFT | PUBLISHED
+  status: string | null             // draft | published
   mbti: string | null               // 계산된 MBTI (예: "ENTP")
   stats: {                          // 능력치 객체
     vocal: number     // 0~100 (보컬)
@@ -966,7 +983,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
   title: string                    // 제목
 	thumbnailUrl: string             // 썸네일 이미지
 	subtitle: string
-  isPremium: boolean               // 프리미엄 여부
 }
 ```
 
@@ -1001,10 +1017,14 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```tsx
 {
   id: string                        // UUID
-  companionId: string               // Companion FK
+  companionId: string               // 채팅 대상 companion ID
   name: string                      // 채팅방 이름
   language: string                  // 언어 코드 (기본: "ko")
   anonymousId: string | null        // 익명 사용자 식별자
+  lastMessage: {                    // 가장 최근 메시지
+    content: string
+    createdAt: string
+  } | null
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string
 }
@@ -1017,7 +1037,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 {
   id: string                        // UUID
   chatroomId: string                // Chatroom FK
-  senderType: "USER" | "COMPANION"  // 발신자 유형
+  senderType: "user" | "companion"  // 발신자 유형
   content: string                   // 메시지 내용
   createdAt: string                 // ISO 8601 datetime
   companionId: string | null        // 발신 멤버 ID
