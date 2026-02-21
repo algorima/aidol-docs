@@ -745,7 +745,7 @@ Input Parameters (Query)
 
 현재 참여 중인 채팅방 목록을 조회합니다.
 
-- URL: GET /chatrooms
+- URL: GET /me/chatrooms
 - Auth: 공개 (Cookie 권장)
 
 **Response** (200 OK):
