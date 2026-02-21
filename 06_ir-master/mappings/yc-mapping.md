@@ -24,7 +24,7 @@
 ### 핵심 강조점 (YC가 좋아하는 것)
 1. **Founder-Market Fit**: 창업자의 K-pop 팬 경험 + 2.5년 4번 피봇
 2. **Traction**: 500K views, 500 signups in 5 days, $0 CAC
-3. **Insight**: "유저가 직접 카테고리를 정의했다" (심스 + 프로듀싱)
+3. **Insight**: "사용자가 직접 카테고리를 정의했다" (심스 + 프로듀싱)
 4. **Market Size**: K-pop 1.5억 팬 x 시뮬레이션 게임 x AI UGC 교차
 5. **User Quote**: "지금 내가 민희진이다" (U3) / "키우는 게임이면 이메일 작성 했을 것" (U7)
 

@@ -35,7 +35,7 @@
 - AI 아이돌 시뮬레이션
 - K-pop / 팬덤 경제
 - 생성형 AI / 버추얼 아이돌
-- 유저 소유 IP (User-generated IP)
+- 사용자 소유 IP (User-generated IP)
 - 시즌 기반 게임 루프
 
 ## 분야
