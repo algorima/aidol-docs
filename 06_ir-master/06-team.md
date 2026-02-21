@@ -8,7 +8,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| 이메일 | sylee@aioia.ai / leesoyena@gmail.com |
+| 이메일 | sylee@aioia.ai |
 | 연락처 | +82 10-9486-8219 |
 | 나이 | 31세 |
 | 지분 | 50% |
@@ -60,7 +60,7 @@
 
 | 항목 | 내용 |
 |------|------|
-| 이메일 | ywkim@algorima.io / youngwook.kim@gmail.com |
+| 이메일 | ywkim@algorima.io |
 | 연락처 | +82 10-6364-4759 |
 | 나이 | 42세 |
 | 지분 | 50% |
