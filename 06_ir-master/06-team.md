@@ -30,10 +30,10 @@
 
 #### 주요 프로젝트
 1. 맛집 다이어리 앱 (Android)
-2. K-POP 앨범 기부 플랫폼 'DonUT' (Spring Framework)
-3. 음성 안내 키오스크 앱 'KidoKido' (AR 기반 접근성)
+2. K-POP 앨범 기부 플랫폼 '도넛(DonUT)' (Spring Framework)
+3. 음성 안내 키오스크 앱 '키도키도(KidoKido)' (AR 기반 접근성)
 4. 시니어 산책 앱 '마실' (HCI LAB 선발)
-5. AI 토론 보조 앱 'Debati'
+5. AI 토론 보조 앱 '토론이(Debati)'
 
 #### 수상
 - 2022 연세 대학원생 창업 경진대회 본선 진출
