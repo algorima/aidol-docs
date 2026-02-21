@@ -6,7 +6,7 @@
 |---------|------|------------|----------|
 | **3. Company** | | | |
 | 3.2 | 50자 설명 | 00-company-overview.md | 한 줄 소개 (영문) |
-| 3.6 | What are you making? | 02-solution.md | 핵심 가치 제안 + Core Game Loop |
+| 3.6 | What are you making? | 02-solution.md | 핵심 가치 제안 + 핵심 게임 루프 |
 | **4. Progress** | | | |
 | 4.1 | How far along? | 03-traction.md | MVP 진행 상황 + Sprint 1 UT 결과 |
 | 4.5 | Active users/paying | 03-traction.md | 핵심 지표 |
@@ -34,7 +34,7 @@
 
 ### 업데이트 필요 항목 (v2 리라이트 후)
 - [ ] 3.2 Description: "Cast, produce & debut your own AI idol group"
-- [ ] 3.6 What making: Core Game Loop 기반으로 재작성
+- [ ] 3.6 What making: 핵심 게임 루프 기반으로 재작성
 - [ ] 4.1 Progress: Sprint 1 UT 결과 + Phase 2 설계 중
 - [ ] 4.7 Pivot: Pivot 4 (시뮬레이션) 추가
 - [ ] 5.1 Why this idea: 3가지 수요 + 구조적 공백 + UT 인용

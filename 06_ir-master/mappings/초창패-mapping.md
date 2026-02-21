@@ -7,7 +7,7 @@
 | **일반현황** | 00-company-overview.md | 기본 정보 |
 | **창업 아이템 개요** | 01-problem.md + 02-solution.md | 한 줄 요약 + 핵심 가치 제안 |
 | **1. 문제 인식 (Problem)** | 01-problem.md | 3가지 수요 + 구조적 공백 |
-| **2. 실현 가능성 (Solution)** | 02-solution.md + 03-traction.md | Core Game Loop + UT 결과 |
+| **2. 실현 가능성 (Solution)** | 02-solution.md + 03-traction.md | 핵심 게임 루프 + UT 결과 |
 | **- 사업추진 일정** | 03-traction.md | 스프린트 일정 + Phase 2 마일스톤 |
 | **- 사업비 집행 계획** | 07-financials.md | 자금 사용 계획 |
 | **3. 성장전략 (Scale-up)** | 04-market.md + 05-business-model.md | 시장 교차점 + 게임 과금 모델 |
@@ -36,7 +36,7 @@
 
 ### 2. 실현 가능성
 -> `02-solution.md` + `03-traction.md`
-- Core Game Loop: 드래프트 -> 빌드 -> 시뮬레이션 -> 시즌 결과 -> 반복
+- 핵심 게임 루프: 드래프트 -> 빌드 -> 시뮬레이션 -> 시즌 결과 -> 반복
 - Sprint 1 UT 결과: 그룹 생성 완료율 100%, PD 역할 인지 86%
 - 기술 스택: Next.js, FastAPI, GPT, Flux Pro 등
 - **사업추진 일정**: Phase 2 마일스톤 표로 변환
@@ -58,7 +58,7 @@
 ## 체크리스트
 
 - [ ] 일반현황 기본 정보 채우기
-- [ ] 이미지/도표 준비 (서비스 스크린샷, Core Game Loop 다이어그램)
+- [ ] 이미지/도표 준비 (서비스 스크린샷, 핵심 게임 루프 다이어그램)
 - [ ] 사업비 상세 내역 작성
 - [ ] 팀원 이력서 정리
 - [ ] 협력기관 MOU 여부 확인
