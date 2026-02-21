@@ -65,6 +65,7 @@ erDiagram
         string id PK
         string companion_id FK "NOT NULL"
         string name "NOT NULL"
+        string anonymous_id "NULLABLE, IX"
         string language "default: ko"
         datetime created_at
         datetime updated_at
@@ -212,12 +213,13 @@ erDiagram
 
 ### chatrooms 
 
-| 필드         | 타입 | 제약             | 설명              |
-| ------------ | ---- | ---------------- | ----------------- |
-| id           | UUID | PK               | 자동 생성         |
-| companion_id | UUID | FK, IX, NOT NULL | companions 참조   |
-| name         | str  | NOT NULL         | 채팅방 이름       |
-| language     | str  | NOT NULL         | 언어 (기본: "ko") |
+| 필드         | 타입    | 제약             | 설명                                          |
+| ------------ | ------- | ---------------- | --------------------------------------------- |
+| id           | UUID    | PK               | 자동 생성                                     |
+| companion_id | UUID    | FK, IX, NOT NULL | companions 참조                               |
+| name         | str     | NOT NULL         | 채팅방 이름                                   |
+| anonymous_id | str(36) |                  | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| language     | str     | NOT NULL         | 언어 (기본: "ko")                             |
 
 ### messages 
 
