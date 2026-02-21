@@ -143,4 +143,4 @@
 
 ## 제품 데모
 
-**웹사이트**: https://aioia.ai
+**웹사이트**: https://aioia.ai/aidol

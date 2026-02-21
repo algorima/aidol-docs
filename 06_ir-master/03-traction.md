@@ -2,7 +2,7 @@
 
 ## 현재 상태
 
-웹 서비스 라이브: https://aioia.ai
+웹 서비스 라이브: https://aioia.ai/aidol
 
 ## 핵심 지표
 

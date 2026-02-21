@@ -9,7 +9,7 @@
 | 대표이사 | 이소연 (CEO), 김영욱 (CTO) |
 | 주소 | 서울 강남구 테헤란로 83길 18 4층 S-20호 |
 | 사업자등록번호 | 361-86-03774 |
-| 웹사이트 | https://aioia.ai |
+| 웹사이트 | https://aioia.ai/aidol |
 | GitHub | https://github.com/algorima |
 | 단계 | Seed |
 | 직원수 | 0 (창업자 2인 Full-time) |
