@@ -24,7 +24,7 @@
 > AI 아이돌을 캐스팅하고 육성하는 시즌 기반 시뮬레이션 플랫폼
 
 **대안 (비유 활용):**
-> The Sims meets K-pop produce
+> The Sims meets K-pop idol producing
 
 ## 미션
 
