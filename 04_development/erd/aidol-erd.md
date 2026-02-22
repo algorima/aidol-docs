@@ -13,15 +13,15 @@ erDiagram
     aidols ||--o{ aidol_leads : "has leads (logical reference)"
 
     aidol_highlights ||--|{ highlight_messages : "contains"
-    
+
     companions ||--o{ highlight_messages : "sends"
+
     companions ||--o{ chatrooms : "has chatrooms"
     
     chatrooms ||--o{ messages : "has messages"
-   
+
     companions ||--o{ companion_relationships : "forms (from)"
     companions ||--o{ companion_relationships : "forms (to)"
-
 
     aidols {
         string id PK
@@ -194,7 +194,7 @@ erDiagram
 | position            | str  | -        | 포지션                   |
 | status              | str  | NOT NULL | 상태(PUBLISHED OR DRAFT) |
 
-### aidol_highlights 
+### aidol_highlights
 
 | 필드          | 타입 | 제약                    | 설명          |
 | ------------- | ---- | ----------------------- | ------------- |
@@ -205,7 +205,7 @@ erDiagram
 | subtitle      | str  | NOT NULL                | 부제목        |
 | is_premium    | bool | NOT NULL, default false | 프리미엄 여부 |
 
-### highlight_messages 
+### highlight_messages
 
 | 필드         | 타입 | 제약     | 설명                  |
 | ------------ | ---- | -------- | --------------------- |
@@ -215,7 +215,7 @@ erDiagram
 | sequence     | int  | NOT NULL | 채팅 순서             |
 | content      | text | NOT NULL | 메세지 내용           |
 
-### companion_relationships 
+### companion_relationships
 
 | 필드              | 타입 | 제약   | 설명            |
 | ----------------- | ---- | ------ | --------------- |
@@ -225,7 +225,7 @@ erDiagram
 | intimacy          | int  | -      | 친밀도          |
 | nickname          | str  | -      | 관계 별명       |
 
-### chatrooms 
+### chatrooms
 
 | 필드         | 타입 | 제약             | 설명              |
 | ------------ | ---- | ---------------- | ----------------- |
@@ -234,7 +234,7 @@ erDiagram
 | name         | str  | NOT NULL         | 채팅방 이름       |
 | language     | str  | NOT NULL, IX     | 언어 (기본: "en") |
 
-### messages 
+### messages
 
 | 필드         | 타입    | 제약                                           | 설명                                          |
 | ------------ | ------- | ---------------------------------------------- | --------------------------------------------- |
