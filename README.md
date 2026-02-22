@@ -12,6 +12,7 @@ aidol-docs/
 ├── 04_development/       # API 스펙, ERD, 아키텍처
 ├── 05_ai-llm/            # 프롬프트, 실험 결과
 ├── 06_ir-master/         # IR 자료 (투자 관련)
+├── 07_tools/             # 개발 도구, 에이전트
 └── templates/            # 문서 템플릿
 ```
 
