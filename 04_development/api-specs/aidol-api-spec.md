@@ -7,8 +7,8 @@
 
 ## 전체 엔드포인트
 
-| 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
-| ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
+| 엔드포인트                                       | 메서드 | 설명                     | 인증   | Sprint |
+|---------------------------------------------| ------ | ------------------------ | ------ | ------ |
 | `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
 | `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
 | `/aidols/my`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
@@ -28,7 +28,8 @@
 | `/companion-relationships/{id}`             | GET    | 아이돌 관계 조회         | Public | 2      |
 | `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
 | `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
-| `/chatrooms`                                | POST   | 채팅방 생성              | Public | 3      |
+| `/chatrooms`                                | POST   | 채팅방 생성              | Cookie | 3      |
+| `/me/chatrooms`                             | GET    | 채팅방 목록 조회         | Cookie | 3      |
 | `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
 | `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
 | `/chatrooms/{id}/messages`                  | POST   | 메시지 전송              | Cookie | 3      |
@@ -749,17 +750,49 @@ Input Parameters (Query)
 ```
 ---
 
+### GET /me/chatrooms - 채팅방 목록 조회
+
+현재 참여 중인 채팅방 목록을 조회합니다.
+
+- URL: GET /me/chatrooms
+- Auth: Cookie 필수 (anonymousId)
+
+**Response** (200 OK):
+
+```json
+{
+  "data": [
+    {
+      "id": "chatroom-uuid-1",
+      "companionId": "companion-uuid-1",
+      "lastMessage": {
+        "content": "안녕하세요!",
+        "createdAt": "2024-02-13T12:00:00Z"
+      }
+    },
+    {
+      "id": "chatroom-uuid-2",
+      "companionId": "companion-uuid-2",
+      "lastMessage": null
+    }
+  ]
+}
+```
+
+---
+
 ### POST /chatrooms - 채팅방 생성
 
 채팅방을 생성 합니다.
 
 - URL: POST /chatrooms
-- Auth: 공개 (하지만 anonymousId 쿠키 권장, 추후 히스토리 관리를 위해)
+- Auth: Cookie 필수 (anonymousId)
 
 **Request**:
 
 ```json
 {
+  "companionId": "companion-uuid",
   "name": "나의 시크릿 챗",
   "language": "ko"
 }
@@ -771,8 +804,10 @@ Input Parameters (Query)
 {
   "data": {
     "id": "chatroom-uuid-1234",
+    "companionId": "companion-uuid",
     "name": "나의 시크릿 챗",
     "language": "ko",
+    "anonymousId": "anonymous-id-from-cookie",
     "createdAt": "2024-02-09T10:00:00Z",
     "updatedAt": "2024-02-09T10:00:00Z"
   }
@@ -993,9 +1028,14 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 ```tsx
 {
   id: string                        // UUID
-  companionProfileId: string        // Companion FK
+  companionId: string               // 채팅 대상 companion ID
   name: string                      // 채팅방 이름
   language: string                  // 언어 코드 (기본: "ko")
+  anonymousId: string | null        // 익명 사용자 식별자
+  lastMessage: {                    // 가장 최근 메시지
+    content: string
+    createdAt: string
+  } | null
   createdAt: string                 // ISO 8601 datetime
   updatedAt: string
 }
