@@ -25,7 +25,6 @@ Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.
 |------|------|
 | **Page** | MyGroup |
 | **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
-| **트리거 조건** | - 사용자가 아직 읽지 않은 메시지가 있을 경우<br>- 멤버가 새로운 메시지를 보낸 경우 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A3987) |
 
 ---
@@ -40,7 +39,6 @@ Sprint 3는 **AI 아이돌과의 채팅 기능**을 구현합니다.
 |------|------|
 | **Page** | Home_OtherGroup, Follow |
 | **설명** | 채팅 아이콘 + 노티 "멤버들이 할 말이 있대요!" |
-| **트리거 조건** | - 사용자가 아직 읽지 않은 메시지가 있을 경우<br>- 멤버가 새로운 메시지를 보낸 경우 |
 | **Figma 링크** | [Figma](https://www.figma.com/file/YKX5YVvaGFjSsTWXTDD7DT/UI?node-id=46%3A4150) |
 
 ### 2-2. 팔로우 (NotFollow 상태)
