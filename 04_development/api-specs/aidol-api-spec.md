@@ -28,8 +28,8 @@
 | `/companion-relationships/{id}`             | GET    | 아이돌 관계 조회         | Public | 2      |
 | `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
 | `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
+| `/chatrooms`                                | POST   | 채팅방 생성              | Cookie | 3      |
 | `/me/chatrooms`                             | GET    | 채팅방 목록 조회         | Cookie | 3      |
-| `/chatrooms`                             | POST   | 채팅방 생성              | Cookie | 3      |
 | `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
 | `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
 | `/chatrooms/{id}/messages`                  | POST   | 메시지 전송              | Cookie | 3      |
