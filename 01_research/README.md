@@ -11,9 +11,9 @@
 ## 파일명 규칙
 
 ```
-YYYYMMDD__주제__상태__vX.Y__소유자.md
+주제.md
 ```
 
 예시:
-- `20260204__user-interview-kpop-fans__final__v1.0__sy.md`
-- `20260201__kpop-market-analysis-2026__review__v0.2__yw.md`
+- `user-interview-kpop-fans.md`
+- `kpop-market-analysis-2026.md`

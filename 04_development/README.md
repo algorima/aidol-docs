@@ -11,9 +11,9 @@ API 스펙, ERD, 아키텍처 문서를 관리합니다.
 ## 파일명 규칙
 
 ```
-YYYYMMDD__주제__상태__vX.Y__소유자.md
+주제.md
 ```
 
 예시:
-- `20260115__aidol-api-spec__draft__v0.1__yw.md`
-- `20260120__backend-architecture__review__v0.3__jh.md`
+- `aidol-api-spec.md`
+- `backend-architecture.md`
