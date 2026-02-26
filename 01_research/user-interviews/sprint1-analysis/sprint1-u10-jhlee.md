@@ -1,4 +1,4 @@
-# SPRINT 1 - UT Sprint 요약: U9 jhlee
+# SPRINT 1 - UT Sprint 요약: U10 jhlee
 
 > Sprint 1 테스트 진행. 캐스팅 과정 중 실시간 채팅으로 수집된 사용자 반응.
 > 수지의 사용자 인터뷰 자동 정리 프롬프트 가이드에 따라 정리.
