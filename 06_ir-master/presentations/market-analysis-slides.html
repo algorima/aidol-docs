@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIdol - Market Analysis</title>
+<style>
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 100;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-1Thin.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 300;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-3Light.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 400;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-4Regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 600;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-6SemiBold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 700;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-7Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 800;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-8ExtraBold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    font-weight: 900;
+    src: url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-9Black.woff2') format('woff2');
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #141414;
+    --accent: #FF3377;
+    --accent-dim: rgba(255,51,119,0.15);
+    --accent-glow: rgba(255,51,119,0.3);
+    --text: #FFFFFF;
+    --sub: rgba(255,255,255,0.5);
+    --dim: rgba(255,255,255,0.25);
+    --line: rgba(255,255,255,0.08);
+    --green: #00D68F;
+  }
+
+  body {
+    font-family: 'Paperlogy', -apple-system, sans-serif;
+    background: #0a0a0a;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    width: 1280px; height: 720px;
+    background: var(--bg);
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Footer */
+  .footer {
+    position: absolute;
+    bottom: 24px; left: 60px; right: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--dim);
+  }
+  .footer .brand { font-weight: 800; color: var(--accent); letter-spacing: 3px; font-size: 12px; }
+
+  /* Slide header - accent bar on left */
+  .slide-header {
+    position: absolute;
+    top: 48px; left: 60px;
+  }
+  .slide-header h1 {
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+  .slide-header h1 .ac { color: var(--accent); }
+  .slide-header p {
+    font-size: 15px;
+    color: var(--sub);
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  /* ====== S1: MARKET SIZE - Airbnb style 3 separate circles ====== */
+  .s1-circles-area {
+    position: absolute;
+    bottom: 80px; left: 0; right: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 60px;
+  }
+
+  .s1-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .s1-circle {
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .s1-circle.tam { width: 280px; height: 280px; }
+  .s1-circle.sam { width: 180px; height: 180px; opacity: 0.85; }
+  .s1-circle.som { width: 110px; height: 110px; opacity: 0.7; }
+
+  .s1-circle .num {
+    font-size: 36px;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+  .s1-circle.sam .num { font-size: 28px; }
+  .s1-circle.som .num { font-size: 22px; }
+
+  .s1-circle .cagr {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    margin-top: 4px;
+  }
+
+  .s1-label {
+    text-align: center;
+  }
+  .s1-label .name {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .s1-label .type {
+    font-size: 12px;
+    color: var(--sub);
+    font-weight: 400;
+  }
+  .s1-label .src {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: 4px;
+  }
+
+  /* ====== S2: WHY NOW - Square style arrow + data ====== */
+  .s2-layout {
+    position: absolute;
+    top: 130px; left: 60px; right: 60px; bottom: 70px;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .s2-arrow-area {
+    flex: 0 0 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .s2-arrow-box {
+    width: 340px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Big upward arrow */
+  .s2-arrow-svg {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .s2-before {
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+  }
+  .s2-before .label { font-size: 10px; color: var(--dim); letter-spacing: 1px; font-weight: 600; text-transform: uppercase; }
+  .s2-before .val { font-size: 48px; font-weight: 900; color: var(--dim); line-height: 1; margin-top: 4px; }
+
+  .s2-after {
+    position: absolute;
+    top: 20px;
+    text-align: center;
+  }
+  .s2-after .label { font-size: 10px; color: var(--accent); letter-spacing: 1px; font-weight: 600; text-transform: uppercase; }
+  .s2-after .val { font-size: 56px; font-weight: 900; color: var(--accent); line-height: 1; margin-top: 4px; }
+
+  .s2-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .s2-block {
+    padding-left: 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .s2-block h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .s2-block .item {
+    font-size: 13px;
+    color: var(--sub);
+    line-height: 1.8;
+  }
+  .s2-block .item strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+  .s2-block .item .pk {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* ====== S3: WHY NOW - PROOF DATA ====== */
+  .s3-layout {
+    position: absolute;
+    top: 130px; left: 60px; right: 60px; bottom: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+  }
+
+  .s3-section {
+    display: flex;
+    flex-direction: column;
+  }
+  .s3-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .s3-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 7px 0;
+    font-size: 13px;
+  }
+  .s3-row .label { color: var(--sub); }
+  .s3-row .value { font-weight: 700; text-align: right; }
+  .s3-row .value.pk { color: var(--accent); }
+  .s3-row .value.gn { color: var(--green); }
+  .s3-source {
+    font-size: 10px;
+    color: var(--dim);
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  /* ====== S4: COMPETITION TABLE ====== */
+  .s4-area {
+    position: absolute;
+    top: 130px; left: 60px; right: 60px; bottom: 70px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .s4-tbl {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  .s4-tbl th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: var(--sub);
+    border-bottom: 2px solid var(--line);
+  }
+  .s4-tbl th.aidol-col {
+    color: var(--accent);
+    text-align: center;
+    background: rgba(255,51,119,0.04);
+  }
+  .s4-tbl td {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--line);
+    color: var(--sub);
+    font-size: 12px;
+  }
+  .s4-tbl tr:last-child td { border-bottom: none; }
+  .s4-tbl td:first-child { font-weight: 600; color: var(--text); width: 110px; }
+  .s4-tbl td.aidol-col {
+    text-align: center;
+    color: var(--text);
+    font-weight: 600;
+    background: rgba(255,51,119,0.04);
+  }
+  .s4-tbl .revenue { font-weight: 700; color: var(--text); }
+  .ck { color: var(--green); font-weight: 700; }
+  .cx { color: var(--dim); }
+  .st { color: var(--accent); font-weight: 700; }
+  .pt { color: rgba(255,255,255,0.35); }
+
+  .s4-callout {
+    margin-top: auto;
+    padding: 16px 24px;
+    border: 1px solid rgba(255,51,119,0.2);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--sub);
+  }
+  .s4-callout span { color: var(--accent); font-weight: 700; }
+
+  /* ====== S5: POSITIONING - 2x2 axis map (Airbnb/Omnious style) ====== */
+  .s5-area {
+    position: absolute;
+    top: 130px; left: 60px; right: 60px; bottom: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .s5-map {
+    position: relative;
+    width: 900px;
+    height: 480px;
+  }
+
+  /* Axes */
+  .s5-axis-h {
+    position: absolute;
+    top: 50%;
+    left: 60px; right: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+  .s5-axis-v {
+    position: absolute;
+    left: 50%;
+    top: 30px; bottom: 30px;
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* Axis labels */
+  .s5-ax-label {
+    position: absolute;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--dim);
+    text-transform: uppercase;
+  }
+  .s5-ax-label.top { top: 6px; left: 50%; transform: translateX(-50%); }
+  .s5-ax-label.bottom { bottom: 6px; left: 50%; transform: translateX(-50%); }
+  .s5-ax-label.left { left: 0; top: 50%; transform: translateY(-50%); }
+  .s5-ax-label.right { right: 0; top: 50%; transform: translateY(-50%); }
+
+  /* Company dots */
+  .s5-dot {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transform: translate(-50%, -50%);
+  }
+  .s5-dot .circle {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: #1e1e1e;
+    border: 1.5px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--sub);
+    text-align: center;
+    line-height: 1.2;
+    padding: 4px;
+  }
+  .s5-dot .name {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--sub);
+    white-space: nowrap;
+  }
+  .s5-dot .metric {
+    font-size: 9px;
+    color: var(--dim);
+    white-space: nowrap;
+  }
+
+  /* AIdol special dot */
+  .s5-dot.aidol .circle {
+    width: 68px; height: 68px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 800;
+    box-shadow: 0 0 40px var(--accent-glow), 0 0 80px rgba(255,51,119,0.15);
+  }
+  .s5-dot.aidol .name {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 12px;
+  }
+
+  /* Quadrant labels */
+  .s5-quad-label {
+    position: absolute;
+    font-size: 10px;
+    color: rgba(255,255,255,0.12);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ====== S6: KEY TAKEAWAYS ====== */
+  .s6-layout {
+    position: absolute;
+    top: 130px; left: 60px; right: 60px; bottom: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr auto;
+    gap: 16px;
+  }
+
+  .s6-card {
+    background: #1a1a1a;
+    border-radius: 10px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .s6-card .tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .s6-card .big {
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .s6-card .desc {
+    font-size: 12px;
+    color: var(--sub);
+    line-height: 1.6;
+  }
+
+  .s6-bottom {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .s6-bottom .big {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.5;
+  }
+  .s6-bottom .big strong {
+    font-weight: 900;
+  }
+
+  @media print {
+    body { background: var(--bg); }
+    .slide { margin: 0; page-break-after: always; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: MARKET SIZE (Airbnb style - 3 separate circles) -->
+<div class="slide">
+  <div class="slide-header">
+    <h1>Market <span class="ac">Size</span></h1>
+    <p>AI 아이돌 생성/인터랙션 플랫폼 시장</p>
+  </div>
+
+  <div class="s1-circles-area">
+    <div class="s1-col">
+      <div class="s1-circle tam">
+        <span class="num">$20.1B</span>
+        <span class="cagr">CAGR 23.6%</span>
+      </div>
+      <div class="s1-label">
+        <div class="name">Virtual Idol</div>
+        <div class="type">Total Addressable Market</div>
+        <div class="src">Business Research Insights, 2026</div>
+      </div>
+    </div>
+
+    <div class="s1-col">
+      <div class="s1-circle sam">
+        <span class="num">$2.7B</span>
+      </div>
+      <div class="s1-label">
+        <div class="name">K-pop Fan</div>
+        <div class="type">Serviceable Available Market</div>
+        <div class="src">K-pop 유료 팬 750만 x ARPU $360</div>
+      </div>
+    </div>
+
+    <div class="s1-col">
+      <div class="s1-circle som">
+        <span class="num">$18M</span>
+      </div>
+      <div class="s1-label">
+        <div class="name">Year 3 Target</div>
+        <div class="type">Serviceable Obtainable Market</div>
+        <div class="src">유료 5만명 x $360 (Bottom-up)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>1 / 6</span></div>
+</div>
+
+<!-- SLIDE 2: WHY NOW - Cost Collapse (Square style arrow) -->
+<div class="slide">
+  <div class="slide-header">
+    <h1>Why <span class="ac">Now</span></h1>
+    <p>2년 전에는 이 제품을 만들 수 없었다</p>
+  </div>
+
+  <div class="s2-layout">
+    <div class="s2-arrow-area">
+      <div class="s2-arrow-box">
+        <!-- Large upward arrow SVG -->
+        <svg class="s2-arrow-svg" width="200" height="380" viewBox="0 0 200 380" fill="none">
+          <path d="M100 380 L100 40" stroke="rgba(255,255,255,0.06)" stroke-width="120" stroke-linecap="round"/>
+          <path d="M100 360 L100 60" stroke="var(--accent)" stroke-width="80" stroke-linecap="round" opacity="0.15"/>
+          <path d="M40 100 L100 20 L160 100" stroke="var(--accent)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M100 20 L100 360" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="s2-before">
+          <div class="label">Traditional K-pop Debut</div>
+          <div class="val">$1.3M</div>
+        </div>
+        <div class="s2-after">
+          <div class="label">AI Generation Cost</div>
+          <div class="val">$0.02</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="s2-right">
+      <div class="s2-block">
+        <h3>비용 붕괴</h3>
+        <div class="item">
+          곡 1개: <strong>$0.02</strong> (Suno) vs 데뷔 $1.3M = <span class="pk">65,000x</span><br>
+          보이스 합성: <strong>$0.07/분</strong> (ElevenLabs)<br>
+          이미지 생성: <strong>$0.011/장</strong> (GPT-image)<br>
+          2023년 대비 비용 <span class="pk">-45~85%</span> 하락
+        </div>
+      </div>
+
+      <div class="s2-block">
+        <h3>AI 인프라 기업 성장</h3>
+        <div class="item">
+          Suno (AI 음악): ARR <strong>$200M</strong>, 밸류 $2.45B<br>
+          ElevenLabs (AI 음성): ARR <strong>$330M</strong>, 밸류 $11B<br>
+          6개월 만에 <span class="pk">4.4x</span> 성장
+        </div>
+      </div>
+
+      <div class="s2-block">
+        <h3>품질 변곡점</h3>
+        <div class="item">
+          AI 아티스트 <strong>Billboard #1</strong> (2025.11)<br>
+          Warner Music x Suno <strong>라이선스 합의</strong><br>
+          일일 AI 음악 업로드 <strong>5만 곡</strong> (전체 34%)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>2 / 6</span></div>
+</div>
+
+<!-- SLIDE 3: WHY NOW - Payment Proof -->
+<div class="slide">
+  <div class="slide-header">
+    <h1>Why Now <span class="ac">-- Payment Proof</span></h1>
+    <p>사람들은 AI 캐릭터와 버추얼 아이돌에 이미 돈을 쓰고 있다</p>
+  </div>
+
+  <div class="s3-layout">
+    <div class="s3-section">
+      <h3>AI Companion Revenue</h3>
+      <div class="s3-row"><span class="label">다운로드당 매출 (YoY)</span><span class="value pk">$0.52 -> $1.18 (+127%)</span></div>
+      <div class="s3-row"><span class="label">AI 앱 인앱 매출 (2024)</span><span class="value pk">$1.2B (+179% YoY)</span></div>
+      <div class="s3-row"><span class="label">Chai AI (팀 12명)</span><span class="value">$40M ARR</span></div>
+      <div class="s3-row"><span class="label">Google -> Character.AI 딜</span><span class="value">$2.7B</span></div>
+      <div class="s3-source">Sensor Tower / Yahoo Finance / Business of Apps</div>
+    </div>
+
+    <div class="s3-section">
+      <h3>K-pop Fan Spending</h3>
+      <div class="s3-row"><span class="label">Bubble (일방향 메시지)</span><span class="value pk">749억원/년</span></div>
+      <div class="s3-row"><span class="label">SM -> DearU 투자</span><span class="value pk">$92M</span></div>
+      <div class="s3-row"><span class="label">PLAVE (버추얼 아이돌)</span><span class="value">454억원 매출</span></div>
+      <div class="s3-row"><span class="label">팬 콘서트 지출 (YoY)</span><span class="value gn">+61%</span></div>
+      <div class="s3-source">MBW / THE VC / atVenu</div>
+    </div>
+
+    <div class="s3-section">
+      <h3>Big Player Bets</h3>
+      <div class="s3-row"><span class="label">HYBE -> Supertone 인수</span><span class="value pk">$36.5M</span></div>
+      <div class="s3-row"><span class="label">SM -> DearU 추가 인수</span><span class="value pk">$92M</span></div>
+      <div class="s3-row"><span class="label">JYP Blue Garage</span><span class="value">17직군 채용 중</span></div>
+      <div class="s3-row"><span class="label">Google -> Character.AI</span><span class="value">$2.7B</span></div>
+      <div class="s3-source">Korea Times / MBW</div>
+    </div>
+
+    <div class="s3-section">
+      <h3>But All Agency-Led</h3>
+      <div class="s3-row"><span class="label">HYBE Supertone</span><span class="value" style="color:var(--dim);">기획사 소유 IP</span></div>
+      <div class="s3-row"><span class="label">SM DearU</span><span class="value" style="color:var(--dim);">기획사 소유 IP</span></div>
+      <div class="s3-row"><span class="label">JYP Blue Garage</span><span class="value" style="color:var(--dim);">기획사 소유 IP</span></div>
+      <div class="s3-row"><span class="label" style="color:var(--accent);font-weight:600;">사용자 생성 AI 아이돌</span><span class="value pk">= 공백</span></div>
+      <div class="s3-source">대형사의 투자가 시장을 검증하지만, 모두 기획사 주도 모델</div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>3 / 6</span></div>
+</div>
+
+<!-- SLIDE 4: COMPETITION TABLE -->
+<div class="slide">
+  <div class="slide-header">
+    <h1>Competitive <span class="ac">Landscape</span></h1>
+    <p>경쟁사 실적 데이터 및 기능 비교</p>
+  </div>
+
+  <div class="s4-area">
+    <table class="s4-tbl">
+      <thead><tr>
+        <th></th>
+        <th>PLAVE</th>
+        <th>Bubble (DearU)</th>
+        <th>Character.AI</th>
+        <th class="aidol-col">AIdol</th>
+      </tr></thead>
+      <tbody>
+        <tr>
+          <td>유형</td>
+          <td>버추얼 아이돌 그룹</td>
+          <td>아이돌 메시지 플랫폼</td>
+          <td>AI 캐릭터 대화</td>
+          <td class="aidol-col">AI 아이돌 플랫폼</td>
+        </tr>
+        <tr>
+          <td>매출</td>
+          <td class="revenue">454억원</td>
+          <td class="revenue">749억원</td>
+          <td class="revenue">$32M</td>
+          <td class="aidol-col">Pre-revenue</td>
+        </tr>
+        <tr>
+          <td>사용자 수</td>
+          <td>앨범 103만장</td>
+          <td>220만 구독자</td>
+          <td>MAU 2,000만</td>
+          <td class="aidol-col">--</td>
+        </tr>
+        <tr>
+          <td>사용자 생성</td>
+          <td class="cx">X</td>
+          <td class="cx">X</td>
+          <td class="ck">O (범용)</td>
+          <td class="aidol-col st">O (K-pop)</td>
+        </tr>
+        <tr>
+          <td>양방향 소통</td>
+          <td class="pt">제한적</td>
+          <td class="cx">X (일방향)</td>
+          <td class="ck">O</td>
+          <td class="aidol-col st">O</td>
+        </tr>
+        <tr>
+          <td>K-pop 특화</td>
+          <td class="ck">O</td>
+          <td class="ck">O</td>
+          <td class="cx">X</td>
+          <td class="aidol-col st">O</td>
+        </tr>
+        <tr>
+          <td>콘텐츠 생성</td>
+          <td class="cx">X</td>
+          <td class="cx">X</td>
+          <td class="cx">X</td>
+          <td class="aidol-col st">O (음악/영상)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="s4-callout">
+      <span>"K-pop 특화 + 사용자 생성 + 양방향 소통 + 콘텐츠 생성"</span>을 모두 제공하는 서비스는 없다
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>4 / 6</span></div>
+</div>
+
+<!-- SLIDE 5: POSITIONING MAP (Airbnb/Omnious style 2x2) -->
+<div class="slide">
+  <div class="slide-header">
+    <h1><span class="ac">Positioning</span></h1>
+    <p>3개 시장의 교차점 -- 아직 아무도 차지하지 않은 자리</p>
+  </div>
+
+  <div class="s5-area">
+    <div class="s5-map">
+      <!-- Axes -->
+      <div class="s5-axis-h"></div>
+      <div class="s5-axis-v"></div>
+
+      <!-- Axis labels -->
+      <span class="s5-ax-label top">User-Generated</span>
+      <span class="s5-ax-label bottom">Agency-Led</span>
+      <span class="s5-ax-label left">Consumption</span>
+      <span class="s5-ax-label right">Creation</span>
+
+      <!-- Quadrant subtle labels -->
+      <span class="s5-quad-label" style="top:40px;left:80px;">User + Consumption</span>
+      <span class="s5-quad-label" style="top:40px;right:80px;">User + Creation</span>
+      <span class="s5-quad-label" style="bottom:40px;left:80px;">Agency + Consumption</span>
+      <span class="s5-quad-label" style="bottom:40px;right:80px;">Agency + Creation</span>
+
+      <!-- Competitors as dots -->
+      <!-- Character.AI: User-Generated + Consumption (upper-left) -->
+      <div class="s5-dot" style="left:22%;top:28%;">
+        <div class="circle">C.AI</div>
+        <div class="name">Character.AI</div>
+        <div class="metric">MAU 2,000만</div>
+      </div>
+
+      <!-- mini ai: User-Generated + Consumption (upper-left, slightly more center) -->
+      <div class="s5-dot" style="left:34%;top:36%;">
+        <div class="circle">mini</div>
+        <div class="name">mini ai</div>
+        <div class="metric">1회성 생성</div>
+      </div>
+
+      <!-- Bubble: Agency + Consumption (lower-left) -->
+      <div class="s5-dot" style="left:25%;top:72%;">
+        <div class="circle">Bubble</div>
+        <div class="name">Bubble</div>
+        <div class="metric">749억원</div>
+      </div>
+
+      <!-- PLAVE: Agency + slightly right (lower-center) -->
+      <div class="s5-dot" style="left:45%;top:75%;">
+        <div class="circle">PLAVE</div>
+        <div class="name">PLAVE</div>
+        <div class="metric">454억원</div>
+      </div>
+
+      <!-- ZETA: Agency + Consumption (lower-left) -->
+      <div class="s5-dot" style="left:18%;top:64%;">
+        <div class="circle">ZETA</div>
+        <div class="name">ZETA</div>
+        <div class="metric">기획사 IP</div>
+      </div>
+
+      <!-- Suno: User + Creation (right side) -->
+      <div class="s5-dot" style="left:78%;top:35%;">
+        <div class="circle">Suno</div>
+        <div class="name">Suno</div>
+        <div class="metric">$200M ARR</div>
+      </div>
+
+      <!-- AIdol: User-Generated + Creation (upper-right, THE empty spot) -->
+      <div class="s5-dot aidol" style="left:76%;top:20%;">
+        <div class="circle">AIdol</div>
+        <div class="name">K-pop + 생성 + 소통</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>5 / 6</span></div>
+</div>
+
+<!-- SLIDE 6: KEY TAKEAWAYS -->
+<div class="slide">
+  <div class="slide-header">
+    <h1>Key <span class="ac">Takeaways</span></h1>
+  </div>
+
+  <div class="s6-layout">
+    <div class="s6-card">
+      <div class="tag">01 MARKET</div>
+      <div class="big">$20.1B</div>
+      <div class="desc">버추얼 아이돌 시장 CAGR 23.6%<br>AI 컴패니언 시장 CAGR 31.2%</div>
+    </div>
+    <div class="s6-card">
+      <div class="tag">02 PROVEN DEMAND</div>
+      <div class="big">$1.2B</div>
+      <div class="desc">AI 앱 인앱 매출 YoY +179%<br>Bubble 749억 / PLAVE 454억</div>
+    </div>
+    <div class="s6-card">
+      <div class="tag">03 TECH READY</div>
+      <div class="big" style="font-size:34px;">65,000x</div>
+      <div class="desc">AI 생성 비용 붕괴<br>Billboard #1 / Warner Music 라이선스</div>
+    </div>
+    <div class="s6-card">
+      <div class="tag">04 BIG BETS</div>
+      <div class="big">$131M+</div>
+      <div class="desc">HYBE $36.5M + SM $92M + Google $2.7B<br>모두 기획사 주도 모델에 집중</div>
+    </div>
+    <div class="s6-bottom">
+      <div class="big"><strong>"K-pop 특화 + 사용자 생성 + 양방향 소통 + 콘텐츠 생성"</strong><br>이 교차점에 위치한 서비스는 AIdol뿐이다</div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="brand">AIDOL</span><span>6 / 6</span></div>
+</div>
+
+</body>
+</html>
