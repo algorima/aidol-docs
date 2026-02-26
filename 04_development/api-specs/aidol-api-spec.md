@@ -7,11 +7,11 @@
 
 ## 전체 엔드포인트
 
-| 엔드포인트                                       | 메서드 | 설명                     | 인증   | Sprint |
-|---------------------------------------------| ------ | ------------------------ | ------ | ------ |
+| 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
+| ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
 | `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
 | `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
-| `/aidols/my`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
+| `/me/aidols`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
 | `/aidols/{id}`                              | GET    | AIdol 그룹 조회          | Public | 1      |
 | `/aidols/{id}`                              | PATCH  | AIdol 그룹 수정          | Public | 1      |
 | `/aidols/images`                            | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
@@ -118,7 +118,7 @@ Input Parameters (Query)
 
 ---
 
-### GET /aidols/my - 사용자가 만든 그룹 전체 조회
+### GET /me/aidols - 사용자가 만든 그룹 전체 조회
 
 현재 사용자(쿠키 ID 기준)가 생성한 그룹만 필터링하여 조회합니다.
 
