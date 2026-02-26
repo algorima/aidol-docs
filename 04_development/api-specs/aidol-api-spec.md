@@ -123,7 +123,7 @@ Input Parameters (Query)
 
 현재 사용자(쿠키 ID 기준)가 생성한 그룹만 필터링하여 조회합니다.
 
-- URL: GET /aidols/my
+- URL: GET /me/aidols
 - Auth: 쿠키 필수 (anonymousId)
 
 Input Parameters (Query)
@@ -927,14 +927,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 - id: Chatroom ID (대화가 일어나는 방)
 - cid: Companion ID (대답을 해야 하는 멤버)
 - Auth: 공개
-
-동작 원리:
-
-1. 백엔드는 cid에 해당하는 멤버 정보를 DB에서 조회합니다.
-2. 멤버의 system_prompt와 채팅방의 최근 대화 내역(History)을 조합하여 LLM에 보낼 프롬프트를 구성합니다.
-3. 현재 시간(KST) 정보도 프롬프트에 포함하여 시간 감각을 부여합니다.
-4. LLM(OpenAI)을 통해 답변을 생성합니다.
-5. 생성된 답변을 companion 타입의 메시지로 DB에 저장합니다
 
 **Request**:
 
