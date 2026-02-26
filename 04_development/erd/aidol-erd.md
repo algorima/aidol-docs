@@ -218,7 +218,7 @@ erDiagram
 | id           | UUID    | PK               | 자동 생성                                     |
 | companion_id | UUID    | FK, IX, NOT NULL | companions 참조                               |
 | name         | str     | NOT NULL         | 채팅방 이름                                   |
-| anonymous_id | str(36) |                  | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| anonymous_id | str(36) | IX               | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
 | language     | str     | NOT NULL         | 언어 (기본: "ko")                             |
 
 ### messages 
