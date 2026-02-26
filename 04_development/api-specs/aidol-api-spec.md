@@ -732,22 +732,7 @@ Input Parameters (Query)
 
 멤버 관계를 삭제 합니다.
 
-**Response** (200 OK):
-
-```json
-{
-  "data": {
-  	"id": "string" ,
-    "fromCompanionId": "string",
-    "toCompanionId": "string",
-    "type": "string",
-    "intimacy": "string",
-    "nickname": "string"
-  },
-  "createdAt": "datetime",
-  "updatedAt": "datetime"
-}
-```
+**Response** (204 OK):
 ---
 
 ### GET /me/chatrooms - 채팅방 목록 조회
@@ -888,7 +873,7 @@ Input Parameters (Query)
 }
 ```
 
-**Response** (200 OK):
+**Response** (201 OK):
 ```json
 {
   "id": "msg-125",
