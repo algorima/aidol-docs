@@ -11,9 +11,9 @@
 ## 파일명 규칙
 
 ```
-YYYYMMDD__주제__상태__vX.Y__소유자.md
+주제.md
 ```
 
 예시:
-- `20260201__chat-system-prompt__final__v1.0__yw.md`
-- `20260205__persona-generation-experiment__review__v0.2__sy.md`
+- `chat-system-prompt.md`
+- `persona-generation-experiment.md`
