@@ -70,47 +70,72 @@ SOM은 Bottom-up 방식으로, AIdol이 3년 내 실제로 확보할 수 있는 
 
 전환율 근거: Character.AI는 MAU 2,000만 명 대비 2025년 매출 $3,220만으로, 유료 전환율 약 1.3%에 ARPU $120 수준이다. AIdol은 K-pop 팬의 높은 결제 의향(미국 팬 41%가 연 $100+ 지출)을 고려해 5~10% 전환율을 목표로 한다.
 
-## 3. Why Now: 왜 지금인가
+## 3. Why Now: 2년 전에는 왜 안 됐고, 2년 후면 왜 늦은가
 
-### 3.1 AI 기술 성숙 — 생성 비용의 급락
+### 3.1 생성 비용 붕괴 — 이 제품이 2년 전에는 불가능했던 이유
 
-| 기술 | 상용화 수준 | 근거 |
-|------|-----------|------|
-| AI 음악 생성 | 상용화 완료 | Suno AI: 200만 유료 구독자, ARR **$3억**, 기업가치 $24.5억 ([TechCrunch](https://techcrunch.com/2025/11/19/legally-embattled-ai-music-startup-suno-raises-at-2-45b-valuation-on-200m-revenue/)) |
-| AI 보이스 클로닝 | 상용화 완료 | 10~30초 오디오로 즉시 생성, Warner Music 라이선스 계약 |
-| AI 이미지 생성 | 상용화 완료 | Midjourney, DALL-E 등 다수 |
-| AI 영상 생성 | 초기 상용화 | Runway, Pika 등 |
+K-pop 아이돌을 "만드는 비용"이 근본적으로 바뀌었다.
 
-2년 전에는 불가능했던 "AI 아이돌이 노래하고, 대화하고, 영상에 등장하는 것"이 이제 기술적으로 가능해졌다.
+| 항목 | 전통 방식 | AI 생성 (2026) | 비용 차이 | 출처 |
+|------|----------|---------------|----------|------|
+| 곡 1개 제작 | 수천만원 (작곡+편곡+녹음+믹싱) | **$0.02** (Suno Pro) | ~65,000배 | [Suno Pricing](https://suno.com/pricing) |
+| 보이스 생성 | 스튜디오 녹음 수백만원 | **분당 $0.07** | 2023 대비 ~85배 하락 | [ElevenLabs](https://elevenlabs.io/) |
+| 캐릭터 이미지 | 전문 일러스트 수백만원 | **장당 $0.011** | 2023 대비 45% 하락 | [OpenAI Pricing](https://platform.openai.com/docs/pricing) |
+| 아이돌 그룹 데뷔 | **$1.3M~$3.6M** (JYP 기준) | AI로 대체 가능 | - | [Koreaboo](https://www.koreaboo.com/stories/costs-1000000-usd-debut-kpop-group-heres-jyp-breakdown/) |
 
-### 3.2 버추얼 아이돌 시장 검증 — PLAVE가 증명한 PMF
+이 비용 변화를 만든 회사들의 성장:
 
-| 항목 | 데이터 | 출처 |
-|------|--------|------|
-| PLAVE 2024년 매출 | **454억원** (2년간 64배 성장) | [THE VC](https://thevc.kr/vlast) |
-| 앨범 초동 | **103만 장** (버추얼 아이돌 최초 밀리언셀러) | [노컷뉴스](https://www.nocutnews.co.kr/news/6290226) |
-| 콘서트 | 고척 스카이돔 3.7만 석 매진 (2일) | [Threads/@jlb_investor](https://www.threads.com/@jlb_investor/post/DQbRoOACThX) |
+| 회사 | ARR 성장 | 밸류에이션 | 출처 |
+|------|---------|----------|------|
+| Suno (AI 음악) | $45M → **$200M** (6개월, 4.4배) | **$2.45B** | [TechCrunch](https://techcrunch.com/2025/11/19/legally-embattled-ai-music-startup-suno-raises-at-2-45b-valuation-on-200m-revenue/) |
+| ElevenLabs (AI 음성) | $120M → **$330M** (YoY +175%) | **$11B** | [CNBC](https://www.cnbc.com/2026/02/04/nvidia-backed-ai-startup-elevenlabs-11-billion-valuation.html) |
 
-PLAVE가 "버추얼 아이돌에게 돈을 쓰는 팬이 존재한다"는 것을 입증했다. 그러나 PLAVE는 기획사 주도 모델이다. "사용자 생성" 시장은 아직 미개척.
+### 3.2 AI 음악 품질 변곡점 — "장난감"에서 "차트 1위"로
 
-### 3.3 대형 엔터사의 AI 전략 — 시장 인식의 전환
+2024년 11월, AI 음악의 품질이 **차트 1위**에 도달했다.
 
-| 회사 | AI 전략 | 출처 |
-|------|---------|------|
-| HYBE | Supertone 인수, AI 버추얼 그룹 Syndi8 데뷔 | [Music Business Worldwide](https://www.musicbusinessworldwide.com/hybe-owned-voice-cloning-startup-supertone-launches-ai-powered-virtual-pop-group-syndi81/) |
-| JYP | Blue Garage 자회사 설립, AI + Unreal Engine 아티스트 개발 중 | [Music Business Worldwide](https://www.musicbusinessworldwide.com/jyp-entertainment-is-hiring-for-ai-and-unreal-engine-experts-to-develop-an-unprecedented-virtual-kpop-artist/) |
-| SM | 에스파 AI 아바타(ae) 세계관 운영 | [Korea Herald](https://www.koreaherald.com/article/10646918) |
+| 사건 | 시기 | 의미 | 출처 |
+|------|------|------|------|
+| Suno v4 출시 | 2024.11 | "인간 퍼포먼스에 가까운" 보컬 품질 | [Tom's Guide](https://www.tomsguide.com/ai/i-write-about-ai-for-a-living-and-suno-v4-is-so-good-it-put-a-smile-on-my-face) |
+| AI 아티스트 Billboard #1 | 2025.11 | Breaking Rust, Country Digital Song Sales 1위 | [Euronews](https://www.euronews.com/culture/2025/11/14/breaking-rust-ai-artist-tops-us-chart-for-first-time-as-study-reveals-alarming-recognition) |
+| Warner Music x Suno 라이선스 합의 | 2025.11 | 소송 → 라이선스 = AI 음악이 **"불법"에서 "합법 인프라"로** 전환 | [Rolling Stone](https://www.rollingstone.com/music/music-features/suno-warner-music-group-ai-music-settlement-lawsuit-1235472868/) |
+| 일일 AI 음악 업로드 | 현재 | 매일 **5만 곡** (전체 업로드의 34%) | Deezer 리서치 |
 
-HYBE, JYP, SM 모두 AI 아이돌에 투자하고 있다. 이는 시장의 방향성을 검증해주지만, 모두 **기획사 주도 모델**에 집중하고 있어 "사용자 생성" 시장은 공백이다.
+### 3.3 사람들이 AI 캐릭터 관계에 실제로 돈을 쓴다는 증거
 
-### 3.4 AI 컴패니언 시장의 폭발적 성장
+"다운로드"가 아닌 **결제 데이터**:
 
-- 2025년 상반기 AI 컴패니언 앱 매출: **$8,200만** (전년 동기 대비 64% 증가)
-- 다운로드: **6,000만 회** (전년 동기 대비 88% 증가)
-- Character.AI 평균 세션: **2시간/일**, 주간 **373분**
-- 출처: [ElectroIQ](https://electroiq.com/stats/ai-companions-statistics/), [DemandSage](https://www.demandsage.com/character-ai-statistics/)
+| 지표 | 수치 | 의미 | 출처 |
+|------|------|------|------|
+| AI 앱 다운로드당 매출 | **$0.52 → $1.18** (YoY +127%) | 같은 다운로드에서 2배 더 결제 | [Sensor Tower](https://sensortower.com/blog/state-of-ai-apps-2024) |
+| AI 앱 전체 인앱 매출 (2024) | **$1.2B** (YoY +179%) | 전년 대비 3배 | [Sensor Tower](https://sensortower.com/blog/state-of-ai-apps-2024) |
+| Chai AI (12명 팀) | **$40M ARR**, DAU 200만 | 소규모 팀으로도 대형 매출 가능 | [Yahoo Finance](https://finance.yahoo.com/news/chai-social-ai-platform-track-060000018.html) |
+| Character.AI | Google **$2.7B** 라이선스 딜 | 빅테크가 이 시장에 베팅 | [Business of Apps](https://www.businessofapps.com/data/character-ai-statistics/) |
 
-사용자들이 AI 캐릭터와의 인터랙션에 이미 시간과 돈을 쓰고 있다. K-pop이라는 강력한 IP와 결합되면 engagement와 결제 전환율이 더 높아질 수 있다.
+### 3.4 K-pop 팬은 이미 입증된 디지털 결제층
+
+K-pop 팬이 디지털 서비스에 돈을 쓰는지는 이미 증명되었다:
+
+| 서비스 | 매출/투자 | 핵심 시사점 | 출처 |
+|--------|----------|-----------|------|
+| Bubble (일방향 메시지) | **749억원** 연매출 | 일방향 문자에도 이 매출 → 양방향 AI면? | [MBW](https://www.musicbusinessworldwide.com/sm-entertainment-buys-additional-11-4-stake-in-bubble-superfan-app-operator-dearu-in-92m-deal/) |
+| SM의 DearU 지분 추가 인수 | **$92M** (1,356억원) | 대형사가 팬 서비스에 이 금액을 베팅 | [MBW](https://www.musicbusinessworldwide.com/sm-entertainment-buys-additional-11-4-stake-in-bubble-superfan-app-operator-dearu-in-92m-deal/) |
+| Weverse | **12M MAU**, 2025년 최초 흑자 | 디지털 사업 연 30% 성장, 디지털 상품 YoY 2배 | [MBW](https://www.musicbusinessworldwide.com/hybe-says-weverse-hit-12m-monthly-users-last-year-and-that-its-turning-casual-fans-into-superfans/) |
+| PLAVE (버추얼 아이돌) | **454억원** 매출, 팝업 1회 **70억원** | 실물 없는 버추얼에도 이 지출 | [THE VC](https://thevc.kr/vlast) |
+| K-pop 팬 콘서트 지출 | 1인당 **$48.32** (YoY +61%) | 팬 지출이 가속 중 | [atVenu](https://www.atvenu.com/post/the-fan-spending-report-what-concertgoers-are-buying-most) |
+
+### 3.5 빅플레이어의 베팅 — 금액으로 증명
+
+"투자하고 있다"가 아니라, **얼마를 썼는가**:
+
+| 회사 | 행동 | 금액 | 출처 |
+|------|------|------|------|
+| HYBE | Supertone 인수 (AI 음성) | **$36.5M** (450억원) | [Korea Times](https://www.koreatimes.co.kr/www/biz/2024/10/602_344563.html) |
+| SM | DearU 지분 11.4% 추가 인수 | **$92M** (1,356억원) | [MBW](https://www.musicbusinessworldwide.com/sm-entertainment-buys-additional-11-4-stake-in-bubble-superfan-app-operator-dearu-in-92m-deal/) |
+| JYP | Blue Garage AI 아티스트 프로젝트 | **17개 직군 대규모 채용** 중 | [MBW](https://www.musicbusinessworldwide.com/jyp-entertainment-is-hiring-for-ai-and-unreal-engine-experts-to-develop-an-unprecedented-virtual-kpop-artist/) |
+| Google | Character.AI 라이선스 딜 | **$2.7B** | [Business of Apps](https://www.businessofapps.com/data/character-ai-statistics/) |
+
+단, 이들은 모두 **기획사 주도 모델**(HYBE, JYP, SM) 또는 **범용 AI**(Google)에 집중. "사용자 생성 + K-pop 특화" 조합은 아직 빈 자리다.
 
 ## 4. 경쟁 환경
 
