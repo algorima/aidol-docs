@@ -733,7 +733,7 @@ Input Parameters (Query)
 
 멤버 관계를 삭제 합니다.
 
-**Response** (204 OK):
+**Response** (204 No Content):
 ---
 
 ### GET /me/chatrooms - 채팅방 목록 조회
@@ -874,7 +874,7 @@ Input Parameters (Query)
 }
 ```
 
-**Response** (201 OK):
+**Response** (201 Created):
 ```json
 {
   "id": "msg-125",
@@ -940,7 +940,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 ```json
 {
   "messageId": "msg-126",
-  "content": "저런, 무슨 일 있으셨어요? 제가 옆에서 이야기 들어드릴게요. "
+  "content": "안녕하세요 ..."
 }
 ```
 
