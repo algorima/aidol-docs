@@ -7,33 +7,34 @@
 
 ## 전체 엔드포인트
 
-| 엔드포인트                                  | 메서드 | 설명                     | 인증   | Sprint |
-| ------------------------------------------- | ------ | ------------------------ | ------ | ------ |
-| `/aidols`                                   | POST   | AIdol 그룹 생성          | Cookie | 1      |
-| `/aidols`                                   | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
-| `/me/aidols`                                | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
-| `/aidols/{id}`                              | GET    | AIdol 그룹 조회          | Public | 1      |
-| `/aidols/{id}`                              | PATCH  | AIdol 그룹 수정          | Public | 1      |
-| `/aidols/images`                            | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
-| `/companions`                               | GET    | Companion 목록 조회      | Public | 1      |
-| `/companions`                               | POST   | Companion 멤버 생성      | Public | 1      |
-| `/companions/{id}`                          | GET    | Companion 멤버 조회      | Public | 2      |
-| `/companions/{id}`                          | PATCH  | Companion 멤버 수정      | Public | 1      |
-| `/companions/{id}`                          | DELETE | Companion 멤버 삭제      | Public | 1      |
-| `/companions/images`                        | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
-| `/leads`                                    | POST   | email 수집               | Public | 1      |
-| `/aidol-highlights`                         | GET    | 아이돌 하이라이트 조회   | Public | 2      |
-| `/aidol-highlights/{id}/messages`           | GET    | 하이라이트 메세지 조회   | Public | 2      |
-| `/companion-relationships`                  | GET    | 아이돌 관계 조회         | Public | 2      |
-| `/companion-relationships/{id}`             | GET    | 아이돌 관계 조회         | Public | 2      |
-| `/companion-relationships`                  | POST   | 아이돌 관계성 생성       | Public | 2      |
-| `/companion-relationships/{id}`             | DELETE | 아이돌 관계 삭제         | Public | 2      |
-| `/chatrooms`                                | POST   | 채팅방 생성              | Cookie | 3      |
-| `/me/chatrooms`                             | GET    | 채팅방 목록 조회         | Cookie | 3      |
-| `/chatrooms/{id}`                           | GET    | 채팅방 조회              | Public | 3      |
-| `/chatrooms/{id}/messages`                  | GET    | 메시지 목록 조회         | Public | 3      |
-| `/chatrooms/{id}/messages`                  | POST   | 메시지 전송              | Cookie | 3      |
-| `/chatrooms/{id}/companions/{cid}/response` | POST   | AI 응답 생성             | Public | 3      |
+| 엔드포인트                                          | 메서드 | 설명                     | 인증   | Sprint |
+| --------------------------------------------------- | ------ | ------------------------ | ------ | ------ |
+| `/aidols`                                           | POST   | AIdol 그룹 생성          | Cookie | 1      |
+| `/aidols`                                           | GET    | 아이돌 그룹 전체 조회    | Public | 2      |
+| `/me/aidols`                                        | GET    | 사용자 아이돌 그룹 조회  | Cookie | 2      |
+| `/aidols/{id}`                                      | GET    | AIdol 그룹 조회          | Public | 1      |
+| `/aidols/{id}`                                      | PATCH  | AIdol 그룹 수정          | Public | 1      |
+| `/aidols/images`                                    | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
+| `/companions`                                       | GET    | Companion 목록 조회      | Public | 1      |
+| `/companions`                                       | POST   | Companion 멤버 생성      | Public | 1      |
+| `/companions/{id}`                                  | GET    | Companion 멤버 조회      | Public | 2      |
+| `/companions/{id}`                                  | PATCH  | Companion 멤버 수정      | Public | 1      |
+| `/companions/{id}`                                  | DELETE | Companion 멤버 삭제      | Public | 1      |
+| `/companions/images`                                | POST   | 이미지 생성 (GEMINI PRO) | Public | 1      |
+| `/leads`                                            | POST   | email 수집               | Public | 1      |
+| `/aidol-highlights`                                 | GET    | 아이돌 하이라이트 조회   | Public | 2      |
+| `/aidol-highlights/{id}/messages`                   | GET    | 하이라이트 메세지 조회   | Public | 2      |
+| `/companion-relationships`                          | GET    | 아이돌 관계 조회         | Public | 2      |
+| `/companion-relationships/{id}`                     | GET    | 아이돌 관계 조회         | Public | 2      |
+| `/companion-relationships`                          | POST   | 아이돌 관계성 생성       | Public | 2      |
+| `/companion-relationships/{id}`                     | DELETE | 아이돌 관계 삭제         | Public | 2      |
+| `/chatrooms`                                        | POST   | 채팅방 생성              | Cookie | 3      |
+| `/me/chatrooms`                                     | GET    | 채팅방 목록 조회         | Cookie | 3      |
+| `/chatrooms/{id}`                                   | GET    | 채팅방 조회              | Public | 3      |
+| `/chatrooms/{id}/messages`                          | GET    | 메시지 목록 조회         | Public | 3      |
+| `/chatrooms/{id}/messages`                          | POST   | 메시지 전송              | Cookie | 3      |
+| `/chatrooms/{id}/companions/{cid}/response`         | POST   | AI 응답 생성             | Public | 3      |
+| `/chatrooms/{id}/companions/{cid}/initial-response` | POST   | 선 발화 AI 응답 생성     | Public | 3      |
 
 ---
 
@@ -526,7 +527,7 @@ Companion 프로필 이미지를 생성합니다.
 
 ```json
 {
-  "aidolId": "aidol-uuid-optional",  // 선택 사항. 있으면 해당 그룹과 연동 시도.
+  "aidolId": "aidol-uuid-optional",  
   "email": "user@example.com"
 }
 ```
@@ -918,7 +919,38 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 }
 ```
 ---
+### POST /chatrooms/{id}/companions/{cid}/initial-response - 선 발화 AI 멤버 응답 생성
 
+선 발화 메세지를 위한 API 입니다.
+
+URL: POST /chatrooms/{id}/companions/{cid}/response
+- id: Chatroom ID (대화가 일어나는 방)
+- cid: Companion ID (대답을 해야 하는 멤버)
+- Auth: 공개
+
+동작 원리:
+
+1. 백엔드는 cid에 해당하는 멤버 정보를 DB에서 조회합니다.
+2. 멤버의 system_prompt와 채팅방의 최근 대화 내역(History)을 조합하여 LLM에 보낼 프롬프트를 구성합니다.
+3. 현재 시간(KST) 정보도 프롬프트에 포함하여 시간 감각을 부여합니다.
+4. LLM(OpenAI)을 통해 답변을 생성합니다.
+5. 생성된 답변을 companion 타입의 메시지로 DB에 저장합니다
+
+**Request**:
+
+```json
+{
+  body 없음
+}
+```
+
+**Response** (200 OK):
+```json
+{
+  "messageId": "msg-126",
+  "content": "저런, 무슨 일 있으셨어요? 제가 옆에서 이야기 들어드릴게요. "
+}
+```
 
 ---
 
