@@ -923,7 +923,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 
 선 발화 메세지를 위한 API 입니다.
 
-URL: POST /chatrooms/{id}/companions/{cid}/response
+URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 - id: Chatroom ID (대화가 일어나는 방)
 - cid: Companion ID (대답을 해야 하는 멤버)
 - Auth: 공개
