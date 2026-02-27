@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>alora - Key Experience</title>
+<style>
+  @font-face { font-family:'Paperlogy'; font-weight:100; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:300; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:400; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:600; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:700; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:800; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family:'Paperlogy'; font-weight:900; src:url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  :root {
+    --bg: #141414;
+    --pink: #FF3377;
+    --white: #ffffff;
+    --dim: rgba(255,255,255,0.45);
+    --dimmer: rgba(255,255,255,0.2);
+    --card: #1e1e1e;
+    --border: rgba(255,255,255,0.07);
+    --pink-bg: rgba(255,51,119,0.08);
+    --pink-border: rgba(255,51,119,0.25);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'Paperlogy', -apple-system, sans-serif;
+    background:#0a0a0a;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:60px 0;
+  }
+
+  .slide {
+    width:1920px;
+    height:1080px;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    padding:64px 100px 60px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    margin-bottom:52px;
+    flex-shrink:0;
+  }
+
+  .header-left { display:flex; flex-direction:column; gap:10px; }
+
+  .tag {
+    font-size:16px;
+    font-weight:700;
+    color:var(--pink);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+  }
+
+  .headline {
+    font-size:56px;
+    font-weight:900;
+    color:var(--white);
+    line-height:1.15;
+    letter-spacing:-0.5px;
+  }
+  .headline .hl { color:var(--pink); }
+
+  .subline {
+    font-size:22px;
+    color:var(--dim);
+    font-weight:400;
+    margin-top:4px;
+  }
+
+  .header-right {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:8px;
+    padding-top:8px;
+  }
+
+  .badge {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--pink-bg);
+    border:1px solid var(--pink-border);
+    border-radius:100px;
+    padding:10px 24px;
+  }
+  .badge-dot {
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--pink);
+    flex-shrink:0;
+  }
+  .badge-text { font-size:18px; font-weight:700; color:var(--white); }
+
+  .badge-sub {
+    font-size:14px;
+    color:var(--dimmer);
+    text-align:right;
+    padding-right:4px;
+  }
+
+  /* ── COLUMNS ── */
+  .cols {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+    flex:1;
+    min-height:0;
+  }
+
+  .col {
+    display:flex;
+    flex-direction:column;
+    gap:0;
+  }
+
+  /* Feature card (top) */
+  .feature-card {
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px 20px 0 0;
+    padding:28px 28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .feat-tag {
+    font-size:13px;
+    font-weight:700;
+    color:var(--pink);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+  }
+
+  .feat-icon {
+    width:48px; height:48px;
+    border-radius:14px;
+    background:var(--pink-bg);
+    border:1px solid var(--pink-border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .feat-icon svg {
+    width:24px; height:24px;
+    stroke:var(--pink);
+    fill:none;
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .feat-name {
+    font-size:22px;
+    font-weight:700;
+    color:var(--white);
+    line-height:1.3;
+  }
+
+  .feat-desc {
+    font-size:15px;
+    color:var(--dim);
+    line-height:1.6;
+  }
+
+  /* Connector */
+  .connector {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:0;
+    flex-shrink:0;
+  }
+  .conn-line {
+    width:1px;
+    height:20px;
+    background:var(--pink);
+    opacity:0.5;
+  }
+  .conn-arrow {
+    width:0; height:0;
+    border-left:7px solid transparent;
+    border-right:7px solid transparent;
+    border-top:10px solid rgba(255,51,119,0.5);
+  }
+  .conn-line2 {
+    width:1px;
+    height:4px;
+    background:transparent;
+  }
+
+  /* Quote card (bottom) */
+  .quote-card {
+    background:var(--pink-bg);
+    border:1px solid var(--pink-border);
+    border-top:none;
+    border-radius:0 0 20px 20px;
+    padding:24px 28px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    flex:1;
+  }
+
+  .quote-mark {
+    font-size:40px;
+    font-weight:900;
+    color:rgba(255,51,119,0.3);
+    line-height:1;
+    margin-bottom:-8px;
+  }
+
+  .quote-text {
+    font-size:24px;
+    font-weight:700;
+    color:var(--white);
+    line-height:1.55;
+    word-break:keep-all;
+  }
+
+  .quote-attr {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:auto;
+  }
+  .attr-dot {
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--pink);
+    flex-shrink:0;
+  }
+  .attr-name {
+    font-size:14px;
+    color:var(--dim);
+    font-weight:600;
+  }
+
+  @media print {
+    body { background:var(--bg); padding:0; }
+    .slide { page-break-after:always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="slide">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-left">
+      <div class="tag">Key Experience</div>
+      <div class="headline">"지금 내가 <span class="hl">민희진</span>이다"</div>
+      <div class="subline">Sprint 1 사용자 테스트 — 실제 발화</div>
+    </div>
+    <div class="header-right">
+      <div class="badge">
+        <div class="badge-dot"></div>
+        <div class="badge-text">UT 8명 전원 완주</div>
+      </div>
+      <div class="badge-sub">이탈자 0명 · 시나리오 전 단계 완료</div>
+    </div>
+  </div>
+
+  <!-- COLUMNS -->
+  <div class="cols">
+
+    <!-- COL 1: 캐스팅 -->
+    <div class="col">
+      <div class="feature-card">
+        <div class="feat-tag">01 · 캐스팅</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.118a7.5 7.5 0 0 1 15 0"/></svg>
+        </div>
+        <div class="feat-name">AI 연습생<br>캐스팅</div>
+        <div class="feat-desc">외모·성격·등급 직접 선택,<br>마음에 없으면 직접 생성</div>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-arrow"></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">내 취향대로 만든 그룹이라<br>더 애착이 생겨</div>
+        <div class="quote-attr">
+          <div class="attr-dot"></div>
+          <div class="attr-name">U3 장쏘피 · 캐스팅 직후 발화</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 2: 선점 경쟁 -->
+    <div class="col">
+      <div class="feature-card">
+        <div class="feat-tag">02 · 선점 경쟁</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/></svg>
+        </div>
+        <div class="feat-name">A등급 연습생<br>선착순 선점</div>
+        <div class="feat-desc">다른 유저가 먼저 캐스팅하면<br>그 연습생은 사라짐</div>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-arrow"></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">다른 유저가 가져가면<br>아쉽다</div>
+        <div class="quote-attr">
+          <div class="attr-dot"></div>
+          <div class="attr-name">U5 · 선점 시스템 경험 중 발화</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 3: 채팅/육성 -->
+    <div class="col">
+      <div class="feature-card">
+        <div class="feat-tag">03 · 채팅 & 육성</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"/></svg>
+        </div>
+        <div class="feat-name">멤버와 채팅,<br>능력치 육성</div>
+        <div class="feat-desc">대화할수록 친밀도 상승,<br>연습으로 실력치 올라감</div>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-arrow"></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">내가 키우는<br>내 아이라는 생각이 들었다</div>
+        <div class="quote-attr">
+          <div class="attr-dot"></div>
+          <div class="attr-name">U6 김민지 · 채팅 세션 후 발화</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COL 4: 공유/소장 -->
+    <div class="col">
+      <div class="feature-card">
+        <div class="feat-tag">04 · 완성 & 공유</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z"/></svg>
+        </div>
+        <div class="feat-name">그룹 카드<br>공유</div>
+        <div class="feat-desc">완성된 그룹 카드를<br>링크로 공유 가능</div>
+      </div>
+      <div class="connector">
+        <div class="conn-line"></div>
+        <div class="conn-arrow"></div>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <div class="quote-text">포토카드처럼<br>소장하고 싶다</div>
+        <div class="quote-attr">
+          <div class="attr-dot"></div>
+          <div class="attr-name">U4 배나영 · 그룹 완성 화면 보고</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /cols -->
+
+</div><!-- /slide -->
+
+</body>
+</html>

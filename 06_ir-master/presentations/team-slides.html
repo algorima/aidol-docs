@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>AIdol - Team</title>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 200; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-2ExtraLight.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 500; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-5Medium.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  :root {
+    --bg: #F5F5F5;
+    --pink: #FF3377;
+    --white: #1a1a1a;
+    --dim: rgba(0,0,0,0.45);
+    --card: #FFFFFF;
+    --border: rgba(0,0,0,0.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy',sans-serif; background:#EFEFEF; display:flex; flex-direction:column; align-items:center; gap:80px; padding:60px 0; color:var(--white); }
+
+  .slide { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:flex; flex-direction:column; padding:72px 100px 64px; }
+
+  .tag { font-size:18px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; text-align:center; }
+  .title { font-size:52px; font-weight:700; color:var(--white); line-height:1.25; margin-top:12px; text-align:center; }
+  .title b { color:var(--pink); font-weight:700; }
+  .subtitle { font-size:22px; color:var(--dim); margin-top:8px; font-weight:400; text-align:center; }
+
+  @media print { body { background:#fff; gap:0; padding:0; } .slide { page-break-after:always; box-shadow:none; border-radius:0; } }
+</style>
+</head>
+<body>
+
+
+<!-- ==================== SLIDE 1: Team Leaders + Members ==================== -->
+<div class="slide">
+  <div class="tag">Team</div>
+  <div class="title">K-POP + AI = <b>AIoIA</b></div>
+  <div class="subtitle">팬덤 사용자 경험을 개발할 수 있는 최적의 팀</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:40px;">
+
+    <!-- CEO -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 36px; display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <div style="font-size:28px; font-weight:800; color:var(--white);">이소연</div>
+        <div style="width:1px; height:20px; background:rgba(0,0,0,.12);"></div>
+        <div style="font-size:18px; color:var(--pink); font-weight:700;">CEO</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          연세대 <b style="color:var(--white);">HCI/UX 석사</b>, AI와의 인터랙션 연구
+        </div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          <b style="color:var(--white);">20년+</b> K-pop 팬덤 경험, 팬덤 심리 + 서브컬처 깊은 이해
+        </div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          CodeStart 창업 (개발 없이 <b style="color:var(--white);">$100 교육 과정</b> 판매)
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:12px;">
+        <div style="font-size:14px; color:var(--pink); font-weight:700; margin-bottom:6px;">왜 소연이어야 할까요?</div>
+        <div style="font-size:15px; color:var(--dim); line-height:1.6;">
+          10대부터 30대까지 장기적 아이돌 소비 경험<br>
+          <b style="color:var(--white);">직접 인생을 겪어보지 않으면 구현할 수 없는 UX</b><br>
+          BL/팬픽 등 서브컬처까지 이해하는 여성 창업자
+        </div>
+      </div>
+    </div>
+
+    <!-- CTO -->
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 36px; display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <div style="font-size:28px; font-weight:800; color:var(--white);">김영욱</div>
+        <div style="width:1px; height:20px; background:rgba(0,0,0,.12);"></div>
+        <div style="font-size:18px; color:var(--pink); font-weight:700;">CTO</div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          <b style="color:var(--white);">KAIST AI/ML/RL 석사</b>
+        </div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          네이버 P2P 스트리밍 <b style="color:var(--white);">특허 3건</b> (미국/일본/한국)
+        </div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          스캐터랩 ML 엔지니어 (<b style="color:var(--white);">PingPong AI</b> 개발)
+        </div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">
+          Algorima CEO (연쇄 창업, 연 매출 <b style="color:var(--white);">10억원+</b>)
+        </div>
+      </div>
+
+      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:12px;">
+        <div style="font-size:14px; color:var(--pink); font-weight:700; margin-bottom:6px;">왜 영욱이어야 할까요?</div>
+        <div style="font-size:15px; color:var(--dim); line-height:1.6;">
+          PingPong 챗봇은 이후 <b style="color:var(--white);">이루다 2.0</b>으로 발전<br>
+          네이버 라이브 스트리밍 플랫폼 개발 경험<br>
+          최신 AI 오픈소스 기여 (LiveKit, LangChain 등)
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 7 team members -->
+  <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-top:auto;">
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--pink);">AI/LLM</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">이미지, 영상 등<br>콘텐츠 생성 파이프라인</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Backend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">LLM 기반 AI Agent<br>Text-to-SQL 1위</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Backend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">AI Agent 설계<br>및 개발</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Frontend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">K-POP 이커머스<br>플랫폼 실무</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Frontend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">K-POP 이커머스<br>플랫폼 실무</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Designer</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">UI/UX<br>디자인</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">PM</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">기획<br>리서치</div>
+    </div>
+  </div>
+
+  <!-- Hiring -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:32px; margin-top:16px; padding:14px 0;">
+    <div style="font-size:15px; font-weight:700; color:var(--pink);">+ 추가 고용 희망</div>
+    <div style="font-size:15px; color:var(--dim);">틱톡 마케팅 전문가</div>
+    <div style="width:4px; height:4px; border-radius:50%; background:rgba(0,0,0,.2);"></div>
+    <div style="font-size:15px; color:var(--dim);">K-POP 엔터 실무 경험자</div>
+    <div style="width:4px; height:4px; border-radius:50%; background:rgba(0,0,0,.2);"></div>
+    <div style="font-size:15px; color:var(--dim);">모바일 앱 개발자</div>
+  </div>
+</div>
+
+
+<!-- ==================== SLIDE 2: AI-Native Organization ==================== -->
+<div class="slide">
+  <div class="tag">AI-Native</div>
+  <div class="title"><b>9</b>명의 팀, 그리고 <b>10</b>번째 팀원은 <b>AI</b></div>
+  <div class="subtitle">DAY-1부터 AI와 함께 자라지 않은 회사는 살아남기 어렵다</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; margin-top:40px;">
+
+    <!-- Left column -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+
+      <!-- Flywheel -->
+      <div style="display:flex; align-items:stretch; gap:8px;">
+        <div style="flex:1; text-align:center; padding:20px 12px; background:var(--card); border:1px solid var(--border); border-radius:14px;">
+          <div style="font-size:14px; font-weight:700; color:var(--pink);">INPUT</div>
+          <div style="font-size:16px; font-weight:600; color:var(--white); margin-top:8px; line-height:1.4;">회사의 암묵지/<br>형식지를 AI에 학습</div>
+        </div>
+        <div style="display:flex; align-items:center; font-size:20px; color:var(--pink);">→</div>
+        <div style="flex:1; text-align:center; padding:20px 12px; background:var(--card); border:1px solid var(--border); border-radius:14px;">
+          <div style="font-size:14px; font-weight:700; color:var(--pink);">LEARN</div>
+          <div style="font-size:16px; font-weight:600; color:var(--white); margin-top:8px; line-height:1.4;">시간이 지날수록<br>AI가 우리 방식을 이해</div>
+        </div>
+        <div style="display:flex; align-items:center; font-size:20px; color:var(--pink);">→</div>
+        <div style="flex:1; text-align:center; padding:20px 12px; background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.12); border-radius:14px;">
+          <div style="font-size:14px; font-weight:700; color:var(--pink);">OUTPUT</div>
+          <div style="font-size:16px; font-weight:600; color:var(--white); margin-top:8px; line-height:1.4;">사람이 늘지 않아도<br>생산성이 복리로 증가</div>
+        </div>
+      </div>
+
+      <!-- GitHub -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 28px;">
+        <div style="font-size:17px; font-weight:700; color:var(--white); margin-bottom:12px;">회사 전체가 GitHub에</div>
+        <div style="font-family:monospace; font-size:14px; color:var(--dim); line-height:2;">
+          <span style="color:var(--pink);">/docs</span> — 정관, 지분 계약서, 재무, IR 자료<br>
+          <span style="color:var(--pink);">/aidol</span> — 메인 코드 + CLAUDE.md<br>
+          <span style="color:var(--pink);">/aidol-docs</span> — PRD, 기능 명세, 스프린트 계획
+        </div>
+        <div style="font-size:13px; color:var(--dim); margin-top:10px;">AI가 파일명만 보고 맥락을 이해 — 모든 것이 버전 관리</div>
+      </div>
+
+      <!-- AI config files -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 28px;">
+        <div style="font-size:17px; font-weight:700; color:var(--white); margin-bottom:12px;">AI 설정 파일들</div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; padding:12px; background:rgba(0,0,0,.04); border-radius:10px;">
+            <div style="font-family:monospace; font-size:14px; font-weight:700; color:var(--pink);">CLAUDE.md</div>
+            <div style="font-size:13px; color:var(--dim); margin-top:4px;">AI가 우리 코드 스타일을 학습</div>
+          </div>
+          <div style="flex:1; padding:12px; background:rgba(0,0,0,.04); border-radius:10px;">
+            <div style="font-family:monospace; font-size:14px; font-weight:700; color:var(--pink);">.cursorrules</div>
+            <div style="font-size:13px; color:var(--dim); margin-top:4px;">Claude Code + Cursor 공용 규칙</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3-layer AI review -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 28px;">
+        <div style="font-size:17px; font-weight:700; color:var(--white); margin-bottom:12px;">3중 AI 리뷰 체계</div>
+        <div style="display:flex; gap:12px;">
+          <div style="flex:1; padding:12px; background:rgba(0,0,0,.04); border-radius:10px; text-align:center;">
+            <div style="font-size:14px; font-weight:700; color:var(--pink);">Claude Code</div>
+            <div style="font-size:12px; color:var(--dim); margin-top:4px;">코딩 중 실시간 피드백</div>
+          </div>
+          <div style="flex:1; padding:12px; background:rgba(0,0,0,.04); border-radius:10px; text-align:center;">
+            <div style="font-size:14px; font-weight:700; color:var(--pink);">GitHub Copilot</div>
+            <div style="font-size:12px; color:var(--dim); margin-top:4px;">PR 자동 리뷰</div>
+          </div>
+          <div style="flex:1; padding:12px; background:rgba(0,0,0,.04); border-radius:10px; text-align:center;">
+            <div style="font-size:14px; font-weight:700; color:var(--pink);">Gemini</div>
+            <div style="font-size:12px; color:var(--dim); margin-top:4px;">YC 파트너 관점 리뷰</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right column -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+
+      <!-- Big productivity number -->
+      <div style="background:rgba(255,51,119,.06); border:1px solid rgba(255,51,119,.15); border-radius:20px; padding:40px 36px; text-align:center;">
+        <div style="font-size:17px; color:var(--dim); font-weight:500;">생산성 향상</div>
+        <div style="font-size:110px; font-weight:900; color:var(--pink); line-height:1; margin-top:4px;">13x</div>
+        <div style="font-size:19px; color:var(--white); font-weight:600; margin-top:12px;">"대표가 2시간 걸릴 일을 AI와 함께 10분에"</div>
+      </div>
+
+      <!-- Specific examples -->
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:24px 28px; flex:1;">
+        <div style="font-size:17px; font-weight:700; color:var(--white); margin-bottom:14px;">실제 사례: 10분 vs 2시간</div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:15px; color:var(--dim);">iMessage 채널 연결</span>
+          <div><span style="font-size:15px; color:rgba(0,0,0,.25); text-decoration:line-through;">35분</span> <span style="font-size:17px; font-weight:700; color:var(--pink); margin-left:12px;">5분</span></div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:15px; color:var(--dim);">문서 레포 구조 변경</span>
+          <div><span style="font-size:15px; color:rgba(0,0,0,.25); text-decoration:line-through;">75분</span> <span style="font-size:17px; font-weight:700; color:var(--pink); margin-left:12px;">3분</span></div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border);">
+          <span style="font-size:15px; color:var(--dim);">Slack 공지 작성</span>
+          <div><span style="font-size:15px; color:rgba(0,0,0,.25); text-decoration:line-through;">10분</span> <span style="font-size:17px; font-weight:700; color:var(--pink); margin-left:12px;">1분</span></div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:space-between; padding:10px 0;">
+          <span style="font-size:15px; color:var(--dim);">채널 멤버 파악</span>
+          <div><span style="font-size:15px; color:rgba(0,0,0,.25); text-decoration:line-through;">10분</span> <span style="font-size:17px; font-weight:700; color:var(--pink); margin-left:12px;">1분</span></div>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <div style="padding:18px 24px; border-left:4px solid var(--pink); background:rgba(255,51,119,.03); border-radius:0 14px 14px 0;">
+        <div style="font-size:17px; font-weight:500; color:var(--white); line-height:1.5;">"사람이 늘지 않아도 AI가 함께 자란다"</div>
+        <div style="font-size:13px; color:var(--dim); margin-top:4px;">Rule 파일이 계속 진화 → AI가 우리 컨텍스트를 점점 더 깊이 이해</div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+</body>
+</html>
