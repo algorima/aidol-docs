@@ -73,7 +73,18 @@ main에서 직접 PR (브랜치 체인 불필요)
 
 ## Feature Flag 설정
 
-### 예시: Sprint 2 기능
+### 예시: 이미 배포된 Sprint 2 기능
+
+**모노레포 전환 전 (현재):**
+- 코드 위치: npm 패키지 `aidol@2.9.0`
+- import: `from "aidol"`
+- Feature Flag: `aidol_sprint2` (PostHog에서 ON/OFF)
+
+**모노레포 전환 후:**
+- 코드 위치: `backend/aidol/`, `frontend/src/aidol/`
+- import: `from "@/aidol"`
+- Feature Flag: 변경 없음 (`aidol_sprint2` 그대로)
+- 사용자 경험: 동일
 
 ```typescript
 // frontend/src/app/[lang]/(public)/aidol/aidols/[aidolId]/casting/page.tsx
@@ -88,33 +99,17 @@ export default function CastingPage() {
       {/* 기존 UI */}
       <CastingContent />
 
-      {/* Sprint 2 UI: Flag로 제어 */}
+      {/* Sprint 2 UI: Flag로 제어 (모노레포 전환 후에도 동일) */}
       {isSprint2Enabled && <BottomNavigationContainer />}
     </div>
   );
 }
 ```
 
-**설정:**
-- Flag name: `aidol_sprint2`
+**새 기능 추가 시:**
+- Flag name: `aidol_new_feature`
 - 초기 상태: `false` (배포되지만 사용자에게 숨김)
 - 활성화: PostHog 콘솔에서 `true`로 변경 (Sprint Review 후)
-
----
-
-## 기존 출시된 기능 (Feature Flag 유지)
-
-### Sprint 2 등 이미 배포된 기능
-
-**변경 없음:**
-- Feature Flag 설정 그대로 유지 (`aidol_sprint2` 등)
-- 사용자 경험 동일
-- PostHog에서 Flag ON/OFF 제어 방식 동일
-
-**변경되는 것 (사용자에게 보이지 않음):**
-- 코드 위치: npm 패키지 (`aidol@2.9.0`) → monorepo (`backend/aidol/`, `frontend/src/aidol/`)
-- import 경로: `from "aidol"` → `from "@/aidol"`
-- 배포 사이클: 별도 릴리스 사이클 → buppy PR merge = 즉시 반영
 
 ---
 
