@@ -102,11 +102,34 @@ export default function CastingPage() {
 
 ---
 
+## 모듈 경계
+
+### aidol은 독립된 모듈
+
+```
+금지: aidol이 buppy 코드 import
+❌ import { UserRepository } from "@/repositories/user";
+❌ import { ChatService } from "@/services/chat";
+
+허용: aidol 내부 코드만
+✅ import { HighlightService } from "@/aidol/services/highlight";
+✅ import { CompanionRepository } from "@/aidol/repositories/companion";
+```
+
+### 도구로 자동 검사
+
+- **Backend:** Tach — `aidol`은 `aidol.*` + `aioia_core.*`만 import 가능
+- **Frontend:** eslint-plugin-boundaries — `src/aidol/`는 `aidol/**/*`만 import 가능
+
+위반 시 린트 에러로 즉시 감지 (PR 단계에서 차단)
+
+---
+
 ## 핵심
 
-Trunk-Based Development + Feature Flags = 빠른 배포 + 안정적인 출시
+모노레포 = Trunk-Based Development + Feature Flags + 모듈 경계
 
-모노레포의 진정한 이점은 작은 배포와 빠른 피드백입니다.
+작은 배포, 빠른 피드백, 독립된 아키텍처
 
 ---
 
