@@ -30,6 +30,7 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 |------|--------|-------|
 | **작업 레포** | algorima/aidol | algorima/buppy |
 | **작업 폴더** | 프로젝트 루트 | frontend/src/aidol/, backend/aidol/ |
+| **import 경로** | `from "aidol"` | `from "@/aidol"` |
 | **배포** | buppy 팀 버전 업그레이드 기다림 | PR merge = 즉시 배포 |
 | **버전 관리** | semantic version (v1.5.0) | buppy commit hash만 (버전 없음) |
 | **출시 제어** | 버전 선택 | Feature Flag |
