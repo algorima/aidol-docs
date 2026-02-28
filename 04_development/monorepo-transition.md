@@ -71,11 +71,11 @@ Frontend PR #65 (→ #64 브랜치)
 ## 업계 표준
 
 **Trunk-Based Development 채택률:**
-- 2023: 80% of PRs
-- 고성능 팀: 2.3배 더 많이 사용
-- 배포 시간: trunk 기반 10시간 빠름
+- 2023: "Almost 80% of PRs merged in 2023 were based on 'main' or 'master' rather than a feature branch" — Graphite
+- 고성능 팀: "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — Google Cloud DORA Report 2021
+- 배포 시간: "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — Graphite
 
-**주요 기업:** Google, Meta, Netflix, Amazon, Shopify
+**주요 채택 기업:** Google, Meta, Netflix, Amazon, Shopify
 
 ---
 
@@ -90,3 +90,4 @@ Trunk-Based Development + Feature Flags = 빠른 배포 + 안정적인 출시
 **References:**
 - [Atlassian: Trunk-based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)
+- [Graphite: Stop Using Feature Branches](https://graphite.dev/blog/stop-using-feature-branches)
