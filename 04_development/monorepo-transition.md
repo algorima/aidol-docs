@@ -116,13 +116,6 @@ export default function CastingPage() {
 ✅ import { CompanionRepository } from "@/aidol/repositories/companion";
 ```
 
-### 도구로 자동 검사
-
-- **Backend:** Tach — `aidol`은 `aidol.*` + `aioia_core.*`만 import 가능
-- **Frontend:** eslint-plugin-boundaries — `src/aidol/`는 `aidol/**/*`만 import 가능
-
-위반 시 린트 에러로 즉시 감지 (PR 단계에서 차단)
-
 ---
 
 ## 핵심
