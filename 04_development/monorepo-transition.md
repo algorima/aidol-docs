@@ -54,26 +54,32 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 4. **문제 시: Flag OFF로 즉시 복구**
 
 ### 이미 출시된 기능 (Flag ON) 수정
+
+**시나리오:** API 변경이 필요한 경우
+
 ```
-Backend PR #64 (main에서, API 변경)
+1. Backend PR #64: main에서 브랜치 생성, API 변경
+2. Frontend PR #65: #64 브랜치를 base로 생성 (API 사용)
     ↓
-Frontend PR #65 (→ #64 브랜치)
-    ↓
-#65 → #64 merge (Atomic)
-    ↓
-#64 → main merge → 배포
+3. #65를 #64로 merge (Frontend + Backend 함께 테스트 가능)
+4. #64를 main으로 merge → 배포 (API 변경 원자적 반영)
 ```
 
-**Flag OFF 기능:** 그냥 배포 (PR 브랜치 패턴 불필요)
+**이유:** Frontend/Backend API 계약 변경을 같은 시점에 배포하여 불일치 방지
+
+**Flag OFF 기능:** main에서 직접 PR (브랜치 체인 불필요)
 
 ---
 
 ## 업계 표준
 
-**Trunk-Based Development 채택률:**
-- 2023: "Almost 80% of PRs merged in 2023 were based on 'main' or 'master' rather than a feature branch" — Graphite
-- 고성능 팀: "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — Google Cloud DORA Report 2021
-- 배포 시간: "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — Graphite
+**Trunk-Based Development 채택률 및 효과:**
+
+- **채택률 (2023):** "Almost 80% of PRs merged in 2023 were based on 'main' or 'master' rather than a feature branch" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
+
+- **고성능 팀 상관관계 (2021):** "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — [Google Cloud DORA Report](https://cloud.google.com/blog/products/devops-sre/the-2021-accelerate-state-of-devops-dora-report-is-here)
+
+- **배포 시간 개선:** "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
 
 ---
 
@@ -88,4 +94,5 @@ Trunk-Based Development + Feature Flags = 빠른 배포 + 안정적인 출시
 **References:**
 - [Atlassian: Trunk-based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)
-- [Graphite: Stop Using Feature Branches](https://graphite.dev/blog/stop-using-feature-branches)
+- [Google Cloud: 2021 DORA Report](https://cloud.google.com/blog/products/devops-sre/the-2021-accelerate-state-of-devops-dora-report-is-here)
+- [Graphite: Stop Using Feature Branches](https://graphite.com/blog/stop-using-feature-branches)
