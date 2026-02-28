@@ -71,15 +71,34 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 
 ---
 
-## 업계 표준
+## Feature Flag 설정
 
-**Trunk-Based Development 채택률 및 효과:**
+### 예시: Sprint 2 기능
 
-- **채택률 (2023):** "Almost 80% of PRs merged in 2023 were based on 'main' or 'master' rather than a feature branch" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
+```typescript
+// frontend/src/app/[lang]/(public)/aidol/aidols/[aidolId]/casting/page.tsx
 
-- **고성능 팀 상관관계 (2021):** "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — [Google Cloud DORA Report](https://cloud.google.com/resources/state-of-devops)
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 
-- **배포 시간 개선:** "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
+export default function CastingPage() {
+  const isSprint2Enabled = useFeatureFlag("aidol_sprint2");
+
+  return (
+    <div>
+      {/* 기존 UI */}
+      <CastingContent />
+
+      {/* Sprint 2 UI: Flag로 제어 */}
+      {isSprint2Enabled && <BottomNavigationContainer />}
+    </div>
+  );
+}
+```
+
+**설정:**
+- Flag name: `aidol_sprint2`
+- 초기 상태: `false` (배포되지만 사용자에게 숨김)
+- 활성화: PostHog 콘솔에서 `true`로 변경 (Sprint Review 후)
 
 ---
 
