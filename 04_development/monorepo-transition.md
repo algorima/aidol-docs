@@ -53,21 +53,19 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
    - 출시: 비즈니스 결정 (Flag ON)
 4. **문제 시: Flag OFF로 즉시 복구**
 
-### 이미 출시된 기능 (Flag ON) 수정
+### API 변경이 필요한 경우 (Frontend/Backend 함께 배포)
 
-**시나리오:** API 변경이 필요한 경우
+Frontend/Backend API 계약 변경을 같은 시점에 배포해야 불일치가 없습니다.
 
 ```
-1. Backend PR #64: main에서 브랜치 생성, API 변경
-2. Frontend PR #65: #64 브랜치를 base로 생성 (API 사용)
+Backend 브랜치에서 API 변경
     ↓
-3. #65를 #64로 merge (Frontend + Backend 함께 테스트 가능)
-4. #64를 main으로 merge → 배포 (API 변경 원자적 반영)
+Frontend 브랜치는 해당 Backend 브랜치를 기반으로 생성
+    ↓
+둘 다 같은 commit으로 main에 merge → 배포
 ```
 
-**이유:** Frontend/Backend API 계약 변경을 같은 시점에 배포하여 불일치 방지
-
-**Flag OFF 기능:** main에서 직접 PR (브랜치 체인 불필요)
+**Flag OFF 기능:** main에서 직접 PR (Frontend/Backend 분리 가능)
 
 ---
 
