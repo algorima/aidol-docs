@@ -102,6 +102,22 @@ export default function CastingPage() {
 
 ---
 
+## 기존 출시된 기능 (Feature Flag 유지)
+
+### Sprint 2 등 이미 배포된 기능
+
+**변경 없음:**
+- Feature Flag 설정 그대로 유지 (`aidol_sprint2` 등)
+- 사용자 경험 동일
+- PostHog에서 Flag ON/OFF 제어 방식 동일
+
+**변경되는 것 (사용자에게 보이지 않음):**
+- 코드 위치: npm 패키지 (`aidol@2.9.0`) → monorepo (`backend/aidol/`, `frontend/src/aidol/`)
+- import 경로: `from "aidol"` → `from "@/aidol"`
+- 배포 사이클: 별도 릴리스 사이클 → buppy PR merge = 즉시 반영
+
+---
+
 ## 모듈 경계
 
 ### aidol은 독립된 모듈
