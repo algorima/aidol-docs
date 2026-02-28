@@ -60,7 +60,7 @@ API 계약이 변경되면 Frontend/Backend를 같은 시점에 배포해야 불
 ```
 Backend 브랜치에서 API 변경
     ↓
-Frontend 브랜치는 해당 Backend 브랜치를 기반으로 생성
+Frontend 브랜치는 Backend 브랜치를 base로 설정하여 생성
     ↓
 둘 다 같은 commit으로 main에 merge → 배포
 ```
