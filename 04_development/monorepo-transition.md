@@ -75,8 +75,6 @@ Frontend PR #65 (→ #64 브랜치)
 - 고성능 팀: "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — Google Cloud DORA Report 2021
 - 배포 시간: "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — Graphite
 
-**주요 채택 기업:** Google, Meta, Netflix, Amazon, Shopify
-
 ---
 
 ## 핵심
