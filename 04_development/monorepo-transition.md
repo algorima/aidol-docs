@@ -36,10 +36,14 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 
 ---
 
-## 권장 패턴: Trunk-Based Development
+## Trunk-Based Development
 
 ### 원칙
-> "Main 브랜치는 항상 배포 가능 상태"
+> "In trunk-based development the main branch is assumed to always be stable, without issues, and ready to deploy."
+>
+> (Trunk-based development에서는 main 브랜치가 항상 안정적이고, 문제가 없으며, 배포할 준비가 되어있다고 가정합니다.)
+>
+> — Atlassian
 
 ### 구현
 1. **main에서 short-lived 브랜치 (2일 이내)**
@@ -49,7 +53,7 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
    - 출시: 비즈니스 결정 (Flag ON)
 4. **문제 시: Flag OFF로 즉시 복구**
 
-### 모니터링된 기능 수정 예시
+### 이미 출시된 기능 (Flag ON) 수정
 ```
 Backend PR #64 (main에서, API 변경)
     ↓
@@ -57,21 +61,10 @@ Frontend PR #65 (→ #64 브랜치)
     ↓
 #65 → #64 merge (Atomic)
     ↓
-#64 → main merge → 배포 (Flag OFF)
-    ↓
-Sprint Review → Flag ON (출시)
+#64 → main merge → 배포
 ```
 
----
-
-## develop 브랜치 (미권장)
-
-### 문제점
-- **불일치 해결 못함**: Backend/Frontend 따로 merge → 불일치 발생
-- **배포 지연**: 2주 축적 → 한 번에 배포 (큰 배포)
-- **복잡한 롤백**: Feature A~J 전체 또는 부분 롤백 필요
-- **DB 마이그레이션 순서 불명확**: 데이터 손상 위험
-- **버그 수정 비용**: 2주 뒤 배포 → 코드 분석 필요 (2배 이상 시간)
+**Flag OFF 기능:** 그냥 배포 (PR 브랜치 패턴 불필요)
 
 ---
 
@@ -90,7 +83,7 @@ Sprint Review → Flag ON (출시)
 
 Trunk-Based Development + Feature Flags = 빠른 배포 + 안정적인 출시
 
-**모노레포의 진정한 이점은 develop이 아니라 작은 배포와 빠른 피드백입니다.**
+모노레포의 진정한 이점은 작은 배포와 빠른 피드백입니다.
 
 ---
 
