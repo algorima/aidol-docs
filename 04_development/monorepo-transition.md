@@ -77,7 +77,7 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 
 - **채택률 (2023):** "Almost 80% of PRs merged in 2023 were based on 'main' or 'master' rather than a feature branch" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
 
-- **고성능 팀 상관관계 (2021):** "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — [Google Cloud DORA Report](https://cloud.google.com/blog/products/devops-sre/the-2021-accelerate-state-of-devops-dora-report-is-here)
+- **고성능 팀 상관관계 (2021):** "Elite performers who meet their reliability targets are 2.3 times more likely to use trunk-based development" — [Google Cloud DORA Report](https://cloud.google.com/resources/state-of-devops)
 
 - **배포 시간 개선:** "PRs based on trunk branches see a nearly 10-hour reduction in PR open-to-merge time" — [Graphite](https://graphite.com/blog/stop-using-feature-branches)
 
@@ -94,5 +94,5 @@ Trunk-Based Development + Feature Flags = 빠른 배포 + 안정적인 출시
 **References:**
 - [Atlassian: Trunk-based Development](https://www.atlassian.com/continuous-delivery/continuous-integration/trunk-based-development)
 - [DORA: Trunk-based development](https://dora.dev/capabilities/trunk-based-development/)
-- [Google Cloud: 2021 DORA Report](https://cloud.google.com/blog/products/devops-sre/the-2021-accelerate-state-of-devops-dora-report-is-here)
+- [Google Cloud: Accelerate State of DevOps](https://cloud.google.com/resources/state-of-devops)
 - [Graphite: Stop Using Feature Branches](https://graphite.com/blog/stop-using-feature-branches)
