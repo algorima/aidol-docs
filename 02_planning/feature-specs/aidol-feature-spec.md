@@ -148,6 +148,7 @@
 | **구현 파일** | `companions/[companionId]/image/page.tsx` |
 | **컴포넌트** | `ProfileImageGenerator` |
 | **입력** | 프롬프트 텍스트 |
+| **제약** | 프롬프트 최대 200자, 글자 수 카운터 표시 |
 | **동작** | "이미지 생성" 버튼 → `CompanionRepository.generateImage({ prompt })` → 이미지 표시 |
 | **저장** | `CompanionRepository.update({ profilePictureUrl })` |
 
@@ -250,6 +251,7 @@
 |------|------|
 | **구현 파일** | `group/emblem/page.tsx` |
 | **동작** | 프롬프트 입력 → 이미지 생성 → 저장 |
+| **제약** | 프롬프트 최대 200자, 글자 수 카운터 표시 |
 | **저장** | `AIdolRepository.update({ profileImageUrl })` |
 
 ### 8. 뉴스레터 (newsletter)
