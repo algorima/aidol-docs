@@ -743,6 +743,20 @@ Input Parameters (Query)
 - URL: GET /me/chatrooms
 - Auth: Cookie 필수 (anonymousId)
 
+- 파라미터
+  - aidolId (optional, query): 그룹 필터
+  - filters (optional, query, JSON string): 채팅방 조건 필터
+  - aioia_anonymous_id (required, cookie): 사용자 식별자
+
+- 동작 분기
+  1. 항상 chatrooms.anonymous_id = cookie로 기본 범위 제한
+  2. aidolId가 있으면 companions 조인 후 companions.aidol_id = aidolId 적용
+  3. filters가 있으면 chatrooms 컬럼 조건을 추가 적용
+  4. aidolId가 없으면 기존 동작(조인 없음)과 동일
+
+- 주의사항
+  - aidolId는 전용 파라미터입니다. filters에서 aidolId 필드로 처리하지 않습니다.
+  - filters는 JSON 문자열이어야 하며, camelCase/snake_case 필드 모두 허용됩니다(내부에서 snake_case로 변환).
 **Response** (200 OK):
 
 ```json
