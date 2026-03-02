@@ -19,7 +19,7 @@ Frontend PR #65 → algorima/aidol merge
 
 ### After (모노레포)
 ```
-Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
+Backend + Frontend (같은 PR) → algorima/buppy merge → CI/CD 검증 → 배포
 ```
 
 ---
@@ -29,11 +29,24 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → 즉시 배포
 | 구분 | Before | After |
 |------|--------|-------|
 | **작업 레포** | algorima/aidol | algorima/buppy |
-| **작업 폴더** | 프로젝트 루트 | frontend/src/aidol/, backend/aidol/ |
+| **작업 폴더** | 프로젝트 루트 | 아래 상세 참조 |
 | **import 경로** | `from "aidol"` | `from "@/aidol"` |
-| **배포** | buppy 팀 버전 업그레이드 기다림 | PR merge = 즉시 배포 |
+| **배포** | buppy 팀 버전 업그레이드 기다림 | PR merge = CI/CD 검증 후 배포 |
 | **버전 관리** | semantic version (v1.5.0) | buppy commit hash만 (버전 없음) |
 | **출시 제어** | 버전 선택 | Feature Flag |
+
+### 작업 위치 상세
+
+**Backend (7개 위치):**
+- `backend/aidol/` - services, schemas, context, providers, protocols
+- `backend/fastapi_app/routers/aidol/` - API 라우터
+- `backend/managers/` - repositories (database_aidol_repository.py 등)
+- `backend/models/db/` - DB 모델 (aidol.py 등)
+
+**Frontend (3개 위치):**
+- `frontend/src/aidol/` - components, hooks, utils, stories
+- `frontend/src/repositories/aidol/` - repositories
+- `frontend/src/app/[lang]/(public)/aidol/` - pages
 
 ---
 
