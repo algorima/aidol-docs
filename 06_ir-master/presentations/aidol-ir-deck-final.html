@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<meta name="referrer" content="no-referrer">
+<title>AIdol - IR Pitch Deck</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 200; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-2ExtraLight.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 500; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-5Medium.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  /* ===== LIGHT THEME (default) ===== */
+  :root {
+    --bg: #F5F5F5;
+    --pink: #FF3377;
+    --white: #1a1a1a;
+    --dim: rgba(0,0,0,0.45);
+    --sub: rgba(0,0,0,0.6);
+    --card: #FFFFFF;
+    --border: rgba(0,0,0,0.1);
+    --green: #00A870;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy',sans-serif; background:#EFEFEF; display:flex; flex-direction:column; align-items:center; gap:80px; padding:60px 0; color:var(--white); }
+
+  /* ---- SLIDE ---- */
+  .slide { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:flex; flex-direction:column; padding:72px 100px 64px; }
+
+  /* ===== DARK THEME overrides ===== */
+  .slide.dark {
+    --bg: #141414;
+    --white: #ffffff;
+    --dim: rgba(255,255,255,0.5);
+    --card: #1C1C1C;
+    --border: rgba(255,255,255,0.06);
+    background: var(--bg);
+    box-shadow: 0 20px 80px rgba(0,0,0,.6);
+    color: var(--white);
+  }
+
+  /* Tag + Title */
+  .tag { font-size:18px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; text-align:center; }
+  .title { font-size:52px; font-weight:700; color:var(--white); line-height:1.25; margin-top:12px; text-align:center; }
+  .title b { color:var(--pink); font-weight:700; }
+  .subtitle { font-size:22px; color:var(--dim); margin-top:8px; font-weight:400; text-align:center; }
+
+  /* Content area (shared) */
+  .ct { flex:1; display:flex; flex-direction:column; min-height:0; margin-top:36px; }
+
+  /* Footer */
+  .footer { position:absolute; bottom:28px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:14px; color:rgba(0,0,0,0.3); }
+  .footer .brand { font-weight:800; color:var(--pink); letter-spacing:3px; font-size:15px; }
+  .slide.dark .footer { color:rgba(255,255,255,0.3); }
+
+  /* ==================== COVER ==================== */
+  .cover { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:grid; grid-template-columns:1fr 1.1fr; }
+  .cover-left { padding:120px 60px 120px 140px; display:flex; flex-direction:column; }
+  .cover-logo { font-size:40px; font-weight:800; letter-spacing:-.02em; }
+  .cover-logo span { color:var(--pink); }
+  .cover-title { font-size:72px; font-weight:700; line-height:1.2; margin-top:auto; }
+  .cover-title b { color:var(--pink); }
+  .cover-tagline { font-size:30px; color:var(--dim); line-height:1.6; margin-top:28px; margin-bottom:auto; }
+  .cover-tagline b { color:var(--white); font-weight:600; }
+  .cover-right { position:relative; display:flex; align-items:center; justify-content:center; }
+  .cover-right img { max-height:100%; max-width:100%; object-fit:contain; }
+
+
+  /* ==================== BG: BACKGROUND (from bg-problem-solution s1) ==================== */
+  .bg-grid { flex:1; display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:1fr; gap:20px; min-height:0; }
+  .bg-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px 20px 18px; display:flex; flex-direction:column; overflow:hidden; min-height:0; }
+  .bg-card .card-tag { font-size:12px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.08em; }
+  .bg-card .card-name { font-size:24px; font-weight:800; color:var(--white); margin-top:8px; line-height:1.3; }
+  .bg-card .card-desc { font-size:16px; color:var(--sub); margin-top:8px; line-height:1.6; }
+  .bg-card .card-desc b { color:var(--white); font-weight:700; }
+  .bg-card .card-img { flex:1; margin-top:12px; border-radius:10px; overflow:hidden; background:rgba(0,0,0,0.03); min-height:0; }
+  .bg-card .card-img img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+  .bg-card .card-stat { padding-top:14px; flex-shrink:0; }
+  .bg-card .card-stat .stat-val { font-size:20px; font-weight:800; color:var(--pink); line-height:1.3; }
+  .bg-card .card-stat .stat-src { font-size:12px; color:var(--dim); margin-top:2px; }
+  .bg-callout { margin-top:14px; background:var(--card); border:1px solid rgba(255,51,119,0.15); border-radius:12px; padding:16px 32px; text-align:center; flex-shrink:0; }
+  .bg-callout .main { font-size:20px; font-weight:600; color:var(--white); }
+  .bg-callout .main b { color:var(--pink); font-weight:700; }
+
+  /* ==================== PR: PROBLEM (from bg-problem-solution s2) ==================== */
+  .pr-area { flex:1; display:flex; flex-direction:column; gap:36px; }
+  .pr-flow { display:flex; align-items:center; justify-content:center; gap:20px; }
+  .pr-tool { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px 36px; text-align:center; min-width:220px; }
+  .pr-tool .tname { font-size:24px; font-weight:700; color:var(--white); }
+  .pr-tool .tuse { font-size:17px; color:var(--dim); margin-top:6px; }
+  .pr-plus { font-size:36px; font-weight:300; color:var(--dim); }
+  .pr-result { display:flex; align-items:stretch; gap:32px; flex:1; }
+  .pr-result-card { flex:1; background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+  .pr-result-card.bad { border-color:rgba(0,0,0,0.15); }
+  .pr-result-card .txt { font-size:24px; font-weight:600; color:var(--white); line-height:1.5; }
+  .pr-result-card .sub { font-size:18px; color:var(--dim); margin-top:10px; line-height:1.6; }
+  .pr-punchline { margin-top:auto; text-align:center; padding:32px; background:rgba(255,51,119,0.06); border:1px solid rgba(255,51,119,0.12); border-radius:16px; }
+  .pr-punchline .txt { font-size:28px; font-weight:700; color:var(--white); }
+  .pr-punchline .txt b { color:var(--pink); }
+
+  /* ==================== KE: KEY EXPERIENCE (from bg-problem-solution s3) ==================== */
+  .ke-cols { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; flex:1; min-height:0; }
+  .ke-col { display:flex; flex-direction:column; gap:0; }
+  .ke-feat { background:var(--card); border:1px solid var(--border); border-radius:20px 20px 0 0; padding:28px 28px 24px; display:flex; flex-direction:column; gap:12px; }
+  .ke-feat .feat-tag { font-size:13px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; }
+  .ke-feat .feat-icon { width:48px; height:48px; border-radius:14px; background:rgba(255,51,119,0.06); border:1px solid rgba(255,51,119,0.15); display:flex; align-items:center; justify-content:center; }
+  .ke-feat .feat-icon svg { width:24px; height:24px; stroke:var(--pink); fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .ke-feat .feat-name { font-size:22px; font-weight:700; color:var(--white); line-height:1.3; }
+  .ke-feat .feat-desc { font-size:15px; color:var(--sub); line-height:1.6; }
+  .ke-conn { display:flex; flex-direction:column; align-items:center; }
+  .ke-conn-line { width:1px; height:20px; background:var(--pink); opacity:0.4; }
+  .ke-conn-arrow { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:10px solid rgba(255,51,119,0.4); }
+  .ke-quote-card { background:rgba(255,51,119,0.04); border:1px solid rgba(255,51,119,0.12); border-top:none; border-radius:0 0 20px 20px; padding:24px 28px 28px; display:flex; flex-direction:column; gap:10px; flex:1; }
+  .ke-quote-card .qmark { font-size:40px; font-weight:900; color:rgba(255,51,119,0.2); line-height:1; margin-bottom:-8px; }
+  .ke-quote-card .qtxt { font-size:22px; font-weight:700; color:var(--white); line-height:1.55; word-break:keep-all; }
+  .ke-quote-card .qattr { display:flex; align-items:center; gap:8px; margin-top:auto; }
+  .ke-quote-card .qattr-dot { width:6px; height:6px; border-radius:50%; background:var(--pink); flex-shrink:0; }
+  .ke-quote-card .qattr-name { font-size:13px; color:var(--dim); font-weight:600; }
+
+
+  /* ==================== MS: MARKET SIZE (from market-analysis s1) ==================== */
+  .ms-area { flex:1; display:flex; align-items:flex-end; justify-content:center; gap:72px; padding-bottom:24px; }
+  .ms-col { display:flex; flex-direction:column; align-items:center; }
+  .ms-circle { border-radius:50%; background:var(--pink); display:flex; align-items:center; justify-content:center; flex-direction:column; margin-bottom:24px; }
+  .ms-circle.som { width:170px; height:170px; box-shadow:0 0 30px rgba(255,51,119,0.2); }
+  .ms-circle.sam { width:270px; height:270px; box-shadow:0 0 50px rgba(255,51,119,0.3), 0 0 100px rgba(255,51,119,0.1); }
+  .ms-circle.tam { width:420px; height:420px; box-shadow:0 0 80px rgba(255,51,119,0.4), 0 0 160px rgba(255,51,119,0.15), 0 0 240px rgba(255,51,119,0.05); }
+  .ms-circle .num { font-size:56px; font-weight:900; color:#fff; line-height:1; }
+  .ms-circle.sam .num { font-size:44px; }
+  .ms-circle.som .num { font-size:34px; }
+  .ms-circle .cagr { font-size:18px; font-weight:600; color:rgba(255,255,255,0.85); margin-top:8px; }
+  .ms-lbl { text-align:center; }
+  .ms-lbl .nm { font-size:22px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px; }
+  .ms-lbl .tp { font-size:18px; color:var(--sub); }
+  .ms-lbl .sr { font-size:15px; color:var(--dim); margin-top:6px; }
+
+  /* ==================== WN: WHY NOW (from market-analysis s2) ==================== */
+  .wn-area { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:60px; }
+  .wn-cost-table { display:flex; flex-direction:column; gap:16px; }
+  .wn-cost-header { display:flex; font-size:16px; font-weight:600; letter-spacing:1px; color:var(--dim); text-transform:uppercase; padding:0 0 14px; border-bottom:1px solid var(--border); }
+  .wn-cost-header span:first-child { flex:1; }
+  .wn-cost-header span:nth-child(2) { width:200px; text-align:right; }
+  .wn-cost-header span:nth-child(3) { width:220px; text-align:right; color:var(--pink); }
+  .wn-cost-row { display:flex; align-items:center; padding:16px 0; border-bottom:1px solid var(--border); font-size:22px; }
+  .wn-cost-row:last-child { border-bottom:none; }
+  .wn-cost-row .item-name { flex:1; color:var(--sub); }
+  .wn-cost-row .old-price { width:200px; text-align:right; color:var(--dim); text-decoration:line-through; font-weight:600; }
+  .wn-cost-row .new-price { width:220px; text-align:right; color:var(--green); font-weight:700; }
+  .wn-reduction { display:flex; align-items:center; justify-content:center; gap:28px; background:rgba(255,51,119,0.08); border-radius:12px; padding:28px 32px; margin-top:auto; }
+  .wn-reduction .label { font-size:20px; color:var(--sub); }
+  .wn-reduction .val { font-size:44px; font-weight:900; color:var(--pink); }
+  .wn-right-blocks { display:flex; flex-direction:column; gap:24px; }
+  .wn-block { padding:28px; background:rgba(0,0,0,0.03); border-radius:12px; border:1px solid var(--border); }
+  .wn-block h3 { font-size:22px; font-weight:700; margin-bottom:14px; }
+  .wn-block .item { font-size:20px; color:var(--sub); line-height:1.9; }
+  .wn-block .item strong { color:var(--white); font-weight:700; }
+  .wn-block .item .pk { color:var(--pink); font-weight:700; }
+  .wn-block .item .gn { color:var(--green); font-weight:700; }
+
+  /* ==================== PP: PAYMENT PROOF (from market-analysis s3) ==================== */
+  .pp-area { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:28px 56px; }
+  .pp-sec { display:flex; flex-direction:column; }
+  .pp-sec h3 { font-size:22px; font-weight:700; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+  .pp-row { display:flex; justify-content:space-between; align-items:baseline; padding:12px 0; font-size:20px; }
+  .pp-row .lb { color:var(--sub); }
+  .pp-row .vl { font-weight:700; text-align:right; }
+  .pp-row .vl.pk { color:var(--pink); }
+  .pp-row .vl.gn { color:var(--green); }
+  .pp-src { font-size:14px; color:var(--dim); margin-top:auto; padding-top:10px; }
+
+
+  /* ==================== CL: COMPETITIVE LANDSCAPE (from market-analysis s4) ==================== */
+  .cl-area { flex:1; display:flex; flex-direction:column; }
+  .cl-tbl { width:100%; border-collapse:collapse; font-size:20px; }
+  .cl-tbl th { padding:20px 24px; text-align:left; font-size:17px; font-weight:600; letter-spacing:0.5px; color:var(--sub); border-bottom:2px solid var(--border); }
+  .cl-tbl th.ai { color:var(--pink); text-align:center; background:rgba(255,51,119,0.06); }
+  .cl-tbl td { padding:18px 24px; border-bottom:1px solid var(--border); color:var(--sub); font-size:19px; }
+  .cl-tbl tr:last-child td { border-bottom:none; }
+  .cl-tbl td:first-child { font-weight:600; color:var(--white); width:160px; }
+  .cl-tbl td.ai { text-align:center; color:var(--white); font-weight:600; background:rgba(255,51,119,0.06); }
+  .cl-tbl .rv { font-weight:700; color:var(--white); }
+  .ck { color:var(--green); font-weight:700; }
+  .cx { color:var(--dim); }
+  .st { color:var(--pink); font-weight:700; }
+  .pt { color:rgba(0,0,0,0.35); }
+  .cl-call { margin-top:auto; padding:24px; border:1px solid rgba(255,51,119,0.2); border-radius:12px; text-align:center; font-size:22px; font-weight:600; color:var(--sub); }
+  .cl-call span { color:var(--pink); font-weight:700; }
+
+  /* ==================== PM: POSITIONING MAP (from market-analysis s5) ==================== */
+  .pm-area { flex:1; display:flex; align-items:center; justify-content:center; }
+  .pm-map { position:relative; width:1600px; height:800px; }
+  .pm-ax-h { position:absolute; top:50%; left:100px; right:100px; height:1px; background:rgba(0,0,0,0.12); }
+  .pm-ax-v { position:absolute; left:50%; top:30px; bottom:30px; width:1px; background:rgba(0,0,0,0.12); }
+  .pm-lbl { position:absolute; font-size:17px; font-weight:600; letter-spacing:1.5px; color:var(--dim); text-transform:uppercase; }
+  .pm-lbl.t { top:0; left:50%; transform:translateX(-50%); }
+  .pm-lbl.b { bottom:0; left:50%; transform:translateX(-50%); }
+  .pm-lbl.l { left:0; top:50%; transform:translateY(-50%); }
+  .pm-lbl.r { right:0; top:50%; transform:translateY(-50%); }
+  .pm-dot { position:absolute; display:flex; flex-direction:column; align-items:center; gap:6px; transform:translate(-50%,-50%); }
+  .pm-dot .c { width:76px; height:76px; border-radius:50%; background:#fff; border:1.5px solid rgba(0,0,0,0.12); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:rgba(0,0,0,0.75); text-align:center; line-height:1.2; padding:6px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+  .pm-dot .n { font-size:16px; font-weight:600; color:rgba(0,0,0,0.7); white-space:nowrap; }
+  .pm-dot .m { font-size:13px; color:rgba(0,0,0,0.45); white-space:nowrap; }
+  .pm-dot.me .c { width:100px; height:100px; background:var(--pink); border:none; color:#fff; font-size:20px; font-weight:800; box-shadow:0 4px 24px rgba(255,51,119,0.3); }
+  .pm-dot.me .n { color:var(--pink); font-weight:700; font-size:18px; }
+
+  /* ==================== KT: KEY TAKEAWAYS (from market-analysis s6) ==================== */
+  .kt-area { flex:1; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr auto; gap:24px; }
+  .kt-card { background:var(--card); border-radius:16px; padding:40px; display:flex; flex-direction:column; justify-content:center; }
+  .kt-card .tg { font-size:16px; font-weight:600; letter-spacing:1.5px; color:var(--pink); margin-bottom:12px; }
+  .kt-card .bg { font-size:60px; font-weight:900; line-height:1; margin-bottom:10px; }
+  .kt-card .ds { font-size:19px; color:var(--sub); line-height:1.7; }
+  .kt-btm { grid-column:1/-1; background:var(--pink); border-radius:16px; padding:32px 48px; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .kt-btm .bg { font-size:26px; font-weight:700; color:#fff; line-height:1.5; }
+  .kt-btm .bg strong { font-weight:900; }
+
+
+  /* ==================== MARKET POTENTIAL (from bm-slides mp-*) ==================== */
+  .mp-grid { flex:1; display:grid; grid-template-columns:.85fr 1.15fr; gap:80px; margin-top:48px; }
+  .mp-trends { display:flex; flex-direction:column; gap:28px; }
+  .mp-trend-title { font-size:24px; font-weight:700; color:var(--white); line-height:1.4; }
+  .mp-trend-title b { color:var(--pink); font-weight:800; }
+  .mp-trend-desc { font-size:17px; color:var(--dim); margin-top:6px; line-height:1.6; }
+  .mp-chart { display:flex; flex-direction:column; }
+  .mp-chart-title { font-size:16px; font-weight:700; color:var(--dim); letter-spacing:.08em; text-transform:uppercase; margin-bottom:20px; }
+  .mp-bars { display:flex; align-items:flex-end; gap:28px; height:360px; padding-bottom:16px; border-bottom:1.5px solid var(--border); }
+  .mp-bar { flex:1; display:flex; flex-direction:column; align-items:center; }
+  .mp-bar-val { font-size:26px; font-weight:800; color:var(--pink); margin-bottom:10px; white-space:nowrap; }
+  .mp-bar-inner { width:100%; border-radius:10px 10px 0 0; background:linear-gradient(180deg, var(--pink), #ff6699); }
+  .mp-bar-label { font-size:18px; font-weight:700; color:var(--white); margin-top:14px; text-align:center; }
+  .mp-bar-sub { font-size:13px; color:var(--dim); text-align:center; margin-top:2px; }
+  .mp-cagr { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:16px; padding:10px 0; }
+  .mp-cagr-badge { background:rgba(255,51,119,.08); border:1px solid rgba(255,51,119,.15); color:var(--pink); font-size:18px; font-weight:700; padding:8px 24px; border-radius:100px; }
+  .mp-kpop { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px; }
+  .mp-kpop-card { background:rgba(167,139,250,.05); border:1px solid rgba(167,139,250,.12); border-radius:14px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; }
+  .mp-kpop-name { font-size:18px; font-weight:700; color:var(--white); }
+  .mp-kpop-desc { font-size:13px; color:var(--dim); margin-top:2px; }
+  .mp-kpop-val { font-size:28px; font-weight:800; color:#7C3AED; white-space:nowrap; }
+  .mp-total { display:flex; align-items:center; gap:24px; margin-top:auto; background:rgba(255,51,119,.04); border-radius:14px; padding:22px 32px; }
+  .mp-total-big { font-size:48px; font-weight:900; color:var(--pink); white-space:nowrap; }
+  .mp-total-text { font-size:17px; color:var(--dim); line-height:1.5; }
+  .mp-total-text b { color:var(--white); font-weight:700; }
+  .mp-src { font-size:12px; color:rgba(0,0,0,.2); margin-top:12px; text-align:right; }
+
+  /* ==================== BM1: FREEMIUM (from bm-slides s1) ==================== */
+  .bm1-cols { display:grid; grid-template-columns:1fr 1fr; gap:80px; flex:1; margin-top:48px; }
+  .col-head { display:inline-flex; align-items:center; gap:12px; padding:12px 28px; border-radius:12px; font-size:22px; font-weight:700; margin-bottom:32px; }
+  .col-head.gray { background:rgba(0,0,0,.06); color:var(--dim); }
+  .col-head.pink { background:var(--pink); color:#fff; }
+  .item { display:flex; align-items:center; gap:24px; padding:20px 0; border-bottom:1px solid var(--border); }
+  .item:last-child { border-bottom:none; }
+  .num { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; flex-shrink:0; }
+  .num.w { background:var(--white); color:var(--bg); }
+  .num.p { background:var(--pink); color:#fff; }
+  .item-body { flex:1; }
+  .item-name { font-size:26px; font-weight:600; color:var(--white); }
+  .item-ref { font-size:16px; color:var(--dim); margin-top:4px; }
+  .item-price { font-size:32px; font-weight:800; white-space:nowrap; }
+  .item-price.w { color:var(--white); }
+  .item-price.p { color:var(--pink); }
+  .item-badge { font-size:15px; font-weight:700; padding:6px 18px; border-radius:100px; background:rgba(255,51,119,.12); color:var(--pink); }
+
+  /* Flow bar */
+  .flow { display:flex; align-items:center; justify-content:space-between; margin-top:auto; background:var(--card); border-radius:16px; padding:24px 48px; }
+  .flow-step { display:flex; align-items:center; gap:14px; }
+  .flow-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .flow-icon svg { width:24px; height:24px; }
+  .flow-icon.free { background:rgba(0,0,0,.04); }
+  .flow-icon.free svg { stroke:var(--dim); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-icon.paid { background:rgba(255,51,119,.1); }
+  .flow-icon.paid svg { stroke:var(--pink); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-icon.b2b { background:var(--pink); }
+  .flow-icon.b2b svg { stroke:#fff; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-text { font-size:32px; font-weight:600; color:var(--white); line-height:1.3; }
+  .flow-text .ftag { display:inline-block; font-size:17px; font-weight:700; padding:5px 14px; border-radius:100px; margin-top:3px; }
+  .ftag.free { background:rgba(0,0,0,.06); color:var(--dim); }
+  .ftag.paid { background:rgba(255,51,119,.12); color:var(--pink); }
+  .flow-arr { padding:0 6px; }
+  .flow-arr svg { width:24px; height:24px; stroke:var(--pink); fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+
+
+  /* ==================== BM2: CONVERSION (from bm-slides s2) ==================== */
+  .bm2-content { flex:1; display:flex; flex-direction:column; gap:40px; margin-top:48px; }
+  .three-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; flex:1; }
+  .conv-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; }
+  .conv-label { font-size:20px; font-weight:700; color:var(--pink); letter-spacing:.04em; text-transform:uppercase; }
+  .conv-title { font-size:34px; font-weight:700; color:var(--white); margin-top:8px; line-height:1.3; }
+  .conv-free { margin-top:24px; padding:18px 22px; border-radius:12px; background:rgba(0,0,0,.04); border:1px solid var(--border); }
+  .conv-free-label { font-size:15px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; }
+  .conv-free-text { font-size:24px; color:rgba(0,0,0,.6); margin-top:6px; line-height:1.5; }
+  .conv-arrow { text-align:center; padding:10px 0; }
+  .conv-arrow svg { width:24px; height:24px; stroke:var(--pink); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .conv-paid { padding:18px 22px; border-radius:12px; background:rgba(255,51,119,.06); border:1px solid rgba(255,51,119,.15); flex:1; }
+  .conv-paid-label { font-size:15px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.05em; }
+  .conv-paid-text { font-size:24px; color:var(--white); margin-top:6px; line-height:1.5; }
+  .conv-price { display:inline-block; margin-top:10px; background:var(--pink); color:#fff; font-size:24px; font-weight:800; padding:8px 24px; border-radius:100px; }
+  .conv-ref { margin-top:auto; padding-top:16px; font-size:18px; color:var(--dim); border-top:1px solid var(--border); }
+  .conv-ref b { color:var(--pink); }
+
+  /* ==================== BM3: REVENUE PROJECTION (from bm-slides s3) ==================== */
+  .bm3-content { flex:1; display:flex; flex-direction:column; gap:32px; margin-top:44px; }
+  .phases { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .phase { border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; }
+  .ph1 { background:var(--card); border:1px solid var(--border); }
+  .ph2 { background:rgba(255,51,119,.03); border:1px solid rgba(255,51,119,.1); }
+  .ph3 { background:rgba(255,51,119,.07); border:1px solid rgba(255,51,119,.2); }
+  .ph-tag { font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .ph1 .ph-tag { color:var(--dim); }
+  .ph2 .ph-tag, .ph3 .ph-tag { color:var(--pink); }
+  .ph-title { font-size:24px; font-weight:700; margin-top:10px; }
+  .ph-big { font-size:36px; font-weight:800; color:var(--pink); margin-top:8px; }
+  .ph-desc { font-size:18px; color:var(--dim); margin-top:12px; line-height:1.7; }
+  .ph-desc b { color:var(--white); }
+  .bottom-row { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; flex:1; }
+  .bot-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px; display:flex; flex-direction:column; }
+  .bot-title { font-size:20px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .bot-title .dot { width:8px; height:8px; border-radius:50%; background:var(--pink); }
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; padding:10px 12px; font-size:14px; font-weight:700; color:var(--dim); letter-spacing:.03em; text-transform:uppercase; border-bottom:1px solid var(--border); }
+  td { padding:12px; font-size:18px; color:var(--dim); border-bottom:1px solid rgba(0,0,0,.04); }
+  tr:last-child td { border-bottom:none; }
+  .hl td { color:var(--white); font-weight:700; background:rgba(255,51,119,.04); }
+  .rev { color:var(--pink); font-weight:800; font-size:22px; }
+  .comp th:last-child { color:var(--pink); }
+  .comp td:last-child { color:var(--white); font-weight:700; }
+  .x { color:rgba(0,0,0,.2); font-size:16px; }
+  .o { color:#4ADE80; font-weight:700; font-size:16px; }
+  .tri { color:#FBBF24; font-size:16px; }
+  .badge-o { background:var(--pink); color:#fff; font-size:13px; font-weight:700; padding:3px 12px; border-radius:100px; }
+  .tnote { font-size:14px; color:var(--dim); margin-top:auto; padding-top:8px; font-style:italic; }
+
+  @media print { body { background:#fff; gap:0; padding:0; } .slide, .cover { page-break-after:always; box-shadow:none; border-radius:0; } }
+</style>
+</head>
+<body>
+
+
+<!-- SVG icons (from bm-slides) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></symbol>
+</svg>
+
+
+<!-- ==================== SLIDE 1: COVER ==================== -->
+<div class="cover">
+  <div class="cover-left">
+    <div class="cover-logo"><span>AI</span>dol</div>
+    <div>
+      <div class="cover-title">AI 아이돌<br><b>커스터마이징</b> 플랫폼</div>
+      <div class="cover-tagline">내가 직접 만들고, 꾸미고, 키우는<br><b>나만의 AI 아이돌 그룹</b></div>
+    </div>
+  </div>
+  <div class="cover-right">
+    <img src="mockup.png" alt="AIdol App Mockup">
+  </div>
+</div>
+
+
+<!-- ==================== SLIDE 2: BACKGROUND (p1/17) ==================== -->
+<div class="slide">
+  <div class="tag">Background</div>
+  <div class="title">사람들은 이미 <b>자기만의 AI 아이돌</b>을 만들고 있다</div>
+  <div class="subtitle">그리고 진짜 돈이 되고 있다</div>
+  <div class="ct">
+    <div class="bg-grid">
+      <div class="bg-card">
+        <div class="card-tag">AI Influencer</div>
+        <div class="card-name">donhong</div>
+        <div class="card-desc">AI로 만든 가상 인플루언서.<br><b>실제 사람인 줄 안다</b></div>
+        <div class="card-img"><img src="ref-donhong.png" alt="donhong"></div>
+        <div class="card-stat">
+          <div class="stat-val">20만+ 팔로워</div>
+          <div class="stat-src">Instagram</div>
+        </div>
+      </div>
+      <div class="bg-card">
+        <div class="card-tag">Virtual Idol</div>
+        <div class="card-name">이세계아이돌</div>
+        <div class="card-desc">우왁굳이 기획하고<br><b>팬 커뮤니티가 함께 키운</b> 버추얼 그룹</div>
+        <div class="card-img"><img src="https://i.namu.wiki/i/s19H82MInNN8Ujm25hxOUX-QYUtExb9DzkTl2ZKSKjlWoXHOloBzoY4LcZed6jwtXvdgSr2S3GcZwXDUul20V6EXIXvQKi3ivTHetADYSr8quXmCUZy0TAMlzvYWOS6J5_G8UHxnIs_zS_iF1hnNtA.webp" alt="이세계아이돌"></div>
+        <div class="card-stat">
+          <div class="stat-val">크라우드펀딩 130억원</div>
+          <div class="stat-src">Wadiz, 1+2차 합산</div>
+        </div>
+      </div>
+      <div class="bg-card">
+        <div class="card-tag">AI Streamer</div>
+        <div class="card-name">뉴로사마</div>
+        <div class="card-desc">완전 AI 생성 스트리머.<br><b>가상이어도 팬덤은 진짜</b></div>
+        <div class="card-img"><img src="https://i.namu.wiki/i/-CRWLWUGVavKiw74N7VVE7PfYt1NXnHpCEZQVSy_POfhPW-DHtcX2LSRpG5dF60O2kd4Q6f0UZX5K3_fnGumi74O1rncU78tKavnTuANwsXxW9H1kEbprev51FB57Y8KE_fSrShCDt1R0cn4gpsm9w.webp" alt="뉴로사마"></div>
+        <div class="card-stat">
+          <div class="stat-val">트위치 스트리머 1위</div>
+          <div class="stat-src">Twitch</div>
+        </div>
+      </div>
+      <div class="bg-card">
+        <div class="card-tag">DIY Culture</div>
+        <div class="card-name">TikTok OC / X AU 아이돌</div>
+        <div class="card-desc">알파세대가 직접 아이돌을 만들고<br>세계관을 짜는 <b>놀이 문화</b></div>
+        <div class="card-img"></div>
+        <div class="card-stat">
+          <div class="stat-val">"창작자"로 참여</div>
+          <div class="stat-src">TikTok, X (Twitter)</div>
+        </div>
+      </div>
+    </div>
+    <div class="bg-callout">
+      <div class="main">가상이어도 팬덤은 진짜, AI여도 매출은 진짜 — <b>이 흐름은 이미 시작됐다</b></div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>1 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 3: PROBLEM (p2/17) ==================== -->
+<div class="slide">
+  <div class="tag">Problem</div>
+  <div class="title">만들고 싶은데, <b>첫발이 막막하다</b></div>
+  <div class="subtitle">AI 도구는 넘쳐나지만, "AI 아이돌"을 만들려면 어디서부터 시작해야 할지 모른다</div>
+  <div class="ct">
+    <div class="pr-area">
+      <div class="pr-flow">
+        <div class="pr-tool"><div class="tname">ChatGPT</div><div class="tuse">세계관/서사 기획</div></div>
+        <div class="pr-plus">+</div>
+        <div class="pr-tool"><div class="tname">Gemini</div><div class="tuse">이미지 생성</div></div>
+        <div class="pr-plus">+</div>
+        <div class="pr-tool"><div class="tname">Suno</div><div class="tuse">곡 만들기</div></div>
+        <div class="pr-plus">+</div>
+        <div class="pr-tool"><div class="tname">Nanobanana Pro</div><div class="tuse">이미지/영상</div></div>
+        <div class="pr-plus">+</div>
+        <div class="pr-tool"><div class="tname">Kling</div><div class="tuse">영상 생성</div></div>
+      </div>
+      <div class="pr-result">
+        <div class="pr-result-card bad"><div class="txt">프롬프트부터 막막하다</div><div class="sub">"어떻게 명령해야 하지?"<br>완전 빈 화면에서 시작해야 한다</div></div>
+        <div class="pr-result-card bad"><div class="txt">도구는 있지만, 다 따로</div><div class="sub">얼굴, 곡, 목소리, 영상이<br>하나의 "AI 아이돌"로 합쳐지지 않는다</div></div>
+        <div class="pr-result-card bad"><div class="txt">일관성 유지가 어렵다</div><div class="sub">매번 다른 얼굴, 다른 스타일<br>donhong처럼 만들려면 스킬 + 시간 필요</div></div>
+      </div>
+      <div class="pr-punchline"><div class="txt">만들고 싶은 마음은 넘치는데, <b>시작할 수 있는 곳이 없다</b></div></div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>2 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 4: KEY EXPERIENCE (p3/17) ==================== -->
+<div class="slide">
+  <div class="tag">Key Experience</div>
+  <div class="title">"지금 내가 <b>민희진</b>이다"</div>
+  <div class="subtitle">Sprint 1 UT 8명 전원 완주, 이탈자 0명 — 실제 사용자 발화</div>
+  <div class="ct">
+    <div class="ke-cols">
+      <div class="ke-col">
+        <div class="ke-feat">
+          <div class="feat-tag">01 · 연습생 캐스팅</div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.5 20.118a7.5 7.5 0 0 1 15 0"/></svg></div>
+          <div class="feat-name">현실에 가까운<br>AI 연습생</div>
+          <div class="feat-desc">외모/성격/서사/등급 반영한<br>AI 연습생을 직접 캐스팅</div>
+        </div>
+        <div class="ke-conn"><div class="ke-conn-line"></div><div class="ke-conn-arrow"></div></div>
+        <div class="ke-quote-card"><div class="qmark">"</div><div class="qtxt">내 취향대로 만든 그룹이라<br>더 애착이 생겨</div><div class="qattr"><div class="qattr-dot"></div><div class="qattr-name">U3 장쏘피</div></div></div>
+      </div>
+      <div class="ke-col">
+        <div class="ke-feat">
+          <div class="feat-tag">02 · 콘텐츠 생성</div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></svg></div>
+          <div class="feat-name">맞춤 콘텐츠<br>생성 및 구매</div>
+          <div class="feat-desc">제작한 아이돌 그룹에 맞는<br>맞춤 콘텐츠 생성 및 구매</div>
+        </div>
+        <div class="ke-conn"><div class="ke-conn-line"></div><div class="ke-conn-arrow"></div></div>
+        <div class="ke-quote-card"><div class="qmark">"</div><div class="qtxt">다른 유저가 마음에 드는<br>아이돌을 가져갈까봐</div><div class="qattr"><div class="qattr-dot"></div><div class="qattr-name">U5</div></div></div>
+      </div>
+      <div class="ke-col">
+        <div class="ke-feat">
+          <div class="feat-tag">03 · 앨범 제작</div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M9 9l10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"/></svg></div>
+          <div class="feat-name">데모곡 탐색 및<br>앨범 제작</div>
+          <div class="feat-desc">AI로 제작한 데모곡 구매,<br>컨셉 포토 킷 등 앨범 제작</div>
+        </div>
+        <div class="ke-conn"><div class="ke-conn-line"></div><div class="ke-conn-arrow"></div></div>
+        <div class="ke-quote-card"><div class="qmark">"</div><div class="qtxt">컨셉포토 뽑으면<br>재밌을 것 같아요</div><div class="qattr"><div class="qattr-dot"></div><div class="qattr-name">U8 김현조</div></div></div>
+      </div>
+      <div class="ke-col">
+        <div class="ke-feat">
+          <div class="feat-tag">04 · 육성</div>
+          <div class="feat-icon"><svg viewBox="0 0 24 24"><path d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6"/></svg></div>
+          <div class="feat-name">현실에 가까운<br>육성 콘텐츠</div>
+          <div class="feat-desc">인터랙션을 통한 능력치 상승,<br>현실감 있는 육성 이벤트</div>
+        </div>
+        <div class="ke-conn"><div class="ke-conn-line"></div><div class="ke-conn-arrow"></div></div>
+        <div class="ke-quote-card"><div class="qmark">"</div><div class="qtxt">내가 키우는<br>내 새끼라는 생각이 들어</div><div class="qattr"><div class="qattr-dot"></div><div class="qattr-name">U6 김민지</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>3 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 5: TRACTION [DARK] (p4/17) ==================== -->
+<div class="slide dark">
+  <div class="tag">Traction</div>
+  <div class="title"><b>$0</b> 마케팅, <b>5일</b> 성과</div>
+  <div class="subtitle">TikTok 단일 영상 오가닉 바이럴</div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px; flex:1; margin-top:48px; align-content:center;">
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--pink); line-height:1;">500K</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">TikTok 조회수</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">오가닉 바이럴</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-tiktok.png" style="position:absolute; bottom:0; left:0; width:100%; border-radius:13px; filter:grayscale(1); opacity:0.85;">
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--pink); line-height:1;">4,813</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">리드 수집</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">랜딩페이지 유입</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-leads.png" style="width:100%; height:100%; object-fit:cover; object-position:left top; border-radius:13px; filter:grayscale(1); opacity:0.85;">
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--white); line-height:1;">855</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">가입자</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">회원가입 완료</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-admin.png" style="width:100%; height:100%; object-fit:cover; object-position:left top; border-radius:13px; filter:grayscale(1); opacity:0.85;">
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-top:auto; padding:16px 0;">
+    <div style="font-size:14px; color:var(--dim);">조회 500K</div>
+    <div style="font-size:13px; color:var(--pink); font-weight:700;">→ 1.0%</div>
+    <div style="font-size:14px; color:var(--dim);">리드 4,813</div>
+    <div style="font-size:13px; color:var(--pink); font-weight:700;">→ 17.8%</div>
+    <div style="font-size:14px; color:var(--dim);">가입 855</div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>4 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 6: MARKET SIZE (p5/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title">Market <b>Size</b></div>
+  <div class="subtitle">AI 아이돌 생성 및 인터랙션 플랫폼 시장</div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="ms-area">
+      <div class="ms-col">
+        <div class="ms-circle tam"><span class="num">$20.1B</span><span class="cagr">CAGR 23.6%</span></div>
+        <div class="ms-lbl"><div class="nm">Virtual Idol</div><div class="tp">Total Addressable Market</div><div class="sr">Business Research Insights, 2026</div></div>
+      </div>
+      <div class="ms-col">
+        <div class="ms-circle sam"><span class="num">$2.7B</span></div>
+        <div class="ms-lbl"><div class="nm">K-pop Digital Fan</div><div class="tp">Serviceable Available Market</div><div class="sr">K-pop 유료 팬 750만 x ARPU $360</div></div>
+      </div>
+      <div class="ms-col">
+        <div class="ms-circle som"><span class="num">$18M</span></div>
+        <div class="ms-lbl"><div class="nm">Year 3 Target</div><div class="tp">Serviceable Obtainable Market</div><div class="sr">유료 5만명 x $360 (Bottom-up)</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>5 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 7: WHY NOW - COST (p6/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title">Why <b>Now</b></div>
+  <div class="subtitle">AI 생성 비용의 붕괴로 2년 전에는 불가능했던 제품이 가능해졌다</div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="wn-area">
+      <div style="display:flex;flex-direction:column;">
+        <div class="wn-cost-table">
+          <div class="wn-cost-header"><span>항목</span><span>기존 (기획사)</span><span>AI 생성 (2026)</span></div>
+          <div class="wn-cost-row"><span class="item-name">그룹 데뷔 비용</span><span class="old-price">$1.3M ~ $3.6M</span><span class="new-price">불필요</span></div>
+          <div class="wn-cost-row"><span class="item-name">곡 1개 제작</span><span class="old-price">수천만원</span><span class="new-price">$0.02 (Suno)</span></div>
+          <div class="wn-cost-row"><span class="item-name">보이스 녹음</span><span class="old-price">수백만원</span><span class="new-price">$0.07/분 (ElevenLabs)</span></div>
+          <div class="wn-cost-row"><span class="item-name">캐릭터 이미지</span><span class="old-price">수백만원</span><span class="new-price">$0.011/장 (GPT-image)</span></div>
+          <div class="wn-cost-row"><span class="item-name">2023 대비 비용 추이</span><span class="old-price"></span><span class="new-price">-45~85% 하락</span></div>
+        </div>
+        <div class="wn-reduction">
+          <span class="label">기존 아이돌 데뷔 대비 AI 생성 비용</span>
+          <span class="val">65,000x cheaper</span>
+        </div>
+      </div>
+      <div class="wn-right-blocks">
+        <div class="wn-block">
+          <h3>AI 생성 인프라 폭발 성장</h3>
+          <div class="item">
+            Suno (AI 음악): ARR <strong>$200M</strong>, 밸류 $2.45B, 6개월 <span class="pk">4.4x</span><br>
+            ElevenLabs (AI 음성): ARR <strong>$330M</strong>, 밸류 $11B, <span class="pk">YoY +175%</span>
+          </div>
+        </div>
+        <div class="wn-block">
+          <h3>AI 음악 품질 변곡점</h3>
+          <div class="item">
+            AI 아티스트 <strong>Billboard #1</strong> 달성 (2025.11)<br>
+            Warner Music x Suno <strong>공식 라이선스</strong> 합의<br>
+            일일 AI 음악 업로드 <strong>5만 곡</strong> (전체 업로드의 34%)
+          </div>
+        </div>
+        <div class="wn-block">
+          <h3>AI 관계 시장 = 이미 결제 검증됨</h3>
+          <div class="item">
+            AI 앱 인앱 매출: <strong>$1.2B</strong> <span class="pk">(+179% YoY)</span><br>
+            다운로드당 매출: $0.52 -> $1.18 <span class="pk">(+127%)</span><br>
+            Google -> Character.AI: <strong>$2.7B</strong> 라이선싱 딜
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>6 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 8: WHY NOW - PAYMENT PROOF (p7/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title">Why Now — <b>Payment Proof</b></div>
+  <div class="subtitle">사람들은 AI 캐릭터와 버추얼 아이돌에 이미 돈을 쓰고 있다</div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="pp-area">
+      <div class="pp-sec">
+        <h3>AI Companion Revenue</h3>
+        <div class="pp-row"><span class="lb">다운로드당 매출 (YoY)</span><span class="vl pk">$0.52 -> $1.18 (+127%)</span></div>
+        <div class="pp-row"><span class="lb">AI 앱 인앱 매출 (2024)</span><span class="vl pk">$1.2B (+179% YoY)</span></div>
+        <div class="pp-row"><span class="lb">Chai AI (팀 12명)</span><span class="vl">$40M ARR</span></div>
+        <div class="pp-row"><span class="lb">Google -> Character.AI 딜</span><span class="vl">$2.7B</span></div>
+        <div class="pp-src">Sensor Tower / Yahoo Finance / Business of Apps</div>
+      </div>
+      <div class="pp-sec">
+        <h3>K-pop Fan = Proven Spenders</h3>
+        <div class="pp-row"><span class="lb">Bubble (일방향 메시지)</span><span class="vl pk">749억원/년</span></div>
+        <div class="pp-row"><span class="lb">SM -> DearU 투자</span><span class="vl pk">$92M (1,356억원)</span></div>
+        <div class="pp-row"><span class="lb">PLAVE (버추얼 아이돌)</span><span class="vl">454억원 매출</span></div>
+        <div class="pp-row"><span class="lb">팬 콘서트 지출 (YoY)</span><span class="vl gn">+61%</span></div>
+        <div class="pp-src">MBW / THE VC / atVenu</div>
+      </div>
+      <div class="pp-sec">
+        <h3>Big Player Bets</h3>
+        <div class="pp-row"><span class="lb">HYBE -> Supertone 인수</span><span class="vl pk">$36.5M</span></div>
+        <div class="pp-row"><span class="lb">SM -> DearU 추가 인수</span><span class="vl pk">$92M</span></div>
+        <div class="pp-row"><span class="lb">JYP Blue Garage</span><span class="vl">17직군 채용 중</span></div>
+        <div class="pp-row"><span class="lb">Google -> Character.AI</span><span class="vl">$2.7B</span></div>
+        <div class="pp-src">Korea Times / MBW</div>
+      </div>
+      <div class="pp-sec">
+        <h3>But All Agency-Led Model</h3>
+        <div class="pp-row"><span class="lb">HYBE Supertone</span><span class="vl" style="color:var(--dim);">기획사 소유 IP</span></div>
+        <div class="pp-row"><span class="lb">SM DearU</span><span class="vl" style="color:var(--dim);">기획사 소유 IP</span></div>
+        <div class="pp-row"><span class="lb">JYP Blue Garage</span><span class="vl" style="color:var(--dim);">기획사 소유 IP</span></div>
+        <div class="pp-row"><span class="lb" style="color:var(--pink);font-weight:600;">사용자 생성 AI 아이돌</span><span class="vl pk">= 공백</span></div>
+        <div class="pp-src">대형사의 투자가 시장을 검증, 모두 기획사 주도 모델</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>7 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 9: COMPETITIVE LANDSCAPE (p8/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title">Competitive <b>Landscape</b></div>
+  <div class="subtitle">경쟁사 실적 데이터 및 기능 비교</div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="cl-area">
+      <table class="cl-tbl">
+        <thead><tr>
+          <th></th><th>PLAVE</th><th>Bubble</th><th>Weverse</th><th>Character.AI</th><th class="ai">AIdol</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>유형</td><td>버추얼 아이돌</td><td>아이돌 메시지</td><td>팬덤 플랫폼</td><td>AI 캐릭터 대화</td><td class="ai">AI 아이돌 플랫폼</td></tr>
+          <tr><td>매출</td><td class="rv">454억원</td><td class="rv">749억원</td><td class="rv">2,913억원</td><td class="rv">$32M</td><td class="ai">Pre-revenue</td></tr>
+          <tr><td>사용자</td><td>앨범 103만장</td><td>220만 구독</td><td>MAU 1,000만+</td><td>MAU 2,000만</td><td class="ai">--</td></tr>
+          <tr><td>사용자 생성</td><td class="cx">X</td><td class="cx">X</td><td class="cx">X</td><td class="ck">O (범용)</td><td class="ai st">O (K-pop)</td></tr>
+          <tr><td>양방향 소통</td><td class="pt">제한적</td><td class="cx">X (일방향)</td><td class="pt">제한적</td><td class="ck">O</td><td class="ai st">O</td></tr>
+          <tr><td>K-pop 특화</td><td class="ck">O</td><td class="ck">O</td><td class="ck">O</td><td class="cx">X</td><td class="ai st">O</td></tr>
+          <tr><td>콘텐츠 생성</td><td class="cx">X</td><td class="cx">X</td><td class="cx">X</td><td class="cx">X</td><td class="ai st">O (음악/영상)</td></tr>
+          <tr><td>육성/시즌</td><td class="cx">X</td><td class="cx">X</td><td class="cx">X</td><td class="cx">X</td><td class="ai st">O</td></tr>
+        </tbody>
+      </table>
+      <div class="cl-call"><span>"K-pop 특화 + 사용자 생성 + 양방향 소통 + 콘텐츠 생성 + 육성"</span>을 모두 제공하는 서비스는 없다</div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>8 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 10: POSITIONING (p9/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title"><b>Positioning</b></div>
+  <div class="subtitle">3개 시장의 교차점에 아직 아무도 차지하지 않은 자리</div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="pm-area">
+      <div class="pm-map">
+        <div class="pm-ax-h"></div>
+        <div class="pm-ax-v"></div>
+        <span class="pm-lbl t">사용자 생성 (User-Generated)</span>
+        <span class="pm-lbl b">기획사 주도 (Agency-Led)</span>
+        <span class="pm-lbl l">소비 중심</span>
+        <span class="pm-lbl r">창작 중심</span>
+        <div class="pm-dot" style="left:20%;top:25%;"><div class="c">C.AI</div><div class="n">Character.AI</div><div class="m">MAU 2,000만</div></div>
+        <div class="pm-dot" style="left:32%;top:30%;"><div class="c">Talkie</div><div class="n">Talkie AI</div><div class="m">MAU 2,000만+</div></div>
+        <div class="pm-dot" style="left:24%;top:40%;"><div class="c">크랙</div><div class="n">크랙 (Krak)</div><div class="m">MAU 97~192만</div></div>
+        <div class="pm-dot" style="left:38%;top:43%;"><div class="c">ZETA</div><div class="n">ZETA</div><div class="m">MAU 336만</div></div>
+        <div class="pm-dot" style="left:22%;top:70%;"><div class="c">Bubble</div><div class="n">Bubble</div><div class="m">749억원</div></div>
+        <div class="pm-dot" style="left:35%;top:75%;"><div class="c">Weverse</div><div class="n">Weverse</div><div class="m">2,913억원</div></div>
+        <div class="pm-dot" style="left:62%;top:72%;"><div class="c">PLAVE</div><div class="n">PLAVE</div><div class="m">454억원</div></div>
+        <div class="pm-dot" style="left:74%;top:68%;"><div class="c" style="font-size:10px;">Galaxy</div><div class="n">갤럭시코퍼레이션</div><div class="m">매출 1,260억</div></div>
+        <div class="pm-dot" style="left:58%;top:82%;"><div class="c" style="font-size:10px;">MINIai</div><div class="n">MINIai</div><div class="m">카카오엔터 투자</div></div>
+        <div class="pm-dot" style="left:62%;top:35%;"><div class="c" style="font-size:10px;">월간<br>아이돌</div><div class="n">월간아이돌</div><div class="m">100만 DL (게임)</div></div>
+        <div class="pm-dot me" style="left:78%;top:22%;"><div class="c">AIdol</div><div class="n">K-pop + 생성 + 육성</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>9 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 11: KEY TAKEAWAYS (p10/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Analysis</div>
+  <div class="title">Key <b>Takeaways</b></div>
+  <div class="ct" style="margin-top:48px;">
+    <div class="kt-area">
+      <div class="kt-card"><div class="tg">01 MARKET</div><div class="bg">$20.1B</div><div class="ds">버추얼 아이돌 시장 CAGR 23.6%<br>AI 컴패니언 시장 CAGR 31.2%</div></div>
+      <div class="kt-card"><div class="tg">02 PROVEN DEMAND</div><div class="bg">$1.2B</div><div class="ds">AI 앱 인앱 매출 YoY +179%<br>Bubble 749억 / PLAVE 454억</div></div>
+      <div class="kt-card"><div class="tg">03 COST COLLAPSE</div><div class="bg" style="font-size:42px;">65,000x cheaper</div><div class="ds">AI 생성으로 데뷔 비용 붕괴<br>Billboard #1 / Warner Music 라이선스</div></div>
+      <div class="kt-card"><div class="tg">04 BIG BETS</div><div class="bg">$131M+</div><div class="ds">HYBE $36.5M + SM $92M + Google $2.7B<br>모두 기획사 주도 모델에 집중</div></div>
+      <div class="kt-btm"><div class="bg"><strong>"K-pop 특화 + 사용자 생성 + 양방향 소통 + 콘텐츠 생성 + 육성"</strong><br>이 교차점에 위치한 서비스는 AIdol뿐이다</div></div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>10 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 12: MARKET POTENTIAL (p11/17) ==================== -->
+<div class="slide">
+  <div class="tag">Market Potential</div>
+  <div class="title">가상 꾸미기에 사람들은 <b>이미 수조원</b>을 쓴다</div>
+  <div class="mp-grid">
+    <div class="mp-trends">
+      <div>
+        <div class="mp-trend-title"><b>$112B</b> 글로벌 가상 아이템 시장</div>
+        <div class="mp-trend-desc">연평균 15.9% 성장 중 (2024). 게임 스킨/패션 아이템이 전체의 45% 차지</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">포트나이트: <b>무료 게임</b> 하나로 연 <b>~$5B</b></div>
+        <div class="mp-trend-desc">게임 자체는 무료, 매출 전액이 코스메틱 스킨. AIdol과 동일한 Freemium 구조</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">K-pop 팬 = <b>검증된 결제</b> 고객</div>
+        <div class="mp-trend-desc">Bubble 749억(일방향 문자), PLAVE 454억(버추얼 아이돌). 실물 상품 없이 디지털로만 달성</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">AI 비용 <b>65,000x</b> 하락 = Why Now</div>
+        <div class="mp-trend-desc">아이돌 한 팀 데뷔 7억원 → 사실상 0원. 2년 전에는 만들 수 없었던 제품</div>
+      </div>
+    </div>
+    <div class="mp-chart">
+      <div class="mp-chart-title">검증된 코스메틱 매출 (연간, 2024)</div>
+      <div class="mp-bars">
+        <div class="mp-bar">
+          <div class="mp-bar-val">~$5.0B</div>
+          <div class="mp-bar-inner" style="height:100%"></div>
+          <div class="mp-bar-label">포트나이트</div>
+          <div class="mp-bar-sub">매출 전액 스킨</div>
+        </div>
+        <div class="mp-bar">
+          <div class="mp-bar-val">$4.4B</div>
+          <div class="mp-bar-inner" style="height:88%"></div>
+          <div class="mp-bar-label">로블록스</div>
+          <div class="mp-bar-sub">SEC 10-K</div>
+        </div>
+        <div class="mp-bar">
+          <div class="mp-bar-val">~$2.2B</div>
+          <div class="mp-bar-inner" style="height:44%"></div>
+          <div class="mp-bar-label">EA FC</div>
+          <div class="mp-bar-sub">SEC 10-K 기반</div>
+        </div>
+      </div>
+      <div class="mp-cagr"><div class="mp-cagr-badge">CAGR +15.9%</div></div>
+      <div class="mp-kpop">
+        <div class="mp-kpop-card">
+          <div><div class="mp-kpop-name">Bubble (DearU)</div><div class="mp-kpop-desc">일방향 문자만으로 &middot; KOSDAQ 공시</div></div>
+          <div class="mp-kpop-val">749억</div>
+        </div>
+        <div class="mp-kpop-card">
+          <div><div class="mp-kpop-name">PLAVE</div><div class="mp-kpop-desc">실물 멤버 0명 &middot; 버추얼 아이돌</div></div>
+          <div class="mp-kpop-val">454억</div>
+        </div>
+      </div>
+      <div class="mp-total">
+        <div class="mp-total-big">$11.6B+</div>
+        <div class="mp-total-text">게임 코스메틱 3개 서비스만으로 <b>약 15.8조원</b><br>+ K-pop 디지털 <b>1,203억원</b></div>
+      </div>
+    </div>
+  </div>
+  <div class="mp-src">Epic v. Apple (2021) / Roblox 10-K (2024) / EA 10-K (FY2025) / DearU DART (2024) / THE VC / Mordor Intelligence</div>
+  <div class="footer"><span class="brand">AIDOL</span><span>11 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 13: BM FREEMIUM (p12/17) ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">커스터마이징 <b>Freemium</b>: 무료로 만들고, 꾸밀 때 과금</div>
+  <div class="subtitle">AI 아이돌 생성은 무료, 프리미엄 커스터마이징에서 수익 발생</div>
+  <div class="bm1-cols">
+    <div>
+      <div class="col-head gray">AS IS &mdash; 검증된 커스터마이징 과금</div>
+      <div class="item">
+        <div class="num w">1</div>
+        <div class="item-body"><div class="item-name">프리미엄 꾸미기 아이템</div><div class="item-ref">단건 구매</div></div>
+        <div class="item-price w">2,000원</div>
+      </div>
+      <div class="item">
+        <div class="num w">2</div>
+        <div class="item-body"><div class="item-name">시즌 한정 테마팩</div><div class="item-ref">기간 한정</div></div>
+        <div class="item-price w">10,000원</div>
+      </div>
+      <div class="item">
+        <div class="num w">3</div>
+        <div class="item-body"><div class="item-name">고급 콘셉트 패키지</div><div class="item-ref">프리미엄</div></div>
+        <div class="item-price w">19,000원</div>
+      </div>
+      <div style="margin-top:auto;">
+        <div style="background:rgba(255,51,119,.04); border-left:3px solid var(--pink); border-radius:0 10px 10px 0; padding:14px 18px; margin-bottom:10px;">
+          <div style="font-size:20px; color:var(--white); line-height:1.5;">"진짜 <b style='color:var(--pink);'>키울 수 있으면 진짜 재밌겠다</b>. 심즈처럼"</div>
+          <div style="font-size:14px; color:var(--dim); margin-top:4px;">U3 장쏘피</div>
+        </div>
+        <div style="font-size:16px; color:var(--dim); line-height:1.5;">
+          ref. <b style="color:var(--white);">제페토</b> &mdash; 아바타 꾸미기 아이템 <b style="color:var(--pink);">25억개+</b> 판매, 크리에이터 매출 $100M+
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="col-head pink">TO BE &mdash; 구독 + 크레딧 + B2B</div>
+      <div class="item">
+        <div class="num p">1</div>
+        <div class="item-body"><div class="item-name">구독권 추가</div><div class="item-ref">ref. Bubble(DearU) 749억원/년, 영업이익률 34%</div></div>
+        <div class="item-price p">4,900~19,900원</div>
+      </div>
+      <div class="item">
+        <div class="num p">2</div>
+        <div class="item-body"><div class="item-name">크레딧 종량제</div><div class="item-ref">ref. Suno $200M ARR, 전년대비 4.4배 성장</div></div>
+        <div class="item-price p">종량제</div>
+      </div>
+      <div class="item">
+        <div class="num p">3</div>
+        <div class="item-body"><div class="item-name">B2B 데이터 활용</div><div class="item-ref">ref. 제페토 크리에이터 $100M+ 아이템 매출</div></div>
+        <div class="item-badge">Phase 3</div>
+      </div>
+      <div style="margin-top:auto; background:rgba(255,51,119,.04); border-left:3px solid var(--pink); border-radius:0 10px 10px 0; padding:14px 18px;">
+        <div style="font-size:20px; color:var(--white); line-height:1.5;">"다마고치처럼 매일 케어하면 <b style='color:var(--pink);'>뺏기면 안 되겠다는 생각</b>이 들 것 같은"</div>
+        <div style="font-size:14px; color:var(--dim); margin-top:4px;">U8 김현조 &mdash; 육성 → 과금 전환 동기</div>
+      </div>
+    </div>
+  </div>
+  <div class="flow">
+    <div class="flow-step"><div class="flow-icon free"><svg><use href="#i-user"/></svg></div><div class="flow-text">유저</div></div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step"><div class="flow-icon free"><svg><use href="#i-star"/></svg></div><div class="flow-text">아이돌 생성 <span class="ftag free">무료</span></div></div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step"><div class="flow-icon paid"><svg><use href="#i-sparkle"/></svg></div><div class="flow-text">꾸미기/아이템 <span class="ftag paid">과금</span></div></div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step"><div class="flow-icon paid"><svg><use href="#i-music"/></svg></div><div class="flow-text">AI 콘텐츠 생성 <span class="ftag paid">크레딧</span></div></div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step"><div class="flow-icon b2b"><svg><use href="#i-chart"/></svg></div><div class="flow-text">B2B 확장</div></div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>12 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 14: BM CONVERSION (p13/17) ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">하이라이트 콘텐츠가 <b>과금</b>을 만든다</div>
+  <div class="subtitle">무료 체험 → 유료 전환 포인트</div>
+  <div class="bm2-content">
+    <div class="three-cols">
+      <div class="conv-card">
+        <div class="conv-label">01</div>
+        <div class="conv-title">꾸미기 아이템<br>(의상/헤어/악세서리)</div>
+        <div class="conv-free"><div class="conv-free-label">Free</div><div class="conv-free-text">기본 외모 프리셋으로<br>아이돌 생성</div></div>
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+        <div class="conv-paid"><div class="conv-paid-label">Premium</div><div class="conv-paid-text">의상, 헤어스타일, 악세서리,<br>메이크업 개별 구매</div><div class="conv-price">2,000원~</div></div>
+        <div class="conv-ref">ref. <b>제페토</b> 아바타 꾸미기 아이템<br>25억개+ 판매, 크리에이터 매출 $100M+</div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-label">02</div>
+        <div class="conv-title">콘셉트 촬영<br>(시즌/테마 화보)</div>
+        <div class="conv-free"><div class="conv-free-label">Free</div><div class="conv-free-text">기본 프로필 사진<br>자동 생성 1장</div></div>
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+        <div class="conv-paid"><div class="conv-paid-label">Premium</div><div class="conv-paid-text">시즌 테마 화보 세트<br>(여름/할로윈/졸업 등)</div><div class="conv-price">10,000~19,000원</div></div>
+        <div class="conv-ref">ref. <b>제페토</b> 포토부스 + 시즌 아이템<br>크리에이터 매출 $100M+</div>
+      </div>
+      <div class="conv-card">
+        <div class="conv-label">03</div>
+        <div class="conv-title">AI 음악 / 영상<br>(콘텐츠 생성)</div>
+        <div class="conv-free"><div class="conv-free-label">Free</div><div class="conv-free-text">AI 데모곡 시청<br>MV 샘플 미리보기</div></div>
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+        <div class="conv-paid"><div class="conv-paid-label">Premium</div><div class="conv-paid-text">내 아이돌 목소리로<br>커버곡 + 뮤직비디오 생성</div><div class="conv-price">크레딧 소모</div></div>
+        <div class="conv-ref">ref. <b>Suno</b> 무료 유저 50%가<br>한도 도달 후 유료 전환</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"내 취향대로 만든 그룹이라 더 애착이 가는 거지. <b style='color:var(--pink);'>마케팅 해주고 싶지</b>"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U3 장쏘피 &mdash; 소유욕 + 투자 의향</div>
+      </div>
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"<b style='color:var(--pink);'>포토카드처럼 소장</b>하고 싶다. 완성 카드 캡쳐해서 보여주고 싶었다"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U4 배나영 &mdash; 수집/소장 과금 욕구</div>
+      </div>
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"AI로 <b style='color:var(--pink);'>컨셉포토 뽑으면 재밌을 것 같아요</b>. 저만의 영역을 꾸미는 느낌"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U8 김현조 &mdash; 유료 콘텐츠 생성 수요</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>13 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 15: BM REVENUE (p14/17) ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">수익 모델 요약: <b>Phase별</b> 매출 구조</div>
+  <div class="bm3-content">
+    <div class="phases">
+      <div class="phase ph1">
+        <div class="ph-tag">Phase 1 &middot; 현재</div>
+        <div class="ph-title">아이템 단건 구매</div>
+        <div class="ph-big">2,000~19,000원</div>
+        <div class="ph-desc">프리미엄 꾸미기<br>시즌 한정 테마팩<br>고급 콘셉트 패키지</div>
+      </div>
+      <div class="phase ph2">
+        <div class="ph-tag">Phase 2 &middot; 6개월 내</div>
+        <div class="ph-title">+ 구독 / 크레딧</div>
+        <div class="ph-big">월 4,900~19,900원</div>
+        <div class="ph-desc">구독권 (기능별 티어)<br>크레딧 종량제<br>시즌패스 <b>29,900원</b>/분기</div>
+      </div>
+      <div class="phase ph3">
+        <div class="ph-tag">Phase 3 &middot; 12개월+</div>
+        <div class="ph-title">+ B2B 수익원</div>
+        <div class="ph-big">IP 수수료 15%</div>
+        <div class="ph-desc">IP 마켓플레이스 수수료<br>팬덤 데이터 리포트<br>API / 화이트레이블</div>
+      </div>
+    </div>
+    <div class="bottom-row">
+      <div class="bot-card">
+        <div class="bot-title"><div class="dot"></div>PxQ 매출 시나리오</div>
+        <table>
+          <tr><th>시나리오</th><th>MAU</th><th>전환율</th><th>ARPU</th><th>월 매출</th></tr>
+          <tr><td>Phase 1 (M3)</td><td>2,250명</td><td>3%</td><td>8,000원</td><td class="rev">54만원</td></tr>
+          <tr><td>Phase 2 (M6)</td><td>5,070명</td><td>5%</td><td>11,000원</td><td class="rev">279만원</td></tr>
+          <tr class="hl"><td>Phase 2 (M12)</td><td>24,472명</td><td>5%</td><td>12,000원</td><td class="rev">1,469만원</td></tr>
+        </table>
+        <div class="tnote">* 전환율 참고: 제페토 아이템 25억개+ 판매, Bubble 구독 217만명 (K-pop 팬 과금 의지 검증)</div>
+      </div>
+      <div class="bot-card">
+        <div class="bot-title"><div class="dot"></div>차별화: 사용자가 직접 만드는 K-pop</div>
+        <table class="comp">
+          <tr><th></th><th>Character.AI</th><th>제페토</th><th>Bubble</th><th>PLAVE</th><th>AIdol</th></tr>
+          <tr><td>사용자가 직접 생성</td><td class="o">O</td><td class="o">O</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>K-pop 콘텐츠</td><td class="x">X</td><td class="tri">△</td><td class="o">O</td><td class="o">O</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>육성/성장</td><td class="x">X</td><td class="x">X</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>꾸미기 과금</td><td class="x">X</td><td class="o">O</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+        </table>
+        <div class="tnote">* 사용자가 직접 K-pop 콘텐츠를 생성하고 육성하는 플랫폼은 AIdol뿐</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>14 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 16: GROWTH PROJECTION [DARK] (p15/17) ==================== -->
+<div class="slide dark">
+  <div class="tag">Growth</div>
+  <div class="title">12개월 목표: MAU <b>15K</b> / MRR <b>$7.6K</b></div>
+  <div class="subtitle">현실적 시나리오 기준 / ARPU $5 (Bubble $3.5 &lt; AIdol &lt; Character.AI $10)</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; flex:1; margin-top:48px;">
+    <div style="display:flex; flex-direction:column;">
+      <div style="font-size:18px; font-weight:700; color:var(--dim); margin-bottom:16px;">MAU</div>
+      <div style="flex:1; position:relative;">
+        <canvas id="mauChartFinal"></canvas>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column;">
+      <div style="font-size:18px; font-weight:700; color:var(--dim); margin-bottom:16px;">MRR</div>
+      <div style="flex:1; position:relative;">
+        <canvas id="mrrChartFinal"></canvas>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:0; margin-top:auto; background:var(--card); border-radius:16px; padding:24px 0;">
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M0 (Now)</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">500 MAU</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">MVP + 바이럴 검증</div>
+    </div>
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M3</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">MRR $222</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">유료 구독 시작</div>
+    </div>
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M6</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">MRR $845</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">음성채팅 + 유료마케팅</div>
+    </div>
+    <div style="flex:1; text-align:center; padding:0 32px;">
+      <div style="font-size:14px; color:var(--pink); font-weight:700;">M12</div>
+      <div style="font-size:28px; font-weight:900; color:var(--pink); margin-top:4px;">MRR $7,586</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">ARR $91K / 유료 1,517명</div>
+    </div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>15 / 17</span></div>
+</div>
+
+
+<!-- ==================== SLIDE 17: TEAM (p16/17) ==================== -->
+<div class="slide">
+  <div class="tag">Team</div>
+  <div class="title">K-POP + AI = <b>AIoIA</b></div>
+  <div class="subtitle">팬덤 사용자 경험을 개발할 수 있는 최적의 팀</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-top:40px;">
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 36px; display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <div style="font-size:28px; font-weight:800; color:var(--white);">이소연</div>
+        <div style="width:1px; height:20px; background:rgba(0,0,0,.12);"></div>
+        <div style="font-size:18px; color:var(--pink); font-weight:700;">CEO</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">연세대 <b style="color:var(--white);">HCI/UX 석사</b>, AI와의 인터랙션 연구</div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;"><b style="color:var(--white);">20년+</b> K-pop 팬덤 경험, 팬덤 심리 + 서브컬처 깊은 이해</div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">CodeStart 창업 (개발 없이 <b style="color:var(--white);">$100 교육 과정</b> 판매)</div>
+      </div>
+      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:12px;">
+        <div style="font-size:14px; color:var(--pink); font-weight:700; margin-bottom:6px;">왜 소연이어야 할까요?</div>
+        <div style="font-size:15px; color:var(--dim); line-height:1.6;">
+          10대부터 30대까지 장기적 아이돌 소비 경험<br>
+          <b style="color:var(--white);">직접 인생을 겪어보지 않으면 구현할 수 없는 UX</b><br>
+          BL/팬픽 등 서브컬처까지 이해하는 여성 창업자
+        </div>
+      </div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 36px; display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:center; gap:16px; margin-bottom:20px;">
+        <div style="font-size:28px; font-weight:800; color:var(--white);">김영욱</div>
+        <div style="width:1px; height:20px; background:rgba(0,0,0,.12);"></div>
+        <div style="font-size:18px; color:var(--pink); font-weight:700;">CTO</div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px; flex:1;">
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;"><b style="color:var(--white);">KAIST AI/ML/RL 석사</b></div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">네이버 P2P 스트리밍 <b style="color:var(--white);">특허 3건</b> (미국/일본/한국)</div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">스캐터랩 ML 엔지니어 (<b style="color:var(--white);">PingPong AI</b> 개발)</div>
+        <div style="font-size:17px; color:var(--dim); line-height:1.5;">Algorima CEO (연쇄 창업, 연 매출 <b style="color:var(--white);">10억원+</b>)</div>
+      </div>
+      <div style="margin-top:20px; padding:16px 20px; background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:12px;">
+        <div style="font-size:14px; color:var(--pink); font-weight:700; margin-bottom:6px;">왜 영욱이어야 할까요?</div>
+        <div style="font-size:15px; color:var(--dim); line-height:1.6;">
+          PingPong 챗봇은 이후 <b style="color:var(--white);">이루다 2.0</b>으로 발전<br>
+          네이버 라이브 스트리밍 플랫폼 개발 경험<br>
+          최신 AI 오픈소스 기여 (LiveKit, LangChain 등)
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:12px; margin-top:auto;">
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--pink);">AI/LLM</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">이미지, 영상 등<br>콘텐츠 생성 파이프라인</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Backend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">LLM 기반 AI Agent<br>Text-to-SQL 1위</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Backend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">AI Agent 설계<br>및 개발</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Frontend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">K-POP 이커머스<br>플랫폼 실무</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Frontend</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">K-POP 이커머스<br>플랫폼 실무</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">Designer</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">UI/UX<br>디자인</div>
+    </div>
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px 16px; text-align:center;">
+      <div style="font-size:15px; font-weight:700; color:var(--white);">PM</div>
+      <div style="font-size:13px; color:var(--dim); margin-top:6px; line-height:1.4;">기획<br>리서치</div>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:32px; margin-top:16px; padding:14px 0;">
+    <div style="font-size:15px; font-weight:700; color:var(--pink);">+ 추가 고용 희망</div>
+    <div style="font-size:15px; color:var(--dim);">틱톡 마케팅 전문가</div>
+    <div style="width:4px; height:4px; border-radius:50%; background:rgba(0,0,0,.2);"></div>
+    <div style="font-size:15px; color:var(--dim);">K-POP 엔터 실무 경험자</div>
+    <div style="width:4px; height:4px; border-radius:50%; background:rgba(0,0,0,.2);"></div>
+    <div style="font-size:15px; color:var(--dim);">모바일 앱 개발자</div>
+  </div>
+  <div class="footer"><span class="brand">AIDOL</span><span>16 / 17</span></div>
+</div>
+
