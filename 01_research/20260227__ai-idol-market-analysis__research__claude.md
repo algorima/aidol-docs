@@ -116,7 +116,7 @@
 | 항목 | 데이터 | 출처 |
 |------|--------|------|
 | 유료 구독자 | **200만 명** | [Music In Africa](https://www.musicinafrica.net/magazine/suno-reports-two-million-paid-subscribers-300m-annual-revenue) |
-| ARR (2025.11) | **$3억** (USD 300M) | [Music In Africa](https://www.musicinafrica.net/magazine/suno-reports-two-million-paid-subscribers-300m-annual-revenue) |
+| ARR (2026.02) | **$3억** (USD 300M) | [Music In Africa](https://www.musicinafrica.net/magazine/suno-reports-two-million-paid-subscribers-300m-annual-revenue) |
 | ARR 성장 | $45M (2024 말) → $150M (2025.10) → $300M (2026) | [Sacra](https://sacra.com/c/suno/), [TechCrunch](https://techcrunch.com/2025/11/19/legally-embattled-ai-music-startup-suno-raises-at-2-45b-valuation-on-200m-revenue/) |
 | 기업가치 | **$24.5억** (Series C $250M) | [TechCrunch](https://techcrunch.com/2025/11/19/legally-embattled-ai-music-startup-suno-raises-at-2-45b-valuation-on-200m-revenue/) |
 | 누적 사용자 | **1억 명+** | [Business of Apps](https://www.businessofapps.com/data/suno-statistics/) |
