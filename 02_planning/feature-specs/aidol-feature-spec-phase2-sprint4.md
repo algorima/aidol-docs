@@ -1,4 +1,4 @@
-# AIdol 기능 명세서 - Phase 2 Sprint 1
+# AIdol 기능 명세서 - Phase 2 Sprint 4
 
 > **작성일**: 2026-03-02
 > **상태**: draft
@@ -9,7 +9,7 @@
 
 ## 개요
 
-Phase 2 Sprint 1은 **실제감 강화**를 목표로 UI/UX 개선과 피드 기능 기반을 구현합니다.
+Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기능 기반을 구현합니다.
 사용자가 생성한 AI 아이돌에 대한 정보 접근성을 높이고, 콘텐츠 확장을 위한 피드 탭을 추가합니다.
 
 ---
@@ -75,6 +75,47 @@ Phase 2 Sprint 1은 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 |------|------|
 | **화면 내용** | "곧 업로드 됩니다" 안내 문구 표시 |
 | **비고** | 실제 피드 콘텐츠는 Buppy MCP 서버를 통해 수동 업로드 후 노출 |
+
+### 3-3. Backend / Frontend 참고사항
+
+피드 탭은 Grid 형태로 이미지와 영상을 함께 표시합니다. 단일 API로 처리 가능합니다.
+
+#### API 응답 예시
+
+```json
+GET /api/feeds?groupId=123
+
+{
+  "feeds": [
+    {
+      "id": "feed_001",
+      "type": "image",
+      "thumbnailUrl": "...",
+      "contentUrl": "...",
+      "caption": "...",
+      "createdAt": "2026-03-02T12:00:00Z"
+    },
+    {
+      "id": "feed_002",
+      "type": "video",
+      "thumbnailUrl": "...",
+      "contentUrl": "...",
+      "duration": 30,
+      "caption": "...",
+      "createdAt": "2026-03-02T11:00:00Z"
+    }
+  ],
+  "nextCursor": "..."
+}
+```
+
+#### Grid UI 처리
+
+| 항목 | 내용 |
+|------|------|
+| **공통** | thumbnailUrl로 Grid 셀 표시 |
+| **영상 구분** | `type === "video"` 면 재생 아이콘 오버레이 |
+| **탭 동작** | image → 이미지 뷰어 / video → 영상 플레이어 |
 
 ---
 
