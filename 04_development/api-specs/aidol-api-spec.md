@@ -757,6 +757,7 @@ Input Parameters (Query)
 - 주의사항
   - aidolId는 전용 파라미터입니다. filters에서 aidolId 필드로 처리하지 않습니다.
   - filters는 JSON 문자열이어야 하며, camelCase/snake_case 필드 모두 허용됩니다(내부에서 snake_case로 변환).
+
 **Response** (200 OK):
 
 ```json
@@ -925,7 +926,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/response
 }
 ```
 
-**Response** (200 OK):
+**Response** (201 Created):
 ```json
 {
   "messageId": "msg-126",
@@ -950,7 +951,7 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 }
 ```
 
-**Response** (200 OK):
+**Response** (201 Created):
 ```json
 {
   "messageId": "msg-126",
