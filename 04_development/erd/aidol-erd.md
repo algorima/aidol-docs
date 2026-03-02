@@ -65,7 +65,8 @@ erDiagram
         string id PK
         string companion_id FK "NOT NULL, IX"
         string name "NOT NULL"
-        string language "default: en"
+        string anonymous_id "NULLABLE, IX"
+        string language "default: ko"
         datetime created_at
         datetime updated_at
     }
@@ -226,21 +227,21 @@ erDiagram
 | nickname          | str  | -      | 관계 별명       |
 
 ### chatrooms
+| 필드         | 타입    | 제약             | 설명                                          |
+| ------------ | ------- | ---------------- | --------------------------------------------- |
+| id           | UUID    | PK               | 자동 생성                                     |
+| companion_id | UUID    | FK, IX, NOT NULL | companions 참조                               |
+| name         | str     | NOT NULL         | 채팅방 이름                                   |
+| anonymous_id | str(36) | IX               | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| language     | str     | NOT NULL         | 언어 (기본: "ko")                             |
 
-| 필드         | 타입 | 제약             | 설명              |
-| ------------ | ---- | ---------------- | ----------------- |
-| id           | UUID | PK               | 자동 생성         |
-| companion_id | UUID | FK, IX, NOT NULL | companions 참조   |
-| name         | str  | NOT NULL         | 채팅방 이름       |
-| language     | str  | NOT NULL, IX     | 언어 (기본: "en") |
+### messages 
 
-### messages
-
-| 필드         | 타입    | 제약                                           | 설명                                          |
-| ------------ | ------- | ---------------------------------------------- | --------------------------------------------- |
-| id           | UUID    | PK                                             | 자동 생성                                     |
-| chatroom_id  | UUID    | FK, NOT NULL, IX(복합: chatroom_id+created_at) | chatrooms 참조                                |
-| sender_type  | str     | NOT NULL, IX                                   | "USER" \| "COMPANION"                         |
-| content      | text    | NOT NULL                                       | 메시지 내용                                   |
-| anonymous_id | str(36) | IX                                             | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
-| companion_id | str     | IX (FK 아님)                                   | companion 식별자 (분석용)                     |
+| 필드         | 타입    | 제약             | 설명                                          |
+| ------------ | ------- | ---------------- | --------------------------------------------- |
+| id           | UUID    | PK               | 자동 생성                                     |
+| chatroom_id  | UUID    | FK, IX, NOT NULL | chatrooms 참조                                |
+| sender_type  | str     | NOT NULL         | "USER" \| "COMPANION"                         |
+| content      | text    | NOT NULL         | 메시지 내용                                   |
+| anonymous_id | str(36) |                  | 익명 사용자 식별자 (쿠키: aioia_anonymous_id) |
+| companion_id | UUID    | IX               | 이전 대화를 불러오기 위한 companion 식별자    |
