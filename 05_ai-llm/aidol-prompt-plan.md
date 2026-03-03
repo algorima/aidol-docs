@@ -61,7 +61,7 @@ W4: 콘텐츠 생성
 ---
 
 ## 4. 관련 문서
-[1] https://www.figma.com/deck/fV4X4RD6nmgJkyS8HBQW73
-[2] https://github.com/algorima/aidol-docs/pull/84
+[Figma 발표자료](https://www.figma.com/deck/fV4X4RD6nmgJkyS8HBQW73)
+[관련 PR #84](https://github.com/algorima/aidol-docs/pull/84)
 
 
