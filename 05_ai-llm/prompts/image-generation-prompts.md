@@ -3,7 +3,7 @@
 ## 1. 개요
 
 AIdol 서비스에서 사용되는 AI 이미지 생성 프롬프트를 스크립트별로 정리한 문서입니다.
-모든 이미지는 Gemini 3 Pro Image Preview 모델(`gemini-3-pro-image-preview`)을 사용하여 생성합니다.
+모든 이미지는 `gemini-3-pro-image-preview` 모델을 사용하여 생성합니다.
 
 생성 대상:
 - 20개 그룹 엠블럼/로고
