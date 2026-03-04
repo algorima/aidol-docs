@@ -1111,7 +1111,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 
 - `current`: 페이지 번호 (기본: 1, ≥ 1)
 - `pageSize`: 페이지당 항목 수 (기본: 10, 1-100)
-- `page` 파라미터는 지원하지 않음
 
 ### Sort
 
