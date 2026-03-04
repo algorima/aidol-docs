@@ -1045,9 +1045,8 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
   id: string                        // UUID
   companionId: string               // 채팅 대상 companion ID
   name: string                      // 채팅방 이름
-  language: string                  // 언어 코드 (기본: "ko")
-  anonymousId: string | null        // 익명 사용자 식별자
-  lastMessage: {                    // 가장 최근 메시지
+  language: string                  // 언어 코드 (기본: "en")
+  lastMessage: {                    // 최근 메시지 요약 (GET /me/chatrooms 응답에서만 포함)
     content: string
     createdAt: string
   } | null
@@ -1062,12 +1061,9 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 ```tsx
 {
   id: string                        // UUID
-  chatroomId: string                // Chatroom FK
   senderType: "USER" | "COMPANION"  // 발신자 유형
   content: string                   // 메시지 내용
   createdAt: string                 // ISO 8601 datetime
-  companionId: string | null        // 발신 멤버 ID
-  anonymousId: string | null        // 사용자 ID
 }
 
 ```
