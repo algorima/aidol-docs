@@ -30,7 +30,7 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → CI/CD 검증 → 배
 |------|--------|-------|
 | **작업 레포** | algorima/aidol | algorima/buppy |
 | **작업 폴더** | 프로젝트 루트 | 아래 상세 참조 |
-| **import 경로** | `from "aidol"` | `from "@/aidol"` |
+| **import 경로** | `from "@/components"` | `from "@/aidol/components"` |
 | **배포** | buppy 팀 버전 업그레이드 기다림 | PR merge = CI/CD 검증 후 배포 |
 | **버전 관리** | semantic version (v1.5.0) | buppy commit hash만 (버전 없음) |
 | **출시 제어** | 버전 선택 | Feature Flag |
@@ -124,6 +124,53 @@ export default function CastingPage() {
 - Flag name: `aidol_new_feature`
 - 초기 상태: `false` (배포되지만 사용자에게 숨김)
 - 활성화: PostHog 콘솔에서 `true`로 변경 (Sprint Review 후)
+
+---
+
+## 코드 마이그레이션 체크리스트
+
+### Frontend
+
+**1. Import 경로**
+```tsx
+// Before (algorima/aidol)
+import { Header } from "@/components/Header";
+import type { Companion } from "@/schemas/companion";
+
+// After (algorima/buppy)
+import { Header } from "@/aidol/components/Header";
+import type { Companion } from "@/aidol/schemas/companion";
+```
+
+**2. API Service 초기화**
+```tsx
+// Before: 전역 싱글톤
+const repo = useMemo(() => new Repository(getApiService()), []);
+
+// After: Hook + prefix
+const apiService = useApiService({ apiPrefix: "/api/v2/aidol" });
+const repo = useMemo(() => new Repository(apiService), [apiService]);
+```
+
+**3. 라우팅**
+```tsx
+// Before
+router.push(`/${lang}/aidols/${id}/detail`);
+
+// After: /aidol/ prefix 추가
+router.push(`/${lang}/aidol/aidols/${id}/detail`);
+```
+
+**4. i18n**
+```tsx
+// Before
+const { t } = useTranslation("aidol");
+t("inbox.header")
+
+// After
+const { t } = useTranslation();
+t("aidol:inbox.header")
+```
 
 ---
 
