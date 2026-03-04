@@ -354,7 +354,7 @@ attach는 PATCH /companions/{id}로 수행됩니다.
     "name": "Updated Name",
     "aidolId": "aidol_123",
     "gender": "FEMALE",
-    "grade": "S",
+    "grade": "A",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -379,10 +379,10 @@ attach는 PATCH /companions/{id}로 수행됩니다.
     "aidolId": "aidol_123",
     "name": "Minji",
     "gender": "FEMALE",
-    "grade": "S",
+    "grade": "A",
     "biography": "...",
     "profilePictureUrl": "...",
-    "position": "LEADER",
+    "position": "MAIN_VOCAL",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
