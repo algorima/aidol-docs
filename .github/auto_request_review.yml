@@ -1,95 +1,76 @@
 # 리뷰어 자동 지정 설정
 # 최소 1명 승인 필수는 GitHub 브랜치 보호 규칙에서 설정
-# 문서 유형별로 리뷰어가 자동 지정됨
-
-reviewers:
-  # 개인 리뷰어 풀 (username 기준)
-  individuals:
-    # PRD, 사용자 리서치, 비즈니스 방향 → 소연 필수
-    prd_lead:
-      - Lee-Soyeon
-
-    # 기능 명세서 → 소연 + 수지
-    spec_reviewers:
-      - Lee-Soyeon
-      - soojilee000-rgb
-
-    # 디자인 → 수지 + 소연
-    design_reviewers:
-      - soojilee000-rgb
-      - Lee-Soyeon
-
-    # IR, 미팅록 → 수지
-    ir_reviewers:
-      - soojilee000-rgb
+#
+# 원칙: 작성자의 결정권자 + 직접 연동 담당자만 배정
+#
+# 팀 역할 요약
+#   소연 (Lee-Soyeon)       PM/CEO — 최종 결정
+#   수지 (soojilee000-rgb)  PRD·리서치 — 기획 방향
+#   미진 (sju01334)         기능 명세 — 개발팀 소통
+#   제이 (jeonjay0323)      디자인 — Figma UI
+#   영욱 (ywkim)            CTO — 기술 구현 총괄
+#   채현 (chaeniverse)      LLM 프롬프트
 
 files:
-  # 01_research: 사용자 리서치/UT → 소연 리뷰
+  # 01_research: 수지 작성 → 소연 리뷰
   - '01_research/**':
       reviewers:
         - Lee-Soyeon
       required: 1
 
-  # 02_planning/prd: PRD → 소연 필수 리뷰
+  # 02_planning/prd: 수지 작성 → 소연 리뷰
   - '02_planning/prd/**':
       reviewers:
         - Lee-Soyeon
       required: 1
 
-  # 02_planning/feature-specs: 기능 명세서
-  # 필수: 소연(기획확정), 수지(PRD 얼라인), 제이(디자인 착수 전 확인)
-  # 개발팀: 영욱(기술검토), 채연(AI), 은재·지영(프론트), 제형(백엔드)
+  # 02_planning/feature-specs: 미진 작성 → 소연(기획확정) + 수지(PRD얼라인) + 제이(디자인착수) + 영욱(기술검토)
   - '02_planning/feature-specs/**':
       reviewers:
         - Lee-Soyeon
         - soojilee000-rgb
         - jeonjay0323
         - ywkim
-        - chaeniverse
-        - song-eun
-        - zhwltlr
-        - jhpark324
       required: 1
 
-  # 02_planning/meeting-notes: 미팅록 → 수지 리뷰
+  # 02_planning/meeting-notes: 소연 작성 → 수지 리뷰
   - '02_planning/meeting-notes/**':
       reviewers:
         - soojilee000-rgb
       required: 1
 
-  # 02_planning 그 외 (스프린트 계획, 역할 분담 등) → 수지 리뷰
-  # 소연이 대부분 작성 → 수지가 리뷰어
+  # 02_planning 그 외 (스프린트 계획, 역할 분담 등): 소연 작성 → 수지 리뷰
   - '02_planning/**':
       reviewers:
         - soojilee000-rgb
       required: 1
 
-  # 03_design: 와이어프레임/UI → 수지+소연, 1명 필수
+  # 03_design: 제이 작성 → 수지(PRD얼라인) + 소연(최종확정)
   - '03_design/**':
       reviewers:
         - soojilee000-rgb
         - Lee-Soyeon
       required: 1
 
-  # 04_development: 개발 문서 → 영욱 리뷰
+  # 04_development: 개발팀 작성 → 영욱 리뷰
   - '04_development/**':
       reviewers:
         - ywkim
       required: 1
 
-  # 05_ai-llm: AI/LLM 프롬프트 계획 → 소연 리뷰
+  # 05_ai-llm: 채현 작성 → 소연 리뷰
   - '05_ai-llm/**':
       reviewers:
         - Lee-Soyeon
       required: 1
 
-  # 06_ir-master: IR 자료 → 수지 리뷰
+  # 06_ir-master: 소연 작성 → 수지 리뷰
   - '06_ir-master/**':
       reviewers:
         - soojilee000-rgb
       required: 1
 
-  # .github: 워크플로우·설정 → 소연
+  # .github: 소연 작성 → 소연 (기본값)
   - '.github/**':
       reviewers:
         - Lee-Soyeon
