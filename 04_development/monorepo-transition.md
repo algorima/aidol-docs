@@ -131,18 +131,16 @@ export default function CastingPage() {
 
 ### Backend
 
-**Adapter 패턴: aidol ↔ buppy 모듈 경계**
+**Adapter 패턴**
 
-aidol과 buppy는 데이터 모델이 다릅니다. Adapter는 이 차이를 숨겨서, aidol의 비즈니스 로직이 buppy의 구현에 의존하지 않도록 **논리적 경계를 유지**합니다.
+aidol과 buppy는 데이터 모델이 다릅니다. Protocol이 모듈 경계를 정의하고, Adapter가 그 경계를 넘는 브릿지 역할을 합니다.
 
 ```
 aidol Protocol ←→ Adapter ←→ buppy Manager
-  (인터페이스)      (경계)      (실제 구현)
+  (모듈 경계)      (브릿지)     (실제 구현)
 ```
 
-aidol 개발자는 Protocol 인터페이스만 사용합니다. Adapter 구현은 buppy 팀이 관리합니다.
-
-**데이터 모델 차이 (Adapter가 필요한 이유):**
+**데이터 모델 차이:**
 
 | 항목 | aidol (standalone) | buppy |
 |------|-------------------|-------|
