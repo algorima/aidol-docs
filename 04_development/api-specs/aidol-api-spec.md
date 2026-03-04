@@ -844,16 +844,9 @@ Input Parameters (Query)
 - offset: 건너뛸 메시지 수 (기본: 0)
 
 **Response** (200 OK):
-- 시간 순서대로 정렬된 메시지 배열 반환
+- 시간 순서대로 정렬된 메시지 배열 반환(내림차순)
 ```json
 [
-  {
-    "id": "msg-123",
-    "chatroomId": "chatroom-uuid-1234",
-    "senderType": "USER",
-    "content": "안녕, 오늘 기분 어때?",
-    "createdAt": "2024-02-09T10:01:00Z"
-  },
   {
     "id": "msg-124",
     "chatroomId": "chatroom-uuid-1234",
@@ -861,9 +854,15 @@ Input Parameters (Query)
     "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
     "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
-  }
+  },
+  {
+    "id": "msg-123",
+    "chatroomId": "chatroom-uuid-1234",
+    "senderType": "USER",
+    "content": "안녕, 오늘 기분 어때?",
+    "createdAt": "2024-02-09T10:01:00Z"
+  },
 ]
-
 
 ```
 
