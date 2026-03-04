@@ -79,7 +79,7 @@ Headers: anonymousId
 
 Input Parameters (Query)
 
-- page: 페이지 번호 (기본: 1)
+- current: 페이지 번호 (기본: 1)
 - pageSize: 페이지 당 항목 수 (기본: 10)
 - sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
 - filters: 필터 조건 (JSON 문자열)
@@ -128,7 +128,7 @@ Input Parameters (Query)
 
 Input Parameters (Query)
 
-- page: 페이지 번호 (기본: 1)
+- current: 페이지 번호 (기본: 1)
 - pageSize: 페이지 당 항목 수 (기본: 10)
 - sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
 - filters: 필터 조건 (JSON 문자열)
