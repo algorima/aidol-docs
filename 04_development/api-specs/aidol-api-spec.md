@@ -598,7 +598,7 @@ Query Parameters (공통 List 규칙)
 **Response** (200 OK):
 
 ```json
-{
+[
   {
     "id": "string",
     "highlightId": "string",
@@ -617,7 +617,7 @@ Query Parameters (공통 List 규칙)
     "createdAt": "datetime",
     "updatedAt": "datetime"
   }
-}
+]
 ```
 
 ---
