@@ -598,27 +598,24 @@ AIdol 하이라이트를 조회합니다.
 
 ```json
 {
-  "data": [
-    {
-      "id": "string",
-      "highlightId": "string",
-      "companionId": "string",
-      "sequence": "1",
-      "content": "안녕하세요",
-      "createdAt": "datetime",
-      "updatedAt": "datetime"
-     },
-	   {
-		  "id": "string",
-		  "highlightId": "string",
-		  "companionId": "string",
-		  "sequence": "2",
-		  "content": "안녕",
-		  "createdAt": "datetime",
-		  "updatedAt": "datetime"
-     }
-  ],
-  "total": 2
+  {
+    "id": "string",
+    "highlightId": "string",
+    "companionId": "string",
+    "sequence": 1,
+    "content": "안녕하세요",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  },
+  {
+    "id": "string",
+    "highlightId": "string",
+    "companionId": "string",
+    "sequence": 2,
+    "content": "안녕",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
 }
 ```
 
