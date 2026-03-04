@@ -704,7 +704,6 @@ Input Parameters (Query)
 {
   "fromCompanionId": "string",
   "toCompanionId": "string",
-  "type": "string",
   "intimacy": "int",
   "nickname": "string" //선택
 }
@@ -718,7 +717,6 @@ Input Parameters (Query)
 	  "id": "string", 
     "fromCompanionId": "string",
     "toCompanionId": "string",
-    "type": "string",
     "intimacy": "int",
     "nickname": "string"
   },
