@@ -644,7 +644,6 @@ Query Parameters (공통 List 규칙)
 	    "id": "string",
 	    "fromCompanionId": "string",
 	    "toCompanionId": "string",
-	    "type": "string",
 	    "intimacy": "number",
 	    "nickname": "string",
       "createdAt": "datetime",
@@ -654,7 +653,6 @@ Query Parameters (공통 List 규칙)
 	    "id": "string",
 	    "fromCompanionId": "string",
 	    "toCompanionId": "string",
-	    "type": "string",
 	    "intimacy": "number",
 	    "nickname": "string",
       "createdAt": "datetime",
@@ -680,7 +678,6 @@ Query Parameters (공통 List 규칙)
     "id": "string",
     "fromCompanionId": "string",
     "toCompanionId": "string",
-    "type": "string",
     "intimacy": "number",
     "nickname": "string"
   },
