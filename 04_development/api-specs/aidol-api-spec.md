@@ -851,19 +851,16 @@ Input Parameters (Query)
 [
   {
     "id": "msg-124",
-    "chatroomId": "chatroom-uuid-1234",
     "senderType": "COMPANION",
     "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
-    "companionId": "companion-uuid-5678", // 보낸 멤버 ID
     "createdAt": "2024-02-09T10:01:05Z"
   },
   {
     "id": "msg-123",
-    "chatroomId": "chatroom-uuid-1234",
     "senderType": "USER",
     "content": "안녕, 오늘 기분 어때?",
     "createdAt": "2024-02-09T10:01:00Z"
-  },
+  }
 ]
 
 ```
@@ -889,7 +886,6 @@ Input Parameters (Query)
 ```json
 {
   "id": "msg-125",
-  "chatroomId": "chatroom-uuid-1234",
   "senderType": "USER",
   "content": "나 오늘 좀 우울해...",
   "createdAt": "2024-02-09T10:02:00Z"
@@ -1037,7 +1033,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
   id: string                         // UUID
   fromCompanionId: string           // 멤버 1
   toCompanionId: string            // 멤버 2
-  type: string                       // 관계 유형
   intimacy: number                   // 친밀도
   nickname: string | null            // 관계 별명
 }
