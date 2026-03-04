@@ -45,10 +45,9 @@ files:
         - soojilee000-rgb
       required: 1
 
-  # 03_design: 제이 작성 → 수지(PRD얼라인) + 소연(최종확정)
+  # 03_design: 제이 작성 → 소연 최종확정
   - '03_design/**':
       reviewers:
-        - soojilee000-rgb
         - Lee-Soyeon
       required: 1
 
