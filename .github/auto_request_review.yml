@@ -57,10 +57,11 @@ files:
         - soojilee000-rgb
       required: 1
 
-  # 02_planning 그 외 (스프린트 계획 등) → 소연
+  # 02_planning 그 외 (스프린트 계획, 역할 분담 등) → 수지 리뷰
+  # 소연이 대부분 작성 → 수지가 리뷰어
   - '02_planning/**':
       reviewers:
-        - Lee-Soyeon
+        - soojilee000-rgb
       required: 1
 
   # 03_design: 와이어프레임/UI → 수지+소연, 1명 필수
@@ -70,10 +71,30 @@ files:
         - Lee-Soyeon
       required: 1
 
+  # 04_development: 개발 문서 → 영욱 리뷰
+  - '04_development/**':
+      reviewers:
+        - ywkim
+      required: 1
+
+  # 05_ai-llm: AI/LLM 프롬프트 계획 → 소연 승인 + 영욱 기술 검토
+  - '05_ai-llm/**':
+      reviewers:
+        - Lee-Soyeon
+        - ywkim
+      required: 1
+
   # 06_ir-master: IR 자료 → 수지 리뷰
   - '06_ir-master/**':
       reviewers:
         - soojilee000-rgb
+      required: 1
+
+  # .github: 워크플로우·설정 → 소연 + 영욱
+  - '.github/**':
+      reviewers:
+        - Lee-Soyeon
+        - ywkim
       required: 1
 
   # 그 외 전체 → 소연
