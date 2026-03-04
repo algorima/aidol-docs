@@ -77,11 +77,10 @@ files:
         - ywkim
       required: 1
 
-  # 05_ai-llm: AI/LLM 프롬프트 계획 → 소연 승인 + 영욱 기술 검토
+  # 05_ai-llm: AI/LLM 프롬프트 계획 → 소연 리뷰
   - '05_ai-llm/**':
       reviewers:
         - Lee-Soyeon
-        - ywkim
       required: 1
 
   # 06_ir-master: IR 자료 → 수지 리뷰
@@ -90,11 +89,10 @@ files:
         - soojilee000-rgb
       required: 1
 
-  # .github: 워크플로우·설정 → 소연 + 영욱
+  # .github: 워크플로우·설정 → 소연
   - '.github/**':
       reviewers:
         - Lee-Soyeon
-        - ywkim
       required: 1
 
   # 그 외 전체 → 소연
