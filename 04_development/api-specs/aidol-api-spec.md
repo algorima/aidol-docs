@@ -330,21 +330,15 @@ Input Parameters (Query)
 ### POST /companions - Companion 멤버 생성
 
 특정 그룹(aidolId)에 소속될 멤버를 생성합니다.
-
+POST /companions는 기존 id를 받아 attach하지 않으며,
+attach는 PATCH /companions/{id}로 수행됩니다.
 - URL: POST /companions
 - Auth: 공개
 
 **Request**:
 
 ```json
-  // 새로운 연습생 
  {
-   "aidolId": "aidol-uuid"
- }
-
-	// 기존에 생성된 연습생
- {
-   "id": "companion-uuid",
    "aidolId": "aidol-uuid"
  }
 ```
