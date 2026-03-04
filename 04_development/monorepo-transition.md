@@ -182,11 +182,11 @@ router.push(`/${lang}/aidol/aidols/${id}/detail`);
 
 **4. i18n**
 ```tsx
-// Before
+// Before: useTranslation("aidol")이 기본 namespace를 설정
 const { t } = useTranslation("aidol");
 t("inbox.header")
 
-// After
+// After: 모든 키에 명시적 prefix
 const { t } = useTranslation();
 t("aidol:inbox.header")
 ```
