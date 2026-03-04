@@ -129,6 +129,69 @@ export default function CastingPage() {
 
 ## 코드 마이그레이션 체크리스트
 
+### Backend
+
+**1. Import 경로**
+```python
+# Before (algorima/aidol)
+from aidol.api.chatroom import create_chatroom_router
+from aidol.repositories import ChatroomRepository
+
+# After (algorima/buppy)
+from fastapi_app.routers.aidol.chatroom import ...
+from managers.database_chatroom_manager import DatabaseChatroomManager
+```
+
+**2. Repository → Adapter 패턴**
+
+aidol standalone은 Repository가 DB를 직접 조작합니다. buppy에서는 데이터 모델이 다르기 때문에 **Adapter**가 aidol의 Protocol 인터페이스를 buppy의 Manager로 연결합니다.
+
+```
+aidol Protocol ←→ Adapter ←→ buppy Manager
+  (인터페이스)      (브릿지)     (실제 구현)
+```
+
+```python
+# Before: Repository 직접 사용
+class ChatroomRepository:
+    def get_my_chatrooms(self, anonymous_id):
+        return db.query(DBChatroom).filter(
+            DBChatroom.anonymous_id == anonymous_id  # 직접 저장된 컬럼
+        ).all()
+
+# After: Adapter가 Protocol ↔ Manager 연결
+class ChatroomRepositoryAdapter(ChatroomRepositoryProtocol):
+    def __init__(self, manager: DatabaseChatroomManager):
+        self._manager = manager
+
+    def get_my_chatrooms_with_last_message(self, anonymous_id):
+        # buppy는 anonymous_id를 chatroom에 저장하지 않음
+        # → 참여 이벤트 테이블에서 역추적
+        return self._manager.get_chatrooms_by_anonymous_id_with_last_message(
+            anonymous_id
+        )
+```
+
+**왜 Adapter가 필요한가?**
+
+| 항목 | aidol (standalone) | buppy (모노레포) |
+|------|-------------------|-----------------|
+| 참여자 모델 | 1:1 (익명 사용자 1명 + Companion 1명) | 다대다 (여러 사용자/Companion) |
+| Chatroom 테이블 | `companion_id`, `anonymous_id` 직접 저장 | 저장하지 않음 |
+| 조회 방식 | 테이블 직접 필터링 | 참여 이벤트(Event Sourcing) 역추적 |
+
+Adapter는 이 차이를 숨겨서, aidol의 API 라우터가 buppy에서도 동일하게 동작하도록 합니다.
+
+**3. DB 모델**
+```python
+# Before: aidol 독립 모델
+from aidol.models import DBChatroom, DBAIdol, DBCompanion
+
+# After: buppy 통합 모델
+from models.db.aidol import DBAIdol, DBCompanion
+from models.db.chatroom import DBChatroom  # buppy 기존 모델 재사용
+```
+
 ### Frontend
 
 **1. Import 경로**
