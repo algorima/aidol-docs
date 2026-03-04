@@ -40,6 +40,8 @@
 
 ## 세부 명세
 
+List 조회 API의 `current`, `pageSize`, `sort`, `filters` 규칙은 문서 하단 `## 🔧 List Query Parameters`를 공통으로 따릅니다.
+
 ### POST /aidols - AIdol 그룹 생성
 
 새로운 아이돌 그룹을 생성합니다. 생성된 그룹은 요청자의 쿠키 ID (anonymousId)와 연결됩니다.
@@ -77,13 +79,10 @@ Headers: anonymousId
 
 생성된 모든 아이돌 그룹을 조회합니다. 페이지네이션과 필터링을 지원합니다.
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- current: 페이지 번호 (기본: 1)
-- pageSize: 페이지 당 항목 수 (기본: 10)
-- sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
-- filters: 필터 조건 (JSON 문자열)
-예: [{"field":"name","operator":"contains","value":"aidol"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 예시: `?current=1&pageSize=10&sort=[["createdAt","desc"]]&filters=[{"field":"name","operator":"contains","value":"aidol"}]`
 
 **Response** (200 OK):
 
@@ -124,15 +123,12 @@ Input Parameters (Query)
 현재 사용자(쿠키 ID 기준)가 생성한 그룹만 필터링하여 조회합니다.
 
 - URL: GET /me/aidols
-- Auth: 쿠키 필수 (anonymousId)
+- Auth: 쿠키 필수 (`aioia_anonymous_id`)
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- current: 페이지 번호 (기본: 1)
-- pageSize: 페이지 당 항목 수 (기본: 10)
-- sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
-- filters: 필터 조건 (JSON 문자열)
-예: [{"field":"name","operator":"contains","value":"aidol"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 추가 조건: 현재 사용자 소유 데이터만 조회되도록 서버에서 자동 필터링
 
 **Response** (200 OK):
 
@@ -285,9 +281,12 @@ aidols 엠블럼 이미지를 생성합니다.
 - URL: GET /companions
 - Auth: 공개
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- filters: [{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시:
+  - `[{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]`
+  - `[{"field":"status","operator":"eq","value":"PUBLISHED"}]`
 
 **Response** (200 OK):
 
@@ -552,7 +551,11 @@ AIdol 하이라이트를 조회합니다.
 
 - URL: GET /aidol-highlights
 - Auth: 공개
-- Filter: aidolId로 필터링하여 특정 그룹의 피드 조회
+
+Query Parameters (공통 List 규칙)
+
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시: `[{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]`
 
 **Response** (200 OK):
 
@@ -623,11 +626,12 @@ AIdol 하이라이트를 조회합니다.
 
 - URL: GET /companion-relationships
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- filters: JSON 문자열
-  - 예: A가 생각하는 관계들 -> [{"field":"fromCompanionId","operator":"eq","value":"member-A-uuid"}]
-  - 예: A를 생각하는 관계들 -> [{"field":"toCompanionId","operator":"eq","value":"member-A-uuid"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시:
+  - A가 생각하는 관계들: `[{"field":"fromCompanionId","operator":"eq","value":"member-A-uuid"}]`
+  - A를 생각하는 관계들: `[{"field":"toCompanionId","operator":"eq","value":"member-A-uuid"}]`
 
 **Response** (200 OK):
 
@@ -732,12 +736,14 @@ Input Parameters (Query)
 현재 참여 중인 채팅방 목록을 조회합니다.
 
 - URL: GET /me/chatrooms
-- Auth: Cookie 필수 (anonymousId)
+- Auth: Cookie 필수 (`aioia_anonymous_id`)
 
-- 파라미터
-  - aidolId (optional, query): 그룹 필터
-  - filters (optional, query, JSON string): 채팅방 조건 필터
-  - aioia_anonymous_id (required, cookie): 사용자 식별자
+Query Parameters
+
+- `aidolId` (optional): 그룹 필터
+- `filters` (optional, JSON string): 채팅방 조건 필터
+- `aioia_anonymous_id` (required, cookie): 사용자 식별자
+- `current`, `pageSize`, `sort`는 지원하지 않음
 
 - 동작 분기
   1. 항상 chatrooms.anonymous_id = cookie로 기본 범위 제한
@@ -836,8 +842,9 @@ Input Parameters (Query)
 
 Input Parameters (Query)
 
-- limit: 한 번에 가져올 메시지 수 (기본: 100, 최대: 200)
+- limit: 한 번에 가져올 메시지 수 (기본: 100)
 - offset: 건너뛸 메시지 수 (기본: 0)
+- `current`, `pageSize`, `sort`, `filters`는 지원하지 않음
 
 **Response** (200 OK):
 - 시간 순서대로 정렬된 메시지 배열 반환(내림차순)
@@ -1085,12 +1092,26 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 
 ---
 
-## 🔧 Query Parameters
+## 🔧 List Query Parameters
+
+적용 endpoint:
+
+- `GET /aidols`
+- `GET /me/aidols`
+- `GET /companions`
+- `GET /aidol-highlights`
+- `GET /companion-relationships`
+
+비적용 endpoint:
+
+- `GET /me/chatrooms` (전용 파라미터: `aidolId`, `filters`)
+- `GET /chatrooms/{id}/messages` (전용 파라미터: `limit`, `offset`)
 
 ### Pagination
 
 - `current`: 페이지 번호 (기본: 1, ≥ 1)
 - `pageSize`: 페이지당 항목 수 (기본: 10, 1-100)
+- `page` 파라미터는 지원하지 않음
 
 ### Sort
 
@@ -1105,6 +1126,8 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 ?filters=[{"field":"aidolId","operator":"eq","value":"uuid"}]
 
 ```
+
+- `field`는 camelCase/snake_case 모두 허용되며 서버에서 내부 snake_case로 정규화됩니다.
 
 | 연산자                   | 설명             |
 | ------------------------ | ---------------- |
