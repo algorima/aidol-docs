@@ -203,7 +203,7 @@ GitHub PR 리뷰어 자동 지정은 `.github/auto_request_review.yml` 참고.
 
 ---
 
-## 9. 인원 변동 사항
+## 8. 인원 변동 사항
 
 - 시영: 팀 이탈 확정. GitHub 권한 정리 완료
 - 백엔드 개발자: 온라인 인터뷰 진행 중
