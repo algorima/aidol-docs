@@ -1129,17 +1129,20 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 
 ```
 
-### Error Codes
+### Error Codes (현재 구현 기준)
 
-| Code                      | HTTP Status | 설명                  |
-| ------------------------- | ----------- | --------------------- |
-| `VALIDATION_ERROR`        | 422         | 입력 필드 검증 실패   |
-| `MISSING_REQUIRED_FIELD`  | 422         | 필수 필드 누락        |
-| `RESOURCE_NOT_FOUND`      | 404         | 요청한 리소스 없음    |
-| `IMAGE_GENERATION_FAILED` | 500         | 이미지 생성 실패      |
-| `LLM_RESPONSE_FAILED`     | 500         | LLM 응답 생성 실패    |
-| `EXTERNAL_SERVICE_ERROR`  | 500         | 외부 서비스 오류      |
-| `INTERNAL_SERVER_ERROR`   | 500         | 예상치 못한 서버 오류 |
+| Code                            | HTTP Status | 설명                                                          |
+| ------------------------------- | ----------- | ------------------------------------------------------------- |
+| `VALIDATION_ERROR`              | 422         | 요청 바디/필드 검증 실패                                      |
+| `INVALID_QUERY_PARAMS`          | 400         | `sort`, `filters` 쿼리 파라미터 JSON 형식 오류                |
+| `RESOURCE_NOT_FOUND`            | 404         | 요청한 리소스 없음                                            |
+| `FIRST_RESPONSE_ALREADY_EXISTS` | 409         | `initial-response` API에서 이미 메시지가 존재하는 채팅방 요청 |
+| `BadRequestError`               | 400         | LLM 공급자 요청 오류                                          |
+| `RateLimitError`                | 429         | LLM 공급자 호출 한도 초과                                     |
+| `ServiceUnavailableError`       | 503         | LLM 공급자 서비스 일시 장애                                   |
+| `EXTERNAL_SERVICE_ERROR`        | 500         | 외부 서비스 연동 오류(공통 코드)                              |
+| `INTERNAL_SERVER_ERROR`         | 500         | 예상치 못한 서버 오류                                         |
+
 
 ---
 
