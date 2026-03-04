@@ -64,7 +64,6 @@ List 조회 API의 `current`, `pageSize`, `sort`, `filters` 규칙은 문서 하
 **Response** (201 Created):
 
 ```json
-Headers: anonymousId
 
 {
   "data": {
@@ -212,9 +211,7 @@ Query Parameters (공통 List 규칙)
   "greeting": "string (선택)",
   "concept": "string (선택)",
   "profileImageUrl": "string (선택)",
-  "status": "DRAFT | PUBLISHED (선택)",
-  "createdAt": "datetime",
-  "updatedAt": "datetime"
+  "status": "DRAFT | PUBLISHED (선택)"
 }
 
 ```
@@ -223,12 +220,17 @@ Query Parameters (공통 List 규칙)
 
 ```json
 {
-  "name": "string",
-  "email": "string",
-  "greeting": "string",
-  "concept": "string",
-  "profileImageUrl": "string",
-  "status": "DRAFT | PUBLISHED"
+  "data": {
+    "id": "string",
+    "name": "string",
+    "email": "string",
+    "greeting": "string",
+    "concept": "string",
+    "profileImageUrl": "string",
+    "status": "DRAFT | PUBLISHED",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
 }
 ```
 
