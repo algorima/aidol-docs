@@ -131,56 +131,24 @@ export default function CastingPage() {
 
 ### Backend
 
-**1. Import 경로**
+**Adapter 패턴: aidol ↔ buppy 모듈 경계**
 
-aidol 모듈 내부(`services`, `schemas`, `protocols`)는 변경 없음. 이동되는 계층만 경로가 바뀝니다.
-
-```python
-# 변경 없음 (aidol 모듈 내부)
-from aidol.services.companion_service import CompanionService
-from aidol.schemas.companion import Companion
-from aidol.protocols import ChatroomRepositoryProtocol
-
-# 변경됨: API 라우터
-# Before (algorima/aidol)
-from aidol.api.chatroom import create_chatroom_router
-# After (algorima/buppy)
-from fastapi_app.routers.aidol.chatroom import create_chatroom_router
-
-# 변경됨: DB 모델
-# Before (algorima/aidol)
-from aidol.models import DBChatroom, DBAIdol, DBCompanion
-# After (algorima/buppy)
-from models.db.aidol import DBAIdol, DBCompanion
-from models.db.chatroom import DBChatroom  # buppy 기존 모델 재사용
-
-# 제거됨: Repository (Adapter로 대체, 아래 참조)
-# Before (algorima/aidol)
-from aidol.repositories import ChatroomRepository  # 삭제됨
-```
-
-**2. Repository → Adapter 패턴 (임시)**
-
-> **이 패턴은 멀티레포 시절의 임시 브릿지입니다.** 현재는 aidol이 npm/PyPI 패키지로 배포되어 buppy의 내부 구현에 접근할 수 없기 때문에, Protocol 인터페이스와 Adapter가 필요합니다. 모노레포 전환 후에는 aidol 코드가 buppy Manager를 직접 사용할 수 있으므로, Adapter 계층을 제거하고 통합할 수 있습니다.
+aidol과 buppy는 데이터 모델이 다릅니다. Adapter는 이 차이를 숨겨서, aidol의 비즈니스 로직이 buppy의 구현에 의존하지 않도록 **논리적 경계를 유지**합니다.
 
 ```
-현재 (멀티레포):
-  aidol Protocol ←→ Adapter ←→ buppy Manager
-    (인터페이스)      (임시 브릿지)   (실제 구현)
-
-전환 후 (모노레포):
-  aidol 코드 → buppy Manager 직접 사용 (Adapter 제거 가능)
+aidol Protocol ←→ Adapter ←→ buppy Manager
+  (인터페이스)      (경계)      (실제 구현)
 ```
 
-**현재 aidol과 buppy의 데이터 모델 차이:**
+aidol 개발자는 Protocol 인터페이스만 사용합니다. Adapter 구현은 buppy 팀이 관리합니다.
+
+**데이터 모델 차이 (Adapter가 필요한 이유):**
 
 | 항목 | aidol (standalone) | buppy |
 |------|-------------------|-------|
 | 참여자 모델 | 1:1 (익명 사용자 1명 + Companion 1명) | 다대다 (여러 사용자/Companion) |
 | Chatroom 테이블 | `companion_id`, `anonymous_id` 직접 저장 | 저장하지 않음 |
 | 조회 방식 | 테이블 직접 필터링 | 참여 이벤트(Event Sourcing) 역추적 |
-
-Adapter는 이 차이를 숨겨서, aidol의 API 라우터가 buppy에서도 동일하게 동작하도록 합니다. 모노레포 전환 시 데이터 모델 통합 여부에 따라 Adapter 존속이 결정됩니다.
 
 ### Frontend
 
