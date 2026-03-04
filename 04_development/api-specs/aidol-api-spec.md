@@ -187,10 +187,10 @@ Input Parameters (Query)
     "greeting": "string",
     "concept": "string",
     "profileImageUrl": "string",
-    "status": "DRAFT | PUBLISHED"
-  },
-  "createdAt": "datetime",
-  "updatedAt": "datetime"
+    "status": "DRAFT | PUBLISHED",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
 }
 ```
 
@@ -216,7 +216,9 @@ Input Parameters (Query)
   "greeting": "string (선택)",
   "concept": "string (선택)",
   "profileImageUrl": "string (선택)",
-  "status": "DRAFT | PUBLISHED (선택)"
+  "status": "DRAFT | PUBLISHED (선택)",
+  "createdAt": "datetime",
+  "updatedAt": "datetime"
 }
 
 ```
