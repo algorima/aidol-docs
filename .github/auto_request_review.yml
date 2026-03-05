@@ -49,10 +49,9 @@ files:
     - jhpark324        # 박제형
     - ywkim            # 김영욱
 
-  # 06_ir-master/ — 작성: 이소연 / 리뷰: 김영욱, 송미진(백업)
+  # 06_ir-master/ — 작성: 이소연 / 리뷰: 김영욱
   "06_ir-master/**":
     - ywkim            # 김영욱
-    - sju01334         # 송미진 (백업)
 
 options:
   ignore_draft: true
