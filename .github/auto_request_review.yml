@@ -3,10 +3,20 @@ reviewers:
     - Lee-Soyeon  # 이소연 — 패턴 미매칭 시 기본 리뷰어
 
 files:
-  # 01_research/ — 작성: 이수지 / 리뷰: 이소연, 송미진(백업)
+  # 01_research/user-interviews/ — 사용자 리서치 / 리뷰: 이수지, 이소연
+  "01_research/user-interviews/**":
+    - soojilee000-rgb  # 이수지
+    - Lee-Soyeon       # 이소연
+
+  # 01_research/ut-guides/ — UT 가이드 / 리뷰: 이수지, 이소연
+  "01_research/ut-guides/**":
+    - soojilee000-rgb  # 이수지
+    - Lee-Soyeon       # 이소연
+
+  # 01_research/ (시장 조사 등) — 리뷰: 이소연, 김영욱
   "01_research/**":
     - Lee-Soyeon       # 이소연
-    - sju01334         # 송미진 (백업)
+    - ywkim            # 김영욱
 
   # 02_planning/feature-specs/ — 작성: 송미진 / 리뷰: 박제형, 송은재, 박지영
   "02_planning/feature-specs/**":
@@ -53,6 +63,10 @@ files:
   "06_ir-master/**":
     - ywkim            # 김영욱
     - sju01334         # 송미진 (백업)
+
+  # 07_tools/ — 리뷰: 김영욱
+  "07_tools/**":
+    - ywkim            # 김영욱
 
 options:
   ignore_draft: true
