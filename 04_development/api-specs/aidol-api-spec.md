@@ -41,6 +41,10 @@
 ## 세부 명세
 
 List 조회 API의 `current`, `pageSize`, `sort`, `filters` 규칙은 문서 하단 `## 🔧 List Query Parameters`를 공통으로 따릅니다.
+- `current`: 페이지 번호 (기본: 1, ≥ 1)
+- `pageSize`: 페이지당 항목 수 (기본: 10, 1-100)
+- `sort`: 정렬 조건 
+- `filters`: 필터 조건 
 
 ### POST /aidols - AIdol 그룹 생성
 
