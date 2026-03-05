@@ -31,6 +31,7 @@ stt-analyzer 에이전트로 "회의록.txt"에서 결정 사항과 Action Items
 | 에이전트 | 설명 | 모델 |
 |----------|------|------|
 | stt-analyzer | STT 녹취록 분석 (오류 식별, 회의 구조화) | haiku |
+| ut-research-analyzer | UT 원본 스크립트 14가지 UX 방법론 심층 분석 + 교차 분석 (Lean Product Playbook) | sonnet |
 
 ## 에이전트 파일 형식
 
