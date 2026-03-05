@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>AIdol - Pitch Deck (Asan Voyager 2026)</title>
+<style>
+@font-face{font-family:'Paperlogy';font-weight:100;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-1Thin.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:200;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-2ExtraLight.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:300;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-3Light.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:400;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-4Regular.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:500;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-5Medium.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:600;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-6SemiBold.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:700;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-7Bold.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:800;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-8ExtraBold.woff2') format('woff2')}
+@font-face{font-family:'Paperlogy';font-weight:900;src:url('https://cdn.jsdelivr.net/gh/papleworks/Paperlogy-Font@main/woff2/Paperlogy-9Black.woff2') format('woff2')}
+
+:root{
+  --pk:#FF3377;--pk-light:#FFF0F4;
+  --gn:#00A878;--gn-light:#EDFAF5;
+  --bl:#2563EB;--bl-light:#EFF4FF;
+  --gy:#F4F4F6;--text:#111111;--sub:#666666;--dim:#AAAAAA;--line:#E8E8EC;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Paperlogy',system-ui,-apple-system,sans-serif;background:#e0e0e0;display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0}
+.slide{position:relative;width:1280px;height:720px;background:#fff;padding:60px 80px;overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.12);flex-shrink:0}
+.slide::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--pk)}
+.footer{position:absolute;bottom:28px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-weight:800;letter-spacing:3px;color:var(--pk);font-size:13px}
+.footer-page{font-size:13px;color:var(--dim)}
+
+/* Typography */
+.label{font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sub);margin-bottom:16px}
+.headline{font-size:64px;font-weight:900;line-height:1.15;color:var(--text);margin-bottom:24px}
+.headline-sm{font-size:48px;font-weight:900;line-height:1.2;color:var(--text);margin-bottom:20px}
+.subtitle{font-size:22px;font-weight:400;color:var(--sub);line-height:1.6}
+.body{font-size:18px;font-weight:400;color:var(--text);line-height:1.7}
+.body-sm{font-size:15px;font-weight:400;color:var(--sub);line-height:1.6}
+.accent{color:var(--pk)}
+.accent-gn{color:var(--gn)}
+.accent-bl{color:var(--bl)}
+.bold{font-weight:700}
+.quote{font-size:20px;font-style:italic;color:var(--sub);border-left:4px solid var(--pk);padding-left:20px;margin:16px 0}
+
+/* Chip */
+.chip{display:inline-block;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;margin:4px 4px 4px 0}
+.chip-pk{background:var(--pk-light);color:var(--pk)}
+.chip-gn{background:var(--gn-light);color:var(--gn)}
+.chip-bl{background:var(--bl-light);color:var(--bl)}
+.chip-gy{background:var(--gy);color:var(--sub)}
+
+/* Table */
+table{width:100%;border-collapse:collapse;font-size:16px}
+table th{text-align:left;font-size:13px;font-weight:600;color:var(--sub);letter-spacing:1px;text-transform:uppercase;padding:10px 16px;border-bottom:2px solid var(--line)}
+table td{padding:12px 16px;border-bottom:1px solid var(--line);color:var(--text);font-weight:400;vertical-align:top}
+table td.bold{font-weight:700}
+table td.num{font-weight:800;font-size:20px;color:var(--pk)}
+table .check{color:var(--gn);font-weight:800}
+table .cross{color:var(--dim);font-weight:400}
+
+/* Grid layouts */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px}
+
+/* Boxes */
+.box{background:var(--gy);border-radius:16px;padding:24px 28px}
+.box-pk{background:var(--pk-light);border-radius:16px;padding:24px 28px}
+.box-gn{background:var(--gn-light);border-radius:16px;padding:24px 28px}
+.box-bl{background:var(--bl-light);border-radius:16px;padding:24px 28px}
+
+/* Flow */
+.flow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+.flow-box{padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;background:var(--gy);color:var(--text)}
+.flow-box.active{background:var(--pk);color:#fff}
+.flow-box.done{background:var(--gn);color:#fff}
+.flow-arrow{font-size:18px;color:var(--dim)}
+
+/* Positioning map */
+.pos-map{position:relative;width:480px;height:380px;margin:0 auto}
+.pos-axis-v{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--line)}
+.pos-axis-h{position:absolute;top:50%;left:0;right:0;height:2px;background:var(--line)}
+.pos-label{position:absolute;font-size:12px;font-weight:700;color:var(--dim);letter-spacing:2px;text-transform:uppercase}
+.pos-item{position:absolute;font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;white-space:nowrap}
+
+/* Number highlight */
+.big-num{font-size:56px;font-weight:900;color:var(--pk);line-height:1}
+.big-num-gn{font-size:56px;font-weight:900;color:var(--gn);line-height:1}
+
+/* Market circles */
+.market-circles{display:flex;align-items:center;justify-content:center;gap:0;margin:20px 0}
+.mcircle{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ===================== SLIDE 0: TITLE ===================== -->
+<div class="slide">
+  <div style="display:flex;flex-direction:column;justify-content:center;height:100%">
+    <div class="label" style="margin-bottom:24px">ASAN VOYAGER 2026 BATCH</div>
+    <div style="font-size:96px;font-weight:900;color:var(--text);line-height:1.05;margin-bottom:16px">
+      A<span class="accent">I</span>dol
+    </div>
+    <div style="font-size:28px;font-weight:300;color:var(--sub);margin-bottom:32px">
+      Cast, produce &amp; debut your own AI idol group
+    </div>
+    <div style="font-size:20px;font-weight:500;color:var(--pk);margin-bottom:40px">
+      The Sims meets K-pop idol producing
+    </div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <span class="chip chip-pk">AI Idol Simulation</span>
+      <span class="chip chip-gy">K-pop Fandom</span>
+      <span class="chip chip-gy">Generative AI</span>
+      <span class="chip chip-gy">User-Generated IP</span>
+      <span class="chip chip-gy">Season-Based Game Loop</span>
+    </div>
+    <div style="position:absolute;bottom:60px;right:80px;text-align:right">
+      <div style="font-size:14px;color:var(--dim)">March 2026</div>
+      <div style="font-size:14px;color:var(--dim)">aioia.ai/aidol</div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">1 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 1: PROBLEM ===================== -->
+<div class="slide">
+  <div class="label">01 &mdash; PROBLEM</div>
+  <div class="headline" style="font-size:52px;margin-bottom:32px">
+    2 billion fans watch.<br><span class="accent">Zero get to produce.</span>
+  </div>
+  <div style="margin-bottom:24px">
+    <div class="subtitle" style="font-size:18px;margin-bottom:20px">Three proven demands in the fandom economy:</div>
+    <table>
+      <tr>
+        <th style="width:40%">Demand</th>
+        <th>Proof</th>
+      </tr>
+      <tr>
+        <td class="bold">People bond with AI characters</td>
+        <td>Character.AI: <span class="bold accent">20M+ MAU</span>, avg 2hr sessions</td>
+      </tr>
+      <tr>
+        <td class="bold">Fans pay for idol relationships</td>
+        <td>Bubble: <span class="bold accent">$57M ARR</span> from one-way text messages</td>
+      </tr>
+      <tr>
+        <td class="bold">Fans want to pick &amp; shape idols</td>
+        <td>Boys Planet: <span class="bold accent">32.5M votes</span> cast</td>
+      </tr>
+    </table>
+  </div>
+  <div class="box-pk" style="margin-top:16px">
+    <div style="font-size:18px;font-weight:700;color:var(--pk)">
+      But no product lets fans create, build, and grow their own idol group.
+    </div>
+    <div style="font-size:15px;color:var(--sub);margin-top:8px">
+      Existing services: consume only. No creation. No ownership.
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">2 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 2: SOLUTION ===================== -->
+<div class="slide">
+  <div class="label">02 &mdash; SOLUTION</div>
+  <div class="headline" style="margin-bottom:28px">
+    You are the<br><span class="accent">producer.</span>
+  </div>
+  <div class="two-col" style="gap:48px">
+    <div>
+      <div class="subtitle" style="font-size:16px;margin-bottom:20px">Season-based simulation game loop:</div>
+      <div class="flow" style="flex-direction:column;align-items:flex-start;gap:8px">
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="flow-box active" style="min-width:100px;text-align:center">Draft</span>
+          <span style="font-size:15px;color:var(--sub)">Scout trainees from competitive pool</span>
+        </div>
+        <div style="margin-left:44px;color:var(--dim)">|</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="flow-box active" style="min-width:100px;text-align:center">Build</span>
+          <span style="font-size:15px;color:var(--sub)">Set concept, positions, chemistry</span>
+        </div>
+        <div style="margin-left:44px;color:var(--dim)">|</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="flow-box active" style="min-width:100px;text-align:center">Simulate</span>
+          <span style="font-size:15px;color:var(--sub)">Train, events, relationships evolve</span>
+        </div>
+        <div style="margin-left:44px;color:var(--dim)">|</div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <span class="flow-box done" style="min-width:100px;text-align:center">Season</span>
+          <span style="font-size:15px;color:var(--sub)">Rankings, growth, next draft</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="box" style="margin-bottom:20px">
+        <div style="font-size:14px;font-weight:600;color:var(--sub);margin-bottom:8px">NOT ANOTHER AI CHATBOT</div>
+        <div style="font-size:18px;font-weight:700;color:var(--text)">A producing simulation with stakes.</div>
+        <div style="font-size:15px;color:var(--sub);margin-top:8px">Once a trainee is picked, they're gone.<br>Your group accumulates history across seasons.</div>
+      </div>
+      <div class="quote" style="margin-top:24px">
+        "I'm Min Hee-jin right now."
+        <div style="font-size:14px;font-style:normal;color:var(--dim);margin-top:6px">User 3 &mdash; non-fan, fine artist, age 35</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">3 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 3: WHY NOW ===================== -->
+<div class="slide">
+  <div class="label">03 &mdash; WHY NOW</div>
+  <div class="headline-sm" style="margin-bottom:24px">
+    Three shifts made this<br><span class="accent">possible now.</span>
+  </div>
+  <div class="three-col" style="gap:28px">
+    <!-- Shift 1 -->
+    <div class="box" style="padding:20px 24px">
+      <div style="font-size:13px;font-weight:700;color:var(--pk);margin-bottom:12px">1. CREATION COSTS COLLAPSED</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px">
+          <span style="font-size:14px;color:var(--sub)">One song</span>
+          <span style="font-size:14px;font-weight:800;color:var(--pk)">65,000x cheaper</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px">
+          <span style="font-size:14px;color:var(--sub)">Voice gen</span>
+          <span style="font-size:14px;font-weight:800;color:var(--pk)">85x cheaper</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:8px">
+          <span style="font-size:14px;color:var(--sub)">Character art</span>
+          <span style="font-size:14px;font-weight:800;color:var(--pk)">500x cheaper</span>
+        </div>
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:14px;color:var(--sub)">Debut a group</span>
+          <span style="font-size:14px;font-weight:800;color:var(--pk)">$1.3M &rarr; ~$0</span>
+        </div>
+      </div>
+    </div>
+    <!-- Shift 2 -->
+    <div class="box" style="padding:20px 24px">
+      <div style="font-size:13px;font-weight:700;color:var(--pk);margin-bottom:12px">2. AI MUSIC HIT BILLBOARD #1</div>
+      <div style="font-size:15px;color:var(--text);line-height:1.6">
+        <div style="font-weight:700;margin-bottom:8px">Nov 2025</div>
+        <div style="margin-bottom:12px">First AI artist topped US chart.</div>
+        <div style="font-weight:700;margin-bottom:8px">Warner Music + Suno</div>
+        <div>Licensing deal signed. AI music went from <span style="font-weight:700;color:var(--pk)">"illegal" to "infrastructure"</span>.</div>
+      </div>
+    </div>
+    <!-- Shift 3 -->
+    <div class="box" style="padding:20px 24px">
+      <div style="font-size:13px;font-weight:700;color:var(--pk);margin-bottom:12px">3. FANS LEARNED TO PRODUCE</div>
+      <div style="font-size:15px;color:var(--text);line-height:1.6">
+        <div style="margin-bottom:12px">Produce 101, Boys Planet taught <span style="font-weight:700">150M+ fans</span> to vote, pick, and produce.</div>
+        <div class="box-pk" style="padding:14px 16px;margin-top:8px">
+          <div style="font-size:14px;font-weight:700;color:var(--pk)">The mental model exists.<br>The product didn't. Until now.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">4 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 4: MARKET SIZE ===================== -->
+<div class="slide">
+  <div class="label">04 &mdash; MARKET SIZE</div>
+  <div class="headline-sm" style="margin-bottom:28px">
+    <span class="accent">$20.1B</span> market.<br>Growing 23.6% CAGR.
+  </div>
+  <div class="two-col" style="gap:48px">
+    <div>
+      <!-- Concentric circles approximation -->
+      <div style="position:relative;width:400px;height:340px;margin:0 auto">
+        <div style="position:absolute;top:0;left:10px;width:380px;height:340px;border-radius:50%;background:var(--pk-light);display:flex;align-items:flex-start;justify-content:center;padding-top:24px">
+          <div style="text-align:center">
+            <div style="font-size:12px;font-weight:700;color:var(--pk);letter-spacing:2px">TAM</div>
+            <div style="font-size:28px;font-weight:900;color:var(--pk)">$20.1B</div>
+            <div style="font-size:12px;color:var(--sub)">Virtual Idol Market</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:100px;left:70px;width:260px;height:220px;border-radius:50%;background:rgba(255,51,119,0.12);display:flex;align-items:flex-start;justify-content:center;padding-top:20px">
+          <div style="text-align:center">
+            <div style="font-size:12px;font-weight:700;color:var(--pk);letter-spacing:2px">SAM</div>
+            <div style="font-size:24px;font-weight:900;color:var(--pk)">$2.7B</div>
+            <div style="font-size:11px;color:var(--sub)">K-pop fans paying digital</div>
+          </div>
+        </div>
+        <div style="position:absolute;top:200px;left:130px;width:140px;height:120px;border-radius:50%;background:var(--pk);display:flex;align-items:center;justify-content:center">
+          <div style="text-align:center">
+            <div style="font-size:11px;font-weight:700;color:#fff;letter-spacing:2px">SOM</div>
+            <div style="font-size:18px;font-weight:900;color:#fff">$18-54M</div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.8)">3-year target</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">REFERENCE POINTS</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <div>
+            <div style="font-size:16px;font-weight:700">Bubble</div>
+            <div style="font-size:13px;color:var(--sub)">One-way text messages</div>
+          </div>
+          <div style="font-size:20px;font-weight:800;color:var(--pk)">$57M/yr</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <div>
+            <div style="font-size:16px;font-weight:700">PLAVE</div>
+            <div style="font-size:13px;color:var(--sub)">Virtual idol group</div>
+          </div>
+          <div style="font-size:20px;font-weight:800;color:var(--pk)">$35M/yr</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <div>
+            <div style="font-size:16px;font-weight:700">Character.AI</div>
+            <div style="font-size:13px;color:var(--sub)">AI companion</div>
+          </div>
+          <div style="font-size:20px;font-weight:800;color:var(--pk)">20M MAU</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div>
+            <div style="font-size:16px;font-weight:700">Chai AI</div>
+            <div style="font-size:13px;color:var(--sub)">12-person team</div>
+          </div>
+          <div style="font-size:20px;font-weight:800;color:var(--pk)">$40M ARR</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">5 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 5: COMPETITION ===================== -->
+<div class="slide">
+  <div class="label">05 &mdash; COMPETITION</div>
+  <div class="headline-sm" style="font-size:40px;margin-bottom:20px">
+    Everyone owns a piece.<br><span class="accent">No one owns the intersection.</span>
+  </div>
+  <div class="two-col" style="gap:40px">
+    <!-- Positioning map -->
+    <div style="position:relative;width:100%;height:380px">
+      <!-- Axes -->
+      <div style="position:absolute;left:50%;top:20px;bottom:20px;width:2px;background:var(--line)"></div>
+      <div style="position:absolute;top:50%;left:20px;right:20px;height:2px;background:var(--line)"></div>
+      <!-- Labels -->
+      <div style="position:absolute;top:4px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--dim);letter-spacing:2px">USER-CREATED</div>
+      <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:700;color:var(--dim);letter-spacing:2px">AGENCY-OWNED</div>
+      <div style="position:absolute;top:50%;left:4px;transform:translateY(-50%);font-size:11px;font-weight:700;color:var(--dim);letter-spacing:1px">PASSIVE</div>
+      <div style="position:absolute;top:50%;right:4px;transform:translateY(-50%);font-size:11px;font-weight:700;color:var(--dim);letter-spacing:1px">CREATIVE</div>
+      <!-- Items -->
+      <div style="position:absolute;top:25%;left:15%;background:var(--gy);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600">
+        Character.AI<br><span style="font-size:11px;color:var(--sub)">General AI</span>
+      </div>
+      <div style="position:absolute;top:65%;left:12%;background:var(--gy);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600">
+        Bubble / PLAVE<br><span style="font-size:11px;color:var(--sub)">Agency-owned</span>
+      </div>
+      <div style="position:absolute;top:65%;right:12%;background:var(--gy);padding:8px 14px;border-radius:8px;font-size:13px;font-weight:600">
+        Suno<br><span style="font-size:11px;color:var(--sub)">Music gen only</span>
+      </div>
+      <div style="position:absolute;top:18%;right:8%;background:var(--pk);color:#fff;padding:10px 16px;border-radius:10px;font-size:14px;font-weight:800;box-shadow:0 4px 16px rgba(255,51,119,0.3)">
+        AIdol<br><span style="font-size:11px;font-weight:400;opacity:0.9">K-pop + Create + Interact</span>
+      </div>
+    </div>
+    <!-- Feature comparison -->
+    <div>
+      <table style="font-size:14px">
+        <tr>
+          <th style="font-size:12px">Feature</th>
+          <th style="font-size:12px;text-align:center">Bubble</th>
+          <th style="font-size:12px;text-align:center">PLAVE</th>
+          <th style="font-size:12px;text-align:center">Char.AI</th>
+          <th style="font-size:12px;text-align:center;color:var(--pk)">AIdol</th>
+        </tr>
+        <tr>
+          <td>User-created</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="check" style="text-align:center">O</td>
+          <td class="check" style="text-align:center;color:var(--pk);font-weight:800">O</td>
+        </tr>
+        <tr>
+          <td>Two-way interaction</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">~</td>
+          <td class="check" style="text-align:center">O</td>
+          <td class="check" style="text-align:center;color:var(--pk);font-weight:800">O</td>
+        </tr>
+        <tr>
+          <td>K-pop specialized</td>
+          <td class="check" style="text-align:center">O</td>
+          <td class="check" style="text-align:center">O</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="check" style="text-align:center;color:var(--pk);font-weight:800">O</td>
+        </tr>
+        <tr>
+          <td>Content creation</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="check" style="text-align:center;color:var(--pk);font-weight:800">O</td>
+        </tr>
+        <tr>
+          <td>Season/growth loop</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="cross" style="text-align:center">X</td>
+          <td class="check" style="text-align:center;color:var(--pk);font-weight:800">O</td>
+        </tr>
+      </table>
+      <div class="box-pk" style="margin-top:16px;padding:14px 18px">
+        <div style="font-size:14px;font-weight:600;color:var(--pk)">
+          Agencies won't cannibalize their own IP.<br>General AI can't go vertical enough.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">6 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 6: PRODUCT ===================== -->
+<div class="slide">
+  <div class="label">06 &mdash; PRODUCT</div>
+  <div class="headline-sm" style="margin-bottom:8px">
+    Live now.
+  </div>
+  <div style="font-size:18px;color:var(--pk);font-weight:600;margin-bottom:28px">aioia.ai/aidol</div>
+  <div class="two-col" style="gap:40px">
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:12px;letter-spacing:1px">CURRENT MVP (Sprint 1-3)</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">Scout trainees by grade, stats, MBTI, position</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">Competitive casting (once picked = gone)</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">Create custom members with AI-gen profiles</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">Assign positions (leader, vocal, dancer...)</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">1:1 chat with persona-driven AI</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-gn" style="padding:4px 10px;font-size:11px;flex-shrink:0">DONE</span>
+          <span style="font-size:15px;color:var(--text)">Share group profile via URL</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:12px;letter-spacing:1px">PHASE 2 (BUILDING NOW)</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-pk" style="padding:4px 10px;font-size:11px;flex-shrink:0">WIP</span>
+          <span style="font-size:15px;color:var(--text)">Season loop: training, events, rankings</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-pk" style="padding:4px 10px;font-size:11px;flex-shrink:0">WIP</span>
+          <span style="font-size:15px;color:var(--text)">Group chemistry system</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-pk" style="padding:4px 10px;font-size:11px;flex-shrink:0">WIP</span>
+          <span style="font-size:15px;color:var(--text)">AI-produced debut songs</span>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px">
+          <span class="chip chip-pk" style="padding:4px 10px;font-size:11px;flex-shrink:0">WIP</span>
+          <span style="font-size:15px;color:var(--text)">Fan reaction simulation</span>
+        </div>
+      </div>
+      <div style="margin-top:32px;background:var(--gy);border-radius:16px;height:160px;display:flex;align-items:center;justify-content:center">
+        <div style="text-align:center;color:var(--dim)">
+          <div style="font-size:32px;margin-bottom:8px">&lbrack; &rbrack;</div>
+          <div style="font-size:14px">Product screenshots here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">7 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 7: BUSINESS MODEL ===================== -->
+<div class="slide">
+  <div class="label">07 &mdash; BUSINESS MODEL</div>
+  <div class="headline-sm" style="margin-bottom:24px">
+    Season-based<br><span class="accent">monetization.</span>
+  </div>
+  <div class="two-col" style="gap:48px">
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:12px;letter-spacing:1px">REVENUE STREAMS</div>
+      <table>
+        <tr>
+          <th>Stream</th>
+          <th>Price</th>
+          <th>Phase</th>
+        </tr>
+        <tr>
+          <td class="bold">Season Pass</td>
+          <td>$3-8/mo</td>
+          <td><span class="chip chip-pk" style="padding:3px 10px;font-size:11px">Phase 2</span></td>
+        </tr>
+        <tr>
+          <td class="bold">Extra Draft Slots</td>
+          <td>$1-3 each</td>
+          <td><span class="chip chip-pk" style="padding:3px 10px;font-size:11px">Phase 2</span></td>
+        </tr>
+        <tr>
+          <td class="bold">Premium Concepts</td>
+          <td>$2-5 each</td>
+          <td><span class="chip chip-gy" style="padding:3px 10px;font-size:11px">Phase 3</span></td>
+        </tr>
+        <tr>
+          <td class="bold">Creator Market</td>
+          <td>Fee</td>
+          <td><span class="chip chip-gy" style="padding:3px 10px;font-size:11px">Phase 4</span></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:12px;letter-spacing:1px">UNIT ECONOMICS (TARGET)</div>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:24px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">CAC</span>
+          <span style="font-size:24px;font-weight:800;color:var(--gn)">&lt; $5</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">ARPU</span>
+          <span style="font-size:24px;font-weight:800;color:var(--text)">$60-100/yr</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">LTV</span>
+          <span style="font-size:24px;font-weight:800;color:var(--text)">$150+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:16px;color:var(--sub)">LTV / CAC</span>
+          <span style="font-size:24px;font-weight:800;color:var(--pk)">&gt; 30x</span>
+        </div>
+      </div>
+      <div class="box" style="padding:14px 18px">
+        <div style="font-size:13px;font-weight:700;color:var(--sub);margin-bottom:6px">GROWTH FLYWHEEL</div>
+        <div style="font-size:13px;color:var(--text);line-height:1.6">More users &rarr; draft competition &rarr; scarce trainees gain value &rarr; premium pool &rarr; richer ecosystem &rarr; more users</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">8 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 8: TRACTION ===================== -->
+<div class="slide">
+  <div class="label">08 &mdash; TRACTION</div>
+  <div class="headline-sm" style="margin-bottom:28px">
+    $0 budget.<br><span class="accent">Real results.</span>
+  </div>
+  <div class="two-col" style="gap:48px">
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">VIRAL METRICS (5 DAYS)</div>
+      <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">TikTok views</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">500K+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">Leads</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">5,000+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">Sign-ups</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">500+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:16px;color:var(--sub)">CAC</span>
+          <span style="font-size:28px;font-weight:900;color:var(--gn)">$0.005</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">USER TEST (FEB 2026, n=8)</div>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px">
+          <span style="font-size:15px;color:var(--sub)">Group creation</span>
+          <span style="font-size:22px;font-weight:800;color:var(--gn)">100%</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px">
+          <span style="font-size:15px;color:var(--sub)">Casting engagement</span>
+          <span style="font-size:22px;font-weight:800;color:var(--gn)">4.2/5</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:10px">
+          <span style="font-size:15px;color:var(--sub)">Producer recognition</span>
+          <span style="font-size:22px;font-weight:800;color:var(--gn)">88%</span>
+        </div>
+      </div>
+      <div class="quote" style="font-size:16px;margin-top:12px">
+        "I'm Min Hee-jin right now."<br>
+        <span style="font-style:normal;font-size:13px;color:var(--dim)">U3, non-fan</span>
+      </div>
+      <div style="font-size:13px;font-weight:700;color:var(--sub);margin-top:16px;letter-spacing:1px">PIVOT HISTORY (2.5 YEARS)</div>
+      <div class="flow" style="margin-top:8px">
+        <span class="flow-box" style="font-size:12px;padding:8px 12px">AI BF</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-box" style="font-size:12px;padding:8px 12px">BTS AI</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-box" style="font-size:12px;padding:8px 12px">Virtual Idol</span>
+        <span class="flow-arrow">&rarr;</span>
+        <span class="flow-box active" style="font-size:12px;padding:8px 12px">AIdol Sim</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">9 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 9: TEAM ===================== -->
+<div class="slide">
+  <div class="label">09 &mdash; TEAM</div>
+  <div class="headline-sm" style="margin-bottom:28px">
+    Built to <span class="accent">execute.</span>
+  </div>
+  <div class="two-col" style="gap:48px">
+    <!-- CEO -->
+    <div>
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+        <div style="width:64px;height:64px;border-radius:50%;background:var(--pk-light);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--pk)">SY</div>
+        <div>
+          <div style="font-size:22px;font-weight:800">Soyeon Lee</div>
+          <div style="font-size:14px;color:var(--pk);font-weight:600">CEO</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--text);line-height:1.5">
+        <div><span style="font-weight:700">Yonsei Univ</span>, UX Masters</div>
+        <div>Frontend, UX/UI, business, user research</div>
+        <div><span style="font-weight:700">SF summer 2025</span> &mdash; ran US market tests directly</div>
+        <div>5 product launches, coding educator</div>
+        <div>K-pop domain expert</div>
+      </div>
+      <div style="margin-top:20px;border-top:1px solid var(--line);padding-top:16px">
+        <!-- CTO -->
+        <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+          <div style="width:64px;height:64px;border-radius:50%;background:var(--bl-light);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:var(--bl)">YW</div>
+          <div>
+            <div style="font-size:22px;font-weight:800">Youngwook Kim</div>
+            <div style="font-size:14px;color:var(--bl);font-weight:600">CTO</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--text);line-height:1.5">
+          <div><span style="font-weight:700">KAIST</span>, CS Masters &middot; <span style="font-weight:700">15+ yrs</span> engineering</div>
+          <div><span style="font-weight:700">NAVER</span>: P2P streaming (US/JP/KR patents)</div>
+          <div><span style="font-weight:700">Scatter Lab</span>: NLP research</div>
+          <div>Prev startup: <span style="font-weight:700">$720K ARR</span> AI edu platform</div>
+          <div>AI Champion 2020, Kaggle Top 2%</div>
+        </div>
+      </div>
+    </div>
+    <!-- Why Us -->
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">WHY THIS TEAM</div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="box-pk" style="padding:18px 22px">
+          <div style="font-size:15px;font-weight:700;color:var(--pk);margin-bottom:4px">Husband-wife co-founders</div>
+          <div style="font-size:14px;color:var(--sub)">Survived company shutdown + Series A failure together. Then got married. All-in.</div>
+        </div>
+        <div class="box-bl" style="padding:18px 22px">
+          <div style="font-size:15px;font-weight:700;color:var(--bl);margin-bottom:4px">Both technical founders</div>
+          <div style="font-size:14px;color:var(--sub)">CEO codes frontend. CTO builds AI/backend. No translation layer needed.</div>
+        </div>
+        <div class="box" style="padding:18px 22px">
+          <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">AI-Native team: 13x productivity</div>
+          <div style="font-size:14px;color:var(--sub)">9-person team with Claude Code, Copilot, Gemini embedded in every process. Day 1.</div>
+        </div>
+        <div class="box" style="padding:18px 22px">
+          <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px">2-week pivot cycles</div>
+          <div style="font-size:14px;color:var(--sub)">UT result &rarr; pivot decision &rarr; sprint execution. 4 pivots in 2.5 years.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">10 / 11</span></div>
+</div>
+
+<!-- ===================== SLIDE 10: THE ASK ===================== -->
+<div class="slide">
+  <div class="label">10 &mdash; THE ASK</div>
+  <div class="headline" style="margin-bottom:32px">
+    Let's go to<br><span class="accent">market.</span>
+  </div>
+  <div class="two-col" style="gap:48px">
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">WHAT WE NEED FROM ASAN VOYAGER</div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--pk);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0">1</div>
+          <div>
+            <div style="font-size:17px;font-weight:700">GTM Coaching</div>
+            <div style="font-size:14px;color:var(--sub)">Validate pricing &amp; conversion with US K-pop fan communities</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--pk);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0">2</div>
+          <div>
+            <div style="font-size:17px;font-weight:700">SF Network Access</div>
+            <div style="font-size:14px;color:var(--sub)">Direct intros to entertainment &amp; gaming partners</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:14px">
+          <div style="width:36px;height:36px;border-radius:10px;background:var(--pk);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0">3</div>
+          <div>
+            <div style="font-size:17px;font-weight:700">Peer Learning</div>
+            <div style="font-size:14px;color:var(--sub)">Exchange AI-native ops playbooks with batch teams</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:14px;font-weight:700;color:var(--sub);margin-bottom:16px;letter-spacing:1px">2026 US MARKET GOALS</div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">US MAU</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">10,000</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">PMF "very disappointed"</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">40%+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">Season retention</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">40%+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px">
+          <span style="font-size:16px;color:var(--sub)">Paid conversion</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">15%+</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:16px;color:var(--sub)">US ARR</span>
+          <span style="font-size:28px;font-weight:900;color:var(--pk)">$50K</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span class="footer-logo">AIDOL</span><span class="footer-page">11 / 11</span></div>
+</div>
+
+</body>
+</html>
