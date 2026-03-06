@@ -22,13 +22,13 @@
 **레퍼런스**
 
 | 거울셀카_1 | 거울셀카_2 | 거울셀카_3 | 거울셀카_4 |
-|---||---||---||---|
-| ![거울셀카_1.jpg](https://github.com/user-attachments/assets/e700b1dc-97fe-4566-a895-c267309ea1df) | ![거울셀카_2.jpg](https://github.com/user-attachments/assets/90876caa-408d-4fc7-8fb6-06017ff96a68) | ![거울셀카_3.jpg](https://github.com/user-attachments/assets/566fc318-2abf-46ae-be27-4571749d5370) | ![거울셀카_4.jpg](https://github.com/user-attachments/assets/544bc238-6843-444b-ab3d-8414e818081b) |
+|---|---|---|---|
+| <img src="https://github.com/user-attachments/assets/e700b1dc-97fe-4566-a895-c267309ea1df" width="150"> | <img src="https://github.com/user-attachments/assets/90876caa-408d-4fc7-8fb6-06017ff96a68" width="150"> | <img src="https://github.com/user-attachments/assets/566fc318-2abf-46ae-be27-4571749d5370" width="150"> | <img src="https://github.com/user-attachments/assets/544bc238-6843-444b-ab3d-8414e818081b" width="150"> |
 | 폰 화면 보여주기, 입술 포즈 | 폰 화면 보여주기, 무표정 | 한 손 볼에 대기, 윙크 | 후드 착용, 폰으로 얼굴 일부 가리기 |
 
 | 거울셀카_5 | 거울셀카_6 | 거울셀카_7 | 거울셀카_8 |
-|---||---||---||---|
-| ![거울셀카_5.jpg](https://github.com/user-attachments/assets/8ff81e53-b10d-427c-abe9-f6c3e20c9312) | ![거울셀카_6.jpg](https://github.com/user-attachments/assets/e51b5c03-f8b1-4f8b-a755-c512a953a76b) | ![거울셀카_7.jpg](https://github.com/user-attachments/assets/d40686a6-ce86-4286-8dad-7170971d8ece) | ![거울셀카_8.jpeg](https://github.com/user-attachments/assets/b2017296-9180-4fbb-8360-f744a616e471) |
+|---|---|---|---|
+| <img src="https://github.com/user-attachments/assets/8ff81e53-b10d-427c-abe9-f6c3e20c9312" width="150"> | <img src="https://github.com/user-attachments/assets/e51b5c03-f8b1-4f8b-a755-c512a953a76b" width="150"> | <img src="https://github.com/user-attachments/assets/d40686a6-ce86-4286-8dad-7170971d8ece" width="150"> | <img src="https://github.com/user-attachments/assets/b2017296-9180-4fbb-8360-f744a616e471" width="150"> |
 | 아래를 내려다보는 무드샷 | 연습실 바닥에 앉아서, 흰 박스티 | 검은 박스티, 클로즈업, 약간의 미소 | 플래시 반사, 시선 분산 |
 
 ---
