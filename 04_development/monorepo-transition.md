@@ -44,8 +44,8 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → CI/CD 검증 → 배
 - `backend/models/db/` - DB 모델 (aidol.py 등)
 
 **Frontend (3개 위치):**
-- `frontend/src/aidol/` - components, hooks, utils, stories
-- `frontend/src/repositories/aidol/` - repositories
+- `frontend/src/aidol/` - components, hooks, utils, stories, repositories
+- `frontend/src/containers/aidol/` - containers (Layer-First)
 - `frontend/src/app/[lang]/(public)/aidol/` - pages
 
 ---
