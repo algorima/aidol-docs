@@ -41,7 +41,7 @@ Creators keep full IP ownership. We're democratizing the virtual idol economy â€
 **Proven execution.**
 - **500K+ TikTok views** in 5 days (single video, $0 ad spend)
 - **5,000+ leads**, **500+ signups** in first week
-- Previous startup: **$940K revenue** (EasyDeep, AI education platform)
+- Previous startup: **~$720K revenue** (EasyDeep, AI education platform)
 - CTO's NAVER P2P streaming tech â€” **patents in US, Japan, Korea**, still used in streaming services today
 
 **Technical founders, shipped fast.**
@@ -74,7 +74,7 @@ Creators keep full IP ownership. We're democratizing the virtual idol economy â€
 | TikTok views | 500,000+ (5 days, $0 spend) |
 | Leads collected | 5,000+ |
 | Signups | 500+ |
-| Previous revenue | $940K (EasyDeep, 12 months) |
+| Previous revenue | ~$720K (EasyDeep, 12 months) |
 | Product | Live at aioia.ai/aidol |
 
 **Pivot history (validated learning):**
