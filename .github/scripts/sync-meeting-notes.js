@@ -11,24 +11,20 @@ const fs = require('fs');
 const https = require('https');
 
 // === Config ===
-const CALENDAR_ID = 'c_43279675d25d4c2af7798ab2bf5a7924bf190e2b4926cfceafe2a436edd0368b@group.calendar.google.com'; // AIdol Team
+const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || 'c_43279675d25d4c2af7798ab2bf5a7924bf190e2b4926cfceafe2a436edd0368b@group.calendar.google.com'; // AIdol Team (default)
 
-// 팀원 이름 → 이메일 매핑
-const TEAM = {
-  '소연': 'leesoyena@gmail.com',
-  '이소연': 'leesoyena@gmail.com',
-  '영욱': 'ywkim@algorima.io',
-  '김영욱': 'ywkim@algorima.io',
-  '미진': 'sju01334@gmail.com',
-  '지영': 'vyoyngv7340@gmail.com',
-  '박지영': 'vyoyngv7340@gmail.com',
-  '수지': 'soojilee000@gmail.com',
-  '은재': 'dmswo546@gmail.com',
-  '채현': 'chaehyun3253@gmail.com',
-  '제형': 'pjhdye423@gmail.com',
-  '박제형': 'pjhdye423@gmail.com',
-  '제이': 'jeonjay0323@gmail.com',
-};
+// 팀원 이름 → 이메일 매핑 (외부 JSON 파일에서 로드)
+const path = require('path');
+const TEAM_CONFIG_PATH = path.join(__dirname, '../config/team.json');
+const TEAM = (() => {
+  try {
+    const config = JSON.parse(fs.readFileSync(TEAM_CONFIG_PATH, 'utf8'));
+    return config.members || {};
+  } catch (e) {
+    console.warn('Warning: Could not load team.json, using empty team mapping');
+    return {};
+  }
+})();
 
 // 기본 참석자 (항상 초대) - 환경변수에서 로드
 const DEFAULT_ATTENDEES = process.env.CALENDAR_ATTENDEES 
@@ -139,12 +135,40 @@ function parseAttendees(content) {
   return Array.from(attendees);
 }
 
+// === Parse Duration from Content ===
+function parseDuration(content) {
+  // "약 N분" 또는 "N분 M초" 패턴
+  let match = content.match(/약?\s*(\d+)\s*분/);
+  if (match) {
+    return parseInt(match[1]);
+  }
+  
+  // "N시간 M분" 패턴
+  match = content.match(/(\d+)\s*시간\s*(\d+)?\s*분?/);
+  if (match) {
+    const hours = parseInt(match[1]);
+    const mins = match[2] ? parseInt(match[2]) : 0;
+    return hours * 60 + mins;
+  }
+  
+  return 60; // 기본값
+}
+
+// === Parse Year from Content ===
+function parseYear(content, filenameYear) {
+  // "일시: YYYY-MM-DD" 또는 "일시: YYYY.MM.DD" 패턴
+  const match = content.match(/일시[:\s]+(\d{4})[-.\s]/);
+  if (match) {
+    return match[1];
+  }
+  return filenameYear; // fallback to filename
+}
+
 // === Parse Time from Title ===
-function parseTime(title) {
-  // 기본 시간: 10:00-11:00
+function parseTime(title, duration = 60) {
+  // 기본 시간: 10:00
   let startHour = 10;
   let startMin = 0;
-  let duration = 60; // minutes
   
   // "HH:MM" 또는 "HH시 MM분" 패턴
   let match = title.match(/(\d{1,2})[:\s시](\d{2})?분?\s*(am|pm|AM|PM)?/);
@@ -180,11 +204,17 @@ function parseTime(title) {
 function parseMeetingNote(content, filename) {
   const events = [];
   
-  // 파일명에서 날짜 추출 (YYMMDD format)
+  // 파일명에서 날짜 추출 (YYMMDD format) - fallback용
   const dateMatch = filename.match(/(\d{6})/);
   if (!dateMatch) return events;
   
-  const year = '20' + dateMatch[1].slice(0, 2);
+  const filenameYear = '20' + dateMatch[1].slice(0, 2);
+  
+  // 본문에서 연도 추출 (우선), 없으면 파일명 사용
+  const year = parseYear(content, filenameYear);
+  
+  // 본문에서 미팅 시간 추출
+  const duration = parseDuration(content);
   
   // 참석자 파싱
   const attendees = parseAttendees(content);
@@ -210,7 +240,7 @@ function parseMeetingNote(content, filename) {
     
     if (title) {
       const date = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-      const { startTime, endTime } = parseTime(title);
+      const { startTime, endTime } = parseTime(title, duration);
       events.push({
         title: title.trim(),
         start: `${date}T${startTime}`,

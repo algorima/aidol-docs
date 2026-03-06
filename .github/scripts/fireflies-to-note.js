@@ -145,7 +145,7 @@ function createPR(filename, content) {
   execSync(`git commit -m "docs: ${filename} (Fireflies 자동 생성)"`);
   execSync(`git push -u origin ${branchName}`);
   
-  // PR 생성
+  // PR 생성 (셸 인젝션 방지를 위해 stdin으로 body 전달)
   const prBody = `## 🎙️ Fireflies 자동 생성 미팅 노트
 
 이 PR은 Fireflies 녹음 완료 후 자동으로 생성되었습니다.
@@ -155,7 +155,7 @@ function createPR(filename, content) {
 - [ ] 액션 아이템 검토
 - [ ] 필요시 수정 후 머지`;
 
-  execSync(`gh pr create --title "docs: ${filename}" --body "${prBody}" --base main`);
+  execSync(`gh pr create --title "docs: ${filename}" --body-file - --base main`, { input: prBody });
   
   console.log(`✅ PR created for ${filename}`);
 }
