@@ -2,7 +2,12 @@
 
 ## Tagline
 
-"The Sims + K-pop — produce your own AI idol group"
+"The K-pop producer sim you didn't know you needed"
+
+> 이전 버전: "The Sims + K-pop — produce your own AI idol group"
+> 변경 이유: K-pop 팬이 아닌 PH 유저(개발자/디자이너)도 호기심 느끼도록.
+> "sim" = 시뮬레이션 게임 감성 (Football Manager, The Sims 등 빌더 본능 자극),
+> "you didn't know you needed" = PH에서 검증된 호기심 유발 패턴.
 
 ## Maker Comment
 
