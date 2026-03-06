@@ -1,7 +1,7 @@
 # AIdol 기능 명세서 - Sprint 2
 
 > **작성일**: 2026-02-04 (수정: 2026-02-08)
-> **상태**: draft
+> **상태**: deployed
 > **버전**: v0.2
 > **작성자**: soyeon
 > **출처**: [Notion 전체 기능 명세서](https://www.notion.so/2ec46f965504805a94fbed8c0109cd91)

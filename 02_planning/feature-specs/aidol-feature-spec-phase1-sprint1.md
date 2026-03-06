@@ -1,7 +1,7 @@
 # AIdol 기능 명세서 - Sprint 1
 
 > **작성일**: 2026-02-04  
-> **상태**: draft  
+> **상태**: deployed
 > **버전**: v0.2  
 > **작성자**: soyeon  
 > **출처**: [GitHub algorima/aidol](https://github.com/algorima/aidol) 코드 기반
