@@ -9,7 +9,7 @@
 | 제이 | PH 비주얼 자산 + **틱톡/릴스 숏폼 영상 제작** | 디자인 + 숏폼 담당 (PR #141 마케팅 전략 연계) |
 | 미진 | **퍼포먼스 숏폼 영상 제작** | 춤/노래 영상 담당 |
 | 수지 | 서포터 네트워크 관리 + 리서치 | 기획/리서치 담당 |
-| 채현/은재/지영/시영/제형 | 출시일 댓글 응답 + 소셜 미디어 확산 + **더쿠/디시 커뮤니티 포스팅** | 실시간 인력 필요 |
+| 채현/은재/지영/시영/제형 | 출시일 댓글 응답 + 소셜 미디어 확산 + **글로벌 커뮤니티 포스팅 (Reddit, Discord)** | 실시간 인력 필요 |
 
 > 참고: 틱톡/릴스가 메인 유입 채널 (PR #141 `08_marketing/phase2-marketing-strategy.md`).
 > PH는 테크 커뮤니티 노출 + AI 검색 인용(GEO) 부스트 목적.
@@ -346,9 +346,9 @@ D+1 ~ D+4 숏폼 연계 (제이 담당):
 
 | 시점 | 틱톡/릴스 | 커뮤니티 |
 |------|----------|---------|
-| D+1 | Video 2: Before/After 숏폼 | Reddit 포스트 |
-| D+2 | Video 3: Chat Reaction 숏폼 | 더쿠 후기 |
-| D+3 | Video 4: POV 숏폼 | 디시 후기 |
+| D+1 | Video 2: Before/After 숏폼 | Reddit (r/kpop) |
+| D+2 | Video 3: Chat Reaction 숏폼 | Reddit (r/kpopthoughts) + Discord |
+| D+3 | Video 4: POV 숏폼 | Twitter Spaces / TikTok 댓글 소통 |
 | D+4~ | Video 5: 이상형 그룹 시리즈 시작 | 반응 보고 추가 |
 
 주의사항:

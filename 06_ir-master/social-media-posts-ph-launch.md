@@ -241,44 +241,35 @@ Try it if you're curious: aioia.ai (it's free right now)
 No pressure at all to sign up. Even just answering those questions above would help us a lot.
 ```
 
-### 3.2 더쿠 (theqoo)
+### 3.2 Reddit (r/kpopthoughts)
 
 ```
-제목: AI로 나만의 아이돌 그룹 만들어봄
+Title: What would your dream K-pop group look like if you could produce one?
 
-프듀 시즌 끝나고 나서 계속 생각했는데
-내가 직접 프로듀서가 되면 어떨까 해서 찾아봤더니
-AI로 아이돌 그룹 만들 수 있는 서비스가 있더라
+I've been thinking about this since Produce ended — what if fans could actually BE the producer?
 
-연습생 캐스팅하고 포지션 배정하고 그룹 콘셉트 잡고
-멤버들이랑 1:1 채팅도 되고 멤버끼리 케미도 생김
+Found this AI tool called AIdol where you literally draft trainees, assign positions, build group concepts, and chat with your members 1:1. They even develop chemistry with each other over time.
 
-걸크러시로 만들어봤는데 솔직히 좀 빠져들었음
+I went with a girl crush concept and honestly got way more invested than I expected.
 
-aioia.ai에서 해볼 수 있음 (무료)
-한번 만들어보고 소감 공유해봐
+Anyone else into this kind of thing? What concept would you build first?
+
+aioia.ai (it's free)
 ```
 
-주의: 광고 티 절대 금지. 자연스러운 후기 형태. 반말 톤.
-
-### 3.3 디시인사이드 AI 채팅 갤러리
+### 3.3 Discord K-pop Servers
 
 ```
-제목: AI 챗봇 말고 AI 아이돌 프로듀싱 해본 사람?
+Hey! Just discovered something cool — an AI K-pop producer sim where you build your own idol group from scratch.
 
-캐릭터ai 같은 건 그냥 채팅인데
-이건 직접 연습생 뽑아서 그룹 만드는 거임
+You draft trainees by stats (vocal/dance/rap), pick their concept, and they actually develop relationships with each other. It's like Tamagotchi meets Produce 101.
 
-스탯 보고 드래프트하고 콘셉트 잡고
-멤버끼리 관계도 생기고 채팅도 됨
+Free to try: aioia.ai
 
-다마고치 아이돌 버전 느낌
-
-aioia.ai
-무료니까 한번 해보셈
+Would love to see what groups you all come up with!
 ```
 
-주의: 디시 톤에 맞게. 비교는 OK, 비방은 안됨.
+타겟 서버: K-pop 팬 디스코드 (r/kpop Discord, K-pop Stans, Stan Twitter Discord 등). 각 서버 규칙 확인 후 self-promo 채널에 포스팅.
 
 ## 4. 채널별 PH 출시 연계 타임라인
 
@@ -288,9 +279,9 @@ aioia.ai
 | D-Day | Video 1 드롭 (스피드런) | Post 1+2 | Post 1 | - |
 | D-Day +4h | - | Post 3 (유저 반응) | - | - |
 | D-Day +8h | - | Post 5 (중간 성과) | - | - |
-| D+1 | Video 2 (Before/After) | 감사 포스트 | Post 2 | Reddit |
-| D+2 | Video 3 (Chat Reaction) | Post 4 (기능) | - | 더쿠 |
-| D+3 | Video 4 (POV) | - | - | 디시 |
+| D+1 | Video 2 (Before/After) | 감사 포스트 | Post 2 | Reddit (r/kpop) |
+| D+2 | Video 3 (Chat Reaction) | Post 4 (기능) | - | Reddit (r/kpopthoughts) + Discord |
+| D+3 | Video 4 (POV) | - | - | Twitter Spaces / TikTok 댓글 소통 |
 | D+4~ | Video 5 시리즈 (이상형 그룹) | 일상 운영 | - | 반응 보고 추가 |
 
 핵심: PH 출시 당일 틱톡 + 트위터 동시 드롭으로 트래픽 양쪽에서 몰기.
