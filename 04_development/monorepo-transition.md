@@ -37,7 +37,7 @@ Backend + Frontend (같은 PR) → algorima/buppy merge → CI/CD 검증 → 배
 
 ### 작업 위치 상세
 
-**Backend (7개 위치):**
+**Backend (4개 위치):**
 - `backend/aidol/` - services, schemas, context, providers, protocols
 - `backend/fastapi_app/routers/aidol/` - API 라우터
 - `backend/managers/` - repositories (database_aidol_repository.py 등)
