@@ -12,7 +12,26 @@ const https = require('https');
 
 // === Config ===
 const CALENDAR_ID = 'c_43279675d25d4c2af7798ab2bf5a7924bf190e2b4926cfceafe2a436edd0368b@group.calendar.google.com'; // AIdol Team
-const ATTENDEES = ['leesoyena@gmail.com', 'sylee@aioia.ai'];
+
+// 팀원 이름 → 이메일 매핑
+const TEAM = {
+  '소연': 'leesoyena@gmail.com',
+  '이소연': 'leesoyena@gmail.com',
+  '영욱': 'ywkim@algorima.io',
+  '김영욱': 'ywkim@algorima.io',
+  '미진': 'sju01334@gmail.com',
+  '지영': 'vyoyngv7340@gmail.com',
+  '박지영': 'vyoyngv7340@gmail.com',
+  '수지': 'soojilee000@gmail.com',
+  '은재': 'dmswo546@gmail.com',
+  '채현': 'chaehyun3253@gmail.com',
+  '제형': 'pjhdye423@gmail.com',
+  '박제형': 'pjhdye423@gmail.com',
+  '제이': 'jeonjay0323@gmail.com',
+};
+
+// 기본 참석자 (항상 초대)
+const DEFAULT_ATTENDEES = ['leesoyena@gmail.com', 'sylee@aioia.ai'];
 
 // === Google OAuth ===
 async function getAccessToken() {
@@ -49,12 +68,13 @@ async function getAccessToken() {
 
 // === Google Calendar ===
 async function createCalendarEvent(accessToken, event) {
+  const attendees = event.attendees || DEFAULT_ATTENDEES;
   const body = JSON.stringify({
     summary: event.title,
     description: event.description || '',
     start: { dateTime: event.start, timeZone: 'Asia/Seoul' },
     end: { dateTime: event.end, timeZone: 'Asia/Seoul' },
-    attendees: ATTENDEES.map(email => ({ email })),
+    attendees: attendees.map(email => ({ email })),
     // Google Meet 자동 생성
     conferenceData: {
       createRequest: {
@@ -91,6 +111,24 @@ async function createCalendarEvent(accessToken, event) {
   });
 }
 
+// === Parse Attendees from Content ===
+function parseAttendees(content) {
+  const attendees = new Set(DEFAULT_ATTENDEES);
+  
+  // "참석자: 이소연, 미진, 재희" 패턴
+  const attendeeMatch = content.match(/참석자[:\s]+([^\n]+)/);
+  if (attendeeMatch) {
+    const names = attendeeMatch[1].split(/[,、，\s]+/).map(n => n.trim());
+    for (const name of names) {
+      if (TEAM[name]) {
+        attendees.add(TEAM[name]);
+      }
+    }
+  }
+  
+  return Array.from(attendees);
+}
+
 // === Parse Meeting Notes ===
 function parseMeetingNote(content, filename) {
   const events = [];
@@ -101,6 +139,9 @@ function parseMeetingNote(content, filename) {
   
   const year = '20' + dateMatch[1].slice(0, 2);
   const month = dateMatch[1].slice(2, 4);
+  
+  // 참석자 파싱
+  const attendees = parseAttendees(content);
   
   // 일정 패턴 찾기
   // "월요일(3/2): 미팅 내용" or "3/2(월): 미팅 내용"
@@ -116,7 +157,8 @@ function parseMeetingNote(content, filename) {
         title: title.trim(),
         start: `${date}T10:00:00`,
         end: `${date}T11:00:00`,
-        description: `From: ${filename}`
+        description: `From: ${filename}`,
+        attendees: attendees
       });
       continue;
     }
@@ -130,7 +172,8 @@ function parseMeetingNote(content, filename) {
         title: title.trim(),
         start: `${date}T10:00:00`,
         end: `${date}T11:00:00`,
-        description: `From: ${filename}`
+        description: `From: ${filename}`,
+        attendees: attendees
       });
     }
   }
