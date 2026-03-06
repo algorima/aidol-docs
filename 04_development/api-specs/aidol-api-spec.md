@@ -40,6 +40,12 @@
 
 ## 세부 명세
 
+List 조회 API의 `current`, `pageSize`, `sort`, `filters` 규칙은 문서 하단 `## 🔧 List Query Parameters`를 공통으로 따릅니다.
+- `current`: 페이지 번호 (기본: 1, ≥ 1)
+- `pageSize`: 페이지당 항목 수 (기본: 10, 1-100)
+- `sort`: 정렬 조건 
+- `filters`: 필터 조건 
+
 ### POST /aidols - AIdol 그룹 생성
 
 새로운 아이돌 그룹을 생성합니다. 생성된 그룹은 요청자의 쿠키 ID (anonymousId)와 연결됩니다.
@@ -62,7 +68,6 @@
 **Response** (201 Created):
 
 ```json
-Headers: anonymousId
 
 {
   "data": {
@@ -77,13 +82,10 @@ Headers: anonymousId
 
 생성된 모든 아이돌 그룹을 조회합니다. 페이지네이션과 필터링을 지원합니다.
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- page: 페이지 번호 (기본: 1)
-- pageSize: 페이지 당 항목 수 (기본: 10)
-- sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
-- filters: 필터 조건 (JSON 문자열)
-예: [{"field":"name","operator":"contains","value":"aidol"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 예시: `?current=1&pageSize=10&sort=[["createdAt","desc"]]&filters=[{"field":"name","operator":"contains","value":"aidol"}]`
 
 **Response** (200 OK):
 
@@ -124,15 +126,12 @@ Input Parameters (Query)
 현재 사용자(쿠키 ID 기준)가 생성한 그룹만 필터링하여 조회합니다.
 
 - URL: GET /me/aidols
-- Auth: 쿠키 필수 (anonymousId)
+- Auth: 쿠키 필수 (`aioia_anonymous_id`)
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- page: 페이지 번호 (기본: 1)
-- pageSize: 페이지 당 항목 수 (기본: 10)
-- sort: 정렬 조건 (JSON 문자열, 예: [["createdAt","desc"]])
-- filters: 필터 조건 (JSON 문자열)
-예: [{"field":"name","operator":"contains","value":"aidol"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 추가 조건: 현재 사용자 소유 데이터만 조회되도록 서버에서 자동 필터링
 
 **Response** (200 OK):
 
@@ -187,10 +186,10 @@ Input Parameters (Query)
     "greeting": "string",
     "concept": "string",
     "profileImageUrl": "string",
-    "status": "DRAFT | PUBLISHED"
-  },
-  "createdAt": "datetime",
-  "updatedAt": "datetime"
+    "status": "DRAFT | PUBLISHED",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
 }
 ```
 
@@ -225,12 +224,17 @@ Input Parameters (Query)
 
 ```json
 {
-  "name": "string",
-  "email": "string",
-  "greeting": "string",
-  "concept": "string",
-  "profileImageUrl": "string",
-  "status": "DRAFT | PUBLISHED"
+  "data": {
+    "id": "string",
+    "name": "string",
+    "email": "string",
+    "greeting": "string",
+    "concept": "string",
+    "profileImageUrl": "string",
+    "status": "DRAFT | PUBLISHED",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
 }
 ```
 
@@ -283,9 +287,12 @@ aidols 엠블럼 이미지를 생성합니다.
 - URL: GET /companions
 - Auth: 공개
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- filters: [{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시:
+  - `[{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]`
+  - `[{"field":"status","operator":"eq","value":"PUBLISHED"}]`
 
 **Response** (200 OK):
 
@@ -328,21 +335,15 @@ Input Parameters (Query)
 ### POST /companions - Companion 멤버 생성
 
 특정 그룹(aidolId)에 소속될 멤버를 생성합니다.
-
+POST /companions는 기존 id를 받아 attach하지 않으며,
+attach는 PATCH /companions/{id}로 수행됩니다.
 - URL: POST /companions
 - Auth: 공개
 
 **Request**:
 
 ```json
-  // 새로운 연습생 
  {
-   "aidolId": "aidol-uuid"
- }
-
-	// 기존에 생성된 연습생
- {
-   "id": "companion-uuid",
    "aidolId": "aidol-uuid"
  }
 ```
@@ -358,7 +359,7 @@ Input Parameters (Query)
     "name": "Updated Name",
     "aidolId": "aidol_123",
     "gender": "FEMALE",
-    "grade": "S",
+    "grade": "A",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -383,10 +384,10 @@ Input Parameters (Query)
     "aidolId": "aidol_123",
     "name": "Minji",
     "gender": "FEMALE",
-    "grade": "S",
+    "grade": "A",
     "biography": "...",
     "profilePictureUrl": "...",
-    "position": "LEADER",
+    "position": "MAIN_VOCAL",
     "mbti": "ENTP",
     "stats": { "vocal": 100, "dance": 90, "rap": 80, "visual": 100, "stamina": 80, "charm": 95 }
   },
@@ -556,7 +557,11 @@ AIdol 하이라이트를 조회합니다.
 
 - URL: GET /aidol-highlights
 - Auth: 공개
-- Filter: aidolId로 필터링하여 특정 그룹의 피드 조회
+
+Query Parameters (공통 List 규칙)
+
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시: `[{"field":"aidolId","operator":"eq","value":"aidol-uuid..."}]`
 
 **Response** (200 OK):
 
@@ -597,29 +602,26 @@ AIdol 하이라이트를 조회합니다.
 **Response** (200 OK):
 
 ```json
-{
-  "data": [
-    {
-      "id": "string",
-      "highlightId": "string",
-      "companionId": "string",
-      "sequence": "1",
-      "content": "안녕하세요",
-      "createdAt": "datetime",
-      "updatedAt": "datetime"
-     },
-	   {
-		  "id": "string",
-		  "highlightId": "string",
-		  "companionId": "string",
-		  "sequence": "2",
-		  "content": "안녕",
-		  "createdAt": "datetime",
-		  "updatedAt": "datetime"
-     }
-  ],
-  "total": 2
-}
+[
+  {
+    "id": "string",
+    "highlightId": "string",
+    "companionId": "string",
+    "sequence": 1,
+    "content": "안녕하세요",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  },
+  {
+    "id": "string",
+    "highlightId": "string",
+    "companionId": "string",
+    "sequence": 2,
+    "content": "안녕",
+    "createdAt": "datetime",
+    "updatedAt": "datetime"
+  }
+]
 ```
 
 ---
@@ -630,11 +632,12 @@ AIdol 하이라이트를 조회합니다.
 
 - URL: GET /companion-relationships
 
-Input Parameters (Query)
+Query Parameters (공통 List 규칙)
 
-- filters: JSON 문자열
-  - 예: A가 생각하는 관계들 -> [{"field":"fromCompanionId","operator":"eq","value":"member-A-uuid"}]
-  - 예: A를 생각하는 관계들 -> [{"field":"toCompanionId","operator":"eq","value":"member-A-uuid"}]
+- `current`, `pageSize`, `sort`, `filters`
+- 대표 `filters` 예시:
+  - A가 생각하는 관계들: `[{"field":"fromCompanionId","operator":"eq","value":"member-A-uuid"}]`
+  - A를 생각하는 관계들: `[{"field":"toCompanionId","operator":"eq","value":"member-A-uuid"}]`
 
 **Response** (200 OK):
 
@@ -645,7 +648,6 @@ Input Parameters (Query)
 	    "id": "string",
 	    "fromCompanionId": "string",
 	    "toCompanionId": "string",
-	    "type": "string",
 	    "intimacy": "number",
 	    "nickname": "string",
       "createdAt": "datetime",
@@ -655,7 +657,6 @@ Input Parameters (Query)
 	    "id": "string",
 	    "fromCompanionId": "string",
 	    "toCompanionId": "string",
-	    "type": "string",
 	    "intimacy": "number",
 	    "nickname": "string",
       "createdAt": "datetime",
@@ -681,7 +682,6 @@ Input Parameters (Query)
     "id": "string",
     "fromCompanionId": "string",
     "toCompanionId": "string",
-    "type": "string",
     "intimacy": "number",
     "nickname": "string"
   },
@@ -704,7 +704,6 @@ Input Parameters (Query)
 {
   "fromCompanionId": "string",
   "toCompanionId": "string",
-  "type": "string",
   "intimacy": "int",
   "nickname": "string" //선택
 }
@@ -718,7 +717,6 @@ Input Parameters (Query)
 	  "id": "string", 
     "fromCompanionId": "string",
     "toCompanionId": "string",
-    "type": "string",
     "intimacy": "int",
     "nickname": "string"
   },
@@ -741,12 +739,14 @@ Input Parameters (Query)
 현재 참여 중인 채팅방 목록을 조회합니다.
 
 - URL: GET /me/chatrooms
-- Auth: Cookie 필수 (anonymousId)
+- Auth: Cookie 필수 (`aioia_anonymous_id`)
 
-- 파라미터
-  - aidolId (optional, query): 그룹 필터
-  - filters (optional, query, JSON string): 채팅방 조건 필터
-  - aioia_anonymous_id (required, cookie): 사용자 식별자
+Query Parameters
+
+- `aidolId` (optional): 그룹 필터
+- `filters` (optional, JSON string): 채팅방 조건 필터
+- `aioia_anonymous_id` (required, cookie): 사용자 식별자
+- `current`, `pageSize`, `sort`는 지원하지 않음
 
 - 동작 분기
   1. 항상 chatrooms.anonymous_id = cookie로 기본 범위 제한
@@ -845,30 +845,27 @@ Input Parameters (Query)
 
 Input Parameters (Query)
 
-- limit: 한 번에 가져올 메시지 수 (기본: 100, 최대: 200)
+- limit: 한 번에 가져올 메시지 수 (기본: 100)
 - offset: 건너뛸 메시지 수 (기본: 0)
+- `current`, `pageSize`, `sort`, `filters`는 지원하지 않음
 
 **Response** (200 OK):
-- 시간 순서대로 정렬된 메시지 배열 반환
+- 시간 순서대로 정렬된 메시지 배열 반환(내림차순)
 ```json
 [
   {
+    "id": "msg-124",
+    "senderType": "COMPANION",
+    "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
+    "createdAt": "2024-02-09T10:01:05Z"
+  },
+  {
     "id": "msg-123",
-    "chatroomId": "chatroom-uuid-1234",
     "senderType": "USER",
     "content": "안녕, 오늘 기분 어때?",
     "createdAt": "2024-02-09T10:01:00Z"
-  },
-  {
-    "id": "msg-124",
-    "chatroomId": "chatroom-uuid-1234",
-    "senderType": "COMPANION",
-    "content": "오늘 날씨가 좋아서 정말 상쾌해요! ",
-    "companionId": "companion-uuid-5678", // 보낸 멤버 ID
-    "createdAt": "2024-02-09T10:01:05Z"
   }
 ]
-
 
 ```
 
@@ -893,7 +890,6 @@ Input Parameters (Query)
 ```json
 {
   "id": "msg-125",
-  "chatroomId": "chatroom-uuid-1234",
   "senderType": "USER",
   "content": "나 오늘 좀 우울해...",
   "createdAt": "2024-02-09T10:02:00Z"
@@ -1041,7 +1037,6 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
   id: string                         // UUID
   fromCompanionId: string           // 멤버 1
   toCompanionId: string            // 멤버 2
-  type: string                       // 관계 유형
   intimacy: number                   // 친밀도
   nickname: string | null            // 관계 별명
 }
@@ -1054,9 +1049,8 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
   id: string                        // UUID
   companionId: string               // 채팅 대상 companion ID
   name: string                      // 채팅방 이름
-  language: string                  // 언어 코드 (기본: "ko")
-  anonymousId: string | null        // 익명 사용자 식별자
-  lastMessage: {                    // 가장 최근 메시지
+  language: string                  // 언어 코드 (기본: "en")
+  lastMessage: {                    // 최근 메시지 요약 (GET /me/chatrooms 응답에서만 포함)
     content: string
     createdAt: string
   } | null
@@ -1071,12 +1065,9 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 ```tsx
 {
   id: string                        // UUID
-  chatroomId: string                // Chatroom FK
   senderType: "USER" | "COMPANION"  // 발신자 유형
   content: string                   // 메시지 내용
   createdAt: string                 // ISO 8601 datetime
-  companionId: string | null        // 발신 멤버 ID
-  anonymousId: string | null        // 사용자 ID
 }
 
 ```
@@ -1095,7 +1086,20 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 
 ---
 
-## 🔧 Query Parameters
+## 🔧 List Query Parameters
+
+적용 endpoint:
+
+- `GET /aidols`
+- `GET /me/aidols`
+- `GET /companions`
+- `GET /aidol-highlights`
+- `GET /companion-relationships`
+
+비적용 endpoint:
+
+- `GET /me/chatrooms` (전용 파라미터: `aidolId`, `filters`)
+- `GET /chatrooms/{id}/messages` (전용 파라미터: `limit`, `offset`)
 
 ### Pagination
 
@@ -1115,6 +1119,8 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 ?filters=[{"field":"aidolId","operator":"eq","value":"uuid"}]
 
 ```
+
+- `field`는 camelCase/snake_case 모두 허용되며 서버에서 내부 snake_case로 정규화됩니다.
 
 | 연산자                   | 설명             |
 | ------------------------ | ---------------- |
@@ -1139,17 +1145,20 @@ URL: POST /chatrooms/{id}/companions/{cid}/initial-response
 
 ```
 
-### Error Codes
+### Error Codes (현재 구현 기준)
 
-| Code                      | HTTP Status | 설명                  |
-| ------------------------- | ----------- | --------------------- |
-| `VALIDATION_ERROR`        | 422         | 입력 필드 검증 실패   |
-| `MISSING_REQUIRED_FIELD`  | 422         | 필수 필드 누락        |
-| `RESOURCE_NOT_FOUND`      | 404         | 요청한 리소스 없음    |
-| `IMAGE_GENERATION_FAILED` | 500         | 이미지 생성 실패      |
-| `LLM_RESPONSE_FAILED`     | 500         | LLM 응답 생성 실패    |
-| `EXTERNAL_SERVICE_ERROR`  | 500         | 외부 서비스 오류      |
-| `INTERNAL_SERVER_ERROR`   | 500         | 예상치 못한 서버 오류 |
+| Code                            | HTTP Status | 설명                                                          |
+| ------------------------------- | ----------- | ------------------------------------------------------------- |
+| `VALIDATION_ERROR`              | 422         | 요청 바디/필드 검증 실패                                      |
+| `INVALID_QUERY_PARAMS`          | 400         | `sort`, `filters` 쿼리 파라미터 JSON 형식 오류                |
+| `RESOURCE_NOT_FOUND`            | 404         | 요청한 리소스 없음                                            |
+| `FIRST_RESPONSE_ALREADY_EXISTS` | 409         | `initial-response` API에서 이미 메시지가 존재하는 채팅방 요청 |
+| `BadRequestError`               | 400         | LLM 공급자 요청 오류                                          |
+| `RateLimitError`                | 429         | LLM 공급자 호출 한도 초과                                     |
+| `ServiceUnavailableError`       | 503         | LLM 공급자 서비스 일시 장애                                   |
+| `EXTERNAL_SERVICE_ERROR`        | 500         | 외부 서비스 연동 오류(공통 코드)                              |
+| `INTERNAL_SERVER_ERROR`         | 500         | 예상치 못한 서버 오류                                         |
+
 
 ---
 
