@@ -115,7 +115,7 @@ async function createCalendarEvent(accessToken, event) {
 function parseAttendees(content) {
   const attendees = new Set(DEFAULT_ATTENDEES);
   
-  // "참석자: 이소연, 미진, 재희" 패턴
+  // "참석자: 이소연, 미진, 제이" 패턴
   const attendeeMatch = content.match(/참석자[:\s]+([^\n]+)/);
   if (attendeeMatch) {
     const names = attendeeMatch[1].split(/[,、，\s]+/).map(n => n.trim());
