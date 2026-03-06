@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>AIdol - Business Model</title>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 200; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-2ExtraLight.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 500; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-5Medium.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  :root {
+    --bg: #F5F5F5;
+    --pink: #FF3377;
+    --white: #1a1a1a;
+    --dim: rgba(0,0,0,0.45);
+    --card: #FFFFFF;
+    --border: rgba(0,0,0,0.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy',sans-serif; background:#EFEFEF; display:flex; flex-direction:column; align-items:center; gap:80px; padding:60px 0; color:var(--white); }
+
+  /* ---- SLIDE ---- */
+  .slide { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:flex; flex-direction:column; padding:72px 100px 64px; }
+
+  /* Tag + Title */
+  .tag { font-size:18px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; text-align:center; }
+  .title { font-size:52px; font-weight:700; color:var(--white); line-height:1.25; margin-top:12px; text-align:center; }
+  .title b { color:var(--pink); font-weight:700; }
+  .subtitle { font-size:22px; color:var(--dim); margin-top:8px; font-weight:400; text-align:center; }
+
+  /* ==================== SLIDE 1 ==================== */
+
+  .s1-cols { display:grid; grid-template-columns:1fr 1fr; gap:80px; flex:1; margin-top:48px; }
+
+  .col-head { display:inline-flex; align-items:center; gap:12px; padding:12px 28px; border-radius:12px; font-size:22px; font-weight:700; margin-bottom:32px; }
+  .col-head.gray { background:rgba(0,0,0,.06); color:var(--dim); }
+  .col-head.pink { background:var(--pink); color:#fff; }
+
+  .item { display:flex; align-items:center; gap:24px; padding:20px 0; border-bottom:1px solid var(--border); }
+  .item:last-child { border-bottom:none; }
+  .num { width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:22px; font-weight:700; flex-shrink:0; }
+  .num.w { background:var(--white); color:var(--bg); }
+  .num.p { background:var(--pink); color:#fff; }
+  .item-body { flex:1; }
+  .item-name { font-size:26px; font-weight:600; color:var(--white); }
+  .item-ref { font-size:16px; color:var(--dim); margin-top:4px; }
+  .item-price { font-size:32px; font-weight:800; white-space:nowrap; }
+  .item-price.w { color:var(--white); }
+  .item-price.p { color:var(--pink); }
+  .item-badge { font-size:15px; font-weight:700; padding:6px 18px; border-radius:100px; background:rgba(255,51,119,.12); color:var(--pink); }
+
+  /* Flow bar */
+  .flow { display:flex; align-items:center; justify-content:space-between; margin-top:auto; background:var(--card); border-radius:16px; padding:24px 48px; }
+  .flow-step { display:flex; align-items:center; gap:14px; }
+  .flow-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .flow-icon svg { width:24px; height:24px; }
+  .flow-icon.free { background:rgba(0,0,0,.04); }
+  .flow-icon.free svg { stroke:var(--dim); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-icon.paid { background:rgba(255,51,119,.1); }
+  .flow-icon.paid svg { stroke:var(--pink); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-icon.b2b { background:var(--pink); }
+  .flow-icon.b2b svg { stroke:#fff; fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+  .flow-text { font-size:32px; font-weight:600; color:var(--white); line-height:1.3; }
+  .flow-text .ftag { display:inline-block; font-size:17px; font-weight:700; padding:5px 14px; border-radius:100px; margin-top:3px; }
+  .ftag.free { background:rgba(0,0,0,.06); color:var(--dim); }
+  .ftag.paid { background:rgba(255,51,119,.12); color:var(--pink); }
+  .flow-arr { padding:0 6px; }
+  .flow-arr svg { width:24px; height:24px; stroke:var(--pink); fill:none; stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round; }
+
+  /* ==================== SLIDE 2 ==================== */
+
+  .s2-content { flex:1; display:flex; flex-direction:column; gap:40px; margin-top:48px; }
+
+  .three-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; flex:1; }
+
+  .conv-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; }
+  .conv-label { font-size:20px; font-weight:700; color:var(--pink); letter-spacing:.04em; text-transform:uppercase; }
+  .conv-title { font-size:34px; font-weight:700; color:var(--white); margin-top:8px; line-height:1.3; }
+
+  .conv-free { margin-top:24px; padding:18px 22px; border-radius:12px; background:rgba(0,0,0,.04); border:1px solid var(--border); }
+  .conv-free-label { font-size:15px; font-weight:700; color:var(--dim); text-transform:uppercase; letter-spacing:.05em; }
+  .conv-free-text { font-size:24px; color:rgba(0,0,0,.6); margin-top:6px; line-height:1.5; }
+
+  .conv-arrow { text-align:center; padding:10px 0; }
+  .conv-arrow svg { width:24px; height:24px; stroke:var(--pink); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+  .conv-paid { padding:18px 22px; border-radius:12px; background:rgba(255,51,119,.06); border:1px solid rgba(255,51,119,.15); flex:1; }
+  .conv-paid-label { font-size:15px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.05em; }
+  .conv-paid-text { font-size:24px; color:var(--white); margin-top:6px; line-height:1.5; }
+  .conv-price { display:inline-block; margin-top:10px; background:var(--pink); color:#fff; font-size:24px; font-weight:800; padding:8px 24px; border-radius:100px; }
+
+  .conv-ref { margin-top:auto; padding-top:16px; font-size:18px; color:var(--dim); border-top:1px solid var(--border); }
+  .conv-ref b { color:var(--pink); }
+
+  /* ==================== SLIDE 3 ==================== */
+
+  .s3-content { flex:1; display:flex; flex-direction:column; gap:32px; margin-top:44px; }
+
+  .phases { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .phase { border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; }
+  .ph1 { background:var(--card); border:1px solid var(--border); }
+  .ph2 { background:rgba(255,51,119,.03); border:1px solid rgba(255,51,119,.1); }
+  .ph3 { background:rgba(255,51,119,.07); border:1px solid rgba(255,51,119,.2); }
+  .ph-tag { font-size:14px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+  .ph1 .ph-tag { color:var(--dim); }
+  .ph2 .ph-tag, .ph3 .ph-tag { color:var(--pink); }
+  .ph-title { font-size:24px; font-weight:700; margin-top:10px; }
+  .ph-big { font-size:36px; font-weight:800; color:var(--pink); margin-top:8px; }
+  .ph-desc { font-size:18px; color:var(--dim); margin-top:12px; line-height:1.7; }
+  .ph-desc b { color:var(--white); }
+
+  .bottom-row { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; flex:1; }
+  .bot-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px; display:flex; flex-direction:column; }
+  .bot-title { font-size:20px; font-weight:700; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .bot-title .dot { width:8px; height:8px; border-radius:50%; background:var(--pink); }
+
+  table { width:100%; border-collapse:collapse; }
+  th { text-align:left; padding:10px 12px; font-size:14px; font-weight:700; color:var(--dim); letter-spacing:.03em; text-transform:uppercase; border-bottom:1px solid var(--border); }
+  td { padding:12px; font-size:18px; color:var(--dim); border-bottom:1px solid rgba(0,0,0,.04); }
+  tr:last-child td { border-bottom:none; }
+  .hl td { color:var(--white); font-weight:700; background:rgba(255,51,119,.04); }
+  .rev { color:var(--pink); font-weight:800; font-size:22px; }
+  .comp th:last-child { color:var(--pink); }
+  .comp td:last-child { color:var(--white); font-weight:700; }
+  .x { color:rgba(0,0,0,.2); font-size:16px; }
+  .o { color:#4ADE80; font-weight:700; font-size:16px; }
+  .tri { color:#FBBF24; font-size:16px; }
+  .badge-o { background:var(--pink); color:#fff; font-size:13px; font-weight:700; padding:3px 12px; border-radius:100px; }
+  .tnote { font-size:14px; color:var(--dim); margin-top:auto; padding-top:8px; font-style:italic; }
+
+  /* ==================== COVER SLIDE ==================== */
+  .cover { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:grid; grid-template-columns:1fr 1.1fr; }
+  .cover-left { padding:120px 60px 120px 140px; display:flex; flex-direction:column; }
+  .cover-logo { font-size:40px; font-weight:800; letter-spacing:-.02em; }
+  .cover-logo span { color:var(--pink); }
+  .cover-title { font-size:72px; font-weight:700; line-height:1.2; margin-top:auto; }
+  .cover-title b { color:var(--pink); }
+  .cover-tagline { font-size:30px; color:var(--dim); line-height:1.6; margin-top:28px; margin-bottom:auto; }
+  .cover-tagline b { color:var(--white); font-weight:600; }
+  .cover-right { position:relative; display:flex; align-items:center; justify-content:center; }
+  .cover-right img { max-height:100%; max-width:100%; object-fit:contain; }
+
+  /* ==================== MARKET POTENTIAL SLIDE ==================== */
+  .mp-grid { flex:1; display:grid; grid-template-columns:.85fr 1.15fr; gap:80px; margin-top:48px; }
+
+  /* Left: Trends */
+  .mp-trends { display:flex; flex-direction:column; gap:28px; }
+  .mp-trend-title { font-size:24px; font-weight:700; color:var(--white); line-height:1.4; }
+  .mp-trend-title b { color:var(--pink); font-weight:800; }
+  .mp-trend-desc { font-size:17px; color:var(--dim); margin-top:6px; line-height:1.6; }
+
+  /* Right: Chart area */
+  .mp-chart { display:flex; flex-direction:column; }
+  .mp-chart-title { font-size:16px; font-weight:700; color:var(--dim); letter-spacing:.08em; text-transform:uppercase; margin-bottom:20px; }
+  .mp-bars { display:flex; align-items:flex-end; gap:28px; height:360px; padding-bottom:16px; border-bottom:1.5px solid var(--border); }
+  .mp-bar { flex:1; display:flex; flex-direction:column; align-items:center; }
+  .mp-bar-val { font-size:26px; font-weight:800; color:var(--pink); margin-bottom:10px; white-space:nowrap; }
+  .mp-bar-inner { width:100%; border-radius:10px 10px 0 0; background:linear-gradient(180deg, var(--pink), #ff6699); }
+  .mp-bar-label { font-size:18px; font-weight:700; color:var(--white); margin-top:14px; text-align:center; }
+  .mp-bar-sub { font-size:13px; color:var(--dim); text-align:center; margin-top:2px; }
+
+  /* CAGR badge */
+  .mp-cagr { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:16px; padding:10px 0; }
+  .mp-cagr-badge { background:rgba(255,51,119,.08); border:1px solid rgba(255,51,119,.15); color:var(--pink); font-size:18px; font-weight:700; padding:8px 24px; border-radius:100px; }
+
+  /* K-pop row */
+  .mp-kpop { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:20px; }
+  .mp-kpop-card { background:rgba(167,139,250,.05); border:1px solid rgba(167,139,250,.12); border-radius:14px; padding:16px 20px; display:flex; justify-content:space-between; align-items:center; }
+  .mp-kpop-name { font-size:18px; font-weight:700; color:var(--white); }
+  .mp-kpop-desc { font-size:13px; color:var(--dim); margin-top:2px; }
+  .mp-kpop-val { font-size:28px; font-weight:800; color:#7C3AED; white-space:nowrap; }
+
+  /* Bottom total */
+  .mp-total { display:flex; align-items:center; gap:24px; margin-top:auto; background:rgba(255,51,119,.04); border-radius:14px; padding:22px 32px; }
+  .mp-total-big { font-size:48px; font-weight:900; color:var(--pink); white-space:nowrap; }
+  .mp-total-text { font-size:17px; color:var(--dim); line-height:1.5; }
+  .mp-total-text b { color:var(--white); font-weight:700; }
+
+  .mp-src { font-size:12px; color:rgba(0,0,0,.2); margin-top:12px; text-align:right; }
+
+  @media print { body { background:#fff; gap:0; padding:0; } .slide, .cover { page-break-after:always; box-shadow:none; border-radius:0; } }
+</style>
+</head>
+<body>
+
+<!-- SVG icons -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24"><path d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m8.25 4.5 7.5 7.5-7.5 7.5"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></symbol>
+</svg>
+
+
+<!-- ==================== COVER SLIDE ==================== -->
+<div class="cover">
+  <div class="cover-left">
+    <div class="cover-logo"><span>AI</span>dol</div>
+
+    <div>
+      <div class="cover-title">AI 아이돌<br><b>커스터마이징</b> 플랫폼</div>
+      <div class="cover-tagline">내가 직접 만들고, 꾸미고, 키우는<br><b>나만의 AI 아이돌 그룹</b></div>
+    </div>
+
+  </div>
+
+  <div class="cover-right">
+    <img src="mockup.png" alt="AIdol App Mockup">
+  </div>
+</div>
+
+
+<!-- ==================== MARKET POTENTIAL: Addressing a massive opportunity ==================== -->
+<div class="slide">
+  <div class="tag">Market Potential</div>
+  <div class="title">가상 꾸미기에 사람들은 <b>이미 수조원</b>을 쓴다</div>
+
+  <div class="mp-grid">
+    <!-- Left: Market Trends (like AnltcsPnl reference) -->
+    <div class="mp-trends">
+      <div>
+        <div class="mp-trend-title"><b>$112B</b> 글로벌 가상 아이템 시장</div>
+        <div class="mp-trend-desc">연평균 15.9% 성장 중 (2024). 게임 스킨/패션 아이템이 전체의 45% 차지</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">포트나이트: <b>무료 게임</b> 하나로 연 <b>~$5B</b></div>
+        <div class="mp-trend-desc">게임 자체는 무료, 매출 전액이 코스메틱 스킨. AIdol과 동일한 Freemium 구조</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">K-pop 팬 = <b>검증된 결제</b> 고객</div>
+        <div class="mp-trend-desc">Bubble 749억(일방향 문자), PLAVE 454억(버추얼 아이돌). 실물 상품 없이 디지털로만 달성</div>
+      </div>
+      <div>
+        <div class="mp-trend-title">AI 비용 <b>65,000x</b> 하락 = Why Now</div>
+        <div class="mp-trend-desc">아이돌 한 팀 데뷔 7억원 → 사실상 0원. 2년 전에는 만들 수 없었던 제품</div>
+      </div>
+    </div>
+
+    <!-- Right: Vertical Bar Chart + K-pop cards (like AnltcsPnl stacked bars) -->
+    <div class="mp-chart">
+      <div class="mp-chart-title">검증된 코스메틱 매출 (연간, 2024)</div>
+
+      <div class="mp-bars">
+        <div class="mp-bar">
+          <div class="mp-bar-val">~$5.0B</div>
+          <div class="mp-bar-inner" style="height:100%"></div>
+          <div class="mp-bar-label">포트나이트</div>
+          <div class="mp-bar-sub">매출 전액 스킨</div>
+        </div>
+        <div class="mp-bar">
+          <div class="mp-bar-val">$4.4B</div>
+          <div class="mp-bar-inner" style="height:88%"></div>
+          <div class="mp-bar-label">로블록스</div>
+          <div class="mp-bar-sub">SEC 10-K</div>
+        </div>
+        <div class="mp-bar">
+          <div class="mp-bar-val">~$2.2B</div>
+          <div class="mp-bar-inner" style="height:44%"></div>
+          <div class="mp-bar-label">EA FC</div>
+          <div class="mp-bar-sub">SEC 10-K 기반</div>
+        </div>
+      </div>
+
+      <div class="mp-cagr">
+        <div class="mp-cagr-badge">CAGR +15.9%</div>
+      </div>
+
+      <!-- K-pop cards -->
+      <div class="mp-kpop">
+        <div class="mp-kpop-card">
+          <div>
+            <div class="mp-kpop-name">Bubble (DearU)</div>
+            <div class="mp-kpop-desc">일방향 문자만으로 &middot; KOSDAQ 공시</div>
+          </div>
+          <div class="mp-kpop-val">749억</div>
+        </div>
+        <div class="mp-kpop-card">
+          <div>
+            <div class="mp-kpop-name">PLAVE</div>
+            <div class="mp-kpop-desc">실물 멤버 0명 &middot; 버추얼 아이돌</div>
+          </div>
+          <div class="mp-kpop-val">454억</div>
+        </div>
+      </div>
+
+      <div class="mp-total">
+        <div class="mp-total-big">$11.6B+</div>
+        <div class="mp-total-text">게임 코스메틱 3개 서비스만으로 <b>약 15.8조원</b><br>+ K-pop 디지털 <b>1,203억원</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mp-src">Epic v. Apple (2021) / Roblox 10-K (2024) / EA 10-K (FY2025) / DearU DART (2024) / THE VC / Mordor Intelligence</div>
+</div>
+
+
+<!-- ==================== SLIDE 1: Revenue Model Overview ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">무료로 빠지고, <b>만들수록</b> 결제한다</div>
+  <div class="subtitle">세계 진입은 무료 — AI 콘텐츠 생성이 매출을 만든다</div>
+
+  <div class="s1-cols">
+    <!-- AS IS -->
+    <div>
+      <div class="col-head gray">AS IS &mdash; 검증된 커스터마이징 과금</div>
+
+      <div class="item">
+        <div class="num w">1</div>
+        <div class="item-body">
+          <div class="item-name">프리미엄 꾸미기 아이템</div>
+          <div class="item-ref">단건 구매</div>
+        </div>
+        <div class="item-price w">2,000원</div>
+      </div>
+      <div class="item">
+        <div class="num w">2</div>
+        <div class="item-body">
+          <div class="item-name">시즌 한정 테마팩</div>
+          <div class="item-ref">기간 한정</div>
+        </div>
+        <div class="item-price w">10,000원</div>
+      </div>
+      <div class="item">
+        <div class="num w">3</div>
+        <div class="item-body">
+          <div class="item-name">고급 콘셉트 패키지</div>
+          <div class="item-ref">프리미엄</div>
+        </div>
+        <div class="item-price w">19,000원</div>
+      </div>
+
+      <div style="margin-top:auto;">
+        <div style="background:rgba(255,51,119,.04); border-left:4px solid var(--pink); border-radius:0 12px 12px 0; padding:20px 24px; margin-bottom:12px;">
+          <div style="font-size:28px; font-weight:600; color:var(--white); line-height:1.5;">"진짜 <b style='color:var(--pink);'>키울 수 있으면 진짜 재밌겠다</b>. 심즈처럼"</div>
+          <div style="font-size:17px; color:var(--dim); margin-top:6px;">U3 장쏘피</div>
+        </div>
+        <div style="font-size:20px; color:var(--dim); line-height:1.5;">
+          ref. <b style="color:var(--white);">제페토</b> &mdash; 아바타 꾸미기 아이템 <b style="color:var(--pink);">25억개+</b> 판매, 크리에이터 매출 <b style="color:var(--pink);">$100M+</b>
+        </div>
+      </div>
+    </div>
+
+    <!-- TO BE -->
+    <div>
+      <div class="col-head pink">TO BE &mdash; 구독 + 크레딧 + B2B</div>
+
+      <div class="item">
+        <div class="num p">1</div>
+        <div class="item-body">
+          <div class="item-name">구독권 추가</div>
+          <div class="item-ref">ref. Bubble(DearU) 749억원/년, 영업이익률 34%</div>
+        </div>
+        <div class="item-price p">4,900~19,900원</div>
+      </div>
+      <div class="item">
+        <div class="num p">2</div>
+        <div class="item-body">
+          <div class="item-name">크레딧 종량제</div>
+          <div class="item-ref">ref. Suno $200M ARR, 전년대비 4.4배 성장</div>
+        </div>
+        <div class="item-price p">종량제</div>
+      </div>
+      <div class="item">
+        <div class="num p">3</div>
+        <div class="item-body">
+          <div class="item-name">B2B 데이터 활용</div>
+          <div class="item-ref">ref. Roblox UGC 크리에이터 $1.1B 지급 (2024)</div>
+        </div>
+        <div class="item-badge">Phase 3</div>
+      </div>
+
+      <div style="margin-top:auto; background:rgba(255,51,119,.04); border-left:4px solid var(--pink); border-radius:0 12px 12px 0; padding:20px 24px;">
+        <div style="font-size:28px; font-weight:600; color:var(--white); line-height:1.5;">"다마고치처럼 매일 케어하면 <b style='color:var(--pink);'>뺏기면 안 되겠다는 생각</b>이 들 것 같은"</div>
+        <div style="font-size:17px; color:var(--dim); margin-top:6px;">U8 김현조 &mdash; 육성 → 과금 전환 동기</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flow -->
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-icon free"><svg><use href="#i-user"/></svg></div>
+      <div class="flow-text">유저</div>
+    </div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step">
+      <div class="flow-icon free"><svg><use href="#i-star"/></svg></div>
+      <div class="flow-text">아이돌 생성 <span class="ftag free">무료</span></div>
+    </div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step">
+      <div class="flow-icon paid"><svg><use href="#i-sparkle"/></svg></div>
+      <div class="flow-text">꾸미기/아이템 <span class="ftag paid">과금</span></div>
+    </div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step">
+      <div class="flow-icon paid"><svg><use href="#i-music"/></svg></div>
+      <div class="flow-text">AI 콘텐츠 생성 <span class="ftag paid">크레딧</span></div>
+    </div>
+    <div class="flow-arr"><svg><use href="#i-chev"/></svg></div>
+    <div class="flow-step">
+      <div class="flow-icon b2b"><svg><use href="#i-chart"/></svg></div>
+      <div class="flow-text">B2B 확장</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== SLIDE 2: Free → Paid Conversion ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">하이라이트 콘텐츠가 <b>과금</b>을 만든다</div>
+  <div class="subtitle">무료 체험 → 유료 전환 포인트</div>
+
+  <div class="s2-content">
+    <div class="three-cols">
+
+      <!-- Card 1: Customization -->
+      <div class="conv-card">
+        <div class="conv-label">01</div>
+        <div class="conv-title">꾸미기 아이템<br>(의상/헤어/악세서리)</div>
+
+        <div class="conv-free">
+          <div class="conv-free-label">Free</div>
+          <div class="conv-free-text">기본 외모 프리셋으로<br>아이돌 생성</div>
+        </div>
+
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+
+        <div class="conv-paid">
+          <div class="conv-paid-label">Premium</div>
+          <div class="conv-paid-text">의상, 헤어스타일, 악세서리,<br>메이크업 개별 구매</div>
+          <div class="conv-price">2,000원~</div>
+        </div>
+
+        <div class="conv-ref">
+          ref. <b>Roblox</b> 아바타 아이템 매출<br>연 <b>$4.4B</b> (SEC 10-K, 2024)
+        </div>
+      </div>
+
+      <!-- Card 2: Concept Photo -->
+      <div class="conv-card">
+        <div class="conv-label">02</div>
+        <div class="conv-title">콘셉트 촬영<br>(시즌/테마 화보)</div>
+
+        <div class="conv-free">
+          <div class="conv-free-label">Free</div>
+          <div class="conv-free-text">기본 프로필 사진<br>자동 생성 1장</div>
+        </div>
+
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+
+        <div class="conv-paid">
+          <div class="conv-paid-label">Premium</div>
+          <div class="conv-paid-text">시즌 테마 화보 세트<br>(여름/할로윈/졸업 등)</div>
+          <div class="conv-price">10,000~19,000원</div>
+        </div>
+
+        <div class="conv-ref">
+          ref. <b>Weverse</b> MAU <b>1,200만명</b>,<br>디지털 상품 구매 전년대비 <b>2x</b> 성장 (2025)
+        </div>
+      </div>
+
+      <!-- Card 3: AI Music/Video -->
+      <div class="conv-card">
+        <div class="conv-label">03</div>
+        <div class="conv-title">AI 음악 / 영상<br>(콘텐츠 생성)</div>
+
+        <div class="conv-free">
+          <div class="conv-free-label">Free</div>
+          <div class="conv-free-text">AI 데모곡 시청<br>MV 샘플 미리보기</div>
+        </div>
+
+        <div class="conv-arrow"><svg><use href="#i-down"/></svg></div>
+
+        <div class="conv-paid">
+          <div class="conv-paid-label">Premium</div>
+          <div class="conv-paid-text">내 아이돌 목소리로<br>커버곡 + 뮤직비디오 생성</div>
+          <div class="conv-price">크레딧 소모</div>
+        </div>
+
+        <div class="conv-ref">
+          ref. <b>Suno</b> 무료 유저 50%가<br>한도 도달 후 유료 전환
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom UT validation -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"내 취향대로 만든 그룹이라 더 애착이 가는 거지. <b style='color:var(--pink);'>마케팅 해주고 싶지</b>"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U3 장쏘피 &mdash; 소유욕 + 투자 의향</div>
+      </div>
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"<b style='color:var(--pink);'>포토카드처럼 소장</b>하고 싶다. 완성 카드 캡쳐해서 보여주고 싶었다"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U4 배나영 &mdash; 수집/소장 과금 욕구</div>
+      </div>
+      <div style="background:rgba(255,51,119,.04); border:1px solid rgba(255,51,119,.1); border-radius:14px; padding:20px 24px;">
+        <div style="font-size:22px; color:var(--white); line-height:1.5; font-weight:500;">"AI로 <b style='color:var(--pink);'>컨셉포토 뽑으면 재밌을 것 같아요</b>. 저만의 영역을 꾸미는 느낌"</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:8px;">U8 김현조 &mdash; 유료 콘텐츠 생성 수요</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ==================== SLIDE 3: Revenue Projection ==================== -->
+<div class="slide">
+  <div class="tag">Business Model</div>
+  <div class="title">수익 모델 요약: <b>Phase별</b> 매출 구조</div>
+
+  <div class="s3-content">
+    <!-- 3 Phase Cards -->
+    <div class="phases">
+      <div class="phase ph1">
+        <div class="ph-tag">Phase 1 &middot; 현재</div>
+        <div class="ph-title">아이템 단건 구매</div>
+        <div class="ph-big">2,000~19,000원</div>
+        <div class="ph-desc">프리미엄 꾸미기<br>시즌 한정 테마팩<br>고급 콘셉트 패키지</div>
+      </div>
+      <div class="phase ph2">
+        <div class="ph-tag">Phase 2 &middot; 6개월 내</div>
+        <div class="ph-title">+ 구독 / 크레딧</div>
+        <div class="ph-big">월 4,900~19,900원</div>
+        <div class="ph-desc">구독권 (기능별 티어)<br>크레딧 종량제<br>시즌패스 <b>29,900원</b>/분기</div>
+      </div>
+      <div class="phase ph3">
+        <div class="ph-tag">Phase 3 &middot; 12개월+</div>
+        <div class="ph-title">+ B2B 수익원</div>
+        <div class="ph-big">IP 수수료 15%</div>
+        <div class="ph-desc">IP 마켓플레이스 수수료<br>팬덤 데이터 리포트<br>API / 화이트레이블</div>
+      </div>
+    </div>
+
+    <!-- PxQ + Competitor -->
+    <div class="bottom-row">
+      <div class="bot-card">
+        <div class="bot-title"><div class="dot"></div>PxQ 매출 시나리오</div>
+        <table>
+          <tr><th>시나리오</th><th>MAU</th><th>전환율</th><th>ARPU</th><th>월 매출</th></tr>
+          <tr><td>Phase 1 (M3)</td><td>2,250명</td><td>3%</td><td>8,000원</td><td class="rev">54만원</td></tr>
+          <tr><td>Phase 2 (M6)</td><td>5,070명</td><td>5%</td><td>11,000원</td><td class="rev">279만원</td></tr>
+          <tr class="hl"><td>Phase 2 (M12)</td><td>24,472명</td><td>5%</td><td>12,000원</td><td class="rev">1,469만원</td></tr>
+        </table>
+        <div class="tnote">* 전환율 참고: Bubble 구독 217만명, 포트나이트 스킨 전환율 ~20% (K-pop 팬 과금 의지 검증)</div>
+      </div>
+
+      <div class="bot-card">
+        <div class="bot-title"><div class="dot"></div>차별화: 사용자가 직접 만드는 K-pop</div>
+        <table class="comp">
+          <tr><th></th><th>Character.AI</th><th>제페토</th><th>Bubble</th><th>PLAVE</th><th>AIdol</th></tr>
+          <tr><td>사용자가 직접 생성</td><td class="o">O</td><td class="o">O</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>K-pop 콘텐츠</td><td class="x">X</td><td class="tri">△</td><td class="o">O</td><td class="o">O</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>육성/성장</td><td class="x">X</td><td class="x">X</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+          <tr><td>꾸미기 과금</td><td class="x">X</td><td class="o">O</td><td class="x">X</td><td class="x">X</td><td><span class="badge-o">O</span></td></tr>
+        </table>
+        <div class="tnote">* 사용자가 직접 K-pop 콘텐츠를 생성하고 육성하는 플랫폼은 AIdol뿐</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

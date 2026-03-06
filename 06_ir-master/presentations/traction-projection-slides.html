@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>AIdol - Traction & Growth</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 200; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-2ExtraLight.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 500; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-5Medium.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  :root {
+    --bg: #F5F5F5;
+    --pink: #FF3377;
+    --white: #1a1a1a;
+    --dim: rgba(0,0,0,0.45);
+    --card: #FFFFFF;
+    --border: rgba(0,0,0,0.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy',sans-serif; background:#EFEFEF; display:flex; flex-direction:column; align-items:center; gap:80px; padding:60px 0; color:var(--white); }
+
+  .slide { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:flex; flex-direction:column; padding:72px 100px 64px; }
+
+  .tag { font-size:18px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; text-align:center; }
+  .title { font-size:52px; font-weight:700; color:var(--white); line-height:1.25; margin-top:12px; text-align:center; }
+  .title b { color:var(--pink); font-weight:700; }
+  .subtitle { font-size:22px; color:var(--dim); margin-top:8px; font-weight:400; text-align:center; }
+
+  @media print { body { background:#fff; gap:0; padding:0; } .slide { page-break-after:always; box-shadow:none; border-radius:0; } }
+</style>
+</head>
+<body>
+
+
+<!-- ==================== SLIDE 1: Traction ==================== -->
+<div class="slide">
+  <div class="tag">Traction</div>
+  <div class="title"><b>$0</b> 마케팅, <b>5일</b> 성과</div>
+  <div class="subtitle">TikTok 단일 영상 오가닉 바이럴</div>
+
+  <!-- 3 big numbers + evidence in unified grid -->
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px; flex:1; margin-top:48px; align-content:center;">
+
+    <!-- Column 1: TikTok -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--pink); line-height:1;">500K</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">TikTok 조회수</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">오가닉 바이럴</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-tiktok.png" style="position:absolute; bottom:0; left:0; width:100%; border-radius:13px; border-radius:13px;">
+      </div>
+    </div>
+
+    <!-- Column 2: Leads -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--pink); line-height:1;">4,813</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">리드 수집</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">랜딩페이지 유입</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-leads.png" style="width:100%; height:100%; object-fit:cover; object-position:left top; border-radius:13px; border-radius:13px;">
+      </div>
+    </div>
+
+    <!-- Column 3: Signups -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:24px;">
+      <div style="text-align:center;">
+        <div style="font-size:96px; font-weight:900; color:var(--white); line-height:1;">855</div>
+        <div style="font-size:22px; color:var(--white); font-weight:600; margin-top:12px;">가입자</div>
+        <div style="font-size:15px; color:var(--dim); margin-top:4px;">회원가입 완료</div>
+      </div>
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; width:100%; flex:1; overflow:hidden; position:relative;">
+        <img src="evidence-admin.png" style="width:100%; height:100%; object-fit:cover; object-position:left top; border-radius:13px; border-radius:13px;">
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Conversion funnel indicator -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin-top:auto; padding:16px 0;">
+    <div style="font-size:14px; color:var(--dim);">조회 500K</div>
+    <div style="font-size:13px; color:var(--pink); font-weight:700;">→ 1.0%</div>
+    <div style="font-size:14px; color:var(--dim);">리드 4,813</div>
+    <div style="font-size:13px; color:var(--pink); font-weight:700;">→ 17.8%</div>
+    <div style="font-size:14px; color:var(--dim);">가입 855</div>
+  </div>
+</div>
+
+
+<!-- ==================== SLIDE 2: Growth Projection ==================== -->
+<div class="slide">
+  <div class="tag">Growth</div>
+  <div class="title">12개월 목표: MAU <b>15K</b> / MRR <b>$7.6K</b></div>
+  <div class="subtitle">현실적 시나리오 기준 / ARPU $5 (Bubble $3.5 &lt; AIdol &lt; Character.AI $10)</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; flex:1; margin-top:48px;">
+
+    <!-- Left: MAU chart -->
+    <div style="display:flex; flex-direction:column;">
+      <div style="font-size:18px; font-weight:700; color:var(--dim); margin-bottom:16px;">MAU</div>
+      <div style="flex:1; position:relative;">
+        <canvas id="mauChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Right: MRR chart -->
+    <div style="display:flex; flex-direction:column;">
+      <div style="font-size:18px; font-weight:700; color:var(--dim); margin-bottom:16px;">MRR</div>
+      <div style="flex:1; position:relative;">
+        <canvas id="mrrChart"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom: key milestones -->
+  <div style="display:flex; align-items:center; justify-content:center; gap:0; margin-top:auto; background:var(--card); border-radius:16px; padding:24px 0;">
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M0 (Now)</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">500 MAU</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">MVP + 바이럴 검증</div>
+    </div>
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M3</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">MRR $222</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">유료 구독 시작</div>
+    </div>
+    <div style="flex:1; text-align:center; border-right:1px solid var(--border); padding:0 32px;">
+      <div style="font-size:14px; color:var(--dim); font-weight:500;">M6</div>
+      <div style="font-size:28px; font-weight:800; color:var(--white); margin-top:4px;">MRR $845</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">음성채팅 + 유료마케팅</div>
+    </div>
+    <div style="flex:1; text-align:center; padding:0 32px;">
+      <div style="font-size:14px; color:var(--pink); font-weight:700;">M12</div>
+      <div style="font-size:28px; font-weight:900; color:var(--pink); margin-top:4px;">MRR $7,586</div>
+      <div style="font-size:14px; color:var(--dim); margin-top:2px;">ARR $91K / 유료 1,517명</div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+Chart.defaults.font.family = "'Paperlogy', sans-serif";
+Chart.defaults.color = 'rgba(0,0,0,0.35)';
+
+// MAU
+new Chart(document.getElementById('mauChart'), {
+  type: 'line',
+  data: {
+    labels: ['M0','','','M3','','','M6','','','M9','','','M12'],
+    datasets: [{
+      data: [500,875,1190,1478,1857,2296,3378,4561,6328,7987,10112,12573,15172],
+      borderColor: '#FF3377',
+      backgroundColor: 'rgba(255,51,119,0.08)',
+      borderWidth: 3,
+      pointRadius: function(ctx) { return [0,0,0,4,0,0,4,0,0,4,0,0,6][ctx.dataIndex]; },
+      pointBackgroundColor: '#FF3377',
+      fill: true,
+      tension: 0.35
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { font: { size: 14 } } },
+      y: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { font: { size: 14 }, callback: v => v >= 1000 ? (v/1000).toFixed(0)+'K' : v } }
+    }
+  }
+});
+
+// MRR
+new Chart(document.getElementById('mrrChart'), {
+  type: 'bar',
+  data: {
+    labels: ['M0','','','M3','','','M6','','','M9','','','M12'],
+    datasets: [{
+      data: [0,0,0,222,279,459,845,1140,1898,2796,4045,5658,7586],
+      backgroundColor: function(ctx) {
+        const g = ctx.chart.ctx.createLinearGradient(0, ctx.chart.height, 0, 0);
+        g.addColorStop(0, 'rgba(255,51,119,0.08)');
+        g.addColorStop(1, 'rgba(255,51,119,0.5)');
+        return g;
+      },
+      borderColor: '#FF3377',
+      borderWidth: 1,
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { font: { size: 14 } } },
+      y: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { font: { size: 14 }, callback: v => '$'+(v >= 1000 ? (v/1000).toFixed(1)+'K' : v) } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

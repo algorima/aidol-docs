@@ -3,3 +3,5 @@
 
 # Obsidian
 .obsidian/
+*.md:Zone.Identifier
+*:Zone.Identifier

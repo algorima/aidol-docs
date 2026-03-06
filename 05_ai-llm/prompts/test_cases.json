@@ -1,0 +1,122 @@
+[
+    {
+        "name": "하윤",
+        "gender": "여성",
+        "position": "메인 보컬",
+        "grade": "A",
+        "biography": "어릴 때부터 노래를 좋아해 음악 학교를 다녔고, 맑고 청아한 음색으로 주목받았다.",
+        "mbti": "ENFP",
+        "energy": 9,
+        "perception": 8,
+        "judgment": 8,
+        "lifestyle": 9
+    },
+    {
+        "name": "민준",
+        "gender": "남성",
+        "position": "리더",
+        "grade": "A",
+        "biography": "연습생 기간 5년, 묵묵히 노력하며 팀을 이끄는 책임감 있는 리더.",
+        "mbti": "ESTJ",
+        "energy": 7,
+        "perception": 3,
+        "judgment": 2,
+        "lifestyle": 2
+    },
+    {
+        "name": "서아",
+        "gender": "여성",
+        "position": "메인 댄서",
+        "grade": "B",
+        "biography": "길거리 버스킹 출신. 자유로운 영혼으로 무대에서 빛난다.",
+        "mbti": "ESFP",
+        "energy": 10,
+        "perception": 2,
+        "judgment": 9,
+        "lifestyle": 10
+    },
+    {
+        "name": "지호",
+        "gender": "남성",
+        "position": "서브 보컬",
+        "grade": "B",
+        "biography": "시골 출신으로 순수한 마음을 가졌다. 조용하지만 무대에서는 다른 사람이 된다.",
+        "mbti": "INFP",
+        "energy": 2,
+        "perception": 9,
+        "judgment": 10,
+        "lifestyle": 8
+    },
+    {
+        "name": "예린",
+        "gender": "여성",
+        "position": "메인 래퍼",
+        "grade": "A",
+        "biography": "언더그라운드 래퍼 출신. 날카로운 가사와 카리스마로 무장.",
+        "mbti": "ENTJ",
+        "energy": 8,
+        "perception": 7,
+        "judgment": 2,
+        "lifestyle": 1
+    },
+    {
+        "name": "현우",
+        "gender": "남성",
+        "position": "비주얼",
+        "grade": "C",
+        "biography": "모델 출신으로 외모는 뛰어나지만 실력은 아직 부족. 열심히 연습 중.",
+        "mbti": "ISFP",
+        "energy": 3,
+        "perception": 3,
+        "judgment": 7,
+        "lifestyle": 7
+    },
+    {
+        "name": "소율",
+        "gender": "여성",
+        "position": "막내",
+        "grade": "B",
+        "biography": "17세 최연소 멤버. 귀엽고 장난기 많지만 무대에서는 프로.",
+        "mbti": "ENTP",
+        "energy": 9,
+        "perception": 9,
+        "judgment": 3,
+        "lifestyle": 8
+    },
+    {
+        "name": "태민",
+        "gender": "남성",
+        "position": "서브 댄서",
+        "grade": "F",
+        "biography": "부유한 집안 출신으로 늦게 아이돌 꿈을 꿨다. 기본기가 부족하지만 열정만은 누구에게도 지지 않는다.",
+        "mbti": "ISTJ",
+        "energy": 1,
+        "perception": 2,
+        "judgment": 2,
+        "lifestyle": 1
+    },
+    {
+        "name": "유나",
+        "gender": "여성",
+        "position": "서브 래퍼",
+        "grade": "A",
+        "biography": "작곡과 작사를 겸하는 실력파. 내성적이지만 음악에 대한 열정은 깊다.",
+        "mbti": "INTJ",
+        "energy": 2,
+        "perception": 8,
+        "judgment": 3,
+        "lifestyle": 2
+    },
+    {
+        "name": "준서",
+        "gender": "남성",
+        "position": "메인 보컬",
+        "grade": "B",
+        "biography": "오디션 프로그램 출신으로 이미 팬덤이 있다. 팬들과 소통을 즐기는 훈훈한 성격.",
+        "mbti": "ESFJ",
+        "energy": 8,
+        "perception": 5,
+        "judgment": 9,
+        "lifestyle": 3
+    }
+]
