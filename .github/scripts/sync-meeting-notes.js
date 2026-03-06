@@ -52,11 +52,15 @@ async function getAccessToken() {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        const json = JSON.parse(data);
-        if (json.access_token) {
-          resolve(json.access_token);
-        } else {
-          reject(new Error(json.error_description || 'Failed to get token'));
+        try {
+          const json = JSON.parse(data);
+          if (json.access_token) {
+            resolve(json.access_token);
+          } else {
+            reject(new Error(json.error_description || 'Failed to get token'));
+          }
+        } catch (e) {
+          reject(new Error(`Failed to parse response: ${e.message}`));
         }
       });
     });
@@ -97,11 +101,15 @@ async function createCalendarEvent(accessToken, event) {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        const json = JSON.parse(data);
-        if (json.id) {
-          resolve(json);
-        } else {
-          reject(new Error(json.error?.message || 'Failed to create event'));
+        try {
+          const json = JSON.parse(data);
+          if (json.id) {
+            resolve(json);
+          } else {
+            reject(new Error(json.error?.message || 'Failed to create event'));
+          }
+        } catch (e) {
+          reject(new Error(`Failed to parse response: ${e.message}`));
         }
       });
     });
@@ -138,7 +146,6 @@ function parseMeetingNote(content, filename) {
   if (!dateMatch) return events;
   
   const year = '20' + dateMatch[1].slice(0, 2);
-  const month = dateMatch[1].slice(2, 4);
   
   // 참석자 파싱
   const attendees = parseAttendees(content);
@@ -148,25 +155,21 @@ function parseMeetingNote(content, filename) {
   const lines = content.split('\n');
   
   for (const line of lines) {
+    let m, d, title;
+    
     // Pattern: 요일(M/D): 내용
     let match = line.match(/([월화수목금토일])요일\s*\((\d{1,2})\/(\d{1,2})\)\s*[:\-]\s*(.+)/);
     if (match) {
-      const [, , m, d, title] = match;
-      const date = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-      events.push({
-        title: title.trim(),
-        start: `${date}T10:00:00`,
-        end: `${date}T11:00:00`,
-        description: `From: ${filename}`,
-        attendees: attendees
-      });
-      continue;
+      [, , m, d, title] = match;
+    } else {
+      // Pattern: M/D(요일): 내용
+      match = line.match(/(\d{1,2})\/(\d{1,2})\s*\([월화수목금토일]\)\s*[:\-]\s*(.+)/);
+      if (match) {
+        [, m, d, title] = match;
+      }
     }
     
-    // Pattern: M/D(요일): 내용
-    match = line.match(/(\d{1,2})\/(\d{1,2})\s*\([월화수목금토일]\)\s*[:\-]\s*(.+)/);
-    if (match) {
-      const [, m, d, title] = match;
+    if (title) {
       const date = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
       events.push({
         title: title.trim(),
@@ -212,7 +215,7 @@ async function main() {
       
       for (const event of events) {
         try {
-          const result = await createCalendarEvent(accessToken, event);
+          await createCalendarEvent(accessToken, event);
           console.log(`  ✓ Created: ${event.title} (${event.start.slice(0, 10)})`);
           totalEvents++;
         } catch (err) {
