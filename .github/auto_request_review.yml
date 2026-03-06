@@ -24,13 +24,16 @@ files:
         - Lee-Soyeon
       required: 1
 
-  # 02_planning/feature-specs: 미진 작성 → 소연(기획확정) + 수지(PRD얼라인) + 제이(디자인착수) + 영욱(기술검토)
+  # 02_planning/feature-specs: 미진 작성 → 소연(기획확정) + 수지(PRD얼라인) + 제이(디자인착수) + 개발팀 전원(기술검토)
   - '02_planning/feature-specs/**':
       reviewers:
         - Lee-Soyeon
         - soojilee000-rgb
         - jeonjay0323
-        - ywkim
+        - ywkim            # 영욱
+        - jhpark324        # 제형
+        - song-eun         # 은재
+        - zhwltlr          # 지영
       required: 1
 
   # 02_planning/meeting-notes: 소연 작성 → 수지 리뷰
