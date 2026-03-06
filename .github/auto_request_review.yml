@@ -13,8 +13,13 @@ files:
     - soojilee000-rgb  # 이수지
     - Lee-Soyeon       # 이소연
 
-  # 01_research/ (시장 조사 등) — 리뷰: 이소연, 김영욱
-  "01_research/**":
+  # 01_research/ 루트 파일 (시장 조사 등) — 리뷰: 이소연, 김영욱
+  "01_research/*":
+    - Lee-Soyeon       # 이소연
+    - ywkim            # 김영욱
+
+  # 01_research/traction-data/ — 리뷰: 이소연, 김영욱
+  "01_research/traction-data/**":
     - Lee-Soyeon       # 이소연
     - ywkim            # 김영욱
 
