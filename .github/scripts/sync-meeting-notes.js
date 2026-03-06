@@ -54,13 +54,20 @@ async function createCalendarEvent(accessToken, event) {
     description: event.description || '',
     start: { dateTime: event.start, timeZone: 'Asia/Seoul' },
     end: { dateTime: event.end, timeZone: 'Asia/Seoul' },
-    attendees: ATTENDEES.map(email => ({ email }))
+    attendees: ATTENDEES.map(email => ({ email })),
+    // Google Meet 자동 생성
+    conferenceData: {
+      createRequest: {
+        requestId: `meet-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+        conferenceSolutionKey: { type: 'hangoutsMeet' }
+      }
+    }
   });
 
   return new Promise((resolve, reject) => {
     const req = https.request({
       hostname: 'www.googleapis.com',
-      path: `/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?sendUpdates=all`,
+      path: `/calendar/v3/calendars/${encodeURIComponent(CALENDAR_ID)}/events?sendUpdates=all&conferenceDataVersion=1`,
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${accessToken}`,
