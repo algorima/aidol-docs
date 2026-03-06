@@ -30,8 +30,10 @@ const TEAM = {
   '제이': 'jeonjay0323@gmail.com',
 };
 
-// 기본 참석자 (항상 초대)
-const DEFAULT_ATTENDEES = ['leesoyena@gmail.com', 'sylee@aioia.ai'];
+// 기본 참석자 (항상 초대) - 환경변수에서 로드
+const DEFAULT_ATTENDEES = process.env.CALENDAR_ATTENDEES 
+  ? process.env.CALENDAR_ATTENDEES.split(',').map(e => e.trim())
+  : [];
 
 // === Google OAuth ===
 async function getAccessToken() {
@@ -137,6 +139,43 @@ function parseAttendees(content) {
   return Array.from(attendees);
 }
 
+// === Parse Time from Title ===
+function parseTime(title) {
+  // 기본 시간: 10:00-11:00
+  let startHour = 10;
+  let startMin = 0;
+  let duration = 60; // minutes
+  
+  // "HH:MM" 또는 "HH시 MM분" 패턴
+  let match = title.match(/(\d{1,2})[:\s시](\d{2})?분?\s*(am|pm|AM|PM)?/);
+  if (match) {
+    startHour = parseInt(match[1]);
+    startMin = match[2] ? parseInt(match[2]) : 0;
+    if (match[3] && match[3].toLowerCase() === 'pm' && startHour < 12) {
+      startHour += 12;
+    }
+  }
+  
+  // "오전/오후 N시" 패턴
+  match = title.match(/(오전|오후|저녁|아침)\s*(\d{1,2})시/);
+  if (match) {
+    startHour = parseInt(match[2]);
+    if ((match[1] === '오후' || match[1] === '저녁') && startHour < 12) {
+      startHour += 12;
+    }
+    if (match[1] === '아침' && startHour === 12) {
+      startHour = 0;
+    }
+  }
+  
+  const startTime = `${String(startHour).padStart(2, '0')}:${String(startMin).padStart(2, '0')}:00`;
+  const endHour = startHour + Math.floor((startMin + duration) / 60);
+  const endMin = (startMin + duration) % 60;
+  const endTime = `${String(endHour).padStart(2, '0')}:${String(endMin).padStart(2, '0')}:00`;
+  
+  return { startTime, endTime };
+}
+
 // === Parse Meeting Notes ===
 function parseMeetingNote(content, filename) {
   const events = [];
@@ -171,10 +210,11 @@ function parseMeetingNote(content, filename) {
     
     if (title) {
       const date = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
+      const { startTime, endTime } = parseTime(title);
       events.push({
         title: title.trim(),
-        start: `${date}T10:00:00`,
-        end: `${date}T11:00:00`,
+        start: `${date}T${startTime}`,
+        end: `${date}T${endTime}`,
         description: `From: ${filename}`,
         attendees: attendees
       });
