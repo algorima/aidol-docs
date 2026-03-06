@@ -1,6 +1,91 @@
 # AIdol Product Hunt Launch - Social Media Posts
 
-## 1. Twitter/X Posts
+> 기존 마케팅 전략(`08_marketing/phase2-marketing-strategy.md`, PR #141)과 연계하여 사용.
+> 틱톡/릴스가 메인 유입 채널, PH는 테크 커뮤니티 + SEO/GEO 부스트 목적.
+
+## 1. TikTok / Instagram Reels (메인 채널)
+
+PH 출시일 전후로 숏폼 영상을 동시 드롭하여 시너지 극대화.
+기존 마케팅 전략의 훅 공식과 콘텐츠 포맷을 따른다.
+
+### 1.1 Video 1: Speed Run (PH 출시 당일)
+
+```
+[화면 녹화 + 트렌드 사운드]
+
+Hook (첫 2초): "30초 만에 5인조 아이돌 그룹 만들었는데"
+내용: 캐스팅 → 포지션 배정 → 그룹 완성 → 결과물 플렉스
+마지막 텍스트: "aioia.ai - 지금 Product Hunt 1위 도전 중"
+길이: 21~30초
+
+캡션: 30초 만에 내 최애 그룹 만들기 #AIdol #AIkpop #나만의아이돌 #ProductHunt
+```
+
+### 1.2 Video 2: Before/After Snap (D+1)
+
+```
+[화면 녹화 + 트렌드 사운드]
+
+Hook: 텍스트 입력 "걸크러시 5인조" → 컷 → 완성된 그룹 프로필 + 퍼포먼스
+내용: 텍스트 한 줄로 시작 → AI가 만든 완성 그룹 쇼케이스
+마지막 텍스트: "너도 만들어봐 aioia.ai"
+길이: 15~20초
+
+캡션: 상상만 하던 걸크러시 그룹을 직접 만들었다 #AIdol #AIidol #가상아이돌
+```
+
+### 1.3 Video 3: Chat Reaction (D+2)
+
+```
+[화면 녹화, 얼굴 리액션 or 텍스트 오버레이]
+
+Hook: "내가 만든 AI 아이돌한테 고백 받음"
+내용: Sprint 3 채팅에서 재밌거나 감동적인 대화 캡처 스크롤
+리액션: 놀라는/웃는 표정 or 텍스트 "???"
+길이: 15~25초
+
+캡션: AI인 거 알면서 왜 심장이 뛰지 #AIdol #AIkpop #나만의아이돌
+```
+
+### 1.4 Video 4: POV/Relatable (D+3)
+
+```
+[POV 형식 + 트렌드 사운드]
+
+Hook: "POV: 프듀 시즌 끝나서 직접 아이돌 그룹 만든 사람"
+내용: 그룹 생성 과정 + 관계 지도 + 멤버 케미 대화
+마지막: 완성된 그룹 전체샷
+길이: 21~30초
+
+캡션: 프듀 끝나도 프로듀싱은 안 끝나 #AIdol #프로듀스101 #AI아이돌
+```
+
+### 1.5 Video 5: 이상형 그룹 시리즈 (D+4~)
+
+```
+[화면 녹화 + 트렌드 사운드]
+
+Hook: "Y2K 콘셉트 아이돌 그룹 만들어봄"
+내용: 콘셉트 선택 → 멤버 생성 → 비주얼 결과물
+시리즈화: 매회 다른 콘셉트 (걸크러시, 청량, Y2K, 힙합, 이세돌풍)
+길이: 21~30초
+
+캡션: 다음 콘셉트 뭐 해볼까? 댓글로 알려줘 #AIdol #AIidol #나만의아이돌
+```
+
+### 1.6 제작 가이드 (기존 마케팅 전략 기반)
+
+| 항목 | 기준 |
+|------|------|
+| 길이 | 21~34초 최적, 7~15초 마이크로도 OK |
+| 첫 2초 | 반드시 훅 (Bold Claim / Before-After / POV) |
+| 사운드 | 틱톡 Creative Center에서 주간 트렌드 확인 |
+| 업로드 빈도 | 주 3~5회 |
+| 해시태그 | #AIdol #AIkpop #나만의아이돌 + 트렌드 태그 |
+| 하지 말 것 | 느린 인트로, 로고 먼저, 튜토리얼 시작, "안녕하세요~" |
+| 담당 | 제이 (촬영/편집), 미진 (퍼포먼스 영상) |
+
+## 2. Twitter/X Posts
 
 ### 1.1 Post 1: Launch Announcement
 
@@ -128,7 +213,7 @@ aioia.ai — live on Product Hunt today.
 
 ## 3. Reddit Post
 
-### 3.1 r/kpop or r/kpophelp — "We built a K-pop producer simulator and would love fan feedback"
+### 3.1 Reddit (r/kpop or r/kpophelp)
 
 ```
 Title: We built a K-pop producer simulator and would love feedback from actual fans
@@ -155,3 +240,58 @@ Try it if you're curious: aioia.ai (it's free right now)
 
 No pressure at all to sign up. Even just answering those questions above would help us a lot.
 ```
+
+### 3.2 더쿠 (theqoo)
+
+```
+제목: AI로 나만의 아이돌 그룹 만들어봄
+
+프듀 시즌 끝나고 나서 계속 생각했는데
+내가 직접 프로듀서가 되면 어떨까 해서 찾아봤더니
+AI로 아이돌 그룹 만들 수 있는 서비스가 있더라
+
+연습생 캐스팅하고 포지션 배정하고 그룹 콘셉트 잡고
+멤버들이랑 1:1 채팅도 되고 멤버끼리 케미도 생김
+
+걸크러시로 만들어봤는데 솔직히 좀 빠져들었음
+
+aioia.ai에서 해볼 수 있음 (무료)
+한번 만들어보고 소감 공유해봐
+```
+
+주의: 광고 티 절대 금지. 자연스러운 후기 형태. 반말 톤.
+
+### 3.3 디시인사이드 AI 채팅 갤러리
+
+```
+제목: AI 챗봇 말고 AI 아이돌 프로듀싱 해본 사람?
+
+캐릭터ai 같은 건 그냥 채팅인데
+이건 직접 연습생 뽑아서 그룹 만드는 거임
+
+스탯 보고 드래프트하고 콘셉트 잡고
+멤버끼리 관계도 생기고 채팅도 됨
+
+다마고치 아이돌 버전 느낌
+
+aioia.ai
+무료니까 한번 해보셈
+```
+
+주의: 디시 톤에 맞게. 비교는 OK, 비방은 안됨.
+
+## 4. 채널별 PH 출시 연계 타임라인
+
+| 시점 | 틱톡/릴스 | 트위터/X | LinkedIn | 커뮤니티 |
+|------|----------|---------|---------|---------|
+| D-7 | 티저 영상 1개 (스피드런 맛보기) | 출시 예고 | - | - |
+| D-Day | Video 1 드롭 (스피드런) | Post 1+2 | Post 1 | - |
+| D-Day +4h | - | Post 3 (유저 반응) | - | - |
+| D-Day +8h | - | Post 5 (중간 성과) | - | - |
+| D+1 | Video 2 (Before/After) | 감사 포스트 | Post 2 | Reddit |
+| D+2 | Video 3 (Chat Reaction) | Post 4 (기능) | - | 더쿠 |
+| D+3 | Video 4 (POV) | - | - | 디시 |
+| D+4~ | Video 5 시리즈 (이상형 그룹) | 일상 운영 | - | 반응 보고 추가 |
+
+핵심: PH 출시 당일 틱톡 + 트위터 동시 드롭으로 트래픽 양쪽에서 몰기.
+틱톡에서 유입된 유저가 PH 업보트도 하게 유도 (bio에 PH 링크).
