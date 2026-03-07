@@ -40,7 +40,7 @@
 - 이미지 타입: photorealistic selfie
 - 해상도: 1024 x 1280
 - 비율: 4:5
-- 구도: mirror selfie, upper body
+- 구도: mirror selfie / slightly angled selfie / casual selfie (랜덤), upper body
 - 카메라: iPhone 16 black color
 
 ---
