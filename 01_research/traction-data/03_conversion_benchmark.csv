@@ -1,0 +1,10 @@
+서비스,카테고리,유료전환율,전환율_유형,ARPU_월_USD,연매출,핵심_트랙션,AIdol과의_유사점_차이,출처
+Replika,AI 컴패니언,25%,Freemium -> Paid,$8,~$24M (2024),"3000만+ 등록, AI 감정 연결 핵심","유사: 감정 연결. 차이: 범용 vs K-pop 특화","Wikipedia, Nikola Roza"
+Bubble (Dear U),K-pop 팬덤,100% (유료 전용),구독 모델,$3.5 (4500원),748.7억원 (2024),"220만 유료 구독, K-pop 팬 검증","유사: K-pop 팬 타겟. 차이: 읽기전용 vs AI 양방향 대화",삼성증권/한화투자증권 리포트
+Character.AI,AI 컴패니언 (범용),~1.3% (역산),Freemium -> Paid,$9.99,$32.2M (2024),"2000만 MAU, 하루 2시간 세션","유사: AI 대화. 차이: 범용 + 대규모 MAU에서의 전환율","Business of Apps, Complete AI Training"
+Hard Paywall 앱 평균,업계 평균,12.1%,다운로드 대비,-,-,모바일앱 전체 평균,-,RevenueCat 2025
+Freemium 상위 25%,업계 평균,8-15%,Freemium -> Paid,-,-,업계 통계,-,First Page Sage
+Freemium 평균,업계 평균,2-5%,Freemium -> Paid,-,-,업계 통계,-,"RevenueCat 2025, Pathmonk"
+Slack,B2B SaaS (참고),30%,Freemium -> Paid,-,-,"B2B 팀 도구 (AIdol과 다른 카테고리, 참고만)",-,Pathmonk
+AIdol 워크샵 (실측),자체 데이터,30%,대면 워크샵,$115 (1회),$500 (누적),"20명 중 6명 전환, 고관여 환경","통제된 대면 환경. 앱 전환율과 직접 비교 불가",자체 데이터
+AIdol 목표 (M12),자체 목표,8-10%,Freemium -> Paid,$5,ARR ~$91K,"워크샵 30%의 1/3, Replika 25%의 1/3, 상위25% 하단","삼각 검증 기반 가설 (실측 후 업데이트 필요)",삼각 검증
