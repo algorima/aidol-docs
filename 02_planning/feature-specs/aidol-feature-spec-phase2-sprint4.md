@@ -47,7 +47,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 |------|------|
 | **대상** | 멤버 서머리 블록 내 프로필 이미지 |
 | **변경** | 이미지 사이즈 확대 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2039-106158&t=nRur7rwzapJGoY6Q-4) |
 
 ### 2-3. 표시 정보
 
