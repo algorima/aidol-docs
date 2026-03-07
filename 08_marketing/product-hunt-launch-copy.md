@@ -17,7 +17,7 @@ I'm Soyeon, co-founder of AIdol (with my husband Youngwook, our CTO).
 
 When I was a teenager, I was deeply depressed. What got me through it wasn't therapy or medication — it was TVXQ, a K-pop group. Their music, their energy, their passion gave me something to hold onto. They helped me connect with friends, find joy, and honestly, survive some of the darkest years of my life.
 
-I'm not unique in this. Last year, K-pop Demon Hunters went viral — exposing how deeply K-pop idols are woven into the emotional lives of fans worldwide. BTS has shaped an entire generation of teenagers across every continent. Jang Hyunseung's fan sign "A/S" moment showed a fan breaking down in tears, saying he saved her life — and him tearing up right back.
+I'm not unique in this. Last year, K-pop Demon Hunters went viral — exposing how deeply K-pop idols are woven into the emotional lives of fans worldwide. BTS has shaped an entire generation of teenagers across every continent. Jang Hyunseung's viral fan sign moment showed a fan breaking down in tears, saying he saved her life — and him tearing up right back.
 
 That's the thing about K-pop. The relationship between fan and idol isn't one-directional. Fans cheer, support, and believe in their idols. Idols give back gratitude, warmth, and genuine connection. It's a bond built on mutual love.
 

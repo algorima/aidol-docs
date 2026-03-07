@@ -61,7 +61,7 @@ ASO (App Store Optimization) 핵심:
 - 설명문을 AI 친화적으로 작성: 명확한 기능 설명, 구조화된 문장
 - 스크린샷 + 프리뷰 영상 최적화
 - 리뷰 수집 전략 수립 (초기 베타 유저 활용)
-- 2026년 Google Play: Android Vitals(앱 성능 지표)가 검색 순위에 직접 영향
+- 2026년 Google Play에서는 Android Vitals(앱 성능 지표)가 검색 순위에 직접적인 영향을 미칠 것으로 예상
 
 키워드 클러스터 (개별 키워드가 아닌 의미 클러스터로 접근):
 - 핵심: K-pop AI chat, AI idol chatbot, talk to K-pop idol
