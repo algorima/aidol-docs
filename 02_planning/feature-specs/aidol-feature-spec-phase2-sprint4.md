@@ -26,7 +26,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **현재 (AS-IS)** | "이 그룹의 다음 행보가 궁금하시다면" → [프로필 공유] [다른 그룹 만들기] |
 | **변경 (TO-BE)** | "이 그룹의 다음 행보가 궁금하시다면" → [내 그룹 확인하기] → 내 그룹 페이지로 이동 |
 | **변경 이유** | 그룹 완성 후 즉시 콘텐츠로 연결되지 않으면 실제감이 떨어짐 (UT 피드백, 멘토 피드백) |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2039-107410&t=nRur7rwzapJGoY6Q-4) |
 
 ---
 
@@ -55,7 +55,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 |------|------|
 | **멤버 정보** | 이름, MBTI, 포지션, 프로필 이미지 |
 | **멤버간 케미** | 기존 케미 기능 유지 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2039-106158&t=nRur7rwzapJGoY6Q-4) |
 
 ---
 
@@ -78,7 +78,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **조건** | 피드 데이터 없을 때 |
 | **화면 내용** | "곧 업로드 됩니다" 안내 문구 표시 |
 | **비고** | 실제 피드 콘텐츠는 Buppy MCP 서버를 통해 수동 업로드 후 노출 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [마이 그룹 Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80576) / [아더 그룹 Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80108) |
 
 ### 3-3. 피드 콘텐츠 표시
 
@@ -88,7 +88,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **화면 형태** | Grid 형태로 이미지와 영상을 함께 표시 |
 | **영상 구분** | 재생 아이콘 오버레이 |
 | **탭 동작** | 이미지 → 이미지 뷰어 / 영상 → 영상 플레이어 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [마이 그룹 Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80576) / [아더 그룹 Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80108) |
 
 ---
 
@@ -105,7 +105,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **Dialog 메시지** | "현재 캐스팅 목록이 초기화돼요. 이동할까요?" |
 | **[이동하기] 버튼** | 누른 탭(홈 또는 내그룹)으로 이동 + 생성 상태 초기화 (기존 동작 유지) |
 | **[계속 캐스팅하기] 버튼** | Dialog 닫힘, 발견 탭에 머무름 (생성 상태 유지) |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2048-129548&t=nRur7rwzapJGoY6Q-4) |
 
 ### 4-2. 변경 사유
 
@@ -202,7 +202,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **배경 처리** | Modal 뒤 배경 dimmed 처리 |
 | **버튼** | [캐스팅보드] 1개만 표시 |
 | **버튼 동작** | 캐스팅보드 탭 시 발견 탭에서 플로팅 버튼을 누른 화면(캐스팅보드)으로 전환 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2035-89468) |
 
 ### 7-2. 남은 캐스팅 슬롯 UI 변경
 
@@ -210,7 +210,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 |------|------|
 | **현재 (AS-IS)** | 남은 캐스팅 슬롯이 버튼 형태로 표시 |
 | **변경 (TO-BE)** | 텍스트 형태로 변경 (탭 불가) |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/Q4oCvfSaL1OZH5NPQvHjAB/B.-%EB%94%94%EC%9E%90%EC%9D%B8-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC?node-id=496-1205&t=fwG7CxnFjqbaqTV9-4) |
 
 ### 7-3. 이전 단계 버튼 추가
 
@@ -220,7 +220,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **표시 조건** | 2단계부터 표시 (1단계에서는 미표시) |
 | **버튼** | [이전] |
 | **동작** | 이전 생성 단계로 이동 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80582) |
 
 ### 7-4. 멤버 생성 중 나가기 (Top Bar X 버튼)
 
@@ -231,7 +231,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **Dialog 메시지** | "신규 멤버를 삭제하시겠습니까?" |
 | **취소 버튼** | Dialog 닫힘, 생성 화면 유지 |
 | **확인 버튼** | 생성 중인 멤버 삭제 후 발견 탭으로 이동 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80582) |
 
 ---
 
@@ -251,7 +251,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **표시 조건** | 2단계부터 표시 (1단계에서는 미표시) |
 | **버튼** | [이전] |
 | **동작** | 이전 생성 단계로 이동 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80583) |
 
 ### 8-2. 그룹 생성 중 나가기 (Top Bar X 버튼)
 
@@ -262,7 +262,7 @@ Phase 2 Sprint 4는 **실제감 강화**를 목표로 UI/UX 개선과 피드 기
 | **Dialog 메시지** | "그룹 생성을 그만두시겠습니까?" |
 | **취소 버튼** | Dialog 닫힘, 생성 화면 유지 |
 | **확인 버튼** | 그룹 생성 취소 후 최종 데뷔조 라인업 화면으로 이동 |
-| **디자인** | 필요 (@jeonjay0323) |
+| **디자인** | [Figma](https://www.figma.com/design/YKX5YVvaGFjSsTWXTDD7DT/A.-UI?node-id=2033-80583) |
 
 ---
 
