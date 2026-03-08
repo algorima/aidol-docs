@@ -224,12 +224,12 @@ t("aidol:inbox.header")
 
 ```
 금지: aidol이 buppy 코드 import
-❌ import { UserRepository } from "@/repositories/user";
-❌ import { ChatService } from "@/services/chat";
+import { UserRepository } from "@/repositories/user";
+import { ChatService } from "@/services/chat";
 
 허용: aidol 내부 코드만
-✅ import { HighlightService } from "@/aidol/services/highlight";
-✅ import { CompanionRepository } from "@/aidol/repositories/companion";
+import { HighlightService } from "@/aidol/services/highlight";
+import { CompanionRepository } from "@/aidol/repositories/companion";
 ```
 
 ---
