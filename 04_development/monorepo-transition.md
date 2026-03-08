@@ -47,7 +47,7 @@ git filter-repo로 경로 변환 (backend/aidol/ → backend/aidol/, frontend/sr
 
 ---
 
-## Phase 2: 워크플로우 변경
+## 워크플로우 변경
 
 ### Before (멀티레포)
 ```
