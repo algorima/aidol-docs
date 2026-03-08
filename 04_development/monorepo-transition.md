@@ -128,43 +128,26 @@ main에서 직접 PR (브랜치 체인 불필요)
 
 ## Feature Flag 설정
 
-### 예시: 이미 배포된 Sprint 2 기능
+새 기능은 항상 Flag OFF로 배포하고, Sprint Review 후 PostHog 콘솔에서 ON합니다.
 
-**모노레포 전환 전 (현재):**
-- 코드 위치: npm 패키지 `aidol@2.9.0`
-- import: `from "aidol"`
-- Feature Flag: `aidol_sprint2` (PostHog에서 ON/OFF)
-
-**모노레포 전환 후:**
-- 코드 위치: `backend/aidol/`, `frontend/src/aidol/`
-- import: `from "@/aidol"`
-- Feature Flag: 변경 없음 (`aidol_sprint2` 그대로)
-- 사용자 경험: 동일
+- Flag name: `aidol_<feature_name>`
+- 초기 상태: `false` (배포되지만 사용자에게 숨김)
+- 활성화: PostHog 콘솔에서 `true`로 변경
 
 ```typescript
-// frontend/src/app/[lang]/(public)/aidol/aidols/[aidolId]/casting/page.tsx
+// frontend/src/app/[lang]/(public)/aidol/.../page.tsx
 
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 
-export default function CastingPage() {
-  const isSprint2Enabled = useFeatureFlag("aidol_sprint2");
+export default function SomePage() {
+  const isEnabled = useFeatureFlag("aidol_<feature_name>");
 
   return (
     <div>
-      {/* 기존 UI */}
-      <CastingContent />
-
-      {/* Sprint 2 UI: Flag로 제어 (모노레포 전환 후에도 동일) */}
-      {isSprint2Enabled && <BottomNavigationContainer />}
+      {isEnabled && <NewFeatureComponent />}
     </div>
   );
 }
-```
-
-**새 기능 추가 시:**
-- Flag name: `aidol_new_feature`
-- 초기 상태: `false` (배포되지만 사용자에게 숨김)
-- 활성화: PostHog 콘솔에서 `true`로 변경 (Sprint Review 후)
 
 ---
 
