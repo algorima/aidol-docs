@@ -137,10 +137,10 @@ main에서 직접 PR (브랜치 체인 불필요)
 ```typescript
 // frontend/src/app/[lang]/(public)/aidol/.../page.tsx
 
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
+import { useFeatureFlagEnabled } from "posthog-js/react";
 
 export default function SomePage() {
-  const isEnabled = useFeatureFlag("aidol_<feature_name>");
+  const isEnabled = useFeatureFlagEnabled("aidol_<feature_name>");
 
   return (
     <div>
@@ -148,6 +148,7 @@ export default function SomePage() {
     </div>
   );
 }
+```
 
 ---
 
