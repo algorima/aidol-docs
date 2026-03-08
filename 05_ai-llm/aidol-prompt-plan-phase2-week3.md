@@ -2,7 +2,7 @@
 
 - 스프린트 기준 문서: `chaehyun-content-sprint-plan.md`
 - 담당: 채현
-- 완료 기준: ✅ 엠블럼 템플릿 PR 머지 + 포즈 4종 중 2종 이상 draft 완성
+- 완료 기준: 엠블럼 템플릿 PR 머지 + 포즈 4종 중 2종 이상 draft 완성
 
 ---
 
