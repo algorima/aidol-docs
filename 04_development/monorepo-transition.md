@@ -211,7 +211,7 @@ router.push(`/${lang}/aidol/aidols/${id}/detail`);
 const { t } = useTranslation("aidol");
 t("inbox.header")
 
-// After: 모든 키에 명시적 prefix
+// After: 모든 키에 명시적 prefix (i18next-scanner 호환성)
 const { t } = useTranslation();
 t("aidol:inbox.header")
 ```
