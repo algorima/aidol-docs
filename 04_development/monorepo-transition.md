@@ -2,7 +2,48 @@
 
 ## 개요
 
-aidol을 buppy 모노레포로 통합. 개발 워크플로우 및 배포 전략이 변경됩니다.
+aidol을 buppy 모노레포로 통합합니다. 개발 워크플로우 및 배포 전략이 변경되며, **독립 패키지 분리 유지 비용을 없애고 타입 안전성을 확보**합니다.
+
+---
+
+## 왜 모노레포로 전환하는가?
+
+### 현황: 멀티레포의 한계
+
+aidol은 독립 레포지토리(`~/aidol`)에서 npm 패키지(`aidol`) 및 PyPI 패키지(`py-aidol`)로 배포되어 왔습니다. 기능 개발이 안정화된 Sprint 3 이후, 두 레포지토리를 분리해서 유지하는 비용이 높아집니다:
+
+- **배포 지연**: aidol 변경 → 패키지 빌드/배포 → buppy 팀이 버전 업그레이드 → 재배포 (최소 2단계)
+- **타입 불안정**: npm 패키지(`ApiService` - standalone용)와 buppy(`ClientApiService` - monorepo용)의 메서드 시그니처가 맞지 않아도 런타임까지 숨겨짐
+- **개발 체험 저하**: 기능 히스토리를 이해하려면 `~/aidol` ↔ `~/buppy` 두 레포를 오가야 함
+
+### 선택: 모노레포 통합
+
+**경로 변환 + 히스토리 보존 병합**
+```
+git filter-repo로 경로 변환 (backend/aidol/ → backend/aidol/, frontend/src/ → frontend/src/aidol/)
+  ↓
+원본 PR 번호 보존 (#N → aioiahq/aidol#N)
+  ↓
+최종 구조에 없는 파일은 히스토리에서도 제거 (models/, repositories/, containers/)
+  ↓
+--allow-unrelated-histories로 buppy에 병합
+```
+
+**모듈 경계 자동화**
+- Backend: `tach check` (make 타겟)
+- Frontend: `npm run lint` (eslint-plugin-boundaries)
+
+### 효과
+
+| 항목 | Before | After |
+|------|--------|-------|
+| **배포** | 2단계 (패키지 → buppy 버전 업) | 1단계 (PR merge = 배포) |
+| **타입 안전성** | 런타임 충돌 가능 | TS 빌드 시점에 감지 |
+| **의존성 버전** | semantic version (v1.5.0) | commit hash (자동) |
+| **출시 제어** | 패키지 버전 선택 | Feature Flag (PostHog) |
+| **히스토리** | 두 레포 분산 | 단일 레포에서 추적 가능 |
+
+**주의**: `aidol` npm 패키지 / `py-aidol` PyPI 패키지는 더 이상 관리되지 않습니다. buppy 내부 모듈로 대체되었습니다.
 
 ---
 
