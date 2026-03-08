@@ -1,6 +1,6 @@
 # Week 3 (3/22~3/28) — 엠블럼 고도화 + 포즈 이미지 Draft
 
-- 스프린트 기준 문서: `chaehyun-content-sprint-plan v0.3`
+- 스프린트 기준 문서: `chaehyun-content-sprint-plan.md`
 - 담당: 채현
 - 완료 기준: ✅ 엠블럼 템플릿 PR 머지 + 포즈 4종 중 2종 이상 draft 완성
 
