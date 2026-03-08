@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>AIdol - Orange Planet Appendix</title>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 200; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-2ExtraLight.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 500; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-5Medium.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  :root {
+    --bg: #F5F5F5;
+    --pink: #FF3377;
+    --white: #1a1a1a;
+    --dim: rgba(0,0,0,0.45);
+    --sub: rgba(0,0,0,0.6);
+    --card: #FFFFFF;
+    --border: rgba(0,0,0,0.1);
+    --green: #00A870;
+    --purple: #7C3AED;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy',sans-serif; background:#EFEFEF; display:flex; flex-direction:column; align-items:center; gap:80px; padding:60px 0; color:var(--white); }
+
+  .slide { width:1920px; height:1080px; background:var(--bg); border-radius:8px; position:relative; box-shadow:0 20px 80px rgba(0,0,0,.1); overflow:hidden; display:flex; flex-direction:column; padding:72px 100px 64px; }
+  .slide.dark { --bg:#141414; --white:#ffffff; --dim:rgba(255,255,255,0.5); --sub:rgba(255,255,255,0.6); --card:#1C1C1C; --border:rgba(255,255,255,0.06); background:var(--bg); color:var(--white); }
+
+  .tag { font-size:18px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; text-align:center; }
+  .title { font-size:48px; font-weight:700; color:var(--white); line-height:1.25; margin-top:12px; text-align:center; }
+  .title b { color:var(--pink); font-weight:700; }
+  .subtitle { font-size:22px; color:var(--dim); margin-top:8px; font-weight:400; text-align:center; }
+  .ct { flex:1; display:flex; flex-direction:column; min-height:0; margin-top:36px; }
+  .footer { position:absolute; bottom:28px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:14px; color:rgba(0,0,0,0.3); }
+  .footer .brand { font-weight:800; color:var(--pink); letter-spacing:3px; font-size:15px; }
+  .slide.dark .footer { color:rgba(255,255,255,0.3); }
+
+  /* Navigation */
+  .nav { position:fixed; top:20px; right:20px; z-index:100; display:flex; flex-direction:column; gap:6px; background:rgba(0,0,0,0.8); padding:16px; border-radius:12px; max-height:90vh; overflow-y:auto; }
+  .nav a { color:#fff; text-decoration:none; font-size:13px; font-weight:500; padding:6px 12px; border-radius:6px; white-space:nowrap; }
+  .nav a:hover { background:var(--pink); }
+
+  /* Appendix specific styles */
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:60px; flex:1; }
+  .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; flex:1; }
+  .four-col { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; flex:1; }
+
+  .a-card { background:var(--card); border:1px solid var(--border); border-radius:20px; padding:36px 32px; display:flex; flex-direction:column; }
+  .a-card h3 { font-size:24px; font-weight:700; color:var(--white); margin-bottom:16px; }
+  .a-card .label { font-size:14px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.08em; margin-bottom:12px; }
+  .a-card p { font-size:18px; color:var(--sub); line-height:1.7; }
+  .a-card .big-num { font-size:56px; font-weight:900; color:var(--pink); line-height:1; margin-bottom:8px; }
+  .a-card .mid-num { font-size:36px; font-weight:800; color:var(--white); line-height:1; margin-bottom:8px; }
+  .a-card ul { list-style:none; padding:0; }
+  .a-card li { font-size:18px; color:var(--sub); line-height:1.7; padding:6px 0; border-bottom:1px solid var(--border); }
+  .a-card li:last-child { border-bottom:none; }
+  .a-card li strong { color:var(--white); font-weight:700; }
+  .a-card li .pk { color:var(--pink); font-weight:700; }
+  .a-card li .gn { color:var(--green); font-weight:700; }
+
+  .quote-block { background:rgba(255,51,119,0.04); border-left:4px solid var(--pink); border-radius:0 12px 12px 0; padding:24px 28px; margin:12px 0; }
+  .quote-block .qt { font-size:22px; font-weight:600; color:var(--white); line-height:1.5; font-style:italic; }
+  .quote-block .qa { font-size:15px; color:var(--dim); margin-top:8px; font-weight:600; }
+
+  .table-wrap { flex:1; overflow:hidden; }
+  table { width:100%; border-collapse:collapse; }
+  table th { padding:18px 24px; text-align:left; font-size:16px; font-weight:700; color:var(--dim); border-bottom:2px solid var(--border); letter-spacing:.05em; }
+  table td { padding:16px 24px; font-size:19px; color:var(--sub); border-bottom:1px solid var(--border); }
+  table td:first-child { font-weight:600; color:var(--white); }
+  table td .pk { color:var(--pink); font-weight:700; }
+  table td .gn { color:var(--green); font-weight:700; }
+  table tr:last-child td { border-bottom:none; }
+
+  .highlight-bar { background:rgba(255,51,119,0.06); border:1px solid rgba(255,51,119,0.15); border-radius:16px; padding:28px 40px; text-align:center; margin-top:auto; }
+  .highlight-bar .main { font-size:24px; font-weight:600; color:var(--white); }
+  .highlight-bar .main b { color:var(--pink); font-weight:800; }
+
+  .pivot-timeline { display:flex; align-items:stretch; gap:0; flex:1; }
+  .pivot-step { flex:1; display:flex; flex-direction:column; padding:24px; position:relative; }
+  .pivot-step::after { content:'→'; position:absolute; right:-12px; top:50%; transform:translateY(-50%); font-size:32px; color:var(--pink); font-weight:700; z-index:1; }
+  .pivot-step:last-child::after { display:none; }
+  .pivot-num { font-size:14px; font-weight:700; color:var(--pink); text-transform:uppercase; letter-spacing:.1em; }
+  .pivot-name { font-size:24px; font-weight:700; color:var(--white); margin:8px 0; }
+  .pivot-result { font-size:17px; color:var(--sub); line-height:1.6; flex:1; }
+  .pivot-learn { font-size:15px; color:var(--dim); margin-top:12px; padding-top:12px; border-top:1px solid var(--border); font-style:italic; }
+
+  .loop-visual { display:flex; align-items:center; justify-content:center; gap:0; margin:40px 0; }
+  .loop-box { background:var(--card); border:2px solid var(--border); border-radius:16px; padding:28px 36px; text-align:center; min-width:240px; }
+  .loop-box.active { border-color:var(--pink); background:rgba(255,51,119,0.04); }
+  .loop-box h4 { font-size:22px; font-weight:700; color:var(--white); }
+  .loop-box p { font-size:16px; color:var(--dim); margin-top:6px; }
+  .loop-arrow { font-size:36px; color:var(--pink); font-weight:300; padding:0 16px; }
+
+  .metric-row { display:flex; align-items:center; gap:24px; padding:20px 0; border-bottom:1px solid var(--border); }
+  .metric-row:last-child { border-bottom:none; }
+  .metric-label { flex:1; font-size:22px; color:var(--sub); }
+  .metric-val { font-size:28px; font-weight:800; color:var(--white); min-width:200px; text-align:right; }
+  .metric-val.pk { color:var(--pink); }
+  .metric-val.gn { color:var(--green); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#a1">A1. UT 원본 발화</a>
+  <a href="#a2">A2. 피봇 히스토리</a>
+  <a href="#a3">A3. 게임 루프 상세</a>
+  <a href="#a4">A4. UT 정량 지표</a>
+  <a href="#a5">A5. 경쟁사 심층 비교</a>
+  <a href="#a6">A6. WTP 검증 상세</a>
+  <a href="#a7">A7. 유닛 이코노믹스</a>
+  <a href="#a8">A8. 기술 스택</a>
+  <a href="#a9">A9. 팀 상세</a>
+  <a href="#a10">A10. 글로벌 트랙션</a>
+</nav>
+
+<!-- ==================== A1: UT 원본 발화 모음 ==================== -->
+<div class="slide" id="a1">
+  <div class="tag">APPENDIX 01</div>
+  <div class="title">UT 8명 <b>핵심 발화 원문</b></div>
+  <div class="subtitle">Sprint 1-2 | 14가지 UX 방법론 교차 분석</div>
+  <div class="ct">
+    <div class="three-col" style="gap:24px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-size:18px; font-weight:700; color:var(--pink); margin-bottom:4px;">🎯 프로듀서 정체성</div>
+        <div class="quote-block">
+          <div class="qt">"지금 내가 민희진이다."</div>
+          <div class="qa">U3 장쏘피 · 35세 · 파인아트 작가 · 비팬<br>캐스팅 재미 5/5</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"PD님이 된 느낌이에요."</div>
+          <div class="qa">U8 김현조 · 20대 · 세븐틴 팬 9년차<br>PD 역할 인식 ✓</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"내가 연습생을 고를 수 있다니, 프로듀스101 하는 것 같아요."</div>
+          <div class="qa">U2 · K-pop 팬</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-size:18px; font-weight:700; color:var(--pink); margin-bottom:4px;">🔥 육성 욕구 (자발적 발화)</div>
+        <div class="quote-block">
+          <div class="qt">"다마고치처럼 맨날 케어해 주면 저는 진짜 매일 들어올 것 같아요."</div>
+          <div class="qa">U8 김현조 · 세븐틴 팬 9년차</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"키우는 느낌이 추가되니 구매 의향이 생긴다."</div>
+          <div class="qa">U8 · WTP 인터뷰 중</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"이걸 키울 수 있다면 시간을 더 쓸 것 같다."</div>
+          <div class="qa">U5 · 20대 K-pop 팬</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"레벨업하는 느낌이 있으면 좋겠다."</div>
+          <div class="qa">U4 · 팬</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="font-size:18px; font-weight:700; color:var(--pink); margin-bottom:4px;">✨ AHA Moment</div>
+        <div class="quote-block">
+          <div class="qt">"It made the image like exactly what I was thinking."</div>
+          <div class="qa">Sogand · 캐나다 K-pop 팬<br>8명 중 6명 동일 반응</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"오랜만에 몰입해 본 것 같아요."</div>
+          <div class="qa">U8 김현조 · 세븐틴 팬 9년차</div>
+        </div>
+        <div class="quote-block">
+          <div class="qt">"퍼즐을 끼워 맞춘 느낌이지. 내가 원하는 게 없으니까 차선을 고르는 거잖아."</div>
+          <div class="qa">U5 · 기존 서비스에 대한 불만</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A2: 피봇 히스토리 ==================== -->
+<div class="slide" id="a2">
+  <div class="tag">APPENDIX 02</div>
+  <div class="title">2.5년간 <b>4회 피봇</b> 히스토리</div>
+  <div class="subtitle">매 피봇마다 데이터 기반 의사결정</div>
+  <div class="ct">
+    <div class="pivot-timeline">
+      <div class="pivot-step" style="background:rgba(255,51,119,0.02); border-radius:16px 0 0 16px;">
+        <div class="pivot-num">Pivot 1 · 2023</div>
+        <div class="pivot-name">AI Boyfriend</div>
+        <div class="pivot-result">
+          <strong>300명</strong> 테스트<br>
+          <span class="pk">75%</span>가 진심 어린 애정 표현<br><br>
+          AI 캐릭터에 감정 이입하는 사용자가 실제로 존재한다는 것을 확인
+        </div>
+        <div class="pivot-learn">학습: AI 캐릭터 감정 연결 수요 검증</div>
+      </div>
+      <div class="pivot-step" style="background:rgba(255,51,119,0.04);">
+        <div class="pivot-num">Pivot 2 · 2024</div>
+        <div class="pivot-name">BTS AI</div>
+        <div class="pivot-result">
+          <strong>15분 만에</strong> 깊은 이야기 공유<br><br>
+          실존 IP 활용 시 몰입도 극대화.<br>하지만 <span class="pk">라이선스 리스크</span> 확인
+        </div>
+        <div class="pivot-learn">학습: 자체 IP로 전환 필요</div>
+      </div>
+      <div class="pivot-step" style="background:rgba(255,51,119,0.06);">
+        <div class="pivot-num">Pivot 3 · 2025</div>
+        <div class="pivot-name">Virtual Idol</div>
+        <div class="pivot-result">
+          TikTok <strong>500K</strong> 조회<br>
+          <strong>4,813명</strong> 리드 수집<br>
+          <strong>855명</strong> 가입<br><br>
+          자체 IP로도 시장 반응 확인
+        </div>
+        <div class="pivot-learn">학습: 오가닉 바이럴 가능, CAC $0.005</div>
+      </div>
+      <div class="pivot-step" style="background:rgba(255,51,119,0.08); border-radius:0 16px 16px 0;">
+        <div class="pivot-num">Pivot 4 · 2026 (현재)</div>
+        <div class="pivot-name">AIdol Simulation</div>
+        <div class="pivot-result">
+          UT 8명 심층 분석에서<br>
+          <span class="pk">"키우는 게임"</span> 카테고리 발견<br><br>
+          챗봇 → 시뮬레이션으로<br>카테고리 재정의
+        </div>
+        <div class="pivot-learn">학습: 육성 = 수익화 전제조건</div>
+      </div>
+    </div>
+    <div class="highlight-bar">
+      <div class="main">매 피봇이 <b>"더 나은 카테고리"</b>를 찾아가는 과정 — 방황이 아닌 <b>수렴</b></div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A3: 게임 루프 상세 ==================== -->
+<div class="slide" id="a3">
+  <div class="tag">APPENDIX 03</div>
+  <div class="title"><b>게임 루프</b> 상세 설계</div>
+  <div class="subtitle">일간 / 주간 / 시즌 리텐션 구조</div>
+  <div class="ct">
+    <div class="loop-visual">
+      <div class="loop-box active">
+        <h4>🎯 Draft</h4>
+        <p>연습생 캐스팅<br>등급/능력치/MBTI<br>선착순 경쟁</p>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-box active">
+        <h4>🏗️ Build</h4>
+        <p>그룹 구성<br>포지션 배정<br>콘셉트 설계</p>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-box active">
+        <h4>💬 Simulate</h4>
+        <p>1:N AI 채팅<br>일상 이벤트<br>멤버 간 역학</p>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-box active">
+        <h4>🏆 Season</h4>
+        <p>성과 평가<br>랭킹/시상<br>컴백 준비</p>
+      </div>
+      <div class="loop-arrow" style="font-size:24px;">↩︎</div>
+    </div>
+    <div class="three-col" style="margin-top:auto;">
+      <div class="a-card">
+        <div class="label">Daily Loop</div>
+        <h3>매일 할 이유</h3>
+        <ul>
+          <li>멤버 일상 이벤트 알림 (연습, 스케줄)</li>
+          <li>멤버 간 갈등/우정 이벤트 → 개입 선택</li>
+          <li>일일 미션 (멤버 컨디션 관리)</li>
+          <li><strong>벤치마크:</strong> 다마고치, 동물의 숲</li>
+        </ul>
+      </div>
+      <div class="a-card">
+        <div class="label">Weekly Loop</div>
+        <h3>매주 할 이유</h3>
+        <ul>
+          <li>주간 랭킹 변동 (PD 점수)</li>
+          <li>주간 미션 보상 (프리미엄 컨셉)</li>
+          <li>다른 PD 그룹과 경쟁/교류</li>
+          <li><strong>벤치마크:</strong> 프로듀스101 투표</li>
+        </ul>
+      </div>
+      <div class="a-card">
+        <div class="label">Season Loop</div>
+        <h3>계속 할 이유</h3>
+        <ul>
+          <li>시즌별 컨셉 체인지 (컴백)</li>
+          <li>시즌 결과 → 성장 히스토리 축적</li>
+          <li>시즌 시상식, 글로벌 랭킹</li>
+          <li><strong>전환비용:</strong> 그룹 히스토리 = 이탈 장벽</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A4: UT 정량 지표 ==================== -->
+<div class="slide" id="a4">
+  <div class="tag">APPENDIX 04</div>
+  <div class="title">UT 8명 <b>정량 지표</b> 상세</div>
+  <div class="subtitle">14가지 UX 방법론 교차 분석 결과</div>
+  <div class="ct">
+    <div class="two-col">
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">핵심 지표</div>
+        <div class="metric-row">
+          <div class="metric-label">UT 완주율</div>
+          <div class="metric-val pk">83%+</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">캐스팅 몰입도</div>
+          <div class="metric-val pk">4.2 / 5</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">PD 역할 인식률</div>
+          <div class="metric-val pk">88% (7/8)</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">AHA Moment 도달률</div>
+          <div class="metric-val pk">75% (6/8)</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">이메일 자발 등록</div>
+          <div class="metric-val pk">33% (2/6)</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">"매일 올 것" 자발 발화</div>
+          <div class="metric-val pk">50% (4/8)</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">비팬도 몰입 (크로스 세그먼트)</div>
+          <div class="metric-val gn">✓ 확인</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">14가지 UX 방법론</div>
+        <div class="a-card" style="font-size:17px; line-height:2;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:4px 24px;">
+            <span>1. Think-Aloud Protocol</span>
+            <span>8. 감정 곡선 분석</span>
+            <span>2. Task Analysis</span>
+            <span>9. 페르소나 매핑</span>
+            <span>3. SUS (System Usability)</span>
+            <span>10. 여정 지도</span>
+            <span>4. NPS 측정</span>
+            <span>11. 5 Whys</span>
+            <span>5. 심층 인터뷰</span>
+            <span>12. 컨텍스트 분석</span>
+            <span>6. 행동 코딩</span>
+            <span>13. WTP 분석</span>
+            <span>7. 세그먼트 비교</span>
+            <span>14. AHA Moment 식별</span>
+          </div>
+        </div>
+        <div style="margin-top:20px;">
+          <div style="font-size:20px; font-weight:700; margin-bottom:12px;">UT 참가자 프로필</div>
+          <table>
+            <tr><td>U1-U2</td><td>20대 K-pop 팬</td><td>한국</td></tr>
+            <tr><td>U3 장쏘피</td><td>35세, 파인아트 작가 <span class="pk">(비팬)</span></td><td>한국</td></tr>
+            <tr><td>U4-U5</td><td>20대 K-pop 팬</td><td>한국</td></tr>
+            <tr><td>U6 Sogand</td><td>K-pop 팬</td><td>캐나다</td></tr>
+            <tr><td>U7</td><td>K-pop 팬</td><td>한국</td></tr>
+            <tr><td>U8 김현조</td><td>20대, 세븐틴 팬 9년차</td><td>한국</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A5: 경쟁사 심층 비교 ==================== -->
+<div class="slide" id="a5">
+  <div class="tag">APPENDIX 05</div>
+  <div class="title"><b>경쟁사</b> 심층 비교</div>
+  <div class="subtitle">AIdol이 점유하는 구조적 공백</div>
+  <div class="ct">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:160px;">서비스</th>
+            <th>모델</th>
+            <th>사용자 생성</th>
+            <th>양방향 소통</th>
+            <th>K-pop 특화</th>
+            <th>육성/시즌</th>
+            <th>매출 규모</th>
+            <th>한계</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Character.AI</td>
+            <td>범용 AI 챗봇</td>
+            <td class="gn">✓</td>
+            <td class="gn">✓ (1:1만)</td>
+            <td class="pk">✗</td>
+            <td class="pk">✗</td>
+            <td>MAU 2,000만</td>
+            <td>만들고 끝, 게임성 없음</td>
+          </tr>
+          <tr>
+            <td>PLAVE</td>
+            <td>기획사 소유 IP</td>
+            <td class="pk">✗</td>
+            <td>제한적</td>
+            <td class="gn">✓</td>
+            <td class="pk">✗</td>
+            <td>454억원/년</td>
+            <td>사용자가 만든 게 아님</td>
+          </tr>
+          <tr>
+            <td>Bubble</td>
+            <td>일방향 메시지</td>
+            <td class="pk">✗</td>
+            <td class="pk">✗</td>
+            <td class="gn">✓</td>
+            <td class="pk">✗</td>
+            <td>749억원</td>
+            <td>소비만, 생성권 없음</td>
+          </tr>
+          <tr>
+            <td>Weverse</td>
+            <td>팬 플랫폼</td>
+            <td class="pk">✗</td>
+            <td>제한적</td>
+            <td class="gn">✓</td>
+            <td class="pk">✗</td>
+            <td>2,913억원</td>
+            <td>기획사 의존, 사용자 설계 없음</td>
+          </tr>
+          <tr>
+            <td>ZETA (스캐터랩)</td>
+            <td>AI 챗봇</td>
+            <td class="gn">✓</td>
+            <td class="gn">✓</td>
+            <td class="pk">✗</td>
+            <td class="pk">✗</td>
+            <td>-</td>
+            <td>범용 AI, K-pop 특화 아님</td>
+          </tr>
+          <tr style="background:rgba(255,51,119,0.04);">
+            <td style="color:var(--pink); font-weight:800;">AIdol</td>
+            <td style="color:var(--pink); font-weight:600;">시뮬레이션 게임</td>
+            <td class="gn" style="font-weight:800;">✓ K-pop</td>
+            <td class="gn" style="font-weight:800;">✓ 1:N</td>
+            <td class="gn" style="font-weight:800;">✓</td>
+            <td class="gn" style="font-weight:800;">✓</td>
+            <td class="pk">Pre-rev</td>
+            <td style="color:var(--pink);">5가지 동시 보유</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="highlight-bar" style="margin-top:24px;">
+      <div class="main">"사용자 소유 IP + K-pop 특화 + 양방향 소통 + 콘텐츠 생성 + <b>육성</b>" = <b>AIdol만의 교차점</b></div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A6: WTP 검증 ==================== -->
+<div class="slide" id="a6">
+  <div class="tag">APPENDIX 06</div>
+  <div class="title">WTP(Willingness To Pay) <b>검증 상세</b></div>
+  <div class="subtitle">UT 기반 가격 민감도 분석</div>
+  <div class="ct">
+    <div class="two-col">
+      <div>
+        <div class="a-card" style="margin-bottom:24px;">
+          <div class="label">현재 상태 WTP</div>
+          <h3>즉시 지불 가능: 100~500원</h3>
+          <ul>
+            <li>거부 지점: <span class="pk">1,000원 이상</span> 단건</li>
+            <li>이유: "아직 키우는 느낌이 부족"</li>
+            <li>대부분 "찍먹" 가능 수준으로만 응답</li>
+          </ul>
+        </div>
+        <div class="a-card">
+          <div class="label">육성 기능 추가 시 WTP</div>
+          <h3>구독 전환 의향 발생</h3>
+          <div class="quote-block">
+            <div class="qt">"키우는 느낌이 추가되니 구매 의향이 생긴다"</div>
+            <div class="qa">U8 · WTP 인터뷰</div>
+          </div>
+          <p style="margin-top:16px;">→ <strong>육성 = 수익화 전제조건</strong><br>Phase 2에서 육성 시스템 최우선 개발 결정의 데이터 근거</p>
+        </div>
+      </div>
+      <div>
+        <div class="a-card" style="margin-bottom:24px;">
+          <div class="label">벤치마크 가격대</div>
+          <h3>목표 과금 구조</h3>
+          <ul>
+            <li>시즌패스: <span class="pk">3,000~10,000원/월</span><br><span style="font-size:15px; color:var(--dim);">ref. Character.AI c.ai+ $9.99/월</span></li>
+            <li>추가 드래프트 슬롯: <span class="pk">1,000~3,000원/개</span></li>
+            <li>프리미엄 컨셉 팩: <span class="pk">2,000~5,000원/팩</span><br><span style="font-size:15px; color:var(--dim);">ref. 트리플에스 투표권 200억 매출</span></li>
+            <li>커스터마이징: <span class="pk">2,000원~/개</span><br><span style="font-size:15px; color:var(--dim);">ref. 제페토 250억개+ 판매</span></li>
+          </ul>
+        </div>
+        <div class="a-card">
+          <div class="label">전환율 삼각검증</div>
+          <h3>추정 유료 전환율: 8~10%</h3>
+          <ul>
+            <li>자체 UT 30% × 앱 보정 1/3 = <span class="pk">10%</span></li>
+            <li>Replika 25% × 범용 보정 1/3 = <span class="pk">8.3%</span></li>
+            <li>Freemium 상위 25% 하단 = <span class="pk">~8%</span></li>
+            <li style="border-bottom:none; font-weight:700; color:var(--green);">세 방법론 수렴 → 8~10% 채택</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A7: 유닛 이코노믹스 ==================== -->
+<div class="slide" id="a7">
+  <div class="tag">APPENDIX 07</div>
+  <div class="title"><b>유닛 이코노믹스</b> & 12개월 프로젝션</div>
+  <div class="subtitle">검증된 CAC $0.005, 목표 LTV/CAC 30x+</div>
+  <div class="ct">
+    <div class="two-col">
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">핵심 지표</div>
+        <div class="metric-row">
+          <div class="metric-label">CAC (검증)</div>
+          <div class="metric-val gn">$0.005</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">CAC (목표, 유료 전환 시)</div>
+          <div class="metric-val">&lt; $5</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">목표 ARPU</div>
+          <div class="metric-val pk">$60~100/년</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">목표 LTV (3년)</div>
+          <div class="metric-val pk">$150+</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">목표 LTV/CAC</div>
+          <div class="metric-val gn">&gt; 30x</div>
+        </div>
+        <div style="margin-top:32px;">
+          <div style="font-size:20px; font-weight:700; margin-bottom:16px;">검증된 퍼널</div>
+          <div class="metric-row">
+            <div class="metric-label">TikTok 조회</div>
+            <div class="metric-val">500,000+</div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-label">→ 리드 수집</div>
+            <div class="metric-val">4,813 <span style="font-size:16px; color:var(--dim);">(1.0%)</span></div>
+          </div>
+          <div class="metric-row">
+            <div class="metric-label">→ 가입 전환</div>
+            <div class="metric-val pk">855 <span style="font-size:16px; color:var(--dim);">(17.8%)</span></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">12개월 성장 프로젝션</div>
+        <table>
+          <thead><tr><th>시점</th><th>MAU</th><th>MRR</th><th>유료 전환</th></tr></thead>
+          <tbody>
+            <tr><td>M0</td><td>500</td><td>$0</td><td>-</td></tr>
+            <tr><td>M3</td><td>1,478</td><td>$222</td><td>~3%</td></tr>
+            <tr><td>M6</td><td>3,378</td><td>$845</td><td>~5%</td></tr>
+            <tr><td>M9</td><td>7,987</td><td>$2,796</td><td>~7%</td></tr>
+            <tr><td style="color:var(--pink); font-weight:700;">M12</td><td style="color:var(--pink); font-weight:700;">15,172</td><td style="color:var(--pink); font-weight:700;">$7,586</td><td style="color:var(--pink); font-weight:700;">~10%</td></tr>
+          </tbody>
+        </table>
+        <div style="margin-top:16px; padding:16px; background:rgba(0,168,112,0.06); border-radius:12px; text-align:center;">
+          <div style="font-size:18px; color:var(--dim);">12개월 ARR 목표</div>
+          <div style="font-size:48px; font-weight:900; color:var(--green);">$91K</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A8: 기술 스택 ==================== -->
+<div class="slide" id="a8">
+  <div class="tag">APPENDIX 08</div>
+  <div class="title"><b>기술 스택</b> & AI 아키텍처</div>
+  <div class="subtitle">TIPS 기술 차별점 — 3가지 핵심 기술</div>
+  <div class="ct">
+    <div class="three-col">
+      <div class="a-card">
+        <div class="label">Core Tech 1</div>
+        <h3>1:N 멀티 에이전트 채팅</h3>
+        <p style="margin-bottom:16px;">멤버 간 상호작용이 있는 그룹 대화. 기존 AI 챗봇(Character.AI, 이루다)은 모두 1:1.</p>
+        <ul>
+          <li><strong>멤버별 고유 페르소나</strong> 동시 유지</li>
+          <li>멤버 간 <strong>관계 역학</strong> 반영 (우정/갈등/라이벌)</li>
+          <li>사용자 개입에 따라 <strong>관계 변화</strong></li>
+        </ul>
+      </div>
+      <div class="a-card">
+        <div class="label">Core Tech 2</div>
+        <h3>페르소나 일관성 엔진</h3>
+        <p style="margin-bottom:16px;">시즌이 지나도 캐릭터의 말투, 성격, 관계 기억이 일관되게 유지.</p>
+        <ul>
+          <li><strong>장기 메모리</strong> 시스템 (시즌별 기억 축적)</li>
+          <li>성격 <strong>drift 방지</strong> 알고리즘</li>
+          <li>관계 그래프 기반 <strong>맥락 주입</strong></li>
+        </ul>
+      </div>
+      <div class="a-card">
+        <div class="label">Core Tech 3</div>
+        <h3>동적 이벤트 생성</h3>
+        <p style="margin-bottom:16px;">게임 시나리오를 LLM이 실시간 생성. 고정 시나리오 대비 무한 리플레이.</p>
+        <ul>
+          <li>K-pop <strong>도메인 지식</strong> 내장 (음방, 팬사인회, 컨셉 체인지)</li>
+          <li>사용자 선택에 따른 <strong>분기형 스토리</strong></li>
+          <li>시즌 상황에 맞는 <strong>맥락적 이벤트</strong></li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:32px;">
+      <div style="font-size:20px; font-weight:700; margin-bottom:16px;">기술 스택</div>
+      <div class="four-col" style="gap:16px;">
+        <div class="a-card" style="padding:20px; text-align:center;">
+          <div class="label">Frontend</div>
+          <p style="font-size:16px;">Next.js · React · TailwindCSS</p>
+        </div>
+        <div class="a-card" style="padding:20px; text-align:center;">
+          <div class="label">Mobile</div>
+          <p style="font-size:16px;">Flutter (Android + iOS)</p>
+        </div>
+        <div class="a-card" style="padding:20px; text-align:center;">
+          <div class="label">AI/LLM</div>
+          <p style="font-size:16px;">GPT-4o · Claude · ElevenLabs TTS</p>
+        </div>
+        <div class="a-card" style="padding:20px; text-align:center;">
+          <div class="label">Infra</div>
+          <p style="font-size:16px;">Cloud · Stripe · PostHog</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A9: 팀 상세 ==================== -->
+<div class="slide" id="a9">
+  <div class="tag">APPENDIX 09</div>
+  <div class="title"><b>팀</b> 상세 프로필</div>
+  <div class="subtitle">부부 창업팀 + 11명 AI 네이티브 조직</div>
+  <div class="ct">
+    <div class="two-col">
+      <div>
+        <div class="a-card" style="margin-bottom:20px;">
+          <div class="label">CEO</div>
+          <h3>이소연</h3>
+          <ul>
+            <li><strong>연세대 HCI/UX 석사</strong> (창업 전념 위해 휴학)</li>
+            <li>프론트엔드 (Next.js), UX 디자인 (Figma)</li>
+            <li><strong>20년+</strong> K-pop 팬덤 경험</li>
+            <li>서브컬처(BL, 팬픽) 이해 기반 UX 설계</li>
+            <li>$0 마케팅: <span class="pk">19명 자원봉사 마케터</span> 리크루팅</li>
+            <li>TikTok 500K 조회, 4,813 리드 달성</li>
+          </ul>
+        </div>
+        <div class="a-card">
+          <div class="label">왜 부부 창업인가</div>
+          <ul>
+            <li>이전 회사(EasyDeep) <strong>무급, 폐업, 우울증 회복</strong> 함께 경험</li>
+            <li>깨지지 않을 관계를 극한 상황에서 증명</li>
+            <li>의사결정 원칙: <span class="pk">데이터가 결정한다</span></li>
+            <li>역할 충돌 없음: CEO(제품/UX/IR) + CTO(기술/AI)</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="a-card" style="margin-bottom:20px;">
+          <div class="label">CTO</div>
+          <h3>김영욱</h3>
+          <ul>
+            <li><strong>KAIST 전산학 석사</strong> (ML/RL)</li>
+            <li>15년+ 개발 경력</li>
+            <li><strong>네이버</strong>: P2P 스트리밍 — 미국/일본/한국 <span class="pk">특허 3건</span></li>
+            <li><strong>스캐터랩</strong>: 이루다 개발</li>
+            <li>전 회사 EasyDeep: AI 교육 플랫폼 <span class="pk">매출 ~10억원</span></li>
+            <li><strong>Kaggle Top 2%</strong>, AI 경진대회 1위(중기부)</li>
+            <li>LangChain 오픈소스 기여</li>
+          </ul>
+        </div>
+        <div class="a-card">
+          <div class="label">팀 구성 (11명)</div>
+          <ul>
+            <li>PM 1명</li>
+            <li>프로덕트 디자이너 1명</li>
+            <li>AI/LLM 1명</li>
+            <li>프론트엔드 2명</li>
+            <li>백엔드 2명</li>
+            <li>모바일 2명 (Android + Flutter)</li>
+            <li><span class="pk">12번째 팀원: AI</span> — 3단계 AI 리뷰 시스템</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+<!-- ==================== A10: 글로벌 트랙션 ==================== -->
+<div class="slide dark" id="a10">
+  <div class="tag">APPENDIX 10</div>
+  <div class="title">글로벌 <b>트랙션</b> & 진출 전략</div>
+  <div class="subtitle">가입자 90%가 해외 사용자 (오가닉)</div>
+  <div class="ct">
+    <div class="two-col">
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">현재 트랙션</div>
+        <div class="metric-row">
+          <div class="metric-label">TikTok 조회수 (5일, 단일 영상)</div>
+          <div class="metric-val pk">500,000+</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">리드 수집</div>
+          <div class="metric-val">4,813명</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">신규 가입</div>
+          <div class="metric-val pk">855명</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">해외 사용자 비율</div>
+          <div class="metric-val gn">~90%</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">CAC</div>
+          <div class="metric-val gn">$0.005</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">마케팅비</div>
+          <div class="metric-val gn">$0</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">자원봉사 마케터</div>
+          <div class="metric-val">19명 자발 합류</div>
+        </div>
+        <div class="metric-row">
+          <div class="metric-label">라이브 서비스</div>
+          <div class="metric-val pk">aioia.ai/aidol</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:20px; font-weight:700; margin-bottom:20px;">글로벌 진출 로드맵</div>
+        <div class="a-card" style="margin-bottom:16px; border-left:4px solid var(--green);">
+          <div class="label" style="color:var(--green);">Phase 1 · NOW</div>
+          <h3>미국 (1차)</h3>
+          <ul>
+            <li>영어 서비스 100% 대응</li>
+            <li>TikTok/Reels 바이럴 지속</li>
+            <li>YC S26 지원 중</li>
+          </ul>
+        </div>
+        <div class="a-card" style="margin-bottom:16px; border-left:4px solid var(--pink);">
+          <div class="label">Phase 2 · 2026 H2</div>
+          <h3>동남아 (2차)</h3>
+          <ul>
+            <li>인도네시아, 필리핀 — K-pop 강세 지역</li>
+            <li>현지 인플루언서 마케팅</li>
+            <li>다국어(인니어, 타갈로그) 지원</li>
+          </ul>
+        </div>
+        <div class="a-card" style="border-left:4px solid var(--purple);">
+          <div class="label" style="color:var(--purple);">Phase 3 · 2027</div>
+          <h3>일본 & 유럽</h3>
+          <ul>
+            <li>일본 — 버추얼 아이돌 + 아이돌 문화 친숙</li>
+            <li>유럽 — K-pop 팬덤 급성장 지역</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>APPENDIX</span><span class="brand">AIdol</span></div>
+</div>
+
+</body>
+</html>
