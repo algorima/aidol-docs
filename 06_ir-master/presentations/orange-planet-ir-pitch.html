@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920">
+<title>AIdol — Orange Planet 2026</title>
+<style>
+  @font-face { font-family: 'Paperlogy'; font-weight: 100; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-1Thin.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 300; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-3Light.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 400; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-4Regular.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 600; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-6SemiBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 700; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-7Bold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 800; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-8ExtraBold.woff2') format('woff2'); }
+  @font-face { font-family: 'Paperlogy'; font-weight: 900; src: url('https://fastly.jsdelivr.net/gh/nickhealthy/Paperlogy@main/font/Paperlogy-9Black.woff2') format('woff2'); }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Paperlogy','Apple SD Gothic Neo',sans-serif; background:#E8E8E8; display:flex; flex-direction:column; align-items:center; gap:60px; padding:60px 0; color:#1a1a1a; }
+
+  .s { width:1920px; height:1080px; background:#fff; border-radius:4px; box-shadow:0 8px 40px rgba(0,0,0,.08); display:flex; flex-direction:column; justify-content:center; align-items:center; padding:120px 200px; position:relative; text-align:center; }
+  .s.left { align-items:flex-start; text-align:left; }
+  .s.dark { background:#111; color:#fff; }
+
+  .page { position:absolute; bottom:40px; right:60px; font-size:14px; color:rgba(0,0,0,.2); font-weight:400; }
+  .s.dark .page { color:rgba(255,255,255,.2); }
+
+  .accent { color:#FF3377; }
+  .dim { color:rgba(0,0,0,.35); }
+  .s.dark .dim { color:rgba(255,255,255,.4); }
+
+  @media print { body { background:#fff; gap:0; padding:0; } .s { page-break-after:always; box-shadow:none; border-radius:0; } }
+</style>
+</head>
+<body>
+
+
+<!-- 01 ─ COVER -->
+<div class="s">
+  <div style="font-size:20px; font-weight:600; color:rgba(0,0,0,.3); letter-spacing:4px; margin-bottom:48px;">ORANGE PLANET 2026</div>
+  <div style="font-size:88px; font-weight:800; line-height:1.15; letter-spacing:-2px;">
+    누구나<br><span class="accent">K-pop 기획사 대표</span>가<br>되는 플랫폼
+  </div>
+  <div style="font-size:28px; color:rgba(0,0,0,.4); margin-top:40px; font-weight:400; line-height:1.6;">
+    AI 아이돌을 캐스팅하고, 육성하고, 데뷔시키는 시뮬레이션
+  </div>
+  <div style="position:absolute; bottom:60px; left:200px; display:flex; align-items:center; gap:16px;">
+    <span style="font-size:24px; font-weight:800; letter-spacing:-1px;"><span class="accent">AI</span>dol</span>
+    <span style="font-size:16px; color:rgba(0,0,0,.3);">aioia.ai/aidol</span>
+  </div>
+  <div class="page">1</div>
+</div>
+
+
+<!-- 02 ─ FOUNDER STORY (스토리텔링 오프닝) -->
+<div class="s left">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">WHY</div>
+  <div style="font-size:48px; font-weight:700; line-height:1.5; max-width:1400px;">
+    20년간 K-pop 팬이었습니다.<br>
+    앨범을 사고, 투표를 하고, 콘서트에 갔습니다.
+  </div>
+  <div style="font-size:26px; color:rgba(0,0,0,.45); margin-top:48px; line-height:2.0; max-width:1300px;">
+    그런데 좋아하는 그룹이 해체되면 — 끝이었습니다.<br>
+    20년간 쌓은 감정이, 기획사 한 마디에 사라졌습니다.<br><br>
+    <span class="accent">내가 직접 키울 수 있었다면 어땠을까.</span><br>
+    UT에서 8명에게 물었더니, 같은 답이 돌아왔습니다.
+  </div>
+  <div class="page">2</div>
+</div>
+
+
+<!-- 03 ─ PROBLEM (한 문장) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">PROBLEM</div>
+  <div style="font-size:72px; font-weight:800; line-height:1.3;">
+    1.5억 팬이 지켜봅니다.<br>
+    <span class="accent">직접 만들 수는 없습니다.</span>
+  </div>
+  <div style="font-size:26px; color:rgba(0,0,0,.4); margin-top:48px; line-height:1.7;">
+    투표는 하지만 선택권은 없고,<br>
+    좋아하지만 소유할 수 없고,<br>
+    키우고 싶지만 키울 곳이 없습니다.
+  </div>
+  <div class="page">3</div>
+</div>
+
+
+<!-- 04 ─ USER VOICE (UT 검증 — 감정적 증거) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:60px;">USERS TOLD US</div>
+  <div style="font-size:52px; font-weight:700; line-height:1.5; color:rgba(0,0,0,.8);">
+    "지금 내가 <span class="accent">민희진</span>이다."
+  </div>
+  <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:12px;">U3 — 비팬, 35세, 캐스팅 만족도 5/5</div>
+  <div style="width:120px; height:2px; background:rgba(0,0,0,.08); margin:48px auto;"></div>
+  <div style="font-size:42px; font-weight:600; line-height:1.5; color:rgba(0,0,0,.7);">
+    "다마고치처럼 케어하면<br><span class="accent">매일 들어올 것 같다.</span>"
+  </div>
+  <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:12px;">U8 — 리텐션 + 수익화 트리거</div>
+  <div style="margin-top:60px; font-size:18px; color:rgba(0,0,0,.3);">Sprint 1-2 UT, 8명, 14가지 UX 방법론 교차 분석</div>
+  <div class="page">4</div>
+</div>
+
+
+<!-- 05 ─ SOLUTION (심플하게) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">SOLUTION</div>
+  <div style="font-size:64px; font-weight:800; line-height:1.3;">
+    캐스팅 → 빌드 → 육성 → 시즌
+  </div>
+  <div style="font-size:26px; color:rgba(0,0,0,.4); margin-top:40px; line-height:1.7;">
+    The Sims meets K-pop 아이돌 프로듀싱.<br>
+    AI 연습생을 뽑고, 그룹을 만들고, 키우고, 데뷔시킵니다.
+  </div>
+  <div style="display:flex; gap:48px; margin-top:72px;">
+    <div style="text-align:center;">
+      <div style="font-size:64px; font-weight:900; color:#FF3377;">4.2<span style="font-size:32px;">/5</span></div>
+      <div style="font-size:16px; color:rgba(0,0,0,.35); margin-top:8px;">캐스팅 몰입도</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:64px; font-weight:900; color:#FF3377;">88<span style="font-size:32px;">%</span></div>
+      <div style="font-size:16px; color:rgba(0,0,0,.35); margin-top:8px;">PD 역할 인식</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:64px; font-weight:900; color:#FF3377;">83<span style="font-size:32px;">%+</span></div>
+      <div style="font-size:16px; color:rgba(0,0,0,.35); margin-top:8px;">완주율</div>
+    </div>
+  </div>
+  <div class="page">5</div>
+</div>
+
+
+<!-- 06 ─ PRODUCT (스크린샷) -->
+<div class="s" style="padding:80px 100px;">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:40px;">PRODUCT — LIVE NOW</div>
+  <div style="display:flex; gap:24px; flex:1; width:100%; align-items:center; justify-content:center;">
+    <div style="flex:1; height:720px; background:#f5f5f5; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <img src="ss-ko-casting.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=color:rgba(0,0,0,.2);font-size:20px;>캐스팅</div>';">
+    </div>
+    <div style="flex:1; height:720px; background:#f5f5f5; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <img src="ss-ko-create.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=color:rgba(0,0,0,.2);font-size:20px;>그룹 생성</div>';">
+    </div>
+    <div style="flex:1; height:720px; background:#f5f5f5; border-radius:16px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
+      <img src="ss-ko-group.png" style="width:100%; height:100%; object-fit:cover;" onerror="this.parentElement.innerHTML='<div style=color:rgba(0,0,0,.2);font-size:20px;>그룹 관리</div>';">
+    </div>
+  </div>
+  <div style="font-size:20px; color:rgba(0,0,0,.3); margin-top:24px;">aioia.ai/aidol &nbsp;&middot;&nbsp; MVP Sprint 1-3 완료</div>
+  <div class="page">6</div>
+</div>
+
+
+<!-- 07 ─ TRACTION (숫자 3개만) -->
+<div class="s dark">
+  <div style="font-size:24px; color:rgba(255,255,255,.3); font-weight:600; margin-bottom:72px;">TRACTION &middot; $0 MARKETING</div>
+  <div style="display:flex; gap:120px;">
+    <div style="text-align:center;">
+      <div style="font-size:120px; font-weight:900; color:#FF3377; line-height:1;">500K</div>
+      <div style="font-size:20px; color:rgba(255,255,255,.5); margin-top:16px;">TikTok 조회수</div>
+      <div style="font-size:16px; color:rgba(255,255,255,.25); margin-top:4px;">5일, 단일 영상</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:120px; font-weight:900; color:#fff; line-height:1;">855</div>
+      <div style="font-size:20px; color:rgba(255,255,255,.5); margin-top:16px;">가입자</div>
+      <div style="font-size:16px; color:rgba(255,255,255,.25); margin-top:4px;">전환율 17.8%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:120px; font-weight:900; color:#FF3377; line-height:1;">$0</div>
+      <div style="font-size:20px; color:rgba(255,255,255,.5); margin-top:16px;">CAC</div>
+      <div style="font-size:16px; color:rgba(255,255,255,.25); margin-top:4px;">오가닉 바이럴</div>
+    </div>
+  </div>
+  <div class="page">7</div>
+</div>
+
+
+<!-- 08 ─ WHY NOW (한 문장 + 숫자 하나) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">WHY NOW</div>
+  <div style="font-size:160px; font-weight:900; color:#FF3377; line-height:1;">65,000x</div>
+  <div style="font-size:36px; font-weight:600; color:rgba(0,0,0,.6); margin-top:32px;">
+    AI가 아이돌 제작 비용을 낮췄습니다.
+  </div>
+  <div style="font-size:24px; color:rgba(0,0,0,.35); margin-top:32px; line-height:1.8;">
+    데뷔 7억원 → 0원 &nbsp;&middot;&nbsp; 음악 1곡 수백만원 → $0.02 &nbsp;&middot;&nbsp; 이미지 수백만원 → $0.01
+  </div>
+  <div class="page">8</div>
+</div>
+
+
+<!-- 09 ─ MARKET -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">MARKET</div>
+  <div style="display:flex; gap:80px; align-items:flex-end;">
+    <div style="text-align:center;">
+      <div style="width:320px; height:320px; border-radius:50%; background:#FF3377; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+        <span style="font-size:52px; font-weight:900; color:#fff;">$20.1B</span>
+        <span style="font-size:16px; color:rgba(255,255,255,.7); margin-top:6px;">CAGR 23.6%</span>
+      </div>
+      <div style="font-size:18px; font-weight:700; margin-top:20px;">TAM</div>
+      <div style="font-size:15px; color:rgba(0,0,0,.35); margin-top:4px;">가상 아이돌 시장</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:220px; height:220px; border-radius:50%; background:#FF3377; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+        <span style="font-size:40px; font-weight:900; color:#fff;">$2.7B</span>
+      </div>
+      <div style="font-size:18px; font-weight:700; margin-top:20px;">SAM</div>
+      <div style="font-size:15px; color:rgba(0,0,0,.35); margin-top:4px;">K-pop 유료 팬 750만</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:140px; height:140px; border-radius:50%; background:#FF3377; display:flex; align-items:center; justify-content:center; flex-direction:column;">
+        <span style="font-size:28px; font-weight:900; color:#fff;">$91K</span>
+      </div>
+      <div style="font-size:18px; font-weight:700; margin-top:20px;">SOM</div>
+      <div style="font-size:15px; color:rgba(0,0,0,.35); margin-top:4px;">12개월 ARR</div>
+    </div>
+  </div>
+  <div class="page">9</div>
+</div>
+
+
+<!-- 10 ─ BUSINESS MODEL (한 줄) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">BUSINESS MODEL</div>
+  <div style="font-size:64px; font-weight:800; line-height:1.3;">
+    무료로 만들고,<br>
+    <span class="accent">키울 때 과금</span>한다.
+  </div>
+  <div style="display:flex; gap:60px; margin-top:72px;">
+    <div style="text-align:center;">
+      <div style="font-size:48px; font-weight:800;">시즌패스</div>
+      <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:8px;">3,000~10,000원/월</div>
+    </div>
+    <div style="width:1px; background:rgba(0,0,0,.08);"></div>
+    <div style="text-align:center;">
+      <div style="font-size:48px; font-weight:800;">드래프트 슬롯</div>
+      <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:8px;">1,000~3,000원</div>
+    </div>
+    <div style="width:1px; background:rgba(0,0,0,.08);"></div>
+    <div style="text-align:center;">
+      <div style="font-size:48px; font-weight:800;">프리미엄 팩</div>
+      <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:8px;">2,000~5,000원</div>
+    </div>
+  </div>
+  <div style="font-size:20px; color:rgba(0,0,0,.3); margin-top:60px;">
+    UT 검증: "키우는 느낌이 추가되니 구매 의향이 생겼다" — U8
+  </div>
+  <div class="page">10</div>
+</div>
+
+
+<!-- 11 ─ COMPETITION (포지셔닝 한 줄) -->
+<div class="s">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">COMPETITION</div>
+  <div style="font-size:56px; font-weight:800; line-height:1.3;">
+    사용자 소유 + K-pop 특화 + 육성<br>
+    <span class="accent">이 교차점은 비어 있습니다.</span>
+  </div>
+  <div style="font-size:24px; color:rgba(0,0,0,.4); margin-top:48px; line-height:1.8;">
+    PLAVE는 기획사 소유. Bubble은 일방향. Character.AI는 K-pop이 아님.<br>
+    기획사는 자사 IP를 잠식하지 않고, 범용 AI는 충분히 버티컬하지 않습니다.
+  </div>
+  <div class="page">11</div>
+</div>
+
+
+<!-- 12 ─ TEAM -->
+<div class="s left">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">TEAM</div>
+  <div style="display:flex; gap:80px; width:100%;">
+    <div style="flex:1;">
+      <div style="font-size:40px; font-weight:800;">이소연 <span style="font-size:24px; color:#FF3377; font-weight:700;">CEO</span></div>
+      <div style="font-size:22px; color:rgba(0,0,0,.5); margin-top:20px; line-height:1.8;">
+        연세대 UX 석사<br>
+        20년차 K-pop 팬<br>
+        프론트엔드 + UX 디자인 + 사업 개발<br>
+        $0 마케팅으로 500K 조회 달성
+      </div>
+    </div>
+    <div style="flex:1;">
+      <div style="font-size:40px; font-weight:800;">김영욱 <span style="font-size:24px; color:#FF3377; font-weight:700;">CTO</span></div>
+      <div style="font-size:22px; color:rgba(0,0,0,.5); margin-top:20px; line-height:1.8;">
+        KAIST AI/ML 석사<br>
+        네이버 P2P 스트리밍 (미/일/한 특허)<br>
+        스캐터랩 ML Engineer (이루다 전신)<br>
+        전 회사 매출 10억원 (EasyDeep)
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:60px; font-size:22px; color:rgba(0,0,0,.4); line-height:1.7;">
+    부부 창업자. 스타트업 실패를 함께 겪었습니다 — 무급, 폐업, 우울증 회복.<br>
+    그게 깨지지 않는 신뢰를 만들었습니다. <span style="color:#FF3377; font-weight:600;">11명 팀, 12번째 멤버는 AI.</span>
+  </div>
+  <div class="page">12</div>
+</div>
+
+
+<!-- 13 ─ PIVOT HISTORY (스토리) -->
+<div class="s left">
+  <div style="font-size:24px; color:rgba(0,0,0,.3); font-weight:600; margin-bottom:48px;">2.5 YEARS OF LEARNING</div>
+  <div style="display:flex; flex-direction:column; gap:36px;">
+    <div style="display:flex; align-items:baseline; gap:24px;">
+      <span style="font-size:20px; color:rgba(0,0,0,.25); font-weight:600; width:40px;">01</span>
+      <div>
+        <span style="font-size:36px; font-weight:700;">AI Boyfriend</span>
+        <span style="font-size:22px; color:rgba(0,0,0,.4); margin-left:16px;">300명, 75%가 진심 어린 애정 표현</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px;">
+      <span style="font-size:20px; color:rgba(0,0,0,.25); font-weight:600; width:40px;">02</span>
+      <div>
+        <span style="font-size:36px; font-weight:700;">BTS AI</span>
+        <span style="font-size:22px; color:rgba(0,0,0,.4); margin-left:16px;">15분 만에 깊은 이야기 공유 → 라이선스 벽</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px;">
+      <span style="font-size:20px; color:rgba(0,0,0,.25); font-weight:600; width:40px;">03</span>
+      <div>
+        <span style="font-size:36px; font-weight:700;">Virtual Idol</span>
+        <span style="font-size:22px; color:rgba(0,0,0,.4); margin-left:16px;">자체 IP, TikTok 500K 조회</span>
+      </div>
+    </div>
+    <div style="display:flex; align-items:baseline; gap:24px;">
+      <span style="font-size:20px; color:rgba(0,0,0,.25); font-weight:600; width:40px;">04</span>
+      <div>
+        <span style="font-size:36px; font-weight:700; color:#FF3377;">AIdol Simulation</span>
+        <span style="font-size:22px; color:rgba(0,0,0,.4); margin-left:16px;">UT에서 "키우는 게임" 카테고리 발견</span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:60px; font-size:24px; color:rgba(0,0,0,.4);">
+    매번 실패했지만, 매번 사용자가 다음 방향을 알려줬습니다.
+  </div>
+  <div class="page">13</div>
+</div>
+
+
+<!-- 14 ─ ASK -->
+<div class="s dark">
+  <div style="font-size:24px; color:rgba(255,255,255,.3); font-weight:600; margin-bottom:48px;">THE ASK</div>
+  <div style="font-size:64px; font-weight:800; line-height:1.3; color:#fff;">
+    가장 빠르게 움직이는 팀이<br>
+    <span class="accent">이 시장을 가져갑니다.</span>
+  </div>
+  <div style="font-size:26px; color:rgba(255,255,255,.4); margin-top:48px; line-height:1.8;">
+    Phase 2: 육성 시스템 + 시즌 루프 + 모바일 앱 (2026.04~08)<br>
+    Seed 라운드: $500K~$1M (2026 하반기)
+  </div>
+  <div style="margin-top:72px; display:flex; gap:60px;">
+    <div style="text-align:center;">
+      <div style="font-size:20px; color:rgba(255,255,255,.35);">사업화 멘토링</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:20px; color:rgba(255,255,255,.35);">네트워크 연결</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:20px; color:rgba(255,255,255,.35);">인프라 지원</div>
+    </div>
+  </div>
+  <div class="page">14</div>
+</div>
+
+
+<!-- 15 ─ CLOSING -->
+<div class="s">
+  <div style="font-size:72px; font-weight:800; line-height:1.3;">
+    K-pop 팬이 직접 만들고<br>
+    <span class="accent">키우는 시대.</span>
+  </div>
+  <div style="margin-top:72px;">
+    <div style="font-size:32px; font-weight:800; letter-spacing:-1px;"><span class="accent">AI</span>dol</div>
+    <div style="font-size:20px; color:rgba(0,0,0,.35); margin-top:16px;">sylee@aioia.ai &nbsp;&nbsp;&middot;&nbsp;&nbsp; aioia.ai/aidol</div>
+  </div>
+  <div class="page">15</div>
+</div>
+
+
+</body>
+</html>
