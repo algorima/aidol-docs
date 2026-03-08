@@ -13,17 +13,17 @@ const https = require('https');
 // === Config ===
 const CALENDAR_ID = process.env.GOOGLE_CALENDAR_ID || 'c_43279675d25d4c2af7798ab2bf5a7924bf190e2b4926cfceafe2a436edd0368b@group.calendar.google.com'; // AIdol Team (default)
 
-// 팀원 이름 → 이메일 매핑 (외부 JSON 파일에서 로드)
-const path = require('path');
-const TEAM_CONFIG_PATH = path.join(__dirname, '../config/team.json');
+// 팀원 이름 → 이메일 매핑 (GitHub Secrets에서 로드)
 const TEAM = (() => {
-  try {
-    const config = JSON.parse(fs.readFileSync(TEAM_CONFIG_PATH, 'utf8'));
-    return config.members || {};
-  } catch (e) {
-    console.warn('Warning: Could not load team.json, using empty team mapping');
-    return {};
+  if (process.env.TEAM_MEMBERS_JSON) {
+    try {
+      return JSON.parse(process.env.TEAM_MEMBERS_JSON);
+    } catch (e) {
+      console.warn('Warning: Failed to parse TEAM_MEMBERS_JSON, using empty team mapping');
+      return {};
+    }
   }
+  return {};
 })();
 
 // 기본 참석자 (항상 초대) - 환경변수에서 로드
@@ -193,11 +193,15 @@ function parseTime(title, duration = 60) {
   }
   
   const startTime = `${String(startHour).padStart(2, '0')}:${String(startMin).padStart(2, '0')}:00`;
-  const endHour = startHour + Math.floor((startMin + duration) / 60);
-  const endMin = (startMin + duration) % 60;
-  const endTime = `${String(endHour).padStart(2, '0')}:${String(endMin).padStart(2, '0')}:00`;
-  
-  return { startTime, endTime };
+
+  // Date 객체로 종료 시간 계산 (자정 넘김 처리)
+  const startDate = new Date(2000, 0, 1, startHour, startMin);
+  const endDate = new Date(startDate.getTime() + duration * 60 * 1000);
+  const endTime = `${String(endDate.getHours()).padStart(2, '0')}:${String(endDate.getMinutes()).padStart(2, '0')}:00`;
+
+  // 자정 넘김 여부도 반환
+  const crossesMidnight = endDate.getDate() !== startDate.getDate();
+  return { startTime, endTime, crossesMidnight };
 }
 
 // === Parse Meeting Notes ===
@@ -240,11 +244,20 @@ function parseMeetingNote(content, filename) {
     
     if (title) {
       const date = `${year}-${m.padStart(2, '0')}-${d.padStart(2, '0')}`;
-      const { startTime, endTime } = parseTime(title, duration);
+      const { startTime, endTime, crossesMidnight } = parseTime(title, duration);
+
+      // 자정 넘김 시 종료 날짜를 다음 날로
+      let endDate = date;
+      if (crossesMidnight) {
+        const d = new Date(`${date}T00:00:00`);
+        d.setDate(d.getDate() + 1);
+        endDate = d.toISOString().slice(0, 10);
+      }
+
       events.push({
         title: title.trim(),
         start: `${date}T${startTime}`,
-        end: `${date}T${endTime}`,
+        end: `${endDate}T${endTime}`,
         description: `From: ${filename}`,
         attendees: attendees
       });

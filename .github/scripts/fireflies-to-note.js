@@ -54,11 +54,15 @@ async function getTranscript(meetingId) {
       let data = '';
       res.on('data', chunk => data += chunk);
       res.on('end', () => {
-        const json = JSON.parse(data);
-        if (json.errors) {
-          reject(new Error(json.errors[0].message));
-        } else {
-          resolve(json.data.transcript);
+        try {
+          const json = JSON.parse(data);
+          if (json.errors) {
+            reject(new Error(json.errors[0].message));
+          } else {
+            resolve(json.data.transcript);
+          }
+        } catch (e) {
+          reject(new Error(`Failed to parse API response: ${e.message}`));
         }
       });
     });
