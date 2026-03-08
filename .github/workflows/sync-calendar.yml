@@ -1,0 +1,38 @@
+name: Sync Meeting Notes to Calendar
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '02_planning/meeting-notes/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get changed files
+        id: changed
+        run: |
+          FILES=$(git diff --name-only HEAD~1 HEAD -- '02_planning/meeting-notes/*.md' | tr '\n' ' ')
+          echo "files=$FILES" >> $GITHUB_OUTPUT
+
+      - name: Setup Node
+        if: steps.changed.outputs.files != ''
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse and Sync
+        if: steps.changed.outputs.files != ''
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          CALENDAR_ATTENDEES: ${{ secrets.CALENDAR_ATTENDEES }}
+        run: |
+          node .github/scripts/sync-meeting-notes.js ${{ steps.changed.outputs.files }}

@@ -1,0 +1,26 @@
+name: Fireflies → Meeting Note PR
+
+on:
+  repository_dispatch:
+    types: [fireflies-transcription]
+
+jobs:
+  create-meeting-note:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch transcript and create PR
+        env:
+          FIREFLIES_API_KEY: ${{ secrets.FIREFLIES_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MEETING_ID: ${{ github.event.client_payload.meeting_id }}
+          MEETING_TITLE: ${{ github.event.client_payload.title }}
+        run: |
+          node .github/scripts/fireflies-to-note.js
