@@ -1,6 +1,6 @@
 # Week 1 (3/8~3/14) — 캐스팅 이미지 프롬프트 만들기
 
-- 스프린트 기준 문서: `chaehyun-content-sprint-plan v0.3`
+- 스프린트 기준 문서: `chaehyun-content-sprint-plan.md`
 - 담당: 채현
 - 완료 기준: 블록 구조 확정 + 매핑 테이블 초안 PR 머지
 
