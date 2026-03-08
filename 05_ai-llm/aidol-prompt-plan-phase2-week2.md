@@ -1,6 +1,6 @@
 # Week 2 (3/15~3/21) — 성별 고정 + 안전장치
 
-- 스프린트 기준 문서: `chaehyun-content-sprint-plan v0.3`
+- 스프린트 기준 문서: `chaehyun-content-sprint-plan.md`
 - 담당: 채현
 - 완료 기준: 성별 고정율 95% 이상 + 안전장치 방식 1개 이상 선정
 
